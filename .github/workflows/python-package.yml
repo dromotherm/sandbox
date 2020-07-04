@@ -40,4 +40,4 @@ jobs:
         python test.py
         ls -al
     - name: Upload results
-        uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v1
