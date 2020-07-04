@@ -37,7 +37,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: python run....
       run: |
-        python test.py
+        python test.py 2
         ls -al
     - name: Upload results
       uses: actions/upload-artifact@v1
