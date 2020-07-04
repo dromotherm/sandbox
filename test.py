@@ -6,6 +6,9 @@ import sys
 a=sys.argv[0]
 print(a)
 
+for arg in sys.argv:
+    print arg
+
 T=np.ones(500)*12
 
 plt.subplot(111)
