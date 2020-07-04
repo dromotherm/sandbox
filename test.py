@@ -7,7 +7,7 @@ a=sys.argv[0]
 print(a)
 
 for arg in sys.argv:
-    print arg
+    print(arg)
 
 T=np.ones(500)*12
 
