@@ -41,3 +41,6 @@ jobs:
         ls -al
     - name: Upload results
       uses: actions/upload-artifact@v1
+      with:
+        name: figures
+        path: myfig.png
