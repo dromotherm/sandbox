@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: 3.8
 
     steps:
     - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: python run....
       run: |
-        python test.py 2
+        python test.py 0 1 2 3 4 True
         ls -al
     - name: Upload results
       uses: actions/upload-artifact@v1
