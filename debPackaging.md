@@ -1,5 +1,7 @@
 # how to create debian package ?
 
+cf https://wiki.debian.org/Packaging/Intro?action=show&redirect=IntroDebianPackaging
+
 install the tools
 ```
 sudo apt-get install devscripts
@@ -69,3 +71,20 @@ the cme tool can be used to edit the debian/control file
 cme edit dpkg-control
 ```
 ![](images/cme.png)
+
+# debian/rules
+the simpliest form consists to entrust everything to the dh command of debhelper
+```
+#!/usr/bin/make -f
+%:
+        dh $@
+```
+The last line should be indented by one TAB character, not by spaces. The file is a makefile, and TAB is what the make command wants
+
+# debian/source/format
+
+```
+mkdir source
+nano source/format
+```
+it should contain the version number for the format of the source package, which is "3.0 (quilt)"
