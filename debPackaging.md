@@ -3,6 +3,7 @@
 install the tools
 ```
 sudo apt-get install devscripts
+sudo apt-get install -y debhelper
 ```
 une fois devscripts installés, on peut utiliser `debcheckout` et `dch`
 
