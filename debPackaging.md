@@ -95,3 +95,14 @@ mkdir debian/source
 nano debian/source/format
 ```
 it should contain the version number for the format of the source package, which is "3.0 (quilt)"
+
+# debian/hithere.dirs
+```
+nano debian/hithere.dirs
+```
+the content should be :
+
+```
+usr/bin
+usr/share/man/man1
+```
