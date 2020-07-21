@@ -45,7 +45,7 @@ Source: hithere
 Maintainer: Alexandre CUER <alexandre.cuer@wanadoo.fr>
 Section: misc
 Priority: optional
-Standards-Version: 3.9.2
+Standards-Version: 4.1.3
 Build-Depends: debhelper (>= 9)
 
 Package: hithere
