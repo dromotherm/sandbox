@@ -9,7 +9,7 @@ sudo apt-get install cme libconfig-model-dpkg-perl libconfig-model-tkui-perl
 ```
 une fois devscripts installés, on peut utiliser `debcheckout` et `dch`
 
-# the upstream tarball, from the developer team
+# upstream tarball, from the developer team
 
 `hithere-1.0.tar.gz` = upstream tarball
 
