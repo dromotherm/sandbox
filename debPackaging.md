@@ -42,6 +42,9 @@ echo "9" > debian/compat
 ```
 # debian/control
 
+```
+nano debian/control
+```
 here we only have one package, so the control file should be like that :
 
 ```
@@ -73,6 +76,10 @@ cme edit dpkg-control
 ![](images/cme.png)
 
 # debian/rules
+```
+nano debian/rules
+```
+
 the simpliest form consists to entrust everything to the dh command of debhelper
 ```
 #!/usr/bin/make -f
@@ -84,7 +91,7 @@ The last line should be indented by one TAB character, not by spaces. The file i
 # debian/source/format
 
 ```
-mkdir source
-nano source/format
+mkdir debian/source
+nano debian/source/format
 ```
 it should contain the version number for the format of the source package, which is "3.0 (quilt)"
