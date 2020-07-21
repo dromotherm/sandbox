@@ -66,3 +66,4 @@ the cme tool can be used to edit the debian/control file
 ```
 cme edit dpkg-control
 ```
+![](images/cme.png)
