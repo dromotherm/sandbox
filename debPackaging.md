@@ -85,8 +85,13 @@ the simpliest form consists to entrust everything to the dh command of debhelper
 #!/usr/bin/make -f
 %:
         dh $@
+
+override_dh_auto_install:
+        $(MAKE) DESTDIR=$$(pwd)/debian/hithere prefix=/usr install
 ```
-The last line should be indented by one TAB character, not by spaces. The file is a makefile, and TAB is what the make command wants
+**Lines 3 and 5 (last one) should be indented by one TAB character, not by 8 spaces.** 
+
+The file is a makefile, and TAB is what the make command wants !!
 
 # debian/source/format
 
