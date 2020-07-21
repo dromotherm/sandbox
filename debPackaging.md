@@ -6,7 +6,7 @@ sudo apt-get install devscripts
 ```
 une fois devscripts installés, on peut utiliser `debcheckout` et `dch`
 
-hithere-1.0.tar.gz : upstream tarball, from the developer team
+`hithere-1.0.tar.gz` : upstream tarball, from the developer team
 
 ```
 mv hithere-1.0.tar.gz hithere_1.0.orig.tar.gz
