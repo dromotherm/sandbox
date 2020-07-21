@@ -45,7 +45,7 @@ echo "9" > debian/compat
 ```
 nano debian/control
 ```
-here we only have one package, so the control file should be like that :
+here we only have one package (with the name hithere), so the control file should be like that :
 
 ```
 Source: hithere
