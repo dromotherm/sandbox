@@ -10,6 +10,7 @@ sudo apt-get install build-essential
 sudo apt-get install cme libconfig-model-dpkg-perl libconfig-model-tkui-perl
 ```
 une fois devscripts installés, on peut utiliser `debcheckout` et `dch`
+sur un raspberry avec raspbian lite sans interface graphique, on ne pourra pas utiliser `cme`
 
 # upstream tarball, from the developer team
 
@@ -119,6 +120,12 @@ the content should be :
 usr/bin
 usr/share/man/man1
 ```
+# debian/copyright
+```
+nano debian/copyright
+```
+an empty content should be OK
+
 # build the deb
 ```
 debuild -us -uc
