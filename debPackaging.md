@@ -38,7 +38,7 @@ The -1 part is the Debian version: the first version of the Debian package of up
 
 once prompted, you have to fix the details of the `debian/changelog` file to your needs
 ```
-hithere (1.0-1) UNRELEASED; urgency=low   
+hithere (1.0-1) UNRELEASED; urgency=low
 
   * Initial release. (Closes: #XXXXXX)
 
@@ -93,12 +93,12 @@ the simpliest form consists to entrust everything to the dh command of debhelper
 ```
 #!/usr/bin/make -f
 %:
-        dh $@
+  dh $@
 
 override_dh_auto_install:
-        $(MAKE) DESTDIR=$$(pwd)/debian/hithere prefix=/usr install
+  $(MAKE) DESTDIR=$$(pwd)/debian/hithere prefix=/usr install
 ```
-**Lines 3 and 5 (last one) should be indented by one TAB character, not by 8 spaces.** 
+**Lines 3 and 5 (last one) should be indented by one TAB character, not by 8 spaces.**
 
 The file is a makefile, and TAB is what the make command wants !!
 
