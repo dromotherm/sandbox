@@ -4,6 +4,8 @@ cf https://wiki.debian.org/Packaging/Intro?action=show&redirect=IntroDebianPacka
 
 https://wiki.debian.org/HowToPackageForDebian
 
+https://wiki.debian.org/Packaging
+
 install the tools
 ```
 sudo apt-get install devscripts
