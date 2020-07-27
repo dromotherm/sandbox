@@ -2,6 +2,8 @@
 
 cf https://wiki.debian.org/Packaging/Intro?action=show&redirect=IntroDebianPackaging
 
+https://wiki.debian.org/HowToPackageForDebian
+
 install the tools
 ```
 sudo apt-get install devscripts
