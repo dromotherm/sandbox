@@ -1,3 +1,4 @@
+# Finalisation d'une SD pour production d'une carte Themis
 ```
 cd /boot
 sudo touch emonSD-themisv0
@@ -37,6 +38,7 @@ on remplace le wget qui va chercher le safe-update sur un github par un cat
         fi
 
 ```
+Mais dans un premier temps, il vaut mieux ne pas avoir ces updates automatiques.....
 
 
 
