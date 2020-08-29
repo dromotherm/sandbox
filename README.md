@@ -10,7 +10,11 @@ Les principales marques que l'on trouve sur Raspberry :
  
 - Kingston
 
-- 
+- Goodram
+
+La plus petite en taille est la Kingston
+
+Il faut donc créer l'image à partir d'une Kingston  contenant tout l'écosystème 
 
 https://learn.sparkfun.com/tutorials/sd-cards-and-writing-images/all
 
