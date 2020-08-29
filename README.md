@@ -49,7 +49,7 @@ Périphérique   Amorçage   Début      Fin Secteurs Taille Id Type
 /dev/mmcblk0p2           532480  9256959  8724480   4,2G 83 Linux
 /dev/mmcblk0p3          9256960 30228479 20971520    10G 83 Linux
 ```
-Un fdisk nous permet de vérifier que la carte dont on veut créer une image est constituée de secteurs de 512 octets et qu'elle en comporte 30228479+1 (car on commence à compter à 0)
+Un fdisk nous permet de vérifier que la carte dont on veut créer une image est constituée de secteurs de 512 octets et qu'elle en comporte 30228479+1 (car on commence à compter à 0). On est bien sur une carte de 16 Go car 30228480/2 = 15 114 240 et 15114240 * 1024 = 15476981760 bytes ce qui est bien le résultat de la commande dd.... 
 
 On utilise dd pour créer l'image :
 ```
