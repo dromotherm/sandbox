@@ -15,7 +15,7 @@ nano safe-update
 ```
 
 ```
-emonSD-themisv0
+emonSD-themis1.0
 emonSD-24Jul20
 emonSD-02Oct19
 emonSD-17Oct19
