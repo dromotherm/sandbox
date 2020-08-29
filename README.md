@@ -32,7 +32,7 @@ Il faut bien sûr avoir auparavant donné un nom d'image
 
 ## sous linux Ubuntu
 
-probablement le plus simple car tous les outils sont disponibles
+**probablement le plus simple et le plus intelligent car tous les outils sont disponibles et car on voit vraiment ce que l'on fait**
 
 on cherche le point de montage de la carte (içi une Kingston), par exemple /dev/mmcblk0
 ```
