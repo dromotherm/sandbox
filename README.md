@@ -74,4 +74,13 @@ test.img2              532480  9256959  8724480   4,2G 83 Linux
 test.img3             9256960 30228479 20971520    10G 83 Linux
 ```
 
+ou avec gparted
+```
+sudo udisksctl loop-setup -f test.img
+Mapped file test.img as /dev/loop19.
+```
+puis :
+```
+sudo gparted /dev/loop19 &
+```
 
