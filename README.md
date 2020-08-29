@@ -1,4 +1,4 @@
-sandbox to track mods
+sandbox - diverses méthodes en tt genre :-)
 
 # create image from SD cards
 
