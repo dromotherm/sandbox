@@ -89,3 +89,9 @@ on peut alors créer un zip pour compresser et gagner de l'espace...
 zip test.img.zip test.img
   adding: test.img (deflated 92%)
 ```
+on vérifie la taille du zip (1.2 Go)
+
+```
+ls -al test.img.zip
+-rw-r--r-- 1 alexandrecuer alexandrecuer 1232455476 août  29 13:36 test.img.zip
+```
