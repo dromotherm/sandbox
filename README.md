@@ -1,6 +1,9 @@
 sandbox to track mods
 
-# write SD cards
+# create image from SD cards
+
+L'idée est de créer une image qui passe sur toutes les marques de cartes SD a compter d'une certaine taille (16 Go)
+ 
 
 https://learn.sparkfun.com/tutorials/sd-cards-and-writing-images/all
 
