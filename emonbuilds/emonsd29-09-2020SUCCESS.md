@@ -1,5 +1,34 @@
 # on a Kingston 16Go
 
+created an account just after the build to check if things were going fine on the web interface
+after reboot, when browsing to emoncms :
+```
+Fatal error: Uncaught RedisException: Connection refused in /var/www/emoncms/index.php:37 Stack trace: #0 /var/www/emoncms/index.php(37): Redis->connect('localhost', 6379) #1 {main} thrown in /var/www/emoncms/index.php on line 37
+```
+
+```
+sudo systemctl status redis
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+   Active: failed (Result: exit-code) since Sat 2020-08-29 14:28:12 CEST; 7s ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 2762 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=1/FAI
+
+Aug 29 14:28:12 emonpi systemd[1]: Failed to start Advanced key-value store.
+Aug 29 14:28:12 emonpi systemd[1]: redis-server.service: Service RestartSec=100ms expired, sched
+Aug 29 14:28:12 emonpi systemd[1]: redis-server.service: Scheduled restart job, restart counter 
+Aug 29 14:28:12 emonpi systemd[1]: Stopped Advanced key-value store.
+Aug 29 14:28:12 emonpi systemd[1]: redis-server.service: Start request repeated too quickly.
+Aug 29 14:28:12 emonpi systemd[1]: redis-server.service: Failed with result 'exit-code'.
+Aug 29 14:28:12 emonpi systemd[1]: Failed to start Advanced key-value store.
+Aug 29 14:28:19 emonpi systemd[1]: redis-server.service: Start request repeated too quickly.
+Aug 29 14:28:19 emonpi systemd[1]: redis-server.service: Failed with result 'exit-code'.
+Aug 29 14:28:19 emonpi systemd[1]: Failed to start Advanced key-value store.
+```
+
+## build details
+
 ```
 ./mysql.sh
 -------------------------------------------------------------
