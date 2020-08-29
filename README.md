@@ -83,4 +83,9 @@ puis :
 ```
 sudo gparted /dev/loop19 &
 ```
+on peut alors créer un zip pour compresser et gagner de l'espace...
 
+```
+zip test.img.zip test.img
+  adding: test.img (deflated 92%)
+```
