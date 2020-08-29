@@ -1,7 +1,7 @@
 # Finalisation d'une SD pour production d'une carte Themis
 ```
 cd /boot
-sudo touch emonSD-themisv0
+sudo touch emonSD-themis1.0
 sudo rm emonSD-02Oct19 
 sudo systemctl restart emonPiLCD
 ```
