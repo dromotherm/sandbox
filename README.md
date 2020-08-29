@@ -95,3 +95,12 @@ on vérifie la taille du zip (1.2 Go)
 ls -al test.img.zip
 -rw-r--r-- 1 alexandrecuer alexandrecuer 1232455476 août  29 13:36 test.img.zip
 ```
+On vérifie les md5 (utile pour vérifier si le fichier n'est pas corronpu - cas d'un stockage sur le cloud et d'un téléchargement ultérieur)
+
+```
+md5sum test.img.zip
+8917daf0e78e372448eaebe84c3bfc40  test.img.zip
+
+md5sum test.img
+1a5353f9a4cc8163515bc5941589e4ba  test.img
+```
