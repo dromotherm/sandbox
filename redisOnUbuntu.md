@@ -81,8 +81,27 @@ Lecture des informations d'état... Fait
 php est déjà la version la plus récente (1:7.2+60ubuntu1).
 0 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.
 ```
+ou encore:
+```
+php --version
+PHP 7.2.24-0ubuntu0.18.04.6 (cli) (built: May 26 2020 13:09:11) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.2.24-0ubuntu0.18.04.6, Copyright (c) 1999-2018, by Zend Technologies
+```
+On installe les extensions PHP, puis le module redis pour PHP via pecl :
+```
+sudo apt-get install -y php-gd php-curl php-pear php-dev php-common php-mbstring
+sudo pecl channel-update pecl.php.net
+sudo pecl install redis
+```
+On active le module redis :
+```
+sudo nano /etc/php/7.2/mods-available/redis.ini
+extension=redis.so
 
-
+sudo phpenmod redis
+```
 
 On installe phpRedisAdmin pour voir si tout fonctionne correctement
 ```
