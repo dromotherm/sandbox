@@ -87,6 +87,7 @@ sudo a2ensite phpRedisAdmin
 sudo mkdir /var/log/phpRedisAdmin
 sudo systemctl restart apache2
 ```
+![](images/phpRedisAdmin.png)
 to secure redis :
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04
