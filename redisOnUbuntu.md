@@ -61,5 +61,39 @@ sept. 20 18:27:24 alexandrecuer-PORTEGE-R30-A systemd[1]: Starting Advanced key-
 sept. 20 18:27:24 alexandrecuer-PORTEGE-R30-A systemd[1]: redis-server.service: Can't open PID file /var/run/redis/redis-server.pid (yet?) a
 sept. 20 18:27:24 alexandrecuer-PORTEGE-R30-A systemd[1]: Started Advanced key-value store.
 ```
+Pour vérifier, on peut lancer la ligne de commande :
+```
+redis-cli
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> set test "It's working!"
+OK
+127.0.0.1:6379> get test
+"It's working!"
+
+```
+Sur Ubuntu, php est déjà préinstallé
+```
+sudo apt-get install -y php
+Lecture des listes de paquets... Fait
+Construction de l'arbre des dépendances       
+Lecture des informations d'état... Fait
+php est déjà la version la plus récente (1:7.2+60ubuntu1).
+0 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.
+```
 
 
+
+On installe phpRedisAdmin pour voir si tout fonctionne correctement
+```
+cd /var/www
+sudo git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
+cd phpRedisAdmin/
+sudo git clone https://github.com/nrk/predis.git vendor
+cd /var/www/html
+sudo ln -s /var/www/phpRedisAdmin
+sudo systemctl daemon-reload
+sudo systemctl restart apache2
+```
+
+```
