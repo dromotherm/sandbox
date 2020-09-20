@@ -71,8 +71,19 @@ cd phpRedisAdmin/
 sudo git clone https://github.com/nrk/predis.git vendor
 cd /var/www/html
 sudo ln -s /var/www/phpRedisAdmin
-sudo systemctl daemon-reload
-sudo systemctl restart apache2
-```
+sudo nano /etc/apache2/sites-available/phpRedisAdmin.conf
+<VirtualHost *:80>
+    ServerName localhost/phpRedisAdmin
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/phpRedisAdmin
 
+    # Virtual Host specific error log
+    ErrorLog /var/log/phpRedisAdmin/apache2-error.log
+    # Access log disabled
+    # CustomLog /var/log/phpRedisAdmin/apache2-access.log combined
+</VirtualHost>
+
+sudo a2ensite phpRedisAdmin
+sudo mkdir /var/log/phpRedisAdmin
+sudo systemctl restart apache2
 ```
