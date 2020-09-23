@@ -109,3 +109,16 @@ sudo systemctl daemon-reload
 sudo systemctl restart {feedwriter.service,service-runner.service}
 sudo systemctl restart apache2
 ```
+# Modules
+
+```
+cd /opt/emoncms
+mkdir modules
+cd modules
+```
+on clone sync par exemple
+```
+git clone -b stable http://github.com/emoncms/sync.git
+ln -s /opt/emoncms/modules/sync/sync-module /var/www/emoncms/Modules/sync
+```
+si le module contient un install.sh, on le lance en lui donnant le nom du répertoire openenergymonitor_dir
