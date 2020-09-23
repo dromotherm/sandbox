@@ -116,9 +116,11 @@ cd /opt/emoncms
 mkdir modules
 cd modules
 ```
-on clone sync par exemple
+On clone sync par exemple
 ```
 git clone -b stable http://github.com/emoncms/sync.git
 ln -s /opt/emoncms/modules/sync/sync-module /var/www/emoncms/Modules/sync
 ```
-si le module contient un install.sh, on le lance en lui donnant le nom du répertoire openenergymonitor_dir
+Si le module contient un install.sh, on le lance en lui donnant le nom du répertoire openenergymonitor_dir : ce n'est pas le cas pour sync
+
+Par contre, il faut mettre à jour la base de données : pour celà, aller dans le modèle d'administration et faire une mise à jour de base 
