@@ -14,7 +14,7 @@ on édite apache2.conf
 ```
 sudo nano /etc/apache2/apache2.conf
 ```
-Pour `<Directory />` at `<Directory /var/www/>` on change `AllowOverride None` par `AllowOverride All`
+Pour `<Directory />` et `<Directory /var/www/>` on change `AllowOverride None` par `AllowOverride All`
 
 # emoncms
 
