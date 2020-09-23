@@ -1,6 +1,13 @@
 On peut installer mysql avec le scripts issu des EmonScripts....
 On part du principe qu'on a cloner le dépot des scripts dans /opt/openenergymonitor, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
 
+on installe les extensions mysql pour php :
+
+```
+sudo apt-get install -y php-mysql
+```
+# emoncms
+
 ```
 cd /var/www
 git clone http://github.com/emoncms/emoncms.git
@@ -73,4 +80,11 @@ sudo mkdir /lib/systemd/system/feedwriter.service.d
 sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
 [Service]
 Environment='USER=alexandrecuer'
+```
+reste à relancer les services pour rendre les choses opérationnelles :
+
+```
+sudo systemctl daemon-reload
+sudo systemctl restart {feedwriter.service,service-runner.service}
+sudo systemctl restart apache2
 ```
