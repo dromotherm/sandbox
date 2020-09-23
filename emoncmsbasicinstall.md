@@ -20,7 +20,7 @@ https://github.com/openenergymonitor/EmonScripts/blob/master/defaults/emoncms/em
 
 On change un certain nombre de chemins :
 ```
-emoncms_dir = "/var/www/emoncms"
+emoncms_dir = "/opt/emoncms"
 openenergymonitor_dir = "/opt/openenergymonitor"
 phpfina[datadir] = '/var/opt/emoncms/phpfina/'
 phptimeseries[datadir] = '/var/opt/emoncms/phptimeseries/'
