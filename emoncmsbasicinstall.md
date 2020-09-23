@@ -1,5 +1,5 @@
 On peut installer mysql avec le scripts issu des EmonScripts....
-On part du principe qu'on a cloner le dépot des scripts dans /opt/openenergymonitor, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
+On part du principe qu'on a cloné le dépot des scripts dans /opt/openenergymonitor, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
 
 on installe les extensions mysql pour php :
 
@@ -82,7 +82,8 @@ on peut éventuellement rajouter la partie suivante dans la configuration du vir
     </Directory>
 ```
 
-reste à configurer les services essentiels feedwriter et service-runner 
+## configuration de feedwriter et de service-runner
+
 ```
 cd /opt/openenergymonitor/EmonScripts/common
 ./install_emoncms_service.sh /var/www/emoncms/scripts/services/feedwriter/feedwriter.service feedwriter
@@ -102,6 +103,14 @@ sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
 [Service]
 Environment='USER=alexandrecuer'
 ```
+on donne le pouvoir de sudoer sans password à notre utilisateur :
+```
+sudo visudo
+```
+on rajoute la ligne suivante à la fin du fichier et on enregistre
+```
+alexandrecuer ALL=(ALL) NOPASWD: ALL
+```
 reste à relancer les services pour rendre les choses opérationnelles :
 
 ```
@@ -109,6 +118,11 @@ sudo systemctl daemon-reload
 sudo systemctl restart {feedwriter.service,service-runner.service}
 sudo systemctl restart apache2
 ```
+Pour voir le log du service-runner :
+```
+sudo journalctl -f -u service-runner
+```
+
 # Modules
 
 ## cas d'un module ne résidant pas dans /var/www/emoncms/Modules
