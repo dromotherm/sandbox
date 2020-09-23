@@ -6,6 +6,11 @@ on installe les extensions mysql pour php :
 ```
 sudo apt-get install -y php-mysql
 ```
+on active modrewrite
+```
+sudo a2enmod rewrite
+```
+
 # emoncms
 
 ```
