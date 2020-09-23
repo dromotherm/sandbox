@@ -1,4 +1,5 @@
 On peut installer mysql avec le scripts issu des EmonScripts....
+On part du principe qu'on a cloner le dépot des scripts dans /opt/openenergymonitor, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
 
 ```
 cd /var/www
