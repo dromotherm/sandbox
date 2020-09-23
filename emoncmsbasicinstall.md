@@ -82,14 +82,20 @@ on peut éventuellement rajouter la partie suivante dans la configuration du vir
     </Directory>
 ```
 
-## configuration de feedwriter et de service-runner
+## configuration des services feedwriter et service-runner
+
+### 1) on crée les symlinks
+
+on se sert du script crée par Trystan
 
 ```
 cd /opt/openenergymonitor/EmonScripts/common
 ./install_emoncms_service.sh /var/www/emoncms/scripts/services/feedwriter/feedwriter.service feedwriter
 ./install_emoncms_service.sh /var/www/emoncms/scripts/services/service-runner/service-runner.service service-runner
 ```
-on crée des drop-ins systemd puisqu'on va tourner avec un user qui n'est pas le même que sur raspberry
+Mais il serait aussi facile de les créer à la main `sudo ln -s $servicepath /lib/systemd/system`
+
+### 2) on crée des dropins systemd pour indiquer l'utilisateur qui va faire tourner les services
 ```
 sudo mkdir /lib/systemd/system/service-runner.service.d
 sudo nano /lib/systemd/system/service-runner.service.d/service-runner.conf
@@ -103,7 +109,7 @@ sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
 [Service]
 Environment='USER=alexandrecuer'
 ```
-on donne le pouvoir de sudoer sans password à notre utilisateur :
+### 3) on donne le pouvoir de sudoer sans password à notre utilisateur :
 ```
 sudo visudo
 ```
