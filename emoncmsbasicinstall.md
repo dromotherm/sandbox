@@ -67,8 +67,12 @@ sudo nano /etc/apache2/sites-available/emoncms.conf
     # Virtual Host specific error log
     ErrorLog /var/log/emoncms/apache2-error.log
     # Access log disabled
-    # CustomLog /var/log/emoncms/apache2-access.log combined
-    
+    # CustomLog /var/log/emoncms/apache2-access.log combined    
+</VirtualHost>
+sudo a2ensite emoncms
+```
+on peut éventuellement rajouter la partie suivante dans la configuration du virtualhost mais celà n'est pas nécessaire :
+```
     <Directory /var/www/emoncms>
         Options FollowSymLinks
         AllowOverride All
@@ -76,9 +80,8 @@ sudo nano /etc/apache2/sites-available/emoncms.conf
         Order allow,deny
         Allow from all
     </Directory>
-</VirtualHost>
-sudo a2ensite emoncms
 ```
+
 reste à configurer les services essentiels feedwriter et service-runner 
 ```
 cd /opt/openenergymonitor/EmonScripts/common
