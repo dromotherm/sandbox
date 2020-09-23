@@ -25,3 +25,11 @@ phpfina[datadir] = '/var/opt/emoncms/phpfina/'
 phptimeseries[datadir] = '/var/opt/emoncms/phptimeseries/'
 ```
 on peut ne pas activer mqtt si on fait une install de serveur REST only
+
+```
+sudo mkdir /var/opt/emoncms
+sudo mkdir /var/opt/emoncms/phpfina
+sudo chown www-data:root /var/opt/emoncms/phpfina
+sudo mkdir /var/opt/emoncms/phptimeseries
+sudo chown www-data:root /var/opt/emoncms/phptimeseries
+```
