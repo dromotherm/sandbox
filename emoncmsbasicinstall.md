@@ -1,5 +1,5 @@
 On peut installer mysql avec le scripts issu des EmonScripts....
-On part du principe qu'on a cloné le dépot des scripts dans /opt/openenergymonitor, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
+On part du principe qu'on a cloné le dépot des scripts dans `/opt/openenergymonitor`, répertoire que l'on a donné à l'user en cours, içi alexandrecuer
 
 on installe les extensions mysql pour php :
 
@@ -95,7 +95,7 @@ cd /opt/openenergymonitor/EmonScripts/common
 ```
 Mais il serait aussi facile de les créer à la main `sudo ln -s $servicepath /lib/systemd/system`
 
-### 2) on crée des dropins systemd pour indiquer l'utilisateur qui va faire tourner les services
+### 2) on crée des dropins systemd pour préciser l'utilisateur qui va faire tourner les services
 ```
 sudo mkdir /lib/systemd/system/service-runner.service.d
 sudo nano /lib/systemd/system/service-runner.service.d/service-runner.conf
@@ -109,7 +109,7 @@ sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
 [Service]
 Environment='USER=alexandrecuer'
 ```
-### 3) on donne le pouvoir de sudoer sans password à notre utilisateur :
+### 3) on donne le pouvoir de sudoer sans password à notre utilisateur
 ```
 sudo visudo
 ```
@@ -117,7 +117,7 @@ on rajoute la ligne suivante à la fin du fichier et on enregistre
 ```
 alexandrecuer ALL=(ALL) NOPASWD: ALL
 ```
-reste à relancer les services pour rendre les choses opérationnelles :
+### 4) reste à relancer les services pour rendre les choses opérationnelles
 
 ```
 sudo systemctl daemon-reload
