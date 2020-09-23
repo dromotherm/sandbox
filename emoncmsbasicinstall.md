@@ -55,4 +55,22 @@ sudo nano /etc/apache2/sites-available/emoncms.conf
 sudo a2ensite emoncms
 ```
 reste à configurer les services essentiels feedwriter et service-runner 
-
+```
+cd /opt/openenergymonitor/EmonScripts/common
+./install_emoncms_service.sh /var/www/emoncms/scripts/services/feedwriter/feedwriter.service feedwriter
+./install_emoncms_service.sh /var/www/emoncms/scripts/services/service-runner/service-runner.service service-runner
+```
+on crée des drop-ins systemd puisqu'on va tourner avec un user qui n'est pas le même que sur raspberry
+```
+sudo mkdir /lib/systemd/system/service-runner.service.d
+sudo nano /lib/systemd/system/service-runner.service.d/service-runner.conf
+[Service]
+User=alexandrecuer
+```
+et 
+```
+sudo mkdir /lib/systemd/system/feedwriter.service.d
+sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
+[Service]
+Environment='USER=alexandrecuer'
+```
