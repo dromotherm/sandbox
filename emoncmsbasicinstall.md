@@ -3,6 +3,9 @@ On part du principe qu'on a cloné le dépot des scripts dans `/opt/openenergymo
 
 Pour vérifier qu'on a bien affaire à un sudoer : `id alexandrecuer` ou `grep "alexandrecuer" /etc/group`
 
+*Nota pour info :*
+pour créer un utilisateur avec des privilèges particuliuers sur le port série : `sudo useradd -M -r -G dialout,tty -c "emonHub user" emonhub`. Si l'utilisateur est existant : `sudo usermod -a -G dialout,tty alexandrecuer`
+
 on installe les extensions mysql pour php :
 
 ```
