@@ -1,6 +1,9 @@
 # Installation d'un serveur emoncms avec les workers feedwriter/service-runner et les modules sync/graph/postprocess 
 
-On peut installer mysql avec le scripts issu des EmonScripts....
+On peut installer mysql avec le script issu des EmonScripts :
+
+https://github.com/openenergymonitor/EmonScripts/blob/master/install/mysql.sh
+
 On part du principe qu'on a cloné le dépot des scripts dans `/opt/openenergymonitor`, répertoire que l'on a donné au sudoer, içi alexandrecuer
 
 Pour vérifier qu'on a bien affaire à un sudoer : `id alexandrecuer` ou `grep "alexandrecuer" /etc/group`
