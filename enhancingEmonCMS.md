@@ -1,4 +1,4 @@
-# empower EmonCMS with storage in Redis of forecasting datas coming from various API
+# empower EmonCMS with Redis storage of forecasting datas coming from various API
 
 There is really no point in storing weather forecasts on disk. But it can be nice to compare them to the field truth in order to choose the most suitable forecasting API. The ultimate goal is to run physical/statistical models on these forecasts to predict the evolution of the indoor temperature in a building. 
 
