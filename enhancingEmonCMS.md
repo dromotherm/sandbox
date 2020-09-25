@@ -8,6 +8,18 @@ My feeling is that it should be easy to send data batches as numpy array in Redi
 
 All we have to do is to write some minimalistic pieces of code in PHP and python :-) and also to have a good understanding of the EmonCMS architecture. For all back-office aspects, EmonCMS is well structured, but the documentation is not always available, because of the lack of technical writers on the project. Front-office is really a bunck of noodles and sometimes you don't known were to find things but happily Trystan Lea and Emrys Roberts are doing very efficient jobs...
 
+emonCMS feeds are stored in Redis under the `feed` key
+
+To create a new temporary feed (no existence on disk neither in the mariadb database) :
+1) choose a quite big `int`, which will be the feed id : the starting timestamp of your feed can be a good choice, because it is very unlikely that you already created more streams than the timestamp number :-)
+2) create a hash with the essential metadatas ! datatype, engine, name and id
+
+
+We will have to modify 3 files :
+- Modules/feed/feed_controller.php
+- Modules/feed/engine/RedisBuffer.php
+- Modules/feed/feed_model.php
+
 ## datatype numbers defined in `lib/enum.php`
 
 number|datatype
