@@ -1,8 +1,16 @@
+# empower EmonCMS with storage in Redis of forecasting datas coming from various API
+
+There is really no point in storing weather forecasts on disk. But it can be nice to compare them to the field truth in order to choose the most suitable forecasting API. The ultimate goal is to run physical/statistical models on these forecasts to predict the evolution of the indoor temperature in a building. 
+
+Of course, you can do this in python, using numpy arrays which are much used in the datascience world. Numpy arrays are easily storable in Redis in a binary form. But you have to collect the datas. As far as data collection is concerned, EmonCMS is really a must have, and it is strongly interfaced to a Redis database, used as a collecting buffer to reduce disk writing operations and also to store feeds metadatas.
+
+My feeling was that it should be easy to send data batches as numpy array in Redis and to display them in EmonCMS, using the graph module and others visualization tools...
+
 ## datatype numbers defined in `lib/enum.php`
 
 number|datatype
 --|--
-0|undefinded
+0|undefined
 1|realtime
 2|daily
 3|histogram
