@@ -12,25 +12,12 @@ emonCMS feeds are stored in Redis under the `feed` key
 
 To create a new temporary feed (no existence on disk neither in the mariadb database) :
 1) choose a quite big `int`, which will be the feed id : the starting timestamp of your feed can be a good choice, because it is very unlikely that you already created more streams than the timestamp number :-)
-2) create a hash with the essential metadatas : datatype, engine, name, id, userid and public which can be blank. We can also add a tag for classification in emonCMS.
+2) create a redis hash with the essential metadatas : datatype, engine, name, id, userid and public which can be blank. We can also add a tag for classification in emonCMS.
+3) add the feed id to the user feed list which is stored in redis as a set
+4) inject the data as binary in a string buffer
 
-Redis can manage various keys : string, hash, zset, list and set. Depending on the key type, you have to use a specific method to retrieve the values : get for string, hgetall for hash, zrange for zset, lrange for list and smembers for set.
-```
-keys = redis.keys('*')
-for key in keys:
-    type = redis.type(key)
-    if type == "string":
-        val = redis.get(key)
-    if type == "hash":
-        vals = redis.hgetall(key)
-    if type == "zset":
-        vals = redis.zrange(key, 0, -1)
-    if type == "list":
-        vals = redis.lrange(key, 0, -1)
-    if type == "set":
-        vals = redis.smembers(key)
-```
-In order to create an emoncms temporary feed using python, we will have to deal with a hash, a set and a binary string :
+
+
 
 
 
@@ -64,3 +51,21 @@ number|engine
 8|MYSQLMEMORY = Mysql with MEMORY tables on RAM. All data is lost on shutdown
 9|REDISBUFFER = (internal use only) Redis Read/Write buffer, for low write mode
 10|CASSANDRA = Cassandra
+
+## redis keys
+Redis can manage various keys : string, hash, zset, list and set. Depending on the key type, you have to use a specific method to retrieve the values : get for string, hgetall for hash, zrange for zset, lrange for list and smembers for set.
+```
+keys = redis.keys('*')
+for key in keys:
+    type = redis.type(key)
+    if type == "string":
+        val = redis.get(key)
+    if type == "hash":
+        vals = redis.hgetall(key)
+    if type == "zset":
+        vals = redis.zrange(key, 0, -1)
+    if type == "list":
+        vals = redis.lrange(key, 0, -1)
+    if type == "set":
+        vals = redis.smembers(key)
+```
