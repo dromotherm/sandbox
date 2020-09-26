@@ -73,8 +73,7 @@ data = np.array(
  [ 1.6012908e+09,  8.6000000e+01,  1.3250000e+01,  1.0720000e+01],
  [ 1.6012944e+09,  8.8000000e+01,  1.3040000e+01,  1.1010000e+01]])
 ```
-Running the toRedis method, and the feed is available in EmonCMS  
-
+Running the toRedis method, and the feed is available in EmonCMS 
 
 ```
 r = redis.Redis(host="localhost", port=6379, db=0)
@@ -122,7 +121,7 @@ toRedis(data,"OWMhourly")
 ```
 Just run the feed/list.json route to check that the feed is recognized
 
-
+![listjson.png](images/listjson.png)
 
 We will have to modify 3 files :
 - Modules/feed/feed_controller.php
