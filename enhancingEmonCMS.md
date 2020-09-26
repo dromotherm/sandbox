@@ -123,10 +123,69 @@ Just run the feed/list.json route to check that the feed is recognized
 
 ![listjson.png](images/listjson.png)
 
-We will have to modify 3 files :
+But the feed/data.json?id=1601125200 is not yet working
+
+To make it work, we have to modify 3 files :
 - Modules/feed/feed_controller.php
 - Modules/feed/engine/RedisBuffer.php
 - Modules/feed/feed_model.php
+In the generic model, we create a basic get_batch method, just after the get_data one :
+```
+    /*
+    operate data batches injected to Redis buffer
+    */
+    public function get_batch($feedid)
+    {
+        $feedid = (int) $feedid;
+        $engine = $this->get_engine($feedid);
+        if ($engine == Engine::REDISBUFFER) {
+            $this->log->info("get_batch() $feedid");
+            $bufferdata = $this->EngineClass(Engine::REDISBUFFER)->get_batch($feedid);
+            return $bufferdata;
+        } else return "get_batch only supported by redibuffer engine 9";
+    }
+```
+In the redis engine, we create the specific get_batch method, also just after the get_data one :
+```
+    /**
+     * Return a data batch
+     * before injection into redis, the batch has been flattened and converted to binary
+     * bytes 0 to 3 = number of lines as a 32 bit unsigned long, big endian byte order
+     * bytes 4 to 7 = number of columns as a 32 bit unsigned long, big endian byte order
+     * bytes 8 to the end = the flattened batch stored as doubles
+     * @param integer $feedid : The id of the feed
+    */
+    public function get_batch($feedid)
+    {
+        $test = $this->redis->get("feed:$feedid:buffer");
+        # from the PHP doc
+        # N - unsigned long (always 32 bit, big endian byte order)
+        $nblines = unpack('N', $test)[1];
+        $nbcols = unpack('N', $test, 4)[1];
+        $this->log->info("batch array has got $nblines lines & $nbcols cols");
+        # d - double (machine dependent size and representation)
+        $tab = unpack('d*', $test,8);
+        $len = count($tab);
+        $data = array();
+        if ($nblines > 0) {
+            $j=0;
+            while ($j<$len) {
+                $row=array_slice($tab,$j,$nbcols);
+                $time=$row[0]*1000;
+                $data[]=array($time,$row[2]);
+                $j+=4;
+            }
+        }
+        return $data;
+    }
+```
+To finish, we have to modify the data routing in the controller, which starts at `if ($route->action=="data")`
+In order not to adapt the API calls in the frontoffice, so we just inject something specific to engine 9 :
+```
+if ($feed->get($feedid)["engine"]==9){
+    $results[$key]['data'] = $feed->get_batch($feedid);
+} else if (isset($_GET['interval'])) {
+```
 
 ## datatype numbers defined in `lib/enum.php`
 
