@@ -125,11 +125,12 @@ Just run the feed/list.json route to check that the feed is recognized
 
 But the feed/data.json?id=1601125200 is not yet working
 
-To make it work, we have to modify 3 files :
+To make it work, we have to modify 3 files in the emonCMS source code :
 - Modules/feed/feed_controller.php
 - Modules/feed/engine/RedisBuffer.php
 - Modules/feed/feed_model.php
-In the generic model, we create a basic get_batch method, just after the get_data one :
+
+In the generic model, we define a basic get_batch method, just after the get_data one :
 ```
     /*
     operate data batches injected to Redis buffer
@@ -145,7 +146,7 @@ In the generic model, we create a basic get_batch method, just after the get_dat
         } else return "get_batch only supported by redibuffer engine 9";
     }
 ```
-In the redis engine, we create the specific get_batch method, also just after the get_data one :
+In the RedisBuffer engine, we create the specific get_batch method, also just after the get_data one :
 ```
     /**
      * Return a data batch
@@ -180,12 +181,13 @@ In the redis engine, we create the specific get_batch method, also just after th
     }
 ```
 To finish, we have to modify the data routing in the controller, which starts at `if ($route->action=="data")`
-In order not to adapt the API calls in the frontoffice, so we just inject something specific to engine 9 :
+As engine 9 is not used for any data visualisations, the job is easy, and nothing will be required in the frontoffice :
 ```
 if ($feed->get($feedid)["engine"]==9){
     $results[$key]['data'] = $feed->get_batch($feedid);
-} else if (isset($_GET['interval'])) {
+}
 ```
+
 
 ## datatype numbers defined in `lib/enum.php`
 
