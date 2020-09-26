@@ -76,7 +76,21 @@ data = np.array(
 Running the toRedis method, and the feed is available in EmonCMS 
 
 ```
+import struct
+import redis
+from datetime import datetime
+from dateutil import tz
+
+LOCTZ = tz.gettz('Europe/Paris')
+
 r = redis.Redis(host="localhost", port=6379, db=0)
+
+def tsToHuman(ts, fmt="%Y-%m-%d %H:%M:%S:%z", tz=LOCTZ):
+    """
+    format a timestamp to something readable by a human
+    """
+    return datetime.fromtimestamp(ts, tz).strftime(fmt)
+
 def toRedis(data,feedname):
     """
     data injection in Redis for operation within EmonCMS
