@@ -18,7 +18,8 @@ To create a new temporary feed (no existence on disk neither in the mariadb data
 
 The numpy array should be constructed with axis 0 as time :
 - column 0 is timestamp expressed in seconds
-- column 1 to 3 are datas : in our case, column 1 is nebulosity in %, column 2 is predicted outdoor temperature and column 3 temperature as felt by a human perception
+- column 1 to 3 are datas
+In the following code sample, column 1 is nebulosity in %, column 2 is predicted outdoor temperature and column 3 temperature as felt by a human perception
 ```
 import numpy as np
 data = np.array(
@@ -71,9 +72,52 @@ data = np.array(
  [ 1.6012908e+09,  8.6000000e+01,  1.3250000e+01,  1.0720000e+01],
  [ 1.6012944e+09,  8.8000000e+01,  1.3040000e+01,  1.1010000e+01]])
 ```
+Running the toRedis method, and the feed is available in EmonCMS  
 
+```
+r = redis.Redis(host="localhost", port=6379, db=0)
+def toRedis(data,feedname):
+    """
+    data injection in Redis for operation within EmonCMS
+    """
+    h,w = data.shape
 
+    if h==0 or w==0 : return
 
+    shape = struct.pack('>II',h,w)
+    # cf https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tobytes.html
+    encoded = shape+data.tobytes()
+
+    # starting timestamp will be the feed number
+    ts=int(data[0,0])
+
+    # data injection in node buffer
+    buffer = "feed:{}:buffer".format(ts)
+    r.set(buffer,encoded)
+
+    # all this will work for emoncms user 1 only
+    userid=1
+    if r.exists(buffer):
+        # node creation with metadatas
+        tag = "weather_forecasts"
+        name = "{}_{}".format(feedname,tsToHuman(ts,fmt="%Y_%m_%d_%H_%M_%S_%z"))
+        feed = {"id":ts, "tag":tag, "engine":9, "name":name, "datatype":0, "userid":userid, "public":""}
+        node = "feed:{}".format(ts)
+        r.hmset(node, feed)
+    else: return
+
+    if r.exists(node):
+        # feednumber injection in the user feeds list
+        key = "user:feeds:{}".format(userid).encode()
+        values = r.smembers(key)
+        newval = "{}".format(ts).encode()
+        if newval in values:
+            self._log.info("user already owns the feed {}".format(ts))
+        else:
+            r.sadd(key,newval)
+
+toRedis(data,"OWMhourly")
+```
 
 
 We will have to modify 3 files :
