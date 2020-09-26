@@ -12,7 +12,25 @@ emonCMS feeds are stored in Redis under the `feed` key
 
 To create a new temporary feed (no existence on disk neither in the mariadb database) :
 1) choose a quite big `int`, which will be the feed id : the starting timestamp of your feed can be a good choice, because it is very unlikely that you already created more streams than the timestamp number :-)
-2) create a hash with the essential metadatas : datatype, engine, name and id
+2) create a hash with the essential metadatas : datatype, engine, name, id, userid and public which can be blank. We can also add a tag for classification in emonCMS.
+
+Redis can manage various keys : string, hash, zset, list and set. depending on the key type, you have to use a specific method to retrieve the values :
+```
+keys = redis.keys('*')
+for key in keys:
+    type = redis.type(key)
+    if type == "string":
+        val = redis.get(key)
+    if type == "hash":
+        vals = redis.hgetall(key)
+    if type == "zset":
+        vals = redis.zrange(key, 0, -1)
+    if type == "list":
+        vals = redis.lrange(key, 0, -1)
+    if type == "set":
+        vals = redis. smembers(key)
+```
+In order to create an emoncms feed using python, we will have to deal with hash, set and string keys :
 
 
 We will have to modify 3 files :
