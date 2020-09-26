@@ -28,7 +28,7 @@ for key in keys:
     if type == "list":
         vals = redis.lrange(key, 0, -1)
     if type == "set":
-        vals = redis. smembers(key)
+        vals = redis.smembers(key)
 ```
 In order to create an emoncms temporary feed using python, we will have to deal with a hash, a set and a binary string :
 
