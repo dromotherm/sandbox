@@ -19,6 +19,7 @@ To create a new temporary feed (no existence on disk neither in the mariadb data
 The numpy array should be constructed with axis 0 as time :
 - column 0 is timestamp expressed in seconds
 - column 1 to 3 are datas
+
 In the following code sample, column 1 is nebulosity in %, column 2 is predicted outdoor temperature and column 3 temperature as felt by a human perception
 ```
 import numpy as np
