@@ -75,6 +75,7 @@ data = np.array(
 ```
 Running the toRedis method, and the feed is available in EmonCMS  
 
+
 ```
 r = redis.Redis(host="localhost", port=6379, db=0)
 def toRedis(data,feedname):
@@ -119,6 +120,8 @@ def toRedis(data,feedname):
 
 toRedis(data,"OWMhourly")
 ```
+Just run the feed/list.json route to check that the feed is recognized
+
 
 
 We will have to modify 3 files :
