@@ -201,7 +201,7 @@ if ($feed->get($feedid)["engine"]==9){
     $results[$key]['data'] = $feed->get_batch($feedid);
 }
 ```
-
+![prev_in_graph](images/graph_w_prev.png)
 
 ## datatype numbers defined in `lib/enum.php`
 
