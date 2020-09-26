@@ -14,7 +14,7 @@ To create a new temporary feed (no existence on disk neither in the mariadb data
 1) choose a quite big `int`, which will be the feed id : the starting timestamp of your feed can be a good choice, because it is very unlikely that you already created more streams than the timestamp number :-)
 2) create a hash with the essential metadatas : datatype, engine, name, id, userid and public which can be blank. We can also add a tag for classification in emonCMS.
 
-Redis can manage various keys : string, hash, zset, list and set. depending on the key type, you have to use a specific method to retrieve the values :
+Redis can manage various keys : string, hash, zset, list and set. Depending on the key type, you have to use a specific method to retrieve the values : get for string, hgetall for hash, zrange for zset, lrange for list and smembers for set.
 ```
 keys = redis.keys('*')
 for key in keys:
