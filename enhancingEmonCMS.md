@@ -199,7 +199,7 @@ As engine 9 is not used for any data visualisations, the job is easy, and nothin
 ```
 if ($feed->get($feedid)["engine"]==9){
     $results[$key]['data'] = $feed->get_batch($feedid);
-}
+} else
 ```
 ![prev_in_graph](images/graph_w_prev.png)
 
