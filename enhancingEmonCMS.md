@@ -30,7 +30,9 @@ for key in keys:
     if type == "set":
         vals = redis. smembers(key)
 ```
-In order to create an emoncms feed using python, we will have to deal with hash, set and string keys :
+In order to create an emoncms temporary feed using python, we will have to deal with a hash, a set and a binary string :
+
+
 
 
 We will have to modify 3 files :
