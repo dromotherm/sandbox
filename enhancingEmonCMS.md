@@ -203,6 +203,33 @@ if ($feed->get($feedid)["engine"]==9){
 ```
 ![prev_in_graph](images/graph_w_prev.png)
 
+Last step is to make sure that the delete route is functional for our temporary feeds.
+
+The delete method in RedisBuffer.php is :
+```
+    public function delete($feedid)
+    {
+        $this->redis->srem("feed:bufferactive",$feedid); // remove from feedlist
+        $bkey="feed:$feedid:buffer";
+        // remove buffer
+        $this->redis->zRemRangeByRank($bkey, 0, -1);
+    }
+```
+Our buffer i a string whereas the buffer used for writing to real-life feeds is a zset. So, let's simple change the delete method to :
+```
+    public function delete($feedid)
+    {
+        $this->redis->srem("feed:bufferactive",$feedid); // remove from feedlist
+        $bkey="feed:$feedid:buffer";
+        // remove buffer
+        if ($this->redis->type($bkey)==1){
+            $this->redis->del($bkey);
+        } else {
+            $this->redis->zRemRangeByRank($bkey, 0, -1);
+        }
+    }
+```
+
 ## datatype numbers defined in `lib/enum.php`
 
 number|datatype
