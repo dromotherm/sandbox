@@ -66,8 +66,57 @@ Traceback (most recent call last):
     copyfileobj(fsrc, fdst)
 OSError: [Errno 28] No space left on device
 ```
+when running a simple numpy code :
+```
+python3 test.py
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.7/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/pi/.local/lib/python3.7/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/pi/.local/lib/python3.7/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+ImportError: libf77blas.so.3: cannot open shared object file: No such file or directory
 
-## with apt
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 1, in <module>
+    import numpy as np
+  File "/home/pi/.local/lib/python3.7/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/pi/.local/lib/python3.7/site-packages/numpy/core/__init__.py", line 48, in <module>
+    raise ImportError(msg)
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.7 from "/usr/bin/python3"
+  * The NumPy version is: "1.19.2"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: libf77blas.so.3: cannot open shared object file: No such file or directory
+```
+
+maybe could have tested :
+```
+sudo apt install libatlas3-base
+sudo pip3 install numpy
+```
+
+## a better option is to do it with apt
 
 ```
 sudo apt-get install python3-numpy
