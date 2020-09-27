@@ -215,7 +215,7 @@ The delete method in RedisBuffer.php is :
         $this->redis->zRemRangeByRank($bkey, 0, -1);
     }
 ```
-Our buffer i a string whereas the buffer used for writing to real-life feeds is a zset. So, let's simple change the delete method to :
+Our buffer is a string whereas the buffer used for writing to real-life feeds is a zset (sorted set). So, let's simple change the delete method to :
 ```
     public function delete($feedid)
     {
