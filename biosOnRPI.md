@@ -1,3 +1,9 @@
+# install dependancies for BIOS
+```
+pip3 install python-dateutil
+sudo apt-get install python3-numpy
+```
+
 # install numpy on raspberry
 
 ## tried without success
