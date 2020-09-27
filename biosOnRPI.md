@@ -66,7 +66,7 @@ Original error was: libf77blas.so.3: cannot open shared object file: No such fil
 maybe could have tested :
 ```
 sudo apt install libatlas3-base
-sudo pip3 install numpy
+pip3 install numpy
 ```
 so all removed with : `pip3 uninstall numpy`
 
