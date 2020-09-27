@@ -194,7 +194,7 @@ In the RedisBuffer engine, we create the specific get_batch method, also just af
         return $data;
     }
 ```
-To finish, we have to modify the data routing in the controller, which starts at `if ($route->action=="data")`
+Then, we have to modify the data routing in the controller, which starts at `if ($route->action=="data")`
 As engine 9 is not used for any data visualisations, the job is easy, and nothing will be required in the frontoffice :
 ```
 if ($feed->get($feedid)["engine"]==9){
