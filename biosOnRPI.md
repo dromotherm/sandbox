@@ -18,6 +18,7 @@ Installing collected packages: numpy
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 Successfully installed numpy-1.19.2
 ```
+so all removed with : `pip3 uninstall numpy`
 
 ## with apt
 
@@ -61,4 +62,56 @@ Setting up liblapack3:armhf (3.8.0-2) ...
 update-alternatives: using /usr/lib/arm-linux-gnueabihf/lapack/liblapack.so.3 to provide /usr/lib/arm-linux-gnueabihf/liblapack.so.3 (liblapack.so.3-arm-linux-gnueabihf) in auto mode
 Setting up python3-numpy (1:1.16.2-1) ...
 Processing triggers for libc-bin (2.28-10+rpi1) ...
+```
+when listing the pip packages :
+```
+pip3 list
+Package          Version  
+---------------- ---------
+asn1crypto       0.24.0   
+attrs            18.2.0   
+Automat          0.6.0    
+certifi          2018.8.24
+chardet          3.0.4    
+Click            7.0      
+colorama         0.3.7    
+colorzero        1.1      
+configobj        5.0.6    
+constantly       15.1.0   
+cryptography     2.6.1    
+entrypoints      0.3      
+gpiozero         1.5.1    
+hyperlink        17.3.1   
+idna             2.6      
+incremental      16.10.1  
+keyring          17.1.1   
+keyrings.alt     3.1.1    
+numpy            1.16.2   
+paho-mqtt        1.5.0    
+pip              18.1     
+pyasn1           0.4.2    
+pyasn1-modules   0.2.1    
+pycrypto         2.6.1    
+PyGObject        3.30.4   
+pymodbus         2.1.0    
+pyOpenSSL        19.0.0   
+pyserial         3.4      
+pyserial-asyncio 0.4      
+python-apt       1.8.4.1  
+pyxdg            0.25     
+redis            3.5.3    
+requests         2.21.0   
+RPi.GPIO         0.7.0    
+SecretStorage    2.3.1    
+service-identity 16.0.0   
+setuptools       40.8.0   
+six              1.12.0   
+spidev           3.4      
+ssh-import-id    5.7      
+Twisted          18.9.0   
+ufw              0.36     
+urllib3          1.24.1   
+wheel            0.32.3   
+xmltodict        0.12.0   
+zope.interface   4.3.2    
 ```
