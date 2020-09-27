@@ -20,6 +20,53 @@ Successfully installed numpy-1.19.2
 ```
 so all removed with : `pip3 uninstall numpy`
 
+But got errors :
+```
+Uninstalling numpy-1.19.2:
+  Would remove:
+    /home/pi/.local/bin/f2py
+    /home/pi/.local/bin/f2py3
+    /home/pi/.local/bin/f2py3.7
+    /home/pi/.local/lib/python3.7/site-packages/numpy-1.19.2.dist-info/*
+    /home/pi/.local/lib/python3.7/site-packages/numpy/*
+Proceed (y/n)? y
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/shutil.py", line 563, in move
+    os.rename(src, real_dst)
+OSError: [Errno 18] Invalid cross-device link: '/home/pi/.local/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-arm-linux-gnueabihf.so' -> '/tmp/pip-uninstall-dn_he5xa/home/pi/.local/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-arm-linux-gnueabihf.so'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/shutil.py", line 122, in copyfile
+    copyfileobj(fsrc, fdst)
+  File "/usr/lib/python3.7/shutil.py", line 82, in copyfileobj
+    fdst.write(buf)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 143, in main
+    status = self.run(options, args)
+  File "/usr/lib/python3/dist-packages/pip/_internal/commands/uninstall.py", line 75, in run
+    auto_confirm=options.yes, verbose=self.verbosity > 0,
+  File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 683, in uninstall
+    uninstalled_pathset.remove(auto_confirm, verbose)
+  File "/usr/lib/python3/dist-packages/pip/_internal/req/req_uninstall.py", line 224, in remove
+    renames(path, new_path)
+  File "/usr/lib/python3/dist-packages/pip/_internal/utils/misc.py", line 280, in renames
+    shutil.move(old, new)
+  File "/usr/lib/python3.7/shutil.py", line 577, in move
+    copy_function(src, real_dst)
+  File "/usr/lib/python3.7/shutil.py", line 263, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib/python3.7/shutil.py", line 122, in copyfile
+    copyfileobj(fsrc, fdst)
+OSError: [Errno 28] No space left on device
+```
+
 ## with apt
 
 ```
