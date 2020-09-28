@@ -3,6 +3,12 @@
 pip3 install python-dateutil
 sudo apt-get install python3-numpy
 ```
+checkout from themis to master
+```
+cd /var/www/emoncms
+git checkout master
+git pull
+```
 
 # install numpy on raspberry
 
