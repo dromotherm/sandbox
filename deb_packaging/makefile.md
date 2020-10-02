@@ -11,6 +11,11 @@ check which version of systemd is installed
 pkg-config --modversion systemd
 237
 ```
+for more on pkg-config :
+
+https://www.freedesktop.org/wiki/Software/pkg-config/
+
+https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
 List all users and groups
 ```
