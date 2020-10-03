@@ -6,6 +6,10 @@ https://krzysztofzuraw.com/blog/2016/makefiles-in-python-projects
 
 https://medium.com/@habibdhif/simple-makefile-to-automate-python-projects-e233af7681ad
 
+target notation
+
+https://stackabuse.com/how-to-write-a-makefile-automating-python-setup-compilation-and-testing/
+
 check which version of systemd is installed
 ```
 pkg-config --modversion systemd
