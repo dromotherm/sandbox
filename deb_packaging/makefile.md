@@ -1,5 +1,7 @@
 https://ensiwiki.ensimag.fr/images/e/eb/Makefile.pdf
 
+https://ensiwiki.ensimag.fr/index.php?title=Makefile
+
 https://opensource.com/article/18/8/what-how-makefile
 
 https://krzysztofzuraw.com/blog/2016/makefiles-in-python-projects
