@@ -1,3 +1,11 @@
+general tutorial in Python
+
+https://github.com/martinberoiz/daemon
+
+or : https://martinberoiz.org/2019/03/10/how-to-write-systemd-daemons-using-python/
+
+classics :
+
 https://ensiwiki.ensimag.fr/images/e/eb/Makefile.pdf
 
 https://ensiwiki.ensimag.fr/index.php?title=Makefile
