@@ -37,6 +37,7 @@ alternative with readlink
 ```
 sudo readlink -f /proc/1/exe
 ```
+should return `/lib/systemd/systemd`
 
 ## for more on pkg-config :
 
