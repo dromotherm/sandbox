@@ -20,18 +20,31 @@ target notation
 
 https://stackabuse.com/how-to-write-a-makefile-automating-python-setup-compilation-and-testing/
 
+## systemd
+
 check which version of systemd is installed
 ```
 pkg-config --modversion systemd
 237
 ```
-for more on pkg-config :
+other option :
+```
+pkg-config --exists systemd && echo $?
+```
+should return 0 if systemd is installed
+
+alternative with readlink
+```
+sudo readlink -f /proc/1/exe
+```
+
+## for more on pkg-config :
 
 https://www.freedesktop.org/wiki/Software/pkg-config/
 
 https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
-List all users and groups
+## List all users and groups
 ```
 cat /etc/passwd | awk -F: '{print $ 1}'
 cat /etc/group | awk -F: '{print $ 1}'
