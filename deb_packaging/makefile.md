@@ -1,5 +1,14 @@
 https://www.gnu.org/software/make/manual/
 
+using if in targets :
+```
+prepare:
+	@if [ ! -d $(conf_dir) ]; then\
+    sudo mkdir $(conf_dir);\
+		sudo cp params.conf $(conf_dir)/params.conf;\
+  fi
+```
+
 general tutorial in Python
 
 https://github.com/martinberoiz/daemon
