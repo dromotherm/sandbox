@@ -1,3 +1,10 @@
+# makefile
+
+```
+target: prerequisites
+<TAB> recipe
+```
+
 https://www.gnu.org/software/make/manual/
 
 using if in targets :
