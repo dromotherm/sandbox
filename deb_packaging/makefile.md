@@ -1,3 +1,5 @@
+https://www.gnu.org/software/make/manual/
+
 general tutorial in Python
 
 https://github.com/martinberoiz/daemon
