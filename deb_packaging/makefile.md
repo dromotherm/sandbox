@@ -72,7 +72,17 @@ list sudoers
 ```
 grep "sudo" /etc/group
 ```
-pour savoir si un user a les privilèges sudoer
+pour savoir si un user dispose des privilèges sudoer :
 ```
 sudo -l -U bios
+```
+pour enlever un utilisateur de la liste des sudoers, ie du groupe sudo :
+```
+sudo deluser bios sudo
+```
+on obtient ainsi la sortie suivante lorsqu'on vérifie s'il disposer des privilèges sudoer :
+```
+sudo -l -U bios
+L'utilisateur bios n'est pas autorisé à exécuter sudo sur
+        alexandrecuer-PORTEGE-R30-A.
 ```
