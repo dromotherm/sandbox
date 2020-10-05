@@ -23,17 +23,21 @@ prepare:
 fi
 ```
 
-general tutorial in Python
+### general tutorial in Python
 
 https://github.com/martinberoiz/daemon
 
 or : https://martinberoiz.org/2019/03/10/how-to-write-systemd-daemons-using-python/
 
-classics :
+interesting : using setup.py to create a sort of daemon. Anyway, does not seem to be very robust
+
+the makefile is to complex, using awk to work on files.....
+
+### classics :
 
 https://ensiwiki.ensimag.fr/images/e/eb/Makefile.pdf
 
-https://ensiwiki.ensimag.fr/index.php?title=Makefile
+https://ensiwiki.ens#imag.fr/index.php?title=Makefile
 
 https://opensource.com/article/18/8/what-how-makefile
 
