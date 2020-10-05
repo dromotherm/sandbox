@@ -63,7 +63,8 @@ https://www.freedesktop.org/wiki/Software/pkg-config/
 
 https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
-## List all users and groups
+## users management
+List all users and groups
 ```
 cat /etc/passwd | awk -F: '{print $ 1}'
 cat /etc/group | awk -F: '{print $ 1}'
