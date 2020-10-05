@@ -68,3 +68,11 @@ https://people.freedesktop.org/~dbn/pkg-config-guide.html
 cat /etc/passwd | awk -F: '{print $ 1}'
 cat /etc/group | awk -F: '{print $ 1}'
 ```
+list sudoers
+```
+grep "sudo" /etc/group
+```
+pour savoir si un user a les privilèges sudoer
+```
+sudo -l -U bios
+```
