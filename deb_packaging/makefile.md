@@ -14,12 +14,12 @@ test:
   @sudo mv $(user).conf /lib/systemd/system/$(service_file_name).d/$(user).conf
 ```
 
-using if in targets :
+using if in targets : NO TAB for @if and fi !! they must start at column 1
 ```
 prepare:
 @if [ ! -d $(conf_dir) ]; then\
-    sudo mkdir $(conf_dir);\
-    sudo cp params.conf $(conf_dir)/params.conf;\
+  sudo mkdir $(conf_dir);\
+  sudo cp params.conf $(conf_dir)/params.conf;\
 fi
 ```
 
