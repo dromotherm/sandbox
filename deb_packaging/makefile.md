@@ -1,11 +1,18 @@
 ## makefile
 
+https://www.gnu.org/software/make/manual/
+
 ```
 target: prerequisites
 <TAB> recipe
 ```
-
-https://www.gnu.org/software/make/manual/
+to create a file in a target :
+```
+test:
+  @sudo mkdir /lib/systemd/system/$(service_file_name).d
+  @echo "[Service]\nUser=\"$(user)\"" > $(user).conf
+  @sudo mv $(user).conf /lib/systemd/system/$(service_file_name).d/$(user).conf
+```
 
 using if in targets :
 ```
