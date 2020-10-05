@@ -2,6 +2,10 @@
 
 https://www.gnu.org/software/make/manual/
 
+makefile are all about target notation
+
+https://stackabuse.com/how-to-write-a-makefile-automating-python-setup-compilation-and-testing/
+
 ```
 target: prerequisites
 <TAB> recipe
@@ -33,7 +37,7 @@ interesting : using setup.py to create a sort of daemon. Anyway, does not seem t
 
 the makefile is too complex, using awk to work on files.....
 
-### classics :
+### classic C makefiles
 
 https://ensiwiki.ensimag.fr/images/e/eb/Makefile.pdf
 
@@ -41,13 +45,12 @@ https://ensiwiki.ens#imag.fr/index.php?title=Makefile
 
 https://opensource.com/article/18/8/what-how-makefile
 
+### some pythonic makefiles
+
 https://krzysztofzuraw.com/blog/2016/makefiles-in-python-projects
 
 https://medium.com/@habibdhif/simple-makefile-to-automate-python-projects-e233af7681ad
 
-target notation
-
-https://stackabuse.com/how-to-write-a-makefile-automating-python-setup-compilation-and-testing/
 
 ## systemd
 
