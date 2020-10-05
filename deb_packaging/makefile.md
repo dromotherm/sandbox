@@ -31,7 +31,7 @@ or : https://martinberoiz.org/2019/03/10/how-to-write-systemd-daemons-using-pyth
 
 interesting : using setup.py to create a sort of daemon. Anyway, does not seem to be very robust
 
-the makefile is to complex, using awk to work on files.....
+the makefile is too complex, using awk to work on files.....
 
 ### classics :
 
