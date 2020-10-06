@@ -22,3 +22,5 @@ ENABLE_USER_SITE: True
 `python3 -m site --user-site`
 
 output : `/home/pi/.local/lib/python3.7/site-packages`
+
+`pip3 list --user` gives you a list of all installed per user site-packages
