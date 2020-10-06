@@ -1,3 +1,6 @@
+dist-packages is a Debian-specific convention that is also present in its derivatives, like Ubuntu. 
+Modules are installed to dist-packages when they come from the Debian package manager (apt-get)
+
 # global packages/modules
 
 `python3 -m site`
