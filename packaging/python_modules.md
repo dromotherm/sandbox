@@ -46,7 +46,7 @@ numpy is a global package : it has been installed through apt-get
 
 dateutil is a user package, installed via pip3. On some platforms, it is installed as a global package, on many, it is only installed locally.
 
-what is possible is the following, although not very nice
+what is possible is the following, although not very nice and specific to debian !!!
 
 ```
 sudo mv /home/pi/.local/lib/python3.7/site-packages/dateutil /usr/lib/python3/dist-packages/dateutil
