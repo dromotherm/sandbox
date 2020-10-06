@@ -53,6 +53,8 @@ https://medium.com/@habibdhif/simple-makefile-to-automate-python-projects-e233af
 
 ## systemd
 
+**If your makefile is intended to run a python script as a service, it is good to have a little knowledge on systemd**
+
 check which version of systemd is installed
 ```
 pkg-config --modversion systemd
@@ -77,6 +79,9 @@ https://www.freedesktop.org/wiki/Software/pkg-config/
 https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
 ## users management
+
+**a good choice is to run the service with a dedicated user, so basic knowledge on user management is essential**
+
 List all users and groups
 ```
 cat /etc/passwd | awk -F: '{print $ 1}'
@@ -94,7 +99,7 @@ pour enlever un utilisateur de la liste des sudoers, ie du groupe sudo :
 ```
 sudo deluser bios sudo
 ```
-on obtient ainsi la sortie suivante lorsqu'on vérifie s'il disposer des privilèges sudoer :
+Une fois l'utilisateur enlevé de la liste des sudoers, on obtient ainsi la sortie suivante lorsqu'on vérifie s'il dispose des privilèges sudoer :
 ```
 sudo -l -U bios
 L'utilisateur bios n'est pas autorisé à exécuter sudo sur
