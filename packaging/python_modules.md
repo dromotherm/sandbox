@@ -17,6 +17,9 @@ USER_BASE: '/home/pi/.local' (exists)
 USER_SITE: '/home/pi/.local/lib/python3.7/site-packages' (exists)
 ENABLE_USER_SITE: True
 ```
+
+global packages are in `/usr/lib/python3/dist-packages`
+
 # user packages
 
 `python3 -m site --user-site`
