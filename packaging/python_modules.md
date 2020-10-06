@@ -17,3 +17,8 @@ USER_BASE: '/home/pi/.local' (exists)
 USER_SITE: '/home/pi/.local/lib/python3.7/site-packages' (exists)
 ENABLE_USER_SITE: True
 ```
+# user packages
+
+`python3 -m site --user-site`
+
+output : `/home/pi/.local/lib/python3.7/site-packages`
