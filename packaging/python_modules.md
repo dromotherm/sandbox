@@ -24,3 +24,16 @@ ENABLE_USER_SITE: True
 output : `/home/pi/.local/lib/python3.7/site-packages`
 
 `pip3 list --user` gives you a list of all installed per user site-packages
+
+# tracking packages
+
+run `pip3 list`
+
+```
+pip3 show numpy| grep Location
+Location: /usr/lib/python3/dist-packages
+```
+```
+pip3 show python-dateutil| grep Location
+Location: /home/pi/.local/lib/python3.7/site-packages
+```
