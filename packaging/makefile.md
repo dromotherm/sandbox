@@ -110,7 +110,7 @@ change password user pi:
 sudo passwd pi
 ```
 
-## finding the user used to start a systemd service
+## finding the user running a systemd service
 
 in the makefile
 ```
