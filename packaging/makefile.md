@@ -95,6 +95,11 @@ pour savoir si un user dispose des privilèges sudoer :
 ```
 sudo -l -U bios
 ```
+Pour donner à un user les privilèges sudoers
+```
+sudo adduser bios sudo
+```
+
 pour enlever un utilisateur de la liste des sudoers, ie du groupe sudo :
 ```
 sudo deluser bios sudo
