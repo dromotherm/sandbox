@@ -109,3 +109,14 @@ change password user pi:
 ```
 sudo passwd pi
 ```
+
+## finding the user used to start a systemd service
+
+```
+service-runner := service-runner.service
+service-runner-user := $(shell systemctl show $(service-runner)|grep --perl-regexp -o '(?<=(^User=))([a-zA-Z0-9]*)')
+
+@echo "service-runner is run by "$(service-runner-user)
+@sudo touch $(log_dir)/restart.log
+@sudo chown $(service-runner-user) $(log_dir)/restart.log
+```
