@@ -120,3 +120,9 @@ service-runner-user := $(shell systemctl show $(service-runner)|grep --perl-rege
 @sudo touch $(log_dir)/restart.log
 @sudo chown $(service-runner-user) $(log_dir)/restart.log
 ```
+Then in PHP :
+
+```
+$cmd = "sudo systemctl restart bios.service>/var/log/bios/restart.log";
+$redis->rpush("service-runner",$cmd)
+```      
