@@ -112,6 +112,7 @@ sudo passwd pi
 
 ## finding the user used to start a systemd service
 
+in the makefile
 ```
 service-runner := service-runner.service
 service-runner-user := $(shell systemctl show $(service-runner)|grep --perl-regexp -o '(?<=(^User=))([a-zA-Z0-9]*)')
@@ -124,5 +125,5 @@ Then in PHP :
 
 ```
 $cmd = "sudo systemctl restart bios.service>/var/log/bios/restart.log";
-$redis->rpush("service-runner",$cmd)
+$redis->rpush("service-runner",$cmd);
 ```      
