@@ -73,3 +73,9 @@ so we have to simply do :
 sudo mv /home/pi/.local/lib/python3.7/site-packages/redis /usr/lib/python3/dist-packages/redis
 sudo mv /home/pi/.local/lib/python3.7/site-packages/redis-3.5.3.dist-info /usr/lib/python3/dist-packages/redis-3.5.3.dist-info
 ```
+same for pymodbus :
+
+```
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib/python3/dist-packages/pymodbus
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
+```
