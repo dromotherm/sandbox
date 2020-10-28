@@ -16,7 +16,7 @@ if pip3 is not present, you have to install it:
 ```
 sudo apt-get install python3-pip
 ```
-You can check what basic libraries have been installed :
+You can check what basic libraries have been installed (you can see requests and urllib3) :
 ```
 pip3 list
 Package       Version  
