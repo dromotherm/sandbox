@@ -44,10 +44,15 @@ urllib3       1.24.1
 wheel         0.32.3 
 ```
 
-To install numpy :
+To install numpy and pymodbus :
 ```
-sudo apt-get install python3-numpy
+sudo apt-get install python3-pymodbus python3-numpy
 ```
+then install redis-py (coming from https://github.com/andymccurdy/redis-py):
+```
+pip3 install redis
+```
+
 ~~pip3 install python-dateutil~~
 
 checkout from themis to master (the "redis feeds" implementation, to store meteo forecasts, has not yet been committed to the themis branch)
