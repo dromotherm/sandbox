@@ -187,7 +187,7 @@ sudo apt-get install python3-numpy
 ```
 ~~pip3 install python-dateutil~~
 
-checkout from themis to master (why ?)
+checkout from themis to master (the "redis feeds" implementation, to store meteo forecasts, has not yet been committed to the themis branch)
 ```
 cd /var/www/emoncms
 git checkout master
