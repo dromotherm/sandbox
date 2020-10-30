@@ -32,6 +32,11 @@ OK
 "It's working!"
 127.0.0.1:6379> exit
 ```
+Pour lister toutes les clés présentes, toujours en ligne de commande :
+```
+redis-cli --scan
+```
+
 Sur Ubuntu, php est déjà préinstallé
 
 ```
