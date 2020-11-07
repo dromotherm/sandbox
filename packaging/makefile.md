@@ -82,6 +82,14 @@ https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
 **a good choice is to run the service with a dedicated user, so basic knowledge on user management is essential**
 
+il y a plusieurs commandes  `useradd` et `adduser`
+
+ajouter un user comme sudoer
+
+```
+sudo useradd -G sudo savine
+```
+
 List all users and groups
 ```
 cat /etc/passwd | awk -F: '{print $ 1}'
