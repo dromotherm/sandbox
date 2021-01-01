@@ -39,6 +39,7 @@ jobs:
       run: |
         python test.py 0 1 2 3 4 True
         ls -al
+        free
     - name: Upload results
       uses: actions/upload-artifact@v1
       with:
