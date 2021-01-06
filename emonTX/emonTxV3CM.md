@@ -13,6 +13,9 @@ But there is a way to calibrate during the measurement process itself with the c
 
 This is very convenient both with PlatformIO and with the arduino IDE
 ![](PIO_send_command.png)
+![](PIO_saving.png)
+
+But is it persistent ?
 
 what is missing is how to calibrate in intensity.
 First you have to modify the firmware in order to track current values
