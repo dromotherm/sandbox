@@ -1,4 +1,6 @@
-using PlatformIO within Atom on a ubuntu 18.04 machine, I had to do the following : 
+# EmonTxV3CM plus PlatformIO within Atom on a ubuntu 18.04 machine
+
+## the bad way : 
 
 - modify the config.ino with my Vcal value > line 112 `vCal         = 246.18;//data.vCal;`
 - lauch a platformIO terminal
@@ -9,13 +11,19 @@ using PlatformIO within Atom on a ubuntu 18.04 machine, I had to do the followin
 
 then the new calibration values are taken into account
 
-But there is a way to calibrate during the measurement process itself with the command : `k0 246.2`
+## the good way
+
+do not modify the config.ino
+
+keep `vCal         = data.vCal;`
+
+Use the trick to calibrate during the measurement process itself with the command : `k0 246.2`
 
 This is very convenient both with PlatformIO and with the arduino IDE
 ![](PIO_send_command.png)
 ![](PIO_saving.png)
 
-But is it persistent ?
+type l during the measurement if yiou want to check the settings
 
 what is missing is how to calibrate in intensity.
 First you have to modify the firmware in order to track current values
