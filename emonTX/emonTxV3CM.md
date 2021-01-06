@@ -3,7 +3,7 @@ using PlatformIO within Atom on a ubuntu 18.04 machine, I had to do the followin
 - modify the config.ino with my Vcal value > line 112 `vCal         = 246.18;//data.vCal;`
 - lauch a platformIO terminal
 - run `pio run -t upload`, which creates a .pio/build/emontx directory with a firmware.hex file
-- upload the firmware.hex on the emonTx : `cd .pio/build/emontx` followed by `vrdude -v -c arduino -p ATMEGA32
+- upload the firmware.hex on the emonTx : `cd .pio/build/emontx` followed by `avrdude -v -c arduino -p ATMEGA32
 8P -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex`
 - reboot the emonTx
 
