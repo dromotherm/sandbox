@@ -9,6 +9,10 @@ using PlatformIO within Atom on a ubuntu 18.04 machine, I had to do the followin
 
 then the new calibration values are taken into account
 
-There is a way to calibrate during the measurement process itself with the command : `k0 246.2`
+But there is a way to calibrate during the measurement process itself with the command : `k0 246.2`
 
-This is very convenient but with PlatformIO you cannot see what you are typing
+This is very convenient both with PlatformIO and with the arduino IDE
+![](PIO_send_command.png)
+
+what is missing is how to calibrate in intensity.
+First you have to modify the firmware in order to track current values
