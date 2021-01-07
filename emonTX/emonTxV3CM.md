@@ -30,7 +30,7 @@ This is very convenient both with PlatformIO and with the arduino IDE
 ![](PIO_send_command.png)
 ![](PIO_saving.png)
 
-type l during the measurement if yiou want to check the settings
+type `l` during the measurement if yiou want to check the settings
 
 what is missing is how to calibrate in intensity.
 First you have to modify the firmware in order to track current values
