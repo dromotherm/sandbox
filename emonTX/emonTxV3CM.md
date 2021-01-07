@@ -2,6 +2,20 @@ See : https://guide.openenergymonitor.org/technical/compiling/
 
 And : https://github.com/openenergymonitor/emonpi/tree/master/firmware
 
+# on the emonPI
+
+```
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+```
+modifying the path :
+```
+nano .profile
+```
+Add at the end of your profile:
+```
+PATH=$PATH:/home/pi/.platformio/penv/bin
+```
+
 # EmonTxV3CM plus PlatformIO within Atom on a ubuntu 18.04 machine
 
 ## the bad way : 
