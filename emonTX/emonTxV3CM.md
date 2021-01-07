@@ -2,15 +2,18 @@
 
 ## the bad way : 
 
+goal : insert new calibration values
+
 - modify the config.ino with my Vcal value > line 112 `vCal         = 246.18;//data.vCal;`
 - lauch a platformIO terminal
-- run `pio run -t upload`, which creates a .pio/build/emontx directory with a firmware.hex file
-- upload the firmware.hex on the emonTx : `cd .pio/build/emontx` followed by `avrdude -v -c arduino -p ATMEGA32
-8P -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex`
+- run `pio run -t upload`, which creates a .pio/build/emontx directory with a firmware.hex file and upload the firmware
 - reboot the emonTx
 
-then the new calibration values are taken into account
-
+To manually upload firmware.hex on the emonTx :
+```
+cd .pio/build/emontx
+avrdude -v -c arduino -p ATMEGA32 8P -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex
+```
 ## the good way
 
 do not modify the config.ino
