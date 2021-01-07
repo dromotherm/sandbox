@@ -1,3 +1,7 @@
+See : https://guide.openenergymonitor.org/technical/compiling/
+
+And : https://github.com/openenergymonitor/emonpi/tree/master/firmware
+
 # EmonTxV3CM plus PlatformIO within Atom on a ubuntu 18.04 machine
 
 ## the bad way : 
