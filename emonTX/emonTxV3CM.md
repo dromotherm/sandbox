@@ -36,7 +36,77 @@ so I did only compilation :
 ```
 pio run
 cd .pio/build/emonpi
+avrdude -v -c arduino -p ATMEGA32 8P -P /dev/ttyAMA0 -b 115200 -U flash:w:firmware.hex
 ```
+The answer is the following :
+```
+avrdude-original: Version 6.3-20171130
+                  Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+                  Copyright (c) 2007-2014 Joerg Wunsch
+
+                  System wide configuration file is "/etc/avrdude.conf"
+                  User configuration file is "/root/.avrduderc"
+                  User configuration file does not exist or is not a regular file, skipping
+
+                  Using Port                    : /dev/ttyAMA0
+                  Using Programmer              : arduino
+                  Overriding Baud Rate          : 115200
+avrdude-original: Using autoreset DTR on GPIO Pin 7
+                  AVR Part                      : ATmega32
+                  Chip Erase delay              : 9000 us
+                  PAGEL                         : PD7
+                  BS2                           : PA0
+                  RESET disposition             : dedicated
+                  RETRY pulse                   : SCK
+                  serial program mode           : yes
+                  parallel program mode         : yes
+                  Timeout                       : 200
+                  StabDelay                     : 100
+                  CmdexeDelay                   : 25
+                  SyncLoops                     : 32
+                  ByteDelay                     : 0
+                  PollIndex                     : 3
+                  PollValue                     : 0x53
+                  Memory Detail                 :
+
+                                           Block Poll               Page                       Polled
+                    Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+                    ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+                    eeprom         4    10    64    0 no       1024    4      0  9000  9000 0xff 0xff
+                    flash         33     6    64    0 yes     32768  128    256  4500  4500 0xff 0xff
+                    lfuse          0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
+                    hfuse          0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
+                    lock           0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
+                    signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+                    calibration    0     0     0    0 no          4    0      0     0     0 0x00 0x00
+
+                  Programmer Type : Arduino
+                  Description     : Arduino
+                  Hardware Version: 3
+                  Firmware Version: 4.4
+                  Vtarget         : 0.3 V
+                  Varef           : 0.3 V
+                  Oscillator      : 28.800 kHz
+                  SCK period      : 3.3 us
+
+avrdude-original: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude-original: Device signature = 0x1e950f (probably m328p)
+avrdude-original: Expected signature for ATmega32 is 1E 95 02
+                  Double check chip, or use -F to override this check.
+strace: |autoreset: Broken pipe
+strace: |autoreset: Broken pipe
+strace: |autoreset: Broken pipe
+strace: |autoreset: Broken pipe
+strace: |autoreset: Broken pipe
+
+avrdude-original done.  Thank you.
+
+strace: |autoreset: Broken pipe
+```
+
 when I monitor, I have to specify the baudrate :
 ```
 pio device monitor -b 38400
