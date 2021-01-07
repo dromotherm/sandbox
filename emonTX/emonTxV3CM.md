@@ -32,66 +32,14 @@ Environment    Status    Duration
 emonpi         FAILED    00:00:06.186
 ==================== 1 failed, 0 succeeded in 00:00:06.186 ====================
 ```
-so I did only compilation :
+so I did only compilation then upload with avrdude:
 ```
 pio run
 cd .pio/build/emonpi
 avrdude -v -c arduino -p ATMEGA328P -P /dev/ttyAMA0 -b 115200 -U flash:w:firmware.hex
 ```
-The answer is the following :
+The answer should include the following :
 ```
-avrdude-original: Version 6.3-20171130
-                  Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
-                  Copyright (c) 2007-2014 Joerg Wunsch
-
-                  System wide configuration file is "/etc/avrdude.conf"
-                  User configuration file is "/root/.avrduderc"
-                  User configuration file does not exist or is not a regular file, skipping
-
-                  Using Port                    : /dev/ttyAMA0
-                  Using Programmer              : arduino
-                  Overriding Baud Rate          : 115200
-avrdude-original: Using autoreset DTR on GPIO Pin 7
-                  AVR Part                      : ATmega328P
-                  Chip Erase delay              : 9000 us
-                  PAGEL                         : PD7
-                  BS2                           : PC2
-                  RESET disposition             : dedicated
-                  RETRY pulse                   : SCK
-                  serial program mode           : yes
-                  parallel program mode         : yes
-                  Timeout                       : 200
-                  StabDelay                     : 100
-                  CmdexeDelay                   : 25
-                  SyncLoops                     : 32
-                  ByteDelay                     : 0
-                  PollIndex                     : 3
-                  PollValue                     : 0x53
-                  Memory Detail                 :
-
-                                           Block Poll               Page                       Polled
-                    Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
-                    ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
-                    eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
-                    flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
-                    lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
-                    hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
-                    efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
-                    lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
-                    calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
-                    signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
-
-                  Programmer Type : Arduino
-                  Description     : Arduino
-                  Hardware Version: 3
-                  Firmware Version: 4.4
-                  Vtarget         : 0.3 V
-                  Varef           : 0.3 V
-                  Oscillator      : 28.800 kHz
-                  SCK period      : 3.3 us
-
-avrdude-original: AVR device initialized and ready to accept instructions
-
 Reading | ################################################## | 100% 0.00s
 
 avrdude-original: Device signature = 0x1e950f (probably m328p)
@@ -116,25 +64,13 @@ avrdude-original: reading on-chip flash data:
 
 Reading | ################################################## | 100% 2.04s
 
-avrdude-original: verifying ...
-avrdude-original: 19012 bytes of flash verified
-
-avrdude-original: safemode: lfuse reads as 0
-avrdude-original: safemode: hfuse reads as 0
-avrdude-original: safemode: efuse reads as 0
-avrdude-original: safemode: Fuses OK (E:00, H:00, L:00)
-strace: |autoreset: Broken pipe
-strace: |autoreset: Broken pipe
-strace: |autoreset: Broken pipe
-strace: |autoreset: Broken pipe
-strace: |autoreset: Broken pipe
-
-avrdude-original done.  Thank you.
-
-strace: |autoreset: Broken pipe
-
 ```
+I did not bothered about `strace: |autoreset: Broken pipe` lines in the return....
 
+then restart emonhub so that the changes are taken into account :
+```
+sudo systemctl stop emonhub
+```
 when I monitor, I have to specify the baudrate :
 ```
 pio device monitor -b 38400
@@ -146,16 +82,21 @@ pio device monitor -b 38400
 --- Enter port index or full name: 1
 --- Miniterm on /dev/ttyAMA0  38400,8,N,1 ---
 --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-OK 5 245 255 0 0 245 255 183 93 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 248 255 0 0 248 255 192 93 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 248 255 0 0 248 255 32 94 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 248 255 0 0 248 255 1 94 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 250 255 0 0 250 255 70 94 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 250 255 0 0 250 255 127 94 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-OK 5 239 255 0 0 239 255 163 94 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
-
---- exit ---
+OK 5 245 255 0 0 245 255 168 88 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
+OK 5 248 255 0 0 248 255 55 89 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
 ```
+to recalculate, cf emonhub :
+
+```
+2021-01-07 10:53:33,049 DEBUG    RFM2Pi     248 NEW FRAME : OK 5 250 255 0 0 250 255 170 88 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 (-0)
+2021-01-07 10:53:33,050 DEBUG    RFM2Pi     248 Timestamp : 1610013213.04941
+2021-01-07 10:53:33,051 DEBUG    RFM2Pi     248 From Node : 5
+2021-01-07 10:53:33,051 DEBUG    RFM2Pi     248    Values : [-6, 0, -6, 226.98000000000002, 0, 0, 0, 0, 0, 0, 0]
+```
+170 decimal is AA hexa
+88 decimal is 58 hexa
+as we are in little endian, the resulting voltage is 58AA hex, or 22698 decimal, which is 226.98 with a 0.01 scale
+
 
 # EmonTxV3CM plus PlatformIO within Atom on a ubuntu 18.04 machine
 
