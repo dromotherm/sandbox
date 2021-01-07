@@ -36,7 +36,7 @@ so I did only compilation :
 ```
 pio run
 cd .pio/build/emonpi
-avrdude -v -c arduino -p ATMEGA32 8P -P /dev/ttyAMA0 -b 115200 -U flash:w:firmware.hex
+avrdude -v -c arduino -p ATMEGA328P -P /dev/ttyAMA0 -b 115200 -U flash:w:firmware.hex
 ```
 The answer is the following :
 ```
@@ -52,10 +52,10 @@ avrdude-original: Version 6.3-20171130
                   Using Programmer              : arduino
                   Overriding Baud Rate          : 115200
 avrdude-original: Using autoreset DTR on GPIO Pin 7
-                  AVR Part                      : ATmega32
+                  AVR Part                      : ATmega328P
                   Chip Erase delay              : 9000 us
                   PAGEL                         : PD7
-                  BS2                           : PA0
+                  BS2                           : PC2
                   RESET disposition             : dedicated
                   RETRY pulse                   : SCK
                   serial program mode           : yes
@@ -72,13 +72,14 @@ avrdude-original: Using autoreset DTR on GPIO Pin 7
                                            Block Poll               Page                       Polled
                     Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
                     ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
-                    eeprom         4    10    64    0 no       1024    4      0  9000  9000 0xff 0xff
-                    flash         33     6    64    0 yes     32768  128    256  4500  4500 0xff 0xff
-                    lfuse          0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
-                    hfuse          0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
-                    lock           0     0     0    0 no          1    0      0  2000  2000 0x00 0x00
+                    eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+                    flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+                    lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+                    hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+                    efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+                    lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+                    calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
                     signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
-                    calibration    0     0     0    0 no          4    0      0     0     0 0x00 0x00
 
                   Programmer Type : Arduino
                   Description     : Arduino
@@ -94,8 +95,34 @@ avrdude-original: AVR device initialized and ready to accept instructions
 Reading | ################################################## | 100% 0.00s
 
 avrdude-original: Device signature = 0x1e950f (probably m328p)
-avrdude-original: Expected signature for ATmega32 is 1E 95 02
-                  Double check chip, or use -F to override this check.
+avrdude-original: safemode: lfuse reads as 0
+avrdude-original: safemode: hfuse reads as 0
+avrdude-original: safemode: efuse reads as 0
+avrdude-original: NOTE: "flash" memory has been specified, an erase cycle will be performed
+                  To disable this feature, specify the -D option.
+avrdude-original: erasing chip
+avrdude-original: reading input file "firmware.hex"
+avrdude-original: input file firmware.hex auto detected as Intel Hex
+avrdude-original: writing flash (19012 bytes):
+
+Writing | ################################################## | 100% 2.72s
+
+avrdude-original: 19012 bytes of flash written
+avrdude-original: verifying flash memory against firmware.hex:
+avrdude-original: load data flash data from input file firmware.hex:
+avrdude-original: input file firmware.hex auto detected as Intel Hex
+avrdude-original: input file firmware.hex contains 19012 bytes
+avrdude-original: reading on-chip flash data:
+
+Reading | ################################################## | 100% 2.04s
+
+avrdude-original: verifying ...
+avrdude-original: 19012 bytes of flash verified
+
+avrdude-original: safemode: lfuse reads as 0
+avrdude-original: safemode: hfuse reads as 0
+avrdude-original: safemode: efuse reads as 0
+avrdude-original: safemode: Fuses OK (E:00, H:00, L:00)
 strace: |autoreset: Broken pipe
 strace: |autoreset: Broken pipe
 strace: |autoreset: Broken pipe
@@ -105,6 +132,7 @@ strace: |autoreset: Broken pipe
 avrdude-original done.  Thank you.
 
 strace: |autoreset: Broken pipe
+
 ```
 
 when I monitor, I have to specify the baudrate :
