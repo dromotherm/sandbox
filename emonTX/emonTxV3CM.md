@@ -4,6 +4,8 @@ And : https://github.com/openenergymonitor/emonpi/tree/master/firmware
 
 # on the emonPI
 
+install platformIO
+
 ```
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
 ```
@@ -15,7 +17,7 @@ Add at the end of your profile:
 ```
 PATH=$PATH:/home/pi/.platformio/penv/bin
 ```
-lauch the compil/upload process :
+launch the compil/upload process :
 ```
 cd /opt/openenergymonitor/emonpi/firmware
 sudo systemctl stop emonhub
