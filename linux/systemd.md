@@ -2,6 +2,7 @@
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
+### basic usage
 
 Vérifier l'état des services, gérés par systemd
 
@@ -12,7 +13,7 @@ journalctl -f -u bios
 sudo systemctl daemon-reload
 ```
 
-check which version of systemd is installed
+### check which version of systemd is installed
 ```
 pkg-config --modversion systemd
 237
@@ -29,7 +30,7 @@ sudo readlink -f /proc/1/exe
 ```
 should return `/lib/systemd/systemd`
 
-## for more on pkg-config :
+#### for more on pkg-config :
 
 https://www.freedesktop.org/wiki/Software/pkg-config/
 
