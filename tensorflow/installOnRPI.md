@@ -92,7 +92,7 @@ same with tensorflow or tensorflow-estimator
 
 # support for h5 files
 
-if h5py module is not installed, tnesorflow will not be able to open pretrained model saved as a h5 file :
+if h5py module is not installed, tensorflow will not be able to open pretrained model saved as a h5 file :
 
 ```
 Traceback (most recent call last):
@@ -109,7 +109,7 @@ The module should be available via apt :
 ```
 sudo apt-get install python3-h5py
 ```
-Anyway, the above command is installing version 3.1.0 which is not suitable on a RPI. 
+Anyway, the above command installs version 3.1.0 which is not suitable on a RPI. 
 
 When opening a h5 model :
 ```
