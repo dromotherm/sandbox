@@ -4,6 +4,8 @@
 
 il y a plusieurs commandes  `useradd` et `adduser`
 
+## useradd
+
 pour créer un utilisateur avec des privilèges particuliers sur le port série : 
 ```
 sudo useradd -M -r -G dialout,tty -c "emonHub user" emonhub
@@ -12,7 +14,7 @@ ajouter un user comme sudoer
 ```
 sudo useradd -G sudo savine
 ```
-il y a aussi la commande adduser :
+## adduser
 ```
 sudo adduser alexandrecuer dialout
 ```
