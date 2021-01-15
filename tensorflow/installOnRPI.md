@@ -88,3 +88,9 @@ Proceed (y/n)? y
 ```
 
 same with tensorflow or tensorflow-estimate
+
+# support for h5 files
+
+```
+sudo apt-get install python3-h5py
+```
