@@ -115,10 +115,14 @@ When opening a h5 model :
 ```
 AttributeError: 'str' object has no attribute 'decode'
 ```
-Decision to install version 2.10.0 is correct. cf https://github.com/tensorflow/tensorflow/issues/44467 :
+Decision to install version 2.10.0 is correct :
 ```
 pip install h5py==2.10.0
 ```
+cf https://stackoverflow.com/questions/53740577/does-any-one-got-attributeerror-str-object-has-no-attribute-decode-whi
+
+cf https://github.com/tensorflow/tensorflow/issues/44467
+
 Nota : the 2.10.0 version is not available via apt-get 
 ```
 sudo apt-get install python3-h5py=2.10.0
