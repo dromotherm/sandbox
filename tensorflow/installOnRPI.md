@@ -52,6 +52,18 @@ sudo apt install libatlas-base-dev
 ```
 # install with the wheel package
 
+You must have a certain knowledge of the architecture `uname -m`
+
+the answer should be `armv7l` ou `armv8`.
+
+ARMv7 or under = 32 bit.
+
+64 bit starts with AMRv8.
+
+there is a tflite package for the RPI
+https://www.tensorflow.org/lite/guide/python
+But the model should have been saved or converted as a tflite model !
+
 See :
 https://github.com/lhelontra/tensorflow-on-arm
 
