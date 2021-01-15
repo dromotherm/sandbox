@@ -14,6 +14,10 @@ ajouter un user comme sudoer
 ```
 sudo useradd -G sudo savine
 ```
+Si l'utilisateur est existant : 
+```
+sudo usermod -a -G dialout,tty alexandrecuer
+```
 ## adduser
 ```
 sudo adduser alexandrecuer dialout
@@ -22,18 +26,12 @@ Pour donner à un user les privilèges sudoers
 ```
 sudo adduser bios sudo
 ```
-
-Si l'utilisateur est existant : 
-```
-sudo usermod -a -G dialout,tty alexandrecuer
-```
+## list users and groups
 
 pour lister les groupes et les utilisateurs qu'ils contiennent :
 ```
 cat /etc/group
 ```
-## list users and groups
-
 List all users and groups
 ```
 cat /etc/passwd | awk -F: '{print $ 1}'
