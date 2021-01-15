@@ -92,14 +92,34 @@ same with tensorflow or tensorflow-estimator
 
 # support for h5 files
 
+if h5py module is not installed, tnesorflow will not be able to open pretrained model saved as a h5 file :
+
+```
+Traceback (most recent call last):
+  File "test.py", line 3, in <module>
+    agent = tf.keras.models.load_model(name)
+  File "/home/pi/.local/lib/python3.7/site-packages/tensorflow_core/python/keras/saving/save.py", line 149, in load_model
+    loader_impl.parse_saved_model(filepath)
+  File "/home/pi/.local/lib/python3.7/site-packages/tensorflow_core/python/saved_model/loader_impl.py", line 83, in parse_saved_model
+    constants.SAVED_MODEL_FILENAME_PB))
+OSError: SavedModel file does not exist at: 4parsChh.h5/{saved_model.pbtxt|saved_model.pb}
+
+```
+The module should be available via apt :
 ```
 sudo apt-get install python3-h5py
 ```
-The above command should install version 3.1.0 which is not suitable. When opening a h5 model :
+Anyway, the above command is installing version 3.1.0 which is not suitable on a RPI. 
+
+When opening a h5 model :
 ```
 AttributeError: 'str' object has no attribute 'decode'
 ```
 Decision to install version 2.10.0 is correct :
 ```
 pip install h5py==2.10.0
+```
+Nota : the 2.10.0 version is not available via apt-get 
+```
+sudo apt-get install python3-h5py=2.10.0
 ```
