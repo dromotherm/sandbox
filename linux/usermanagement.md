@@ -58,7 +58,7 @@ sudo -l -U bios
 L'utilisateur bios n'est pas autorisé à exécuter sudo sur
         alexandrecuer-PORTEGE-R30-A.
 ```
-## change password user pi:
+## change password for user pi
 ```
 sudo passwd pi
 ```
