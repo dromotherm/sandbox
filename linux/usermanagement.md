@@ -1,4 +1,4 @@
-## users management
+# users management on Linux Debian/Raspbian
 
 **a good choice is to run the service with a dedicated user, so basic knowledge on user management is essential**
 
@@ -32,6 +32,7 @@ pour lister les groupes et les utilisateurs qu'ils contiennent :
 ```
 cat /etc/group
 ```
+## list users and groups
 
 List all users and groups
 ```
@@ -46,6 +47,9 @@ pour savoir si un user dispose des privilèges sudoer :
 ```
 sudo -l -U bios
 ```
+
+## deluser
+
 pour enlever un utilisateur de la liste des sudoers, ie du groupe sudo :
 ```
 sudo deluser bios sudo
@@ -63,7 +67,9 @@ sudo passwd pi
 
 
 
-pour ajouter un répertoire dans le path, içi celui de platformio :
+## pour ajouter un répertoire dans le path
+
+içi celui de platformio :
 ```
 cd ~
 nano .profile
