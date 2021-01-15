@@ -88,7 +88,7 @@ Proceed (y/n)? y
   Successfully uninstalled tensorboard-2.0.2
 ```
 
-same with tensorflow or tensorflow-estimate
+same with tensorflow or tensorflow-estimator
 
 # support for h5 files
 
