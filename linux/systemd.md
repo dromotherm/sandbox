@@ -2,6 +2,16 @@
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
+
+Vérifier l'état des services, gérés par systemd
+
+```
+systemctl status
+systemctl status bios
+journalctl -f -u bios
+sudo systemctl daemon-reload
+```
+
 check which version of systemd is installed
 ```
 pkg-config --modversion systemd
