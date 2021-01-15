@@ -95,3 +95,11 @@ same with tensorflow or tensorflow-estimator
 ```
 sudo apt-get install python3-h5py
 ```
+The above command should install version 3.1.0 which is not suitable. When opening a h5 model :
+```
+AttributeError: 'str' object has no attribute 'decode'
+```
+Decision to install version 2.10.0 is correct :
+```
+pip install h5py==2.10.0
+```
