@@ -1,3 +1,8 @@
+# OS version
+```
+cat /etc/os-release
+```
+
 # Voir le partionnement du disque dur
 
 ```
