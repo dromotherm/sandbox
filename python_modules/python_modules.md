@@ -88,4 +88,11 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow_estima
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow_estimator-2.1.0.dist-info /usr/lib/python3/dist-packages/tensorflow_estimator-2.1.0.dist-info
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorboard /usr/lib/python3/dist-packages/tensorboard
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorboard-2.1.0.dist-info /usr/lib/python3/dist-packages/tensorboard-2.1.0.dist-info
+
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/keras /usr/lib/python3/dist-packages/keras
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras-2.3.1.dist-info /usr/lib/python3/dist-packages/Keras-2.3.1.dist-info
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/keras_applications /usr/lib/python3/dist-packages/keras_applications
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Applications-1.0.8.dist-info /usr/lib/python3/dist-packages/Keras_Applications-1.0.8.dist-info
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/keras_preprocessing /usr/lib/python3/dist-packages/keras_preprocessing
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Preprocessing-1.1.0.dist-info /usr/lib/python3/dist-packages/Keras_Preprocessing-1.1.0.dist-info
 ```
