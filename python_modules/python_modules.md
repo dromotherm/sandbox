@@ -79,3 +79,8 @@ same for pymodbus :
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib/python3/dist-packages/pymodbus
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
 ```
+for tensorflow2.1.0
+```
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow /usr/lib/python3/dist-packages/tensorflow
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow-2.1.0.dist-info /usr/lib/python3/dist-packages/tensorflow-2.1.0.dist-info
+```
