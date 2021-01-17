@@ -95,4 +95,6 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/keras_application
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Applications-1.0.8.dist-info /usr/lib/python3/dist-packages/Keras_Applications-1.0.8.dist-info
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/keras_preprocessing /usr/lib/python3/dist-packages/keras_preprocessing
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Preprocessing-1.1.0.dist-info /usr/lib/python3/dist-packages/Keras_Preprocessing-1.1.0.dist-info
+
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/protobuf-3.11.2.dist-info /usr/lib/python3/dist-packages/protobuf-3.11.2.dist-info
 ```
