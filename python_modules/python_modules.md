@@ -79,7 +79,9 @@ same for pymodbus :
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib/python3/dist-packages/pymodbus
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
 ```
-for tensorflow2.1.0
+# tensorflow2.1.0
+
+tried the following commands to transform a tensorflow user installation into a system wide install, with no succes 
 ```
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow /usr/lib/python3/dist-packages/tensorflow
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/tensorflow-2.1.0.dist-info /usr/lib/python3/dist-packages/tensorflow-2.1.0.dist-info
@@ -98,7 +100,25 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Preprocessi
 
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/protobuf-3.11.2.dist-info /usr/lib/python3/dist-packages/protobuf-3.11.2.dist-info
 ```
+to solve a numpy compatibility problem (tf was said to be compiled with 3.x and having only 2.x
 ```
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy /usr/lib/python3/dist-packages/numpy
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy-1.18.1.dist-info /usr/lib/python3/dist-packages/numpy-1.18.1.dist-info
+```
+so decided to install tf on the bios user
+```
+python3 -m pip install --upgrade setuptools pip
+Collecting setuptools
+  Using cached https://files.pythonhosted.org/packages/b2/81/509db0082c0d2ca2af307c6652ea422865de1f83c14b1e1f3549e415cfac/setuptools-51.3.3-py3-none-any.whl
+Collecting pip
+  Cache entry deserialization failed, entry ignored
+  Downloading https://files.pythonhosted.org/packages/54/eb/4a3642e971f404d69d4f6fa3885559d67562801b99d7592487f1ecc4e017/pip-20.3.3-py2.py3-none-any.whl (1.5MB)
+    100% |████████████████████████████████| 1.5MB 358kB/s 
+Installing collected packages: setuptools, pip
+Successfully installed pip-20.3.3 setuptools-51.3.3
+$ pip3 --version
+WARNING: pip is being invoked by an old script wrapper. This will fail in a future version of pip.
+Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the underlying issue.
+To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.
+pip 20.3.3 from /home/bios/.local/lib/python3.6/site-packages/pip (python 3.6)
 ```
