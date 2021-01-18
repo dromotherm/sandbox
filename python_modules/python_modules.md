@@ -135,3 +135,101 @@ Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the unde
 To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.
 pip 20.3.3 from /home/bios/.local/lib/python3.6/site-packages/pip (python 3.6)
 ```
+then launch tensorflow installation via pip3
+
+```
+pip3 install --upgrade tensorflow
+```
+The return should be something like that :
+```
+WARNING: pip is being invoked by an old script wrapper. This will fail in a future version of pip.
+Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the underlying issue.
+To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: tensorflow in /home/bios/.local/lib/python3.6/site-packages (1.14.0)
+Collecting tensorflow
+  Downloading tensorflow-2.4.0-cp36-cp36m-manylinux2010_x86_64.whl (394.7 MB)
+     |████████████████████████████████| 394.7 MB 3.4 kB/s 
+Requirement already satisfied: typing-extensions~=3.7.4 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (3.7.4.3)
+Requirement already satisfied: google-pasta~=0.2 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (0.2.0)
+Requirement already satisfied: absl-py~=0.10 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (0.11.0)
+Requirement already satisfied: termcolor~=1.1.0 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (1.1.0)
+Requirement already satisfied: numpy~=1.19.2 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (1.19.5)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (1.1.2)
+Requirement already satisfied: wheel~=0.35 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (0.36.2)
+Requirement already satisfied: opt-einsum~=3.3.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow) (3.3.0)
+Requirement already satisfied: six~=1.15.0 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (1.15.0)
+Requirement already satisfied: protobuf>=3.9.2 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (3.14.0)
+Requirement already satisfied: wrapt~=1.12.1 in /home/bios/.local/lib/python3.6/site-packages (from tensorflow) (1.12.1)
+Collecting gast==0.3.3
+  Downloading gast-0.3.3-py2.py3-none-any.whl (9.7 kB)
+Collecting astunparse~=1.6.3
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting flatbuffers~=1.12.0
+  Downloading flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
+Collecting grpcio~=1.32.0
+  Downloading grpcio-1.32.0-cp36-cp36m-manylinux2014_x86_64.whl (3.8 MB)
+     |████████████████████████████████| 3.8 MB 576 kB/s 
+Collecting h5py~=2.10.0
+  Downloading h5py-2.10.0-cp36-cp36m-manylinux1_x86_64.whl (2.9 MB)
+     |████████████████████████████████| 2.9 MB 52 kB/s 
+Collecting tensorboard~=2.4
+  Downloading tensorboard-2.4.1-py3-none-any.whl (10.6 MB)
+     |████████████████████████████████| 10.6 MB 83 kB/s 
+Requirement already satisfied: requests<3,>=2.21.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4->tensorflow) (2.25.1)
+Requirement already satisfied: markdown>=2.6.8 in /home/bios/.local/lib/python3.6/site-packages (from tensorboard~=2.4->tensorflow) (3.3.3)
+Requirement already satisfied: setuptools>=41.0.0 in /home/bios/.local/lib/python3.6/site-packages (from tensorboard~=2.4->tensorflow) (51.3.3)
+Requirement already satisfied: werkzeug>=0.11.15 in /home/bios/.local/lib/python3.6/site-packages (from tensorboard~=2.4->tensorflow) (1.0.1)
+Requirement already satisfied: google-auth<2,>=1.6.3 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4->tensorflow) (1.24.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4->tensorflow) (0.4.2)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.6/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (4.2.0)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.6/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (4.7)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.6/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (0.2.8)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.6/dist-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow) (1.3.0)
+Requirement already satisfied: importlib-metadata in /home/bios/.local/lib/python3.6/site-packages (from markdown>=2.6.8->tensorboard~=2.4->tensorflow) (3.4.0)
+Collecting pyasn1<0.5.0,>=0.4.6
+  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+     |████████████████████████████████| 77 kB 324 kB/s 
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/lib/python3/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (1.22)
+Requirement already satisfied: idna<3,>=2.5 in /usr/lib/python3/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (2.6)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/lib/python3/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (2018.1.18)
+Requirement already satisfied: chardet<5,>=3.0.2 in /usr/lib/python3/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (3.0.4)
+Requirement already satisfied: oauthlib>=3.0.0 in /usr/local/lib/python3.6/dist-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow) (3.1.0)
+Collecting tensorboard-plugin-wit>=1.6.0
+  Downloading tensorboard_plugin_wit-1.7.0-py3-none-any.whl (779 kB)
+     |████████████████████████████████| 779 kB 587 kB/s 
+Collecting tensorflow-estimator<2.5.0,>=2.4.0rc0
+  Downloading tensorflow_estimator-2.4.0-py2.py3-none-any.whl (462 kB)
+     |████████████████████████████████| 462 kB 603 kB/s 
+Requirement already satisfied: zipp>=0.5 in /home/bios/.local/lib/python3.6/site-packages (from importlib-metadata->markdown>=2.6.8->tensorboard~=2.4->tensorflow) (3.4.0)
+Installing collected packages: pyasn1, tensorboard-plugin-wit, grpcio, tensorflow-estimator, tensorboard, h5py, gast, flatbuffers, astunparse, tensorflow
+  Attempting uninstall: grpcio
+    Found existing installation: grpcio 1.34.1
+    Uninstalling grpcio-1.34.1:
+      Successfully uninstalled grpcio-1.34.1
+  Attempting uninstall: tensorflow-estimator
+    Found existing installation: tensorflow-estimator 1.14.0
+    Uninstalling tensorflow-estimator-1.14.0:
+      Successfully uninstalled tensorflow-estimator-1.14.0
+  Attempting uninstall: tensorboard
+    Found existing installation: tensorboard 1.14.0
+    Uninstalling tensorboard-1.14.0:
+      Successfully uninstalled tensorboard-1.14.0
+  WARNING: The script tensorboard is installed in '/home/bios/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Attempting uninstall: h5py
+    Found existing installation: h5py 3.1.0
+    Uninstalling h5py-3.1.0:
+      Successfully uninstalled h5py-3.1.0
+  Attempting uninstall: gast
+    Found existing installation: gast 0.4.0
+    Uninstalling gast-0.4.0:
+      Successfully uninstalled gast-0.4.0
+  Attempting uninstall: tensorflow
+    Found existing installation: tensorflow 1.14.0
+    Uninstalling tensorflow-1.14.0:
+      Successfully uninstalled tensorflow-1.14.0
+  WARNING: The scripts estimator_ckpt_converter, import_pb_to_tensorboard, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert, toco and toco_from_protos are installed in '/home/bios/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed astunparse-1.6.3 flatbuffers-1.12 gast-0.3.3 grpcio-1.32.0 h5py-2.10.0 pyasn1-0.4.8 tensorboard-2.4.1 tensorboard-plugin-wit-1.7.0 tensorflow-2.4.0 tensorflow-estimator-2.4.0
+```
