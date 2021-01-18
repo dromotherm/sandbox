@@ -79,7 +79,7 @@ same for pymodbus :
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib/python3/dist-packages/pymodbus
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
 ```
-# tensorflow2.1.0
+# tensorflow
 
 tried the following commands to transform a tensorflow user installation into a system wide install, with no succes 
 ```
