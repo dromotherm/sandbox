@@ -105,7 +105,17 @@ to solve a numpy compatibility problem (tf was said to be compiled with 3.x and 
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy /usr/lib/python3/dist-packages/numpy
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy-1.18.1.dist-info /usr/lib/python3/dist-packages/numpy-1.18.1.dist-info
 ```
-so decided to install tf on the bios user
+so decided to install tf on the bios user....
+
+Once logged, check pip3 version :
+```
+$ pip3 --version
+pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
+$ pip --version
+pip 20.0.2 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
+```
+so we have to upgrade pip3 :
+
 ```
 python3 -m pip install --upgrade setuptools pip
 Collecting setuptools
@@ -116,6 +126,9 @@ Collecting pip
     100% |████████████████████████████████| 1.5MB 358kB/s 
 Installing collected packages: setuptools, pip
 Successfully installed pip-20.3.3 setuptools-51.3.3
+```
+pip3 should be uptodate :
+```
 $ pip3 --version
 WARNING: pip is being invoked by an old script wrapper. This will fail in a future version of pip.
 Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the underlying issue.
