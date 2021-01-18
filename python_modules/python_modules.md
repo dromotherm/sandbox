@@ -100,12 +100,12 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Preprocessi
 
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/protobuf-3.11.2.dist-info /usr/lib/python3/dist-packages/protobuf-3.11.2.dist-info
 ```
-to solve a numpy compatibility problem (tf was said to be compiled with 3.x and having only 2.x
+to solve a numpy compatibility problem, as tf was said to be compiled with 3.x and having only 2.x :
 ```
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy /usr/lib/python3/dist-packages/numpy
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy-1.18.1.dist-info /usr/lib/python3/dist-packages/numpy-1.18.1.dist-info
 ```
-so decided to install tf on the bios user....
+>> decided to install tensorflow for the bios user....
 
 Once logged, check pip3 version :
 ```
@@ -114,7 +114,7 @@ pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
 $ pip --version
 pip 20.0.2 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
 ```
-so we have to upgrade pip3 :
+>> we have to upgrade pip3 :
 
 ```
 python3 -m pip install --upgrade setuptools pip
@@ -135,7 +135,7 @@ Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the unde
 To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.
 pip 20.3.3 from /home/bios/.local/lib/python3.6/site-packages/pip (python 3.6)
 ```
-then launch tensorflow installation via pip3
+launch tensorflow installation via pip3
 
 ```
 pip3 install --upgrade tensorflow
