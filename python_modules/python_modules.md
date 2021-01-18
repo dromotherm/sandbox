@@ -98,3 +98,7 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Keras_Preprocessi
 
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/protobuf-3.11.2.dist-info /usr/lib/python3/dist-packages/protobuf-3.11.2.dist-info
 ```
+```
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy /usr/lib/python3/dist-packages/numpy
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/numpy-1.18.1.dist-info /usr/lib/python3/dist-packages/numpy-1.18.1.dist-info
+```
