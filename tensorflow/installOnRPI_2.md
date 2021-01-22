@@ -7,6 +7,8 @@ on crée un répertoire tampon sand /var/opt et on le donne à bios
 cd /var/opt
 sudo mkdir test
 sudo chown bios:bios test
+sudo mkdir /home/bios
+sudo chown bios:bios /home/bios
 ```
 on lance l'installation du package wheel
 ```
