@@ -19,3 +19,13 @@ celui de tensorflow n'est pas reconnu ?
 ```
 TMPDIR=/var/opt/test pip3 install --cache-dir=/var/opt/test --build /var/opt/test --upgrade https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.1.0/tensorflow-2.1.0-cp37-none-linux_armv7l.whl
 ```
+pour vérifier la version
+```
+python3
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> tf.__version__
+'2.1.0'
+>>> exit()
+```
