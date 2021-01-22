@@ -2,9 +2,9 @@ on donne un mot de passe à l'user bios
 ```
 sudo passwd bios
 ```
-on crée un répertoire tampon sand /var/opt et on le donne à bios
+on crée un répertoire tampon dans /var/opt/emoncms et on le donne à bios
 ```
-cd /var/opt
+cd /var/opt/emoncms
 sudo mkdir test
 sudo chown bios:bios test
 sudo mkdir /home/bios
