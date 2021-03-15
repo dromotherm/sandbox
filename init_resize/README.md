@@ -25,3 +25,5 @@ https://github.com/openenergymonitor/EmonScripts/commit/8f5baa011b3a52e8f992a0f0
 1 zébioctet (Zio) 	= 270 octets 	= 1 024 Eio 	= 1 180 591 620 717 411 303 424 octets
 
 1 yobioctet (Yio) 	= 280 octets 	= 1 024 Zio 	= 1 208 925 819 614 629 174 706 176 octets 
+
+https://fr.wikipedia.org/wiki/Octet
