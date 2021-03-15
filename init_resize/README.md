@@ -27,3 +27,9 @@ https://github.com/openenergymonitor/EmonScripts/commit/8f5baa011b3a52e8f992a0f0
 1 yobioctet (Yio) 	= 280 octets 	= 1 024 Zio 	= 1 208 925 819 614 629 174 706 176 octets 
 
 https://fr.wikipedia.org/wiki/Octet
+
+Avec des secteurs de 512 octets :
+
+10 Gio = 10 * 1073741824 / 512 = 20971520 secteurs
+
+20 Gio = 41943040 secteurs
