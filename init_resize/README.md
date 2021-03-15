@@ -10,6 +10,8 @@ tracability of our only changes is here :
 
 https://github.com/openenergymonitor/EmonScripts/commit/8f5baa011b3a52e8f992a0f075756b363c488f84
 
+# how to manage sectors
+
 1 kibioctet (kio) 	= 210 octets 	= 1 024 o 	= 1 024 octets
 
 1 mébioctet (Mio) 	= 220 octets 	= 1 024 kio 	= 1 048 576 octets
