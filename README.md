@@ -104,3 +104,9 @@ md5sum test.img.zip
 md5sum test.img
 1a5353f9a4cc8163515bc5941589e4ba  test.img
 ```
+
+md5 bios 32 Go Sandisk - 17/03/2021
+```
+45b5ff83cbd5a45573fad44c2ef3a536  bios.img.zip
+d8012c497545175a9cc0a8e2a8cd944c  bios.img
+```
