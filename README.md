@@ -112,3 +112,7 @@ md5sum test.img.zip
 md5sum test.img
 1a5353f9a4cc8163515bc5941589e4ba  test.img
 ```
+Sous windows :
+```
+certutil -hashfile Themis1.0.img.zip MD5
+```
