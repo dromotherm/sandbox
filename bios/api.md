@@ -1,0 +1,72 @@
+# utiliser mod_wsgi pour faire tourner une API flask sous apache 
+
+```
+sudo apt-get install libapache2-mod-wsgi-py3 python-dev
+```
+le retour devrait être le suivant :
+```
+Lecture des listes de paquets... Fait
+Construction de l'arbre des dépendances       
+Lecture des informations d'état... Fait
+python-dev est déjà la version la plus récente (2.7.15~rc1-1).
+python-dev passé en « installé manuellement ».
+Les paquets suivants ont été installés automatiquement et ne sont plus nécessaires :
+  libnvidia-cfg1-440 libnvidia-common-440 libnvidia-common-455
+  libnvidia-common-460 libnvidia-compute-440 libnvidia-decode-440
+  libnvidia-encode-440 libnvidia-extra-440 libnvidia-fbc1-440 libnvidia-gl-440
+  libnvidia-ifr1-440 linux-hwe-5.4-headers-5.4.0-42
+  linux-hwe-5.4-headers-5.4.0-47 linux-hwe-5.4-headers-5.4.0-48
+  linux-hwe-5.4-headers-5.4.0-51 linux-hwe-5.4-headers-5.4.0-52
+  linux-hwe-5.4-headers-5.4.0-53 linux-hwe-5.4-headers-5.4.0-56
+  linux-hwe-5.4-headers-5.4.0-58 nvidia-compute-utils-440 nvidia-dkms-440
+  nvidia-utils-440 python3-attr python3-automat python3-click python3-colorama
+  python3-constantly python3-hyperlink python3-incremental python3-pam
+  python3-pyasn1 python3-serial python3-twisted-bin
+  xserver-xorg-video-nvidia-440
+Veuillez utiliser « sudo apt autoremove » pour les supprimer.
+Les NOUVEAUX paquets suivants seront installés :
+  libapache2-mod-wsgi-py3
+0 mis à jour, 1 nouvellement installés, 0 à enlever et 14 non mis à jour.
+Il est nécessaire de prendre 88,3 ko dans les archives.
+Après cette opération, 278 ko d'espace disque supplémentaires seront utilisés.
+Souhaitez-vous continuer ? [O/n] o
+Réception de :1 http://fr.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 libapache2-mod-wsgi-py3 amd64 4.5.17-1ubuntu1 [88,3 kB]
+88,3 ko réceptionnés en 0s (246 ko/s)              
+Sélection du paquet libapache2-mod-wsgi-py3 précédemment désélectionné.
+(Lecture de la base de données... 495017 fichiers et répertoires déjà installés.)
+Préparation du dépaquetage de .../libapache2-mod-wsgi-py3_4.5.17-1ubuntu1_amd64.deb ...
+Dépaquetage de libapache2-mod-wsgi-py3 (4.5.17-1ubuntu1) ...
+Paramétrage de libapache2-mod-wsgi-py3 (4.5.17-1ubuntu1) ...
+apache2_invoke: Enable module wsgi
+```
+on configure un nouveau virtual host
+```
+cd /etc/apache2/sites-available
+sudo touch bios.conf
+```
+```
+<VirtualHost *:80>
+  ServerName localhost
+
+  WSGIScriptAlias /bios /home/alexandrecuer/github/BIOS/app.wsgi
+  <Directory /home/alexandrecuer/github/BIOS/>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  LogLevel warn
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+A noter que si on avait d'autres alias de type WSGI à créer, il faudrait les rajouter dans ce fichier. 
+Ne pas faire l'erreur de créer d'autres virtual hosts, qui servent à gérer les domaines et sous-domaines 
+
+on active le virtual host
+```
+sudo a2ensite bios
+Enabling site bios.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+```
