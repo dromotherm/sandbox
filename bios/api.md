@@ -47,9 +47,12 @@ sudo touch bios.conf
 ```
 <VirtualHost *:80>
   ServerName localhost
-
+  WSGIDaemonProcess bios user=www-data group=www-data threads=15
   WSGIScriptAlias /bios /home/alexandrecuer/github/BIOS/app.wsgi
   <Directory /home/alexandrecuer/github/BIOS/>
+    WSGIProcessGroup bios
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIScriptReloading On
     Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
