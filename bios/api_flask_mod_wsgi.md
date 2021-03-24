@@ -75,3 +75,4 @@ Enabling site bios.
 To activate the new configuration, you need to run:
   systemctl reload apache2
 ```
+Le mieux est de rajouter les lignes WSGI dans le fichier conf principal : 000-default.conf sur une ubuntu, emoncms.conf sur un emonpi
