@@ -79,6 +79,15 @@ same for pymodbus :
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib/python3/dist-packages/pymodbus
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
 ```
+
+# flask
+
+```
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/flask /usr/lib/python3/dist-packages/flask
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Flask-1.1.2.dist-info /usr/lib/python3/dist-packages/Flask-1.1.2.dist-info
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/itsdangerous /usr/lib/python3/dist-packages/itsdangerous
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/itsdangerous-1.1.0.dist-info /usr/lib/python3/dist-packages/itsdangerous-1.1.0.dist-info
+```
 # tensorflow
 
 tried the following commands to transform a tensorflow user installation into a system wide install, with no succes 
