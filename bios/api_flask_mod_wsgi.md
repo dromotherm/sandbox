@@ -1,4 +1,4 @@
-# utiliser mod_wsgi pour faire tourner une API flask sous apache 
+# mod_wsgi to run a flask API with a apache server 
 
 ```
 sudo apt-get install libapache2-mod-wsgi-py3 python-dev
