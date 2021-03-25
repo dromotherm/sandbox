@@ -2,6 +2,94 @@
 
 source code : https://github.com/GrahamDumpleton/mod_wsgi
 
+# sur bios avec la stack openenergymonitor préinstallée 
+
+Une fois loggé, on installe flask pour l'utilisateur pi, et on installe mod_wsgi
+```
+pip3 install flask
+sudo apt-get install libapache2-mod-wsgi-py3 python-dev
+```
+Le mieux est de rajouter les lignes WSGI dans le fichier conf principal : 000-default.conf sur une ubuntu, emoncms.conf sur un emonpi
+```
+cd /etc/apache2/sites-available
+sudo touch emoncms.conf
+```
+le fichier emoncms.conf devient :
+```
+<VirtualHost *:80>
+    ServerName localhost
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/emoncms
+
+    # Virtual Host specific error log
+    ErrorLog /var/log/emoncms/apache2-error.log
+    # Access log disabled
+    # CustomLog /var/log/emoncms/apache2-access.log combined
+
+    <Directory /var/www/emoncms>
+        Options FollowSymLinks
+        AllowOverride All
+        DirectoryIndex index.php
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    WSGIDaemonProcess bios user=pi group=pi threads=15
+    WSGIScriptAlias /bios /opt/openenergymonitor/BIOS/app.wsgi
+    <Directory /opt/openenergymonitor/BIOS/>
+      WSGIProcessGroup bios
+      WSGIApplicationGroup %{GLOBAL}
+      WSGIScriptReloading On
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+    </Directory>
+
+</VirtualHost>
+```
+on relance apache
+```
+sudo systemctl restart apache2
+```
+L'api statistique de BIOS est alors accessible à l'adresse du serveur/bios
+
+# en construisant un nouveau virtual host pour faire des tests locaux
+on configure un nouveau virtual host
+```
+cd /etc/apache2/sites-available
+sudo touch bios.conf
+```
+```
+<VirtualHost *:80>
+  ServerName localhost
+  WSGIDaemonProcess bios user=www-data group=www-data threads=15
+  WSGIScriptAlias /bios /home/alexandrecuer/github/BIOS/app.wsgi
+  <Directory /home/alexandrecuer/github/BIOS/>
+    WSGIProcessGroup bios
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIScriptReloading On
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  LogLevel warn
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+A noter que si on avait d'autres alias de type WSGI à créer, il faudrait les rajouter dans ce fichier. 
+Ne pas faire l'erreur de créer d'autres virtual hosts, qui servent à gérer les domaines et sous-domaines 
+
+on active le virtual host
+```
+sudo a2ensite bios
+Enabling site bios.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+```
+
+# détails de l'install du paquet mod_wsgi
 ```
 sudo apt-get install libapache2-mod-wsgi-py3 python-dev
 ```
@@ -41,38 +129,3 @@ Dépaquetage de libapache2-mod-wsgi-py3 (4.5.17-1ubuntu1) ...
 Paramétrage de libapache2-mod-wsgi-py3 (4.5.17-1ubuntu1) ...
 apache2_invoke: Enable module wsgi
 ```
-on configure un nouveau virtual host
-```
-cd /etc/apache2/sites-available
-sudo touch bios.conf
-```
-```
-<VirtualHost *:80>
-  ServerName localhost
-  WSGIDaemonProcess bios user=www-data group=www-data threads=15
-  WSGIScriptAlias /bios /home/alexandrecuer/github/BIOS/app.wsgi
-  <Directory /home/alexandrecuer/github/BIOS/>
-    WSGIProcessGroup bios
-    WSGIApplicationGroup %{GLOBAL}
-    WSGIScriptReloading On
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-  </Directory>
-
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  LogLevel warn
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-A noter que si on avait d'autres alias de type WSGI à créer, il faudrait les rajouter dans ce fichier. 
-Ne pas faire l'erreur de créer d'autres virtual hosts, qui servent à gérer les domaines et sous-domaines 
-
-on active le virtual host
-```
-sudo a2ensite bios
-Enabling site bios.
-To activate the new configuration, you need to run:
-  systemctl reload apache2
-```
-Le mieux est de rajouter les lignes WSGI dans le fichier conf principal : 000-default.conf sur une ubuntu, emoncms.conf sur un emonpi
