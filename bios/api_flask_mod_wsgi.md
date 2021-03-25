@@ -1,6 +1,8 @@
 # mod_wsgi to run a flask API with a apache server 
 
-source code : https://github.com/GrahamDumpleton/mod_wsgi
+pour flask : https://flask.palletsprojects.com/en/1.1.x/quickstart/
+
+mod_wsgi source code : https://github.com/GrahamDumpleton/mod_wsgi
 
 # sur bios avec la stack openenergymonitor préinstallée 
 
