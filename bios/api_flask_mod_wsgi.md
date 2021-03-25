@@ -4,6 +4,8 @@ pour flask : https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
 mod_wsgi source code : https://github.com/GrahamDumpleton/mod_wsgi
 
+https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
+
 # sur bios avec la stack openenergymonitor préinstallée 
 
 Une fois loggé, on installe flask pour l'utilisateur pi, et on installe mod_wsgi
