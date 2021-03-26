@@ -67,7 +67,7 @@ sudo systemctl restart apache2
 L'api statistique de BIOS est alors accessible à l'adresse du serveur/bios
 
 # en construisant un nouveau virtual host pour faire des tests locaux
-on configure un nouveau virtual host
+
 ```
 cd /etc/apache2/sites-available
 sudo touch bios.conf
