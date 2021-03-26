@@ -2,6 +2,8 @@
 
 pour flask : https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
+https://flask-cors.readthedocs.io/en/latest/
+
 mod_wsgi source code : https://github.com/GrahamDumpleton/mod_wsgi
 
 https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
