@@ -18,9 +18,6 @@ flask-cors est indispensable pour les requêtes ajax et pour fonctionner en mode
 
 Le partage des ressources entre origines (Cross-Origin Resource Sharing, CORS) est un mécanisme à base d'en-têtes HTTP supplémentaires pour indiquer aux navigateurs de donner à une application web l'accès à des ressources provenant de l'extérieur. Une application web exécute une requête HTTP inter-origine lorsqu'elle demande une ressource dont l'origine (domaine, protocole ou port) est différente de la sienne. 
 
-Traduit avec www.DeepL.com/Translator (version gratuite)
-
-Traduit avec www.DeepL.com/Translator (version gratuite)
 Le mieux est de rajouter les lignes WSGI dans le fichier conf principal : 000-default.conf sur une ubuntu, emoncms.conf sur un emonpi
 ```
 cd /etc/apache2/sites-available
