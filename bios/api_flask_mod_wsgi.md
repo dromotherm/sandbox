@@ -8,6 +8,8 @@ https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
 # sur bios avec la stack openenergymonitor préinstallée 
 
+## dépendances
+
 Une fois loggé, on installe flask et flask-cors pour l'utilisateur pi, et on installe mod_wsgi
 ```
 pip3 install flask
@@ -17,6 +19,8 @@ sudo apt-get install libapache2-mod-wsgi-py3 python-dev
 flask-cors est indispensable pour les requêtes ajax et pour fonctionner en mode API avec un serveur de cloud qui interroge des machines BIOS terrain.
 
 Le partage des ressources entre origines (Cross-Origin Resource Sharing, CORS) est un mécanisme à base d'en-têtes HTTP supplémentaires pour indiquer aux navigateurs de donner à une application web l'accès à des ressources provenant de l'extérieur. Une application web exécute une requête HTTP inter-origine lorsqu'elle demande une ressource dont l'origine (domaine, protocole ou port) est différente de la sienne. 
+
+## activation de l'API
 
 Le mieux est de rajouter les lignes WSGI dans le fichier conf principal : 000-default.conf sur une ubuntu, emoncms.conf sur un emonpi
 ```
