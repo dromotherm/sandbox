@@ -87,6 +87,8 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/flask /usr/lib/py
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Flask-1.1.2.dist-info /usr/lib/python3/dist-packages/Flask-1.1.2.dist-info
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/itsdangerous /usr/lib/python3/dist-packages/itsdangerous
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/itsdangerous-1.1.0.dist-info /usr/lib/python3/dist-packages/itsdangerous-1.1.0.dist-info
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/flask_cors /usr/lib/python3/dist-packages/flask_cors
+sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Flask_Cors-3.0.10.dist-info /usr/lib/python3/dist-packages/Flask_Cors-3.0.10.dist-info
 ```
 # tensorflow
 
