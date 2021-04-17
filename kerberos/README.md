@@ -4,6 +4,8 @@ https://github.com/kerberos-io/kios
 
 dernière image : https://github.com/kerberos-io/kios/releases/tag/v2.8.0
 
+il y a une FAQ içi : https://kerberosio.zendesk.com/hc/en-us/sections/201835759-KiOS
+
 on la grave avec balena etcher, sur une carte de 32 Go
 
 Après le premier reboot et le redimensionnement, on peut se connecter en ssh avec l'utilisateur root
