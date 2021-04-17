@@ -38,5 +38,6 @@ network={
  psk=""
 }
 ```
+ce fichier est supprimé dès lors que la nouvelle config wifi est mise en oeuvre
 
 pas de shutdown sur l'interface web > lancer la commande `halt`
