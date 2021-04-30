@@ -15,7 +15,7 @@ La dernière ligne sert à appliquer les permissions au répertoire examples et 
 
 ```
 cd /etc/apache2/sites-available
-sudo touch 000-default.conf.conf
+sudo nano 000-default.conf
 ```
 on rajoute les lignes suivantes :
 ```
