@@ -37,4 +37,6 @@ Alias /emoncms  /opt/openenergymonitor/emoncms
 
 ```
 sudo mkdir /var/log/emoncms
+sudo touch /var/log/emoncms/emoncms.log
+sudo chmod 666 /var/log/emoncms/emoncms.log
 ```
