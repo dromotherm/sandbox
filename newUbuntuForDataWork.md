@@ -43,3 +43,10 @@ cd /opt/openenergymonitor/emoncms
 curl https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defaults/emoncms/emonpi.settings.ini -o settings.ini
 nano settings.ini
 ```
+On change un certain nombre de chemins :
+```
+emoncms_dir = "/opt/emoncms"
+openenergymonitor_dir = "/opt/openenergymonitor"
+phpfina[datadir] = '/var/opt/emoncms/phpfina/'
+phptimeseries[datadir] = '/var/opt/emoncms/phptimeseries/'
+```
