@@ -50,3 +50,12 @@ openenergymonitor_dir = "/opt/openenergymonitor"
 phpfina[datadir] = '/var/opt/emoncms/phpfina/'
 phptimeseries[datadir] = '/var/opt/emoncms/phptimeseries/'
 ```
+
+```
+sudo mkdir /var/opt/emoncms
+sudo mkdir /var/opt/emoncms/phpfina
+sudo chown www-data:root /var/opt/emoncms/phpfina
+sudo mkdir /var/opt/emoncms/phptimeseries
+sudo chown www-data:root /var/opt/emoncms/phptimeseries
+sudo mkdir /opt/emoncms
+```
