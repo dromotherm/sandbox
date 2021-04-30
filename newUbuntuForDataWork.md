@@ -22,7 +22,7 @@ sudo chown ludivine openenergymonitor/
 cd openenergymonitor/
 git clone http://github.com/emoncms/emoncms.git
 cd /etc/apache2/sites-available
-sudo nano 000-default.conf.conf
+sudo nano 000-default.conf
 ```
 
 on rajoute dans le virtual host :
@@ -30,7 +30,7 @@ on rajoute dans le virtual host :
 Alias /emoncms  /opt/openenergymonitor/emoncms
 <Directory /opt/openenergymonitor/emoncms/>
   Options Indexes FollowSymLinks
-  AllowOverride None
+  AllowOverride All
   Require all granted
 </Directory>
 ```
