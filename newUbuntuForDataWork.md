@@ -39,4 +39,7 @@ Alias /emoncms  /opt/openenergymonitor/emoncms
 sudo mkdir /var/log/emoncms
 sudo touch /var/log/emoncms/emoncms.log
 sudo chmod 666 /var/log/emoncms/emoncms.log
+cd /opt/openenergymonitor/emoncms
+curl https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defaults/emoncms/emonpi.settings.ini -o settings.ini
+nano settings.ini
 ```
