@@ -11,6 +11,9 @@ curl https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/inst
 ./mysql.sh
 sudo apt-get install -y php-mysql
 sudo a2enmod rewrite
+```
+pas sur que ce soit utile :
+```
 sudo nano /etc/apache2/apache2.conf
 ```
 Pour `<Directory />` et `<Directory /var/www/>` on change `AllowOverride None` par `AllowOverride All`
