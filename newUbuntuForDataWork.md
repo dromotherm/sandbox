@@ -59,3 +59,20 @@ sudo mkdir /var/opt/emoncms/phptimeseries
 sudo chown www-data:root /var/opt/emoncms/phptimeseries
 sudo mkdir /opt/emoncms
 ```
+redis
+
+```
+sudo apt install redis-server
+sudo apt-get install -y php-gd php-curl php-pear php-dev php-common php-mbstring
+sudo pecl channel-update pecl.php.net
+sudo pecl install redis
+```
+on peut répondre non aux questions
+
+```
+sudo nano /etc/php/7.2/mods-available/redis.ini
+extension=redis.so
+
+sudo phpenmod redis
+sudo systemctl restart apache2
+```
