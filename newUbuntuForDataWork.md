@@ -38,6 +38,12 @@ Alias /emoncms  /opt/openenergymonitor/emoncms
   Require all granted
 </Directory>
 ```
+mieux :
+```
+cd ~
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/conf_files/newUbuntuForDataWork/000-default.conf
+cp 000-default.conf /etc/apache2/sites-available/000-default.conf
+```
 
 ```
 sudo mkdir /var/log/emoncms
