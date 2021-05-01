@@ -149,3 +149,13 @@ git clone -b stable http://github.com/emoncms/sync.git
 ln -s /opt/emoncms/modules/sync/sync-module /opt/openenergymonitor/emoncms/Modules/sync
 ```
 **aller dans le module d'administration et faire une mise à jour de base**
+
+il faut modifier le chemin dans /opt/emonncms/modules/sync/sync_run.php, ligne 11:
+```
+chdir("/opt/openenergymonitor/emoncms");
+```
+Si on a oublié de modifier en conséquence le chemin dans sync_run.php et qu'on a lancé des synchros, il faut lancer à la main le process pour traiter les clé redis
+```
+cd /opt/emoncms/modules/sync
+sudo php sync_run.php
+```
