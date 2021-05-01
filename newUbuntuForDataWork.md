@@ -106,4 +106,7 @@ sudo systemctl restart apache2
 cd ~
 wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/common/install_emoncms_service.sh
 chmod +x install_emoncms_service.sh
+./install_emoncms_service.sh /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service feedwriter
+./install_emoncms_service.sh /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service service-runner
+
 ```
