@@ -1,3 +1,5 @@
+Bof autant installer emoncms dans /var/www
+
 ## Apache
 
 ```
