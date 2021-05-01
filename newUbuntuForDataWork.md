@@ -14,31 +14,14 @@ curl https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/inst
 sudo apt-get install -y php-mysql
 sudo a2enmod rewrite
 ```
-pas sur que ce soit utile :
-```
-sudo nano /etc/apache2/apache2.conf
-```
-Pour `<Directory />` et `<Directory /var/www/>` on change `AllowOverride None` par `AllowOverride All`
-
 ```
 cd /opt
 sudo mkdir openenergymonitor
 sudo chown ludivine openenergymonitor/
 cd openenergymonitor/
 git clone http://github.com/emoncms/emoncms.git
-sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
-on rajoute dans le virtual host :
-```
-Alias /emoncms  /opt/openenergymonitor/emoncms
-<Directory /opt/openenergymonitor/emoncms/>
-  Options Indexes FollowSymLinks
-  AllowOverride All
-  Require all granted
-</Directory>
-```
-mieux :
 ```
 cd ~
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/conf_files/newUbuntuForDataWork/000-default.conf
@@ -166,4 +149,26 @@ Si on a oublié de modifier en conséquence le chemin dans sync_run.php et qu'on
 ```
 cd /opt/emoncms/modules/sync
 sudo php sync_run.php
+```
+
+# extras
+
+pas sur que ce soit utile :
+```
+sudo nano /etc/apache2/apache2.conf
+```
+Pour `<Directory />` et `<Directory /var/www/>` on change `AllowOverride None` par `AllowOverride All`
+
+```
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+
+on rajoute dans le virtual host :
+```
+Alias /emoncms  /opt/openenergymonitor/emoncms
+<Directory /opt/openenergymonitor/emoncms/>
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
 ```
