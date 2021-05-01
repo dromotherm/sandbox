@@ -87,6 +87,7 @@ sudo git clone https://github.com/nrk/predis.git vendor
 
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
+
 ```
 Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
 <Directory /opt/openenergymonitor/phpRedisAdmin/>
@@ -94,4 +95,8 @@ Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
   AllowOverride All
   Require all granted
 </Directory>
+```
+
+```
+sudo systemctl restart apache2
 ```
