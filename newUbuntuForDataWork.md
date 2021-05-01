@@ -117,11 +117,7 @@ une tabulation au lieu d'un espace entre (ALL) et le NOPASSWD
 ```
 ludivine ALL=(ALL)      NOPASSWD:ALL
 ```
-il faut modifier les fichiers de service pour y inclure les bons chemins
-```
-nano /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service
-nano /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service
-```
+
 ## Modules
 
 ```
@@ -177,4 +173,9 @@ Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
   AllowOverride All
   Require all granted
 </Directory>
+```
+puisque emoncms n'est pas dans /var/www, il faut modifier les fichiers de service pour y inclure les bons chemins
+```
+nano /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service
+nano /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service
 ```
