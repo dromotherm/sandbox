@@ -60,6 +60,7 @@ sudo chown www-data:root /var/opt/emoncms/phpfina
 sudo mkdir /var/opt/emoncms/phptimeseries
 sudo chown www-data:root /var/opt/emoncms/phptimeseries
 sudo mkdir /opt/emoncms
+sudo chown ludivine /opt/emoncms
 ```
 ## redis
 le serveur
