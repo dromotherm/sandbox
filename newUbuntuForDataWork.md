@@ -114,7 +114,7 @@ une tabulation au lieu d'un espace entre (ALL) et le NOPASSWD
 ```
 ludivine ALL=(ALL)      NOPASSWD:ALL
 ```
-il faut modifier les fichiers de service
+il faut modifier les fichiers de service pou y inclure les bons chemins
 ```
 nano /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service
 nano /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service
