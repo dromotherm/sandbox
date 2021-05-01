@@ -103,5 +103,7 @@ sudo systemctl restart apache2
 ## services
 
 ```
+cd ~
 wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/common/install_emoncms_service.sh
+chmod +x install_emoncms_service.sh
 ```
