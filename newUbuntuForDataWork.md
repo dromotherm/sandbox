@@ -62,9 +62,12 @@ sudo chown www-data:root /var/opt/emoncms/phptimeseries
 sudo mkdir /opt/emoncms
 ```
 ## redis
-
+le serveur
 ```
 sudo apt install redis-server
+```
+redis pour PHP
+```
 sudo apt-get install -y php-gd php-curl php-pear php-dev php-common php-mbstring
 sudo pecl channel-update pecl.php.net
 sudo pecl install redis
@@ -78,6 +81,11 @@ extension=redis.so
 sudo phpenmod redis
 sudo systemctl restart apache2
 ```
+pyredis 
+```
+pip3 install redis
+```
+
 ## phpRedisAdmin
 ```
 cd /opt/openenergymonitor/
