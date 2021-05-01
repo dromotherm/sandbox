@@ -108,7 +108,17 @@ wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/comm
 chmod +x install_emoncms_service.sh
 ./install_emoncms_service.sh /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service feedwriter
 ./install_emoncms_service.sh /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service service-runner
-
+sudo mkdir /lib/systemd/system/service-runner.service.d
+sudo nano /lib/systemd/system/service-runner.service.d/service-runner.conf
+[Service]
+User=ludivine
+sudo mkdir /lib/systemd/system/feedwriter.service.d
+sudo nano /lib/systemd/system/feedwriter.service.d/feedwriter.conf
+[Service]
+Environment='USER=ludivine'
+```
+```
+sudo visudo
 ```
 une tabulation au lieu d'un espace entre (ALL) et le NOPASSWD
 ```
