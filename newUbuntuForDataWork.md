@@ -148,3 +148,4 @@ cd modules
 git clone -b stable http://github.com/emoncms/sync.git
 ln -s /opt/emoncms/modules/sync/sync-module /opt/openenergymonitor/emoncms/Modules/sync
 ```
+**aller dans le module d'administration et faire une mise à jour de base**
