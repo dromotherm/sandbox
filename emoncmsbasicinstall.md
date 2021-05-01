@@ -156,7 +156,7 @@ ln -s /opt/emoncms/modules/sync/sync-module /var/www/emoncms/Modules/sync
 ```
 Si le module contient un install.sh, on le lance en lui donnant le nom du répertoire openenergymonitor_dir : ce n'est pas le cas pour sync
 
-Par contre, il faut mettre à jour la base de données : pour celà, aller dans le modèle d'administration et faire une mise à jour de base 
+Par contre, il faut mettre à jour la base de données : pour celà, aller dans le module d'administration et faire une mise à jour de base 
 
 ## cas d'un module résidant dans /var/www/emoncms/Modules
 
