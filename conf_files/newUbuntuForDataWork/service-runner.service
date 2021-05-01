@@ -1,0 +1,26 @@
+# Systemd unit file for service runner script
+
+[Unit]
+Description=Emoncms service-runner Input Script
+Wants=redis-server.service
+After=redis-server.service
+StartLimitIntervalSec=5
+Documentation=https://github.com/emoncms/emoncms/blob/master/scripts/services/install-service-runner-update.md
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.py
+User=pi
+
+# Restart script if stopped
+Restart=always
+# Wait 30s before restart
+RestartSec=30s
+
+# Tag things in the log
+# If you want to use the journal instead of the file above, uncomment SyslogIdentifier below
+# View with: sudo journalctl -f -u service-runner -o cat
+SyslogIdentifier=service-runner
+
+[Install]
+WantedBy=multi-user.target
