@@ -143,4 +143,8 @@ nano /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runn
 ```
 cd /opt/openenergymonitor/emoncms/Modules
 git clone -b stable http://github.com/emoncms/graph.git
+mkdir modules
+cd modules
+git clone -b stable http://github.com/emoncms/sync.git
+ln -s /opt/emoncms/modules/sync/sync-module /opt/openenergymonitor/emoncms/Modules/sync
 ```
