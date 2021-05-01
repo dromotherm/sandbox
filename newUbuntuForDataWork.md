@@ -24,8 +24,7 @@ sudo mkdir openenergymonitor
 sudo chown ludivine openenergymonitor/
 cd openenergymonitor/
 git clone http://github.com/emoncms/emoncms.git
-cd /etc/apache2/sites-available
-sudo nano 000-default.conf
+sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
 on rajoute dans le virtual host :
@@ -62,7 +61,7 @@ sudo mkdir /var/opt/emoncms/phptimeseries
 sudo chown www-data:root /var/opt/emoncms/phptimeseries
 sudo mkdir /opt/emoncms
 ```
-redis
+## redis
 
 ```
 sudo apt install redis-server
@@ -78,4 +77,21 @@ extension=redis.so
 
 sudo phpenmod redis
 sudo systemctl restart apache2
+```
+## phpRedisAdmin
+```
+cd /opt/openenergymonitor/
+sudo git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
+cd phpRedisAdmin
+sudo git clone https://github.com/nrk/predis.git vendor
+
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+```
+Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
+<Directory /opt/openenergymonitor/phpRedisAdmin/>
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
 ```
