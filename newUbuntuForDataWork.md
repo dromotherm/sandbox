@@ -110,3 +110,7 @@ chmod +x install_emoncms_service.sh
 ./install_emoncms_service.sh /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service service-runner
 
 ```
+une tabulation au lieu d'un espace entre (ALL) et le NOPASSWD
+```
+ludivine ALL=(ALL)      NOPASSWD:ALL
+```
