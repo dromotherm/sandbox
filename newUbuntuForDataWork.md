@@ -84,17 +84,6 @@ cd /opt/openenergymonitor/
 sudo git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
 cd phpRedisAdmin
 sudo git clone https://github.com/nrk/predis.git vendor
-
-sudo nano /etc/apache2/sites-available/000-default.conf
-```
-
-```
-Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
-<Directory /opt/openenergymonitor/phpRedisAdmin/>
-  Options Indexes FollowSymLinks
-  AllowOverride All
-  Require all granted
-</Directory>
 ```
 
 ```
@@ -167,6 +156,19 @@ on rajoute dans le virtual host :
 ```
 Alias /emoncms  /opt/openenergymonitor/emoncms
 <Directory /opt/openenergymonitor/emoncms/>
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+```
+
+```
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+
+```
+Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
+<Directory /opt/openenergymonitor/phpRedisAdmin/>
   Options Indexes FollowSymLinks
   AllowOverride All
   Require all granted
