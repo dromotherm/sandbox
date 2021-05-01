@@ -100,3 +100,8 @@ Alias /phpRedisAdmin  /opt/openenergymonitor/phpRedisAdmin
 ```
 sudo systemctl restart apache2
 ```
+## services
+
+```
+wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/common/install_emoncms_service.sh
+```
