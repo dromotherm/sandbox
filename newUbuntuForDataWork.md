@@ -137,3 +137,9 @@ il faut modifier les fichiers de service pour y inclure les bons chemins
 nano /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service
 nano /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service
 ```
+## Modules
+
+```
+cd /opt/openenergymonitor/emoncms/Modules
+git clone -b stable http://github.com/emoncms/graph.git
+```
