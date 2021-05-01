@@ -26,6 +26,10 @@ git clone http://github.com/emoncms/emoncms.git
 cd ~
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/conf_files/newUbuntuForDataWork/000-default.conf
 sudo cp 000-default.conf /etc/apache2/sites-available/000-default.conf
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/conf_files/newUbuntuForDataWork/service-runner.service
+cp service-runner.service /opt/openenergymonitor/emoncms/scripts/services/service-runner/service-runner.service
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/conf_files/newUbuntuForDataWork/feedwriter.service
+cp feedwriter.service /opt/openenergymonitor/emoncms/scripts/services/feedwriter/feedwriter.service
 ```
 
 ```
