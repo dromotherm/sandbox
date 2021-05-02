@@ -158,6 +158,11 @@ import numpy
 numpy.__version__
 ```
 
+```
+cd /opt/openenergymonitor
+git clone http://github.com/alexjunk/BIOS
+```
+
 # DETAILS
 
 pas sur que ce soit utile :
