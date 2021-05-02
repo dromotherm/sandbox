@@ -146,25 +146,6 @@ Si on a oublié de modifier en conséquence le chemin dans sync_run.php et qu'on
 cd /opt/emoncms/modules/sync
 sudo php sync_run.php
 ```
-# bios
-
-```
-sudo apt-get install -y pkg-config
-```
-pour vérifier la version de numpy :
-```
-python3
-import numpy
-numpy.__version__
-```
-
-```
-cd /opt/openenergymonitor
-git clone http://github.com/alexjunk/BIOS
-sudo mkdir /var/opt/test
-sudo chown ludivine /var/opt/test
-python3 -m pip install --upgrade setuptools pip
-```
 
 # DETAILS
 
