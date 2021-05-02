@@ -163,6 +163,7 @@ cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS
 sudo mkdir /var/opt/test
 sudo chown ludivine /var/opt/test
+python3 -m pip install --upgrade setuptools pip
 ```
 
 # DETAILS
