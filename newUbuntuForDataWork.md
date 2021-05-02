@@ -1,4 +1,4 @@
-Bof autant installer emoncms dans /var/www
+Bof pour le changement d'emplacement d'emoncms core : autant continuer à l'installer dans /var/www
 
 ## Apache
 
@@ -141,8 +141,13 @@ Si on a oublié de modifier en conséquence le chemin dans sync_run.php et qu'on
 cd /opt/emoncms/modules/sync
 sudo php sync_run.php
 ```
+# bios
 
-# extras
+```
+sudo apt-get install -y pkg-config
+```
+
+# DETAILS
 
 pas sur que ce soit utile :
 ```
