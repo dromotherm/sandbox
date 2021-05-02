@@ -151,6 +151,12 @@ sudo php sync_run.php
 ```
 sudo apt-get install -y pkg-config
 ```
+pour vérifier la version de numpy :
+```
+python3
+import numpy
+numpy.__version__
+```
 
 # DETAILS
 
