@@ -161,6 +161,8 @@ numpy.__version__
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS
+sudo mkdir /var/opt/test
+sudo chown ludivine /var/opt/test
 ```
 
 # DETAILS
