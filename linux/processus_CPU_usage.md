@@ -51,3 +51,5 @@ MiB Swap:    100.0 total,    100.0 free,      0.0 used.    540.3 avail Mem
 Par défaut, top affiche les choses en environnement single core et sur un quadcore comme le RPI3, un pourcentage de CPU de 100% indique qu'un coeur est utilisé à 100%
 
 Pour basculer dans l'affichage multicore, `shift+I`
+
+Pour quitter top, on presse `q`
