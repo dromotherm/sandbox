@@ -1,6 +1,6 @@
 Bof pour le changement d'emplacement d'emoncms core : autant continuer à l'installer dans /var/www
 
-Par contre, celà pourrait être intéressant d'avoir un makefile qui installe les choses, plus que tout un sensemble complexe de fichiers bash
+Par contre, celà pourrait être intéressant d'avoir un makefile qui installe les choses, plus que tout un ensemble complexe de fichiers bash
 
 on ferait : make apache, make redis....
 
