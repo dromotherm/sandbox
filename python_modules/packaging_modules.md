@@ -181,3 +181,7 @@ adding 'PyFina-0.0.1.dist-info/top_level.txt'
 adding 'PyFina-0.0.1.dist-info/RECORD'
 removing build/bdist.linux-x86_64/wheel
 ```
+On installe twine
+```
+python3 -m pip install --user --upgrade twine
+```
