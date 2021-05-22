@@ -10,6 +10,30 @@ python3 setup.py sdist
 ```
 Cette commande crée un répertoire dist avec un fichier tar.gz contenant les sources
 
+Pour créer le fichier wheel :
+```
+python3 setup.py bdist_wheel
+```
+il faut avoir le package wheel
+```
+pip3 show wheel
+Name: wheel
+Version: 0.33.6
+Summary: A built-package format for Python.
+Home-page: https://github.com/pypa/wheel
+Author: Daniel Holth
+Author-email: dholth@fastmail.fm
+License: MIT
+Location: /home/alexandrecuer/.local/lib/python3.6/site-packages
+Requires: 
+Required-by: tensorflow, tensorboard
+```
+On dispose alors d'un répertoire dist avec un wheel et un tar.gz
+```
+PyFina-0.0.1-py3-none-any.whl  
+PyFina-0.0.1.tar.gz
+```
+
 # pour télécharger les fichiers sur pypi.org
 
 On installe twine
