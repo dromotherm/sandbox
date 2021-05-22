@@ -40,7 +40,30 @@ On crée un environnement virtuel
 ```
 python3 -m venv /tmp/toto
 source /tmp/toto/bin/activate
-
+cd dist
+python3 -m pip install PyFina-0.0.1-py3-none-any.whl
+```
+le retour devrait être le suivant :
+```
+Processing ./PyFina-0.0.1-py3-none-any.whl
+Collecting numpy (from PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/45/b2/6c7545bb7a38754d63048c7696804a0d947328125d81bf12beaa692c3ae3/numpy-1.19.5-cp36-cp36m-manylinux1_x86_64.whl
+Collecting matplotlib (from PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/09/03/b7b30fa81cb687d1178e085d0f01111ceaea3bf81f9330c937fb6f6c8ca0/matplotlib-3.3.4-cp36-cp36m-manylinux1_x86_64.whl
+Collecting python-dateutil>=2.1 (from matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/d4/70/d60450c3dd48ef87586924207ae8907090de0b306af2bce5d134d78615cb/python_dateutil-2.8.1-py2.py3-none-any.whl
+Collecting kiwisolver>=1.0.1 (from matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/a7/1b/cbd8ae738719b5f41592a12057ef5442e2ed5f5cb5451f8fc7e9f8875a1a/kiwisolver-1.3.1-cp36-cp36m-manylinux1_x86_64.whl
+Collecting cycler>=0.10 (from matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 (from matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl
+Collecting pillow>=6.2.0 (from matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/89/d2/942af29f8494a1a3f4bc4f483d520f7c02ccae677f5f50cf76c6b3d827d8/Pillow-8.2.0-cp36-cp36m-manylinux1_x86_64.whl
+Collecting six>=1.5 (from python-dateutil>=2.1->matplotlib->PyFina==0.0.1)
+  Using cached https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl
+Installing collected packages: numpy, six, python-dateutil, kiwisolver, cycler, pyparsing, pillow, matplotlib, PyFina
+Successfully installed PyFina-0.0.1 cycler-0.10.0 kiwisolver-1.3.1 matplotlib-3.3.4 numpy-1.19.5 pillow-8.2.0 pyparsing-2.4.7 python-dateutil-2.8.1 six-1.16.0
 ```
 
 # pour télécharger les fichiers sur pypi.org
