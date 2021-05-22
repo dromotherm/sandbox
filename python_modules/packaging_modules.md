@@ -2,6 +2,8 @@ On suit le tutorial suivant :
 
 https://packaging.python.org/tutorials/packaging-projects/
 
+https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html
+
 # méthode manuelle
 
 To build the source distribution
