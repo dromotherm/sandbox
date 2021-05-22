@@ -34,6 +34,15 @@ PyFina-0.0.1-py3-none-any.whl
 PyFina-0.0.1.tar.gz
 ```
 
+# pour tester le fichier wheel
+
+On crée un environnement virtuel
+```
+python3 -m venv /tmp/toto
+source /tmp/toto/bin/activate
+
+```
+
 # pour télécharger les fichiers sur pypi.org
 
 On installe twine
