@@ -4,10 +4,13 @@ https://packaging.python.org/tutorials/packaging-projects/
 
 # méthode manuelle
 
-To build the source distribution tar.gz 
+To build the source distribution
 ```
 python3 setup.py sdist
 ```
+Cette commande crée un répertoire dist avec un fichier tar.gz contenant les sources
+
+# pour télécharger les fichiers sur pypi.org
 
 On installe twine
 ```
