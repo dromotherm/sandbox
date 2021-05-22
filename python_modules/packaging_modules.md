@@ -1,6 +1,6 @@
 On suit le tutorial suivant :
 
-https://packaging.python.org/tutorials/installing-packages/
+https://packaging.python.org/tutorials/packaging-projects/
 
 On s'assure de disposer de la dernière version de build `python3 -m pip install --upgrade build`
 ```
