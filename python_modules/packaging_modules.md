@@ -14,6 +14,7 @@ Cette commande crée un répertoire dist avec un fichier tar.gz contenant les so
 
 Pour créer le fichier wheel :
 ```
+python3 -m pip install wheel
 python3 setup.py bdist_wheel
 ```
 il faut avoir le package wheel
