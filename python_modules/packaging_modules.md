@@ -43,7 +43,7 @@ source /tmp/toto/bin/activate
 cd dist
 python3 -m pip install PyFina-0.0.1-py3-none-any.whl
 ```
-le retour devrait être le suivant :
+le retour devrait être le suivant, dans lequel on peut vérifier que les dépendances sont bien installées :
 ```
 Processing ./PyFina-0.0.1-py3-none-any.whl
 Collecting numpy (from PyFina==0.0.1)
