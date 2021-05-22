@@ -2,7 +2,21 @@ On suit le tutorial suivant :
 
 https://packaging.python.org/tutorials/packaging-projects/
 
-On s'assure de disposer de la dernière version de build `python3 -m pip install --upgrade build`
+# méthode manuelle
+
+To build the source distribution tar.gz 
+```
+python3 setup.py sdist
+```
+
+On installe twine
+```
+python3 -m pip install --user --upgrade twine
+```
+
+# si on veut passer par le package build
+
+On l'installe avec la commande : `python3 -m pip install --upgrade build`
 ```
 Defaulting to user installation because normal site-packages is not writeable
 Collecting build
@@ -34,50 +48,8 @@ package, recreate your virtual environment.
 
 Failing command: ['/tmp/build-env-t7xr3bzm/bin/python3', '-Im', 'ensurepip', '--upgrade', '--default-pip']
 ```
-Il faut alors installer python3-venv `sudo apt-get install python3-venv`
-```
-Lecture des listes de paquets... Fait
-Construction de l'arbre des dépendances       
-Lecture des informations d'état... Fait
-Les paquets suivants ont été installés automatiquement et ne sont plus nécessaires :
-  libnvidia-cfg1-440 libnvidia-common-440 libnvidia-common-455
-  libnvidia-common-460 libnvidia-compute-440 libnvidia-decode-440
-  libnvidia-encode-440 libnvidia-extra-440 libnvidia-fbc1-440 libnvidia-gl-440
-  libnvidia-ifr1-440 libsamplerate0:i386 libspeexdsp1:i386
-  linux-hwe-5.4-headers-5.4.0-42 linux-hwe-5.4-headers-5.4.0-47
-  linux-hwe-5.4-headers-5.4.0-48 linux-hwe-5.4-headers-5.4.0-51
-  linux-hwe-5.4-headers-5.4.0-52 linux-hwe-5.4-headers-5.4.0-53
-  linux-hwe-5.4-headers-5.4.0-56 linux-hwe-5.4-headers-5.4.0-58
-  linux-hwe-5.4-headers-5.4.0-65 nvidia-compute-utils-440 nvidia-dkms-440
-  nvidia-utils-440 python3-attr python3-automat python3-click python3-colorama
-  python3-constantly python3-hyperlink python3-incremental python3-pam
-  python3-pyasn1 python3-serial python3-twisted-bin
-  xserver-xorg-video-nvidia-440
-Veuillez utiliser « sudo apt autoremove » pour les supprimer.
-Les paquets supplémentaires suivants seront installés : 
-  python3.6-venv
-Les NOUVEAUX paquets suivants seront installés :
-  python3-venv python3.6-venv
-0 mis à jour, 2 nouvellement installés, 0 à enlever et 208 non mis à jour.
-Il est nécessaire de prendre 7 396 o dans les archives.
-Après cette opération, 44,0 ko d'espace disque supplémentaires seront utilisés.
-Souhaitez-vous continuer ? [O/n] o
-Réception de :1 http://fr.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 python3.6-venv amd64 3.6.9-1~18.04ubuntu1.4 [6 188 B]
-Réception de :2 http://fr.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 python3-venv amd64 3.6.7-1~18.04 [1 208 B]
-7 396 o réceptionnés en 0s (50,6 ko/s)       
-Sélection du paquet python3.6-venv précédemment désélectionné.
-(Lecture de la base de données... 532735 fichiers et répertoires déjà installés.)
-Préparation du dépaquetage de .../python3.6-venv_3.6.9-1~18.04ubuntu1.4_amd64.deb ...
-Dépaquetage de python3.6-venv (3.6.9-1~18.04ubuntu1.4) ...
-Sélection du paquet python3-venv précédemment désélectionné.
-Préparation du dépaquetage de .../python3-venv_3.6.7-1~18.04_amd64.deb ...
-Dépaquetage de python3-venv (3.6.7-1~18.04) ...
-Paramétrage de python3.6-venv (3.6.9-1~18.04ubuntu1.4) ...
-Paramétrage de python3-venv (3.6.7-1~18.04) ...
-Traitement des actions différées (« triggers ») pour man-db (2.8.3-2ubuntu0.1) .
-```
 
-La commande `python3 -m build` donne la sortie suivante : 
+En cas de succès, La commande `python3 -m build` donne la sortie suivante : 
 ```
 Cache entry deserialization failed, entry ignored
 Collecting pip
@@ -181,7 +153,4 @@ adding 'PyFina-0.0.1.dist-info/top_level.txt'
 adding 'PyFina-0.0.1.dist-info/RECORD'
 removing build/bdist.linux-x86_64/wheel
 ```
-On installe twine
-```
-python3 -m pip install --user --upgrade twine
-```
+
