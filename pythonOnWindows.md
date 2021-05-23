@@ -5,7 +5,7 @@ ou
 
 https://python.fr.uptodown.com/windows/telecharger
 
-on inclut le chemin dans le path
+on inclut le chemin dans le path si l'on ne veut pas utiliser la commande `py` a la place de `python`
 
 Démarrer > Paramètres > Système > informations système > Paramètres systèmes avancés > Variable d'environnement > Path
 
