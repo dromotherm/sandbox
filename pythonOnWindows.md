@@ -24,3 +24,6 @@ Package    Version
 pip        21.1.1
 setuptools 56.0.0
 ```
+Mais l'installer a tout de même mis en place un certain nombre d'outils de base, dont urllib :
+
+![](images/python_lib_on_windows.png)
