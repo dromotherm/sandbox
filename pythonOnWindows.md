@@ -1,3 +1,4 @@
+## téléchargement
 
 https://www.python.org/downloads/windows/
 
@@ -27,3 +28,7 @@ setuptools 56.0.0
 Mais l'installer a tout de même mis en place un certain nombre d'outils de base, dont urllib :
 
 ![](images/python_lib_on_windows.png)
+
+# plus de docs
+
+https://docs.python.org/3/using/windows.html
