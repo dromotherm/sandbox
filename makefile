@@ -38,7 +38,7 @@ apache:
 	@sudo systemctl restart apache2
 
 mysql:
-	@echo "Setup the Mariadb server (MYSQL)"
+	@echo "Installing the Mariadb server (MYSQL)"
 	@sudo apt-get install -y mariadb-server mariadb-client
 	@echo "1 - Secure MYSQL"
 	@sudo mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
@@ -60,7 +60,7 @@ php:
 	@sudo pecl channel-update pecl.php.net
 
 redis:
-	@echo "installing redis server"
+	@echo "Installing redis server"
 	@sudo apt-get install -y redis-server
 	@echo "installing PHPRedis"
 	@sudo pecl install redis
@@ -75,10 +75,10 @@ redis:
 	@sudo systemctl restart redis-server
 
 mosquitto:
-	@echo "Mosquitto Server installation and configuration"
+	@echo "Installing mosquitto server"
 	@sudo apt-get install -y mosquitto
 	@sudo apt-get install -y libmosquitto-dev
-	@echo "Disable mosquitto persistance"
+	@echo "disabling mosquitto persistance"
 	@sudo sed -i "s/^persistence true/persistence false/" /etc/mosquitto/mosquitto.conf
 	@echo "append line: allow_anonymous false"
 	@sudo sed -i -n '/allow_anonymous false/!p;$a allow_anonymous false' /etc/mosquitto/mosquitto.conf
@@ -89,7 +89,7 @@ mosquitto:
 	@echo "Create mosquitto password file"
 	@sudo touch /etc/mosquitto/passwd
 	@sudo mosquitto_passwd -b /etc/mosquitto/passwd $(mqtt_user) $(mqtt_password)
-	@echo "PHP Mosquitto Client installation and configuration"
+	@echo "installing PHP mosquitto client"
 	@sudo apt-get install -y libmosquitto-dev
 	@sudo pecl install Mosquitto-beta
 	@echo "Add mosquitto to php mods available"
