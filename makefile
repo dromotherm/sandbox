@@ -74,7 +74,7 @@ apache:
 emoncms:
 	@sudo chown $(user) /var/www
 	@echo "Installing emoncms core repository with git"
-	@if [ ! -d "/var/www" ]; then\
+	@if [ ! -d "/var/www/emoncms" ]; then\
 		cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
 	@ls
