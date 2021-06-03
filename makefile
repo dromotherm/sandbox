@@ -88,8 +88,8 @@ emoncms:
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
 	if [ ! -f "/var/www/emoncms/settings.ini" ]; then\
 		echo "Installing default emoncms settings.ini";\
-		wget $(source)/defaults/emoncms/emonpi.settings.ini 
-		cp emonpi.settings.ini settings.ini
+		wget $(source)/defaults/emoncms/emonpi.settings.ini;\ 
+		cp emonpi.settings.ini settings.ini;\
 		sed -i "s~EMONCMS_DIR~$(emoncms_dir)~" settings.ini;\
 		sed -i "s~OPENENERGYMONITOR_DIR~$(openenergymonitor_dir)~" settings.ini;\
 		sed -i "s~EMONCMS_DATADIR~$(emoncms_datadir)~" settings.ini;\
