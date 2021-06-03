@@ -74,7 +74,10 @@ apache:
 emoncms:
 	@sudo chown $(user) /var/www
 	@echo "Installing emoncms core repository with git"
-	@cd /var/www && [ ! -d 'emoncms' ] && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core])
+	@if [ ! -d "/var/www" ]; then\
+		cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
+	fi
+	@ls
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
