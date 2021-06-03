@@ -79,7 +79,7 @@ emoncms:
 		echo "Installing emoncms core repository with git";\
 		cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
-	@sudo mkdir $(emoncms_log_location)
+	@sudo mkdir -p $(emoncms_log_location)
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
