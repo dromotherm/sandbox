@@ -39,8 +39,8 @@ apache:
 	@echo "Creating default apache2 configuration"
 	@printf "# ServerName\n" >> emonsd.conf
 	@printf "ServerName localhost\n" > emonsd.conf
-	@printf "# Default apache2 error log\n" > emonsd.conf
 	@printf "\n" > emonsd.conf
+	@printf "# Default apache2 error log\n" > emonsd.conf
 	@printf "ErrorLog /var/log/emoncms/apache2-error.log\n" emonsd.conf
 	@sudo cp emonsd.conf /etc/apache2/conf-available/emonsd.conf
 	@sudo a2enconf emonsd.conf
