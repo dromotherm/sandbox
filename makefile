@@ -9,6 +9,9 @@ mqtt_user := emonpi
 mqtt_password := emonpimqtt2016
 
 php_ver := $(shell php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"." )
+user := $(shell id -u -n)
+git_repo[emoncms_core] := https://github.com/emoncms/emoncms.git
+emoncms_core_branch := stable
 
 osupdate:
 	@echo "apt-get update"
@@ -67,6 +70,11 @@ apache:
 	@sudo a2ensite emoncms
 	@echo "restarting apache"
 	@sudo systemctl restart apache2
+
+emoncms:
+	@sudo chown $(user) /var/www
+	@echo "Installing emoncms core repository with git"
+	@cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core])
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
