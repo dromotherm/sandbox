@@ -10,6 +10,17 @@ mqtt_password := emonpimqtt2016
 
 php_ver := $(shell php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"." )
 
+osupdate:
+	@echo "apt-get update"
+	@sudo apt-get update -y
+	@echo "apt-get upgrade"
+	@sudo apt-get upgrade -y
+	@echo "apt-get dist-upgrade"
+	@sudo apt-get dist-upgrade -y
+	@echo "apt-get clean"
+	@sudo apt-get clean
+	@sudo apt --fix-broken install
+
 investigate:
 	@echo "php version : $(php_ver)"
 	@echo "TO INSTALL THE STACK:"
