@@ -59,7 +59,7 @@ apache:
 	@printf "    # Virtual Host specific error log\n" >> emoncms.conf
 	@printf "    ErrorLog /var/log/emoncms/apache2-error.log\n" >> emoncms.conf
 	@printf "\n" >> emoncms.conf
-	@printf "    <Directory /var/www/emoncms\n" >> emoncms.conf
+	@printf "    <Directory /var/www/emoncms>\n" >> emoncms.conf
 	@printf "        Options FollowSymLinks\n" >> emoncms.conf
 	@printf "        AllowOverride All\n" >> emoncms.conf
 	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
