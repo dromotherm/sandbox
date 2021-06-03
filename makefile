@@ -12,6 +12,8 @@ php_ver := $(shell php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"." )
 user := $(shell id -u -n)
 git_repo[emoncms_core] := https://github.com/emoncms/emoncms.git
 emoncms_core_branch := stable
+emoncms_log_location := /var/log/emoncms
+emoncms_datadir := /var/opt/emoncms
 
 osupdate:
 	@echo "apt-get update"
@@ -77,7 +79,7 @@ emoncms:
 	@if [ ! -d "/var/www/emoncms" ]; then\
 		cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
-	@ls
+	@sudo mkdir $(emoncms_log_location)
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
