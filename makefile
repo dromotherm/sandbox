@@ -74,7 +74,7 @@ mysql:
 	@sudo mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
 	@sudo mysql -e "DELETE FROM mysql.user WHERE User='';"
 	@sudo mysql -e "DROP DATABASE IF EXISTS test;"
-	@sudo musql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'; FLUSH PRIVILEGES;"
+	@sudo mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'; FLUSH PRIVILEGES;"
 	@echo "2 - Create $(mysql_database) database"
 	@sudo mysql -e "CREATE DATABASE $(mysql_database) DEFAULT CHARACTER SET utf8;"
 	@echo "3 - Add user:$(mysql_user) and assign to database:$(mysql_database)"
