@@ -20,6 +20,7 @@ osupdate:
 	@echo "apt-get clean"
 	@sudo apt-get clean
 	@sudo apt --fix-broken install
+	@sudo apt-get install -y git build-essential python3-pip python3-dev
 
 investigate:
 	@echo "php version : $(php_ver)"
