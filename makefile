@@ -86,6 +86,7 @@ emoncms:
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
+	@rm emonpi.settings.ini
 	@wget $(source)/defaults/emoncms/emonpi.settings.ini
 	@cp emonpi.settings.ini settings.ini
 	@sed -i "s~EMONCMS_DIR~$(emoncms_dir)~" settings.ini
