@@ -1,6 +1,6 @@
 .PHONY: investigate
 
-source := https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defaults/apache2
+source := https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master
 
 mysql_user := emoncms
 mysql_password := emonpiemoncmsmysql2016
@@ -14,6 +14,9 @@ git_repo[emoncms_core] := https://github.com/emoncms/emoncms.git
 emoncms_core_branch := stable
 emoncms_log_location := /var/log/emoncms
 emoncms_datadir := /var/opt/emoncms
+openenergymonitor_dir := /opt/openenergymonitor
+emoncms_dir := /opt/emoncms
+
 
 osupdate:
 	@echo "apt-get update"
@@ -83,6 +86,13 @@ emoncms:
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
+	if [ ! -f /var/www/emoncms/settings.ini ]; then\
+		echo "Installing default emoncms settings.ini";\
+		wget $(source)/defaults/emoncms/emonpi.settings.ini /var/www/emoncms/settings.ini;\
+		sed -i "s~EMONCMS_DIR~$emoncms_dir~" /var/www/emoncms/settings.ini;\
+		sed -i "s~OPENENERGYMONITOR_DIR~$openenergymonitor_dir~" /var/www/emoncms/settings.ini;\
+		sed -i "s~EMONCMS_DATADIR~$emoncms_datadir~" /var/www/emoncms/settings.ini;\
+	fi
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
