@@ -147,6 +147,11 @@ emoncms:
 	@sudo chown $(user) $(emoncms_dir)
 
 feedwriter:
+	@echo "creating log file for emoncms"
+	@sudo mkdir -p $(emoncms_log_location)
+	@sudo chown $(user) $(emoncms_log_location)
+	@sudo touch $(emoncms_log_location)/emoncms.log
+	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
 	@echo "creating feedwriter.service"
 	@printf "[Unit]\n" > feedwriter.service
 	@printf "Description=Emoncms feedwriter script\n" >> feedwriter.service
@@ -157,10 +162,6 @@ feedwriter:
 	@printf "Type=idle\n" >> feedwriter.service
 	@printf "ExecStart=/usr/bin/php $(emoncms_www)/scripts/feedwriter.php\n" >> feedwriter.service
 	@printf "PermissionsStartOnly=true\n" >> feedwriter.service
-	@printf "ExecStartPre=/bin/mkdir -p $(emoncms_log_location)\n" >> feedwriter.service
-	@printf "ExecStartPre=/bin/chown $(user) $(emoncms_log_location)\n" >> feedwriter.service
-	@printf "ExecStartPre=/bin/touch $(emoncms_log_location)/emoncms.log\n" >> feedwriter.service
-	@printf "ExecStartPre=/bin/chmod 666 $(emoncms_log_location)/emoncms.log\n" >> feedwriter.service
 	@printf "Restart=on-failure\n" >> feedwriter.service
 	@printf "RestartSec=60\n" >> feedwriter.service
 	@printf "SyslogIdentifier=feedwriter\n" >> feedwriter.service
@@ -198,7 +199,7 @@ service-runner:
 	@sudo systemctl restart service-runner.service
 
 emoncms_mqtt:
-	@echo "creating log file for emoncms_mqtt service"
+	@echo "creating log file for emoncms"
 	@sudo mkdir -p $(emoncms_log_location)
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
@@ -212,7 +213,6 @@ emoncms_mqtt:
 	@printf "[Service]\n" >> emoncms_mqtt.service
 	@printf "Type=idle\n" >> emoncms_mqtt.service
 	@printf "ExecStart=/usr/bin/php $(emoncms_www)/scripts/services/emoncms_mqtt/emoncms_mqtt.php\n" >> emoncms_mqtt.service
-	@printf "Environment='USER=$(user)'\n" >> emoncms_mqtt.service
 	@printf "PermissionsStartOnly=true\n" >> emoncms_mqtt.service
 	@printf "Restart=on-failure\n" >> emoncms_mqtt.service
 	@printf "RestartSec=60\n" >> emoncms_mqtt.service
