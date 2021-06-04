@@ -140,6 +140,33 @@ emoncms:
 	@sudo mkdir -p $(emoncms_dir)
 	@sudo chown $(user) $(emoncms_dir)
 
+feedwriter:
+	@echo "creating feedwriter.service"
+	@printf "[Unit]\n" > feedwriter.service
+	@printf "Description=Emoncms feedwriter script\n" >> feedwriter.service
+	@printf "Wants=mysql.service redis-server.service\n" >> feedwriter.service
+	@printf "After=mysql.service redis-server.service\n" >> feedwriter.service
+	@printf "\n" >> feedwriter.service
+	@printf "[Service]\n" >> feedwriter.service
+	@printf "Type=idle\n" >> feedwriter.service
+	@printf "ExecStart=/usr/bin/php $(emoncms_www)/scripts/feedwriter.php\n" >> feedwriter.service
+	@printf "PermissionsStartOnly=true\n" >> feedwriter.service
+	@printf "ExecStartPre=/bin/mkdir -p $(emoncms_log_location)\n" >> feedwriter.service
+	@printf "ExecStartPre=/bin/chown $(user) $(emoncms_log_location)\n" >> feedwriter.service
+	@printf "ExecStartPre=/bin/touch $(emoncms_log_location)/emoncms.log\n" >> feedwriter.service
+	@printf "ExecStartPre=/bin/chmod 666 $(emoncms_log_location)/emoncms.log\n" >> feedwriter.service
+	@printf "Restart=on-failure\n" >> feedwriter.service
+	@printf "RestartSec=60\n" >> feedwriter.service
+	@printf "SyslogIdentifier=feedwriter\n" >> feedwriter.service
+	@printf "\n" >> feedwriter.service
+	@printf "[Install]\n" >> feedwriter.service
+	@printf "WantedBy=multi-user.target\n" >> feedwriter.service
+	@echo "creating the symlinks"
+	@sudo ln -sf $(here)/feedwriter.service $(service_dir)
+	@echo "enabling the feedwriter service"
+	@sudo systemctl enable feedwriter.service
+	@sudo systemctl restart feedwriter.service
+
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
 	@sudo apt-get install -y mariadb-server mariadb-client
