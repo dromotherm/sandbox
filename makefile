@@ -127,6 +127,15 @@ emoncms:
 		echo "Installing default emoncms settings.ini";\
 		cp settings.ini $(emoncms_www)/settings.ini;\
 	fi
+	@echo "creating data directories for emoncms feed engines"
+	@sudo mkdir -p $(emoncms_datadir)/phpfina
+	@sudo chown www-data:root $(emoncms_datadir)/phpfina
+	@sudo mkdir -p $(emoncms_datadir)/phpfiwa
+	@sudo chown www-data:root $(emoncms_datadir)/phpfiwa
+	@sudo mkdir -p $(emoncms_datadir)/phptimeseries
+	@sudo chown www-data:root $(emoncms_datadir)/phptimeseries
+	@sudo mkdir -p $(emoncms_dir)
+	@sudo chown $(user) $(emoncms_dir)
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
