@@ -168,6 +168,30 @@ feedwriter:
 	@echo "enabling the feedwriter service"
 	@sudo systemctl enable feedwriter.service
 	@sudo systemctl restart feedwriter.service
+	
+service-runner:
+	@echo "creating service-runner service file"
+	@printf "[Unit]\n" > service-runner.service
+	@printf "Description=Emoncms service-runner Input Script\n" >> service-runner.service
+	@printf "Wants=redis-server.service\n" >> service-runner.service
+	@printf "After=redis-server.service\n" >> service-runner.service
+	@printf "StartLimitIntervalSec=5\n" >> service-runner.service
+	@printf "\n" >> service-runner.service
+	@printf "[Service]\n" >> service-runner.service
+	@printf "Type=simple\n" >> service-runner.service
+	@printf "ExecStart=/usr/bin/python3 $(emoncms_www)/scripts/services/service-runner/service-runner.py\n" >> service-runner.service
+	@printf "User=$(user)\n" >> service-runner.service
+	@printf "Restart=always\n" >> service-runner.service
+	@printf "RestartSec=30s\n" >> service-runner.service
+	@printf "SyslogIdentifier=service-runner\n" >> service-runner.service
+	@printf "\n" >> service-runner.service
+	@printf "[Install]\n" >> service-runner.service
+	@printf "WantedBy=multi-user.target\n" >> service-runner.service
+	@echo "creating the symlinks"
+	@sudo ln -sf $(here)/service-runner.service $(service_dir)
+	@echo "enabling the service-runner service"
+	@sudo systemctl enable service-runner.service
+	@sudo systemctl restart service-runner.service
 
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
