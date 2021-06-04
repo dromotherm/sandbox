@@ -1,6 +1,7 @@
-.PHONY: investigate
+# Emoncms stack makefile
+# Copyright (C) 2021 Alexandre Cuer <alexandre.cuer at cerema dot fr>
 
-source := https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master
+.PHONY: investigate
 
 mysql_user := emoncms
 mysql_password := emonpiemoncmsmysql2016
