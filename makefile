@@ -84,10 +84,12 @@ emoncms:
 		echo "Installing emoncms core repository with git";\
 		cd $(www) && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
+	@echo "creating log file"
 	@sudo mkdir -p $(emoncms_log_location)
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
+	@echo "creating settings.ini for emoncms"
 	@printf "emoncms_dir = '$(emoncms_dir)'\n" > settings.ini
 	@printf "openenergymonitor_dir = '$(openenergymonitor_dir)'\n" >> settings.ini
 	@printf "\n" >> settings.ini
@@ -134,6 +136,7 @@ emoncms:
 	@sudo chown www-data:root $(emoncms_datadir)/phpfiwa
 	@sudo mkdir -p $(emoncms_datadir)/phptimeseries
 	@sudo chown www-data:root $(emoncms_datadir)/phptimeseries
+	@echo "creating $(emoncms_dir) directory"
 	@sudo mkdir -p $(emoncms_dir)
 	@sudo chown $(user) $(emoncms_dir)
 
