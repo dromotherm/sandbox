@@ -13,7 +13,8 @@ user := $(shell id -u -n)
 git_repo[emoncms_core] := https://github.com/emoncms/emoncms.git
 emoncms_core_branch := stable
 emoncms_log_location := /var/log/emoncms
-emoncms_www := /var/www/emoncms
+www := /var/www
+emoncms_www := $(www)/emoncms
 emoncms_datadir := /var/opt/emoncms
 openenergymonitor_dir := /opt/openenergymonitor
 emoncms_dir := /opt/emoncms
@@ -78,10 +79,10 @@ apache:
 	@sudo systemctl restart apache2
 
 emoncms:
-	@sudo chown $(user) /var/www
-	@if [ ! -d "/var/www/emoncms" ]; then\
+	@sudo chown $(user) $(www)
+	@if [ ! -d $(emoncms_www) ]; then\
 		echo "Installing emoncms core repository with git";\
-		cd /var/www && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
+		cd $(www) && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
 	@sudo mkdir -p $(emoncms_log_location)
 	@sudo chown $(user) $(emoncms_log_location)
@@ -92,9 +93,9 @@ emoncms:
 	@sed -i "s~EMONCMS_DIR~$(emoncms_dir)~" settings.ini
 	@sed -i "s~OPENENERGYMONITOR_DIR~$(openenergymonitor_dir)~" settings.ini
 	@sed -i "s~EMONCMS_DATADIR~$(emoncms_datadir)~" settings.ini
-	@if [ ! -f "/var/www/emoncms/settings.ini" ]; then\
+	@if [ ! -f "$(emoncms_www)/settings.ini" ]; then\
 		echo "Installing default emoncms settings.ini";\
-		cp settings.ini /var/www/emoncms/settings.ini;\
+		cp settings.ini $(emoncms_www)/settings.ini;\
 	fi
 
 mysql:
