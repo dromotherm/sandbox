@@ -88,11 +88,41 @@ emoncms:
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
 	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
-	@wget -N $(source)/defaults/emoncms/emonpi.settings.ini
-	@cp emonpi.settings.ini settings.ini
-	@sed -i "s~EMONCMS_DIR~$(emoncms_dir)~" settings.ini
-	@sed -i "s~OPENENERGYMONITOR_DIR~$(openenergymonitor_dir)~" settings.ini
-	@sed -i "s~EMONCMS_DATADIR~$(emoncms_datadir)~" settings.ini
+	@printf "emoncms_dir = '$(emoncms_dir)'\n" > settings.ini
+	@printf "openenergymonitor_dir = '$(openenergymonitor_dir)'\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[sql]\n" >> settings.ini
+	@printf "server = '127.0.0.1'\n" >> settings.ini
+	@printf "database = 'emoncms'\n" >> settings.ini
+	@printf "username = '$(mysql_user)'\n" >> settings.ini
+	@printf "password = '$(mysql_password)'\n" >> settings.ini
+	@printf "; Skip database setup test - set to false once database has been setup.\n" >> settings.ini
+	@printf "dbtest   = true\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[redis]\n" >> settings.ini
+	@printf "enabled = true\n" >> settings.ini
+	@printf "prefix = ''\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[mqtt]\n" >> settings.ini
+	@printf "enabled = true\n" >> settings.ini
+	@printf "user = '$(mqtt_user)'\n" >> settings.ini
+	@printf "password = '$(mqtt_password)'\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[feed]\n" >> settings.ini
+	@printf "engines_hidden = [0,6,10]\n" >> settings.ini
+	@printf "redisbuffer[enabled] = true\n" >> settings.ini
+	@printf "redisbuffer[sleep] = 300\n" >> settings.ini
+	@printf "phpfina[datadir] = '$(emoncms_datadir)/phpfina/'\n" >> settings.ini
+	@printf "phptimeseries[datadir] = '$(emoncms_datadir)/phptimeseries/'\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[interface]\n" >> settings.ini
+	@printf "enable_admin_ui = true\n" >> settings.ini
+	@printf "feedviewpath = 'graph/'\n" >> settings.ini
+	@printf "favicon = 'favicon_emonpi.png'\n" >> settings.ini
+	@printf "\n" >> settings.ini
+	@printf "[log]\n" >> settings.ini
+	@printf "; Log Level: 1=INFO, 2=WARN, 3=ERROR\n" >> settings.ini
+	@printf "level = 2\n" >> settings.ini
 	@if [ ! -f "$(emoncms_www)/settings.ini" ]; then\
 		echo "Installing default emoncms settings.ini";\
 		cp settings.ini $(emoncms_www)/settings.ini;\
