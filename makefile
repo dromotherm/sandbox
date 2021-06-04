@@ -13,6 +13,7 @@ user := $(shell id -u -n)
 git_repo[emoncms_core] := https://github.com/emoncms/emoncms.git
 emoncms_core_branch := stable
 emoncms_log_location := /var/log/emoncms
+emoncms_www := /var/www/emoncms
 emoncms_datadir := /var/opt/emoncms
 openenergymonitor_dir := /opt/openenergymonitor
 emoncms_dir := /opt/emoncms
@@ -50,19 +51,19 @@ apache:
 	@printf "ServerName localhost\n" >> emonsd.conf
 	@printf "\n" >> emonsd.conf
 	@printf "# Default apache2 error log\n" >> emonsd.conf
-	@printf "ErrorLog /var/log/emoncms/apache2-error.log\n" >> emonsd.conf
+	@printf "ErrorLog $(emoncms_log_location)/apache2-error.log\n" >> emonsd.conf
 	@sudo cp emonsd.conf /etc/apache2/conf-available/emonsd.conf
 	@sudo a2enconf emonsd.conf
 	@echo "virtual host configuration"
 	@printf "<VirtualHost *:80>\n" > emoncms.conf
 	@printf "    ServerName localhost\n" >> emoncms.conf
 	@printf "    ServerAdmin webmaster@localhost\n" >> emoncms.conf
-	@printf "    DocumentRoot /var/www/emoncms\n" >> emoncms.conf
+	@printf "    DocumentRoot $(emoncms_www)\n" >> emoncms.conf
 	@printf "\n" >> emoncms.conf
 	@printf "    # Virtual Host specific error log\n" >> emoncms.conf
-	@printf "    ErrorLog /var/log/emoncms/apache2-error.log\n" >> emoncms.conf
+	@printf "    ErrorLog $(emoncms_log_location)/apache2-error.log\n" >> emoncms.conf
 	@printf "\n" >> emoncms.conf
-	@printf "    <Directory /var/www/emoncms>\n" >> emoncms.conf
+	@printf "    <Directory $(emoncms_www)>\n" >> emoncms.conf
 	@printf "        Options FollowSymLinks\n" >> emoncms.conf
 	@printf "        AllowOverride All\n" >> emoncms.conf
 	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
