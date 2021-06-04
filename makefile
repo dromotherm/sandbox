@@ -19,6 +19,8 @@ emoncms_datadir := /var/opt/emoncms
 openenergymonitor_dir := /opt/openenergymonitor
 emoncms_dir := /opt/emoncms
 
+service_dir := /etc/systemd/system
+here := $(shell pwd)
 
 osupdate:
 	@echo "apt-get update"
