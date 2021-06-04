@@ -145,6 +145,10 @@ emoncms:
 	@echo "creating $(emoncms_dir) directory"
 	@sudo mkdir -p $(emoncms_dir)
 	@sudo chown $(user) $(emoncms_dir)
+	
+sudoers:
+        @echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | sudo tee /etc/sudoers.d/emoncms-rebootbutton
+        @sudo chmod 0440 /etc/sudoers.d/emoncms-rebootbutton
 
 feedwriter:
 	@echo "creating log file for emoncms"
