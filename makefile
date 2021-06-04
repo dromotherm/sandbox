@@ -44,6 +44,9 @@ investigate:
 	@echo "make redis"
 	@echo "make mosquitto"
 	@echo "NOTA : always run make redis or make mosquitto AFTER make php !!"
+	@echo "make emoncms"
+	@echo "make feedwriter"
+	@echo "make service-runner"
 
 apache:
 	@sudo apt-get install -y apache2 gettext
