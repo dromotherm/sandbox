@@ -197,6 +197,35 @@ service-runner:
 	@sudo systemctl enable service-runner.service
 	@sudo systemctl restart service-runner.service
 
+emoncms_mqtt:
+	@echo "creating log file for emoncms_mqtt service"
+	@sudo mkdir -p $(emoncms_log_location)
+	@sudo chown $(user) $(emoncms_log_location)
+	@sudo touch $(emoncms_log_location)/emoncms.log
+	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
+	@echo "creating emoncms_mqtt service file"
+	@printf "[Unit]\n" >> emoncms_mqtt.service
+	@printf "Description=Emoncms emoncms_mqtt script\n" >> emoncms_mqtt.service
+	@printf "Wants=mosquitto.service mysql.service redis-server.service\n" >> emoncms_mqtt.service
+	@printf "After=mosquitto.service mysql.service redis-server.service\n" >> emoncms_mqtt.service
+	@printf "\n" >> emoncms_mqtt.service
+	@printf "[Service]\n" >> emoncms_mqtt.service
+	@printf "Type=idle\n" >> emoncms_mqtt.service
+	@printf "ExecStart=/usr/bin/php $(emoncms_www)/scripts/services/emoncms_mqtt/emoncms_mqtt.php\n" >> emoncms_mqtt.service
+	@printf "Environment='USER=$(user)'\n" >> emoncms_mqtt.service
+	@printf "PermissionsStartOnly=true\n" >> emoncms_mqtt.service
+	@printf "Restart=on-failure\n" >> emoncms_mqtt.service
+	@printf "RestartSec=60\n" >> emoncms_mqtt.service
+	@printf "SyslogIdentifier=emoncms_mqtt\n" >> emoncms_mqtt.service
+	@printf "\n" >> emoncms_mqtt.service
+	@printf "[Install]\n" >> emoncms_mqtt.service
+	@printf "WantedBy=multi-user.target\n" >> emoncms_mqtt.service
+	@echo "creating the symlinks"
+	@sudo ln -sf $(here)/emoncms_mqtt.service $(service_dir)
+	@echo "enabling the emoncms_mqtt service"
+	@sudo systemctl enable emoncms_mqtt.service
+	@sudo systemctl restart emoncms_mqtt.service
+
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
 	@sudo apt-get install -y mariadb-server mariadb-client
