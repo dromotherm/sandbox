@@ -322,7 +322,7 @@ module:
 	@echo "update emoncms database"
 	@php emoncmsdbupdate.php
 
-symlinkmodule:
+symodule:
 	@mkdir -p $(emoncms_dir)/modules
 	@$(MAKE) --no-print-directory createDBupdatefile
 	@if [ ! -d "$(emoncms_dir)/modules/$(name)" ]; then\
@@ -331,7 +331,7 @@ symlinkmodule:
 	fi
 	@if [ -d $(emoncms_dir)/modules/$(name)/$(name)-module ]; then\
         	echo "symlinking IU directory";\
-        	ln -s $(emoncms_dir)/modules/$(name)/$(name)-module $(emoncms_www)/Modules/$module;\
+        	ln -s $(emoncms_dir)/modules/$(name)/$(name)-module $(emoncms_www)/Modules/$(name);\
 	fi
 	@if [ -f $(emoncms_dir)/modules/$(name)/install.sh ]; then\
 		echo "running install script";\
