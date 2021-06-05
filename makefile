@@ -37,6 +37,8 @@ osupdate:
 
 help:
 	@echo "php version : $(php_ver)"
+	@echo "TO UPDATE THE OS"
+	@echo "make osupdate"
 	@echo "TO INSTALL THE STACK:"
 	@echo "make apache"
 	@echo "make mysql"
