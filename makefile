@@ -53,6 +53,9 @@ help:
 	@echo "FOR MODULES :"
 	@echo "make module name=graph"
 	@echo "make module name=dashboard"
+	@echo "FOR SYMLINKED MODULES :"
+	@echo "make symodule name=sync"
+	@echo "make symodule name=postprocess"
 
 apache:
 	@sudo apt-get install -y apache2 gettext
