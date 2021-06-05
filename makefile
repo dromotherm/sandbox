@@ -323,4 +323,4 @@ module:
 	@php emoncmsdbupdate.php
 
 symlinkmodule:
-	mkdir -p $(emoncms_dir)/modules
+	@mkdir -p $(emoncms_dir)/modules
