@@ -148,8 +148,8 @@ emoncms:
 
 sudoers:
 	@echo "enabling shutdown for www-data"
-        @echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | sudo tee /etc/sudoers.d/emoncms-rebootbutton
-        @sudo chmod 0440 /etc/sudoers.d/emoncms-rebootbutton
+	@echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | sudo tee /etc/sudoers.d/emoncms-rebootbutton
+	@sudo chmod 0440 /etc/sudoers.d/emoncms-rebootbutton
 
 feedwriter:
 	@echo "creating log file for emoncms"
