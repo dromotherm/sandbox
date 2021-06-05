@@ -304,7 +304,11 @@ module:
 	@printf "    %ssettings['sql']['database'],\n" $$ >> emoncmsdbupdate.php
 	@printf "    %ssettings['sql']['port']\n" $$ >> emoncmsdbupdate.php
 	@printf ");\n" >> emoncmsdbupdate.php
+	@printf "require_once 'Lib/dbschemasetup.php';\n" >> emoncmsdbupdate.php
+	@printf "print json_encode(db_schema_setup(%smysqli,load_db_schema(),%sapplychanges)).'%s';" $$ $$ "\n" >> emoncmsdbupdate.php
 	@if [ ! -d "$(emoncms_www)/Modules/$(name)" ]; then\
 		echo "Installing module $(name)";\
 		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/$(name);\
+		echo "Update Emoncms database";\
+		php emoncmsdbupdate.php;\
 	fi
