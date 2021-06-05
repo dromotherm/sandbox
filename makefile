@@ -368,7 +368,7 @@ log2ram:
 	@printf "    notifempty\n" >> 00_defaults
 	@printf "    delaycompress\n" >> 00_defaults
 	@printf "}\n" >> 00_defaults
-	@sudo ln -sf 00_defaults /etc/logrotate.d/00_defaults
+	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
 	@echo "creating custom emoncms config"
 	@printf "/var/log/emoncms/*.log {\n" > emoncms
 	@printf "    maxsize 3M\n" >> emoncms
@@ -376,7 +376,7 @@ log2ram:
 	@printf "    olddir /var/log.old/emoncms\n" >> emoncms
 	@printf "    createolddir 775 root root\n" >> emoncms
 	@printf "}\n" >> emoncms
-	@sudo ln -sf emoncms /etc/logrotate.d/emoncms
+	@sudo ln -sf $(here) emoncms /etc/logrotate.d/emoncms
 	@echo "creating custom emonhub config"
 	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub
 	@printf "    maxsize 3M\n" >> emonhub
@@ -387,7 +387,7 @@ log2ram:
 	@printf "    olddir /var/log.old/emonhub\n" >> emonhub
 	@printf "    createolddir 775 root emonhub\n" >> emonhub
 	@printf "}\n" >> emonhub
-	@sudo ln -sf emonhub /etc/logrotate.d/emonhub
+	@sudo ln -sf $(here)/emonhub /etc/logrotate.d/emonhub
 	@sudo chown root /etc/logrotate.d/00_defaults
 	@sudo chown root /etc/logrotate.d/emoncms
 	@sudo chown root /etc/logrotate.d/emonhub
@@ -396,7 +396,7 @@ log2ram:
 	@printf "test -x /usr/sbin/logrotate || exit 0\n" >> log2ram
 	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1\n" >> log2ram
 	@printf "systemctl reload log2ram\n" >> log2ram
-	@sudo ln -sf log2ram /etc/cron.hourly/log2ram
+	@sudo ln -sf $(here)/log2ram /etc/cron.hourly/log2ram
 	@sudo chmod +x /etc/cron.hourly/log2ram
 	@echo "copy in commented out placeholder logrotate file"
 	@printf "#!/bin/sh\n" > logrotate
