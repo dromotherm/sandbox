@@ -314,13 +314,28 @@ createDBupdatefile:
 	@printf "print json_encode(db_schema_setup(%smysqli,load_db_schema(),%sapplychanges)).'%s';" $$ $$ "\n" >> emoncmsdbupdate.php
 
 module:
-	@$(MAKE) createDBupdatefile
+	@$(MAKE) --no-print-directory createDBupdatefile
 	@if [ ! -d "$(emoncms_www)/Modules/$(name)" ]; then\
 		echo "Installing module $(name)";\
 		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/$(name);\
 	fi
-	@echo "update emoncms database";
+	@echo "update emoncms database"
 	@php emoncmsdbupdate.php
 
 symlinkmodule:
 	@mkdir -p $(emoncms_dir)/modules
+	@$(MAKE) --no-print-directory createDBupdatefile
+	@if [ ! -d "$(emoncms_dir)/modules/$(name)" ]; then\
+		echo "Installing module $(name)";\
+		cd $(emoncms_www)/modules && git clone -b stable http://github.com/emoncms/$(name);\
+	fi
+	@if [ -d $(emoncms_dir)/modules/$(name)/$(name)-module ]; then\
+        	echo "symlinking IU directory";\
+        	ln -s $(emoncms_dir)/modules/$(name)/$(name)-module $(emoncms_www)/Modules/$module;\
+	fi
+	@if [ -f $(emoncms_dir)/modules/$(name)/install.sh ]; then\
+		echo "running install script";\
+		$(emoncms_dir)/modules/$(name)/install.sh $(openenergymonitor_dir);\
+        fi
+	@echo "update emoncms database"
+	@php emoncmsdbupdate.php
