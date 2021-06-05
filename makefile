@@ -296,7 +296,7 @@ mosquitto:
 	@printf "extension=mosquitto.so" | sudo tee /etc/php/$(php_ver)/mods-available/mosquitto.ini 1>&2
 	@sudo phpenmod mosquitto
 
-module:
+createDBupdatefile:
 	@printf "<?php\n" > emoncmsdbupdate.php
 	@printf "%sapplychanges = true;\n" $$ >> emoncmsdbupdate.php
 	@printf "define('EMONCMS_EXEC', 1);\n" >> emoncmsdbupdate.php
@@ -312,6 +312,9 @@ module:
 	@printf ");\n" >> emoncmsdbupdate.php
 	@printf "require_once 'Lib/dbschemasetup.php';\n" >> emoncmsdbupdate.php
 	@printf "print json_encode(db_schema_setup(%smysqli,load_db_schema(),%sapplychanges)).'%s';" $$ $$ "\n" >> emoncmsdbupdate.php
+
+module:
+	@$(MAKE) createDBupdatefile
 	@if [ ! -d "$(emoncms_www)/Modules/$(name)" ]; then\
 		echo "Installing module $(name)";\
 		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/$(name);\
