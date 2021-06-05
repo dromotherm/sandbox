@@ -290,8 +290,8 @@ mosquitto:
 	@printf "extension=mosquitto.so" | sudo tee /etc/php/$(php_ver)/mods-available/mosquitto.ini 1>&2
 	@sudo phpenmod mosquitto
 
-graph:
-	@if [ ! -d "$(emoncms_www)/Modules/graph" ]; then\
-		echo "Installing module graph";\
-		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/graph;\
+module:
+	@if [ ! -d "$(emoncms_www)/Modules/$(name)" ]; then\
+		echo "Installing module $(name)";\
+		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/$(name);\
 	fi
