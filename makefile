@@ -321,3 +321,6 @@ module:
 	fi
 	@echo "update emoncms database";
 	@php emoncmsdbupdate.php
+
+symlinkmodule:
+	mkdir -p $(emoncms_dir)/modules
