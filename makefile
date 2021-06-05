@@ -354,3 +354,54 @@ log2ram:
 		sudo mkdir /var/log/logrotate;\
 		sudo chown -R root:adm /var/log/logrotate;\
 	fi
+	@echo "creating custom default config"
+	@printf "maxsize 500k\n" > 00_defaults
+	@printf "\n" >> 00_defaults
+	@printf "/var/log/logrotate/*.log {\n" >> 00_defaults
+	@printf "    rotate 7\n" >> 00_defaults
+	@printf "    daily\n" >> 00_defaults
+	@printf "    compress\n" >> 00_defaults
+	@printf "    copytruncate\n" >> 00_defaults
+	@printf "    size 100k\n" >> 00_defaults
+	@printf "    nocreate\n" >> 00_defaults
+	@printf "    missingok\n" >> 00_defaults
+	@printf "    notifempty\n" >> 00_defaults
+	@printf "    delaycompress\n" >> 00_defaults
+	@printf "}\n" >> 00_defaults
+	@sudo ln -sf 00_defaults /etc/logrotate.d/00_defaults
+	@echo "creating custom emoncms config"
+	@printf "/var/log/emoncms/*.log {\n" > emoncms
+	@printf "    maxsize 3M\n" >> emoncms
+	@printf "    compress\n" >> emoncms
+	@printf "    olddir /var/log.old/emoncms\n" >> emoncms
+	@printf "    createolddir 775 root root\n" >> emoncms
+	@printf "}\n" >> emoncms
+	@sudo ln -sf emoncms /etc/logrotate.d/emoncms
+	@echo "creating custom emonhub config"
+	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub
+	@printf "    maxsize 3M\n" >> emonhub
+	@printf "    norenamecopy\n" >> emonhub
+	@printf "    copytruncate\n" >> emonhub
+	@printf "    su root root\n" >> emonhub
+	@printf "    compress\n" >> emonhub
+	@printf "    olddir /var/log.old/emonhub\n" >> emonhub
+	@printf "    createolddir 775 root emonhub\n" >> emonhub
+	@printf "}\n" >> emonhub
+	@sudo ln -sf emonhub /etc/logrotate.d/emonhub
+	@sudo chown root /etc/logrotate.d/00_defaults
+	@sudo chown root /etc/logrotate.d/emoncms
+	@sudo chown root /etc/logrotate.d/emonhub
+	@echo "log2ram cron hourly entry"
+	@printf "#!/usr/bin/env sh\n" > log2ram
+	@printf "test -x /usr/sbin/logrotate || exit 0" >> log2ram
+	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1" >> log2ram
+	@printf "systemctl reload log2ram" >> log2ram
+	@sudo ln -sf log2ram /etc/cron.hourly/log2ram
+	@sudo chmod +x /etc/cron.hourly/log2ram
+	@echo "copy in commented out placeholder logrotate file"
+	@printf "#!/bin/sh\n" > logrotate
+	@printf "# test -x /usr/sbin/logrotate || exit 0\n" >> logrotate
+	@printf "# /usr/sbin/logrotate /etc/logrotate.conf\n" >> logrotate
+	@printf "# logrotate now triggered by log2ram\n" >> logrotate
+	@printf "# see /etc/cron.hourly/log2ram\n" >> logrotate
+	@sudo cp logrotate /etc/cron.daily/logrotate
