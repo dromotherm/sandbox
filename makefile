@@ -348,7 +348,7 @@ log2ram:
 		echo "cloning log2ram";\
 		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram logtoram;\
 	fi
-	@chmod +x logtoram/install.sh && sudo logtoram/./install.sh
+	@chmod +x logtoram/install.sh && cd logtoram && sudo ./install.sh
 	@rm -rf log2ram
 	@if [ ! -d /var/log/logrotate ]; then\
 		sudo mkdir /var/log/logrotate;\
@@ -376,7 +376,7 @@ log2ram:
 	@printf "    olddir /var/log.old/emoncms\n" >> emoncms
 	@printf "    createolddir 775 root root\n" >> emoncms
 	@printf "}\n" >> emoncms
-	@sudo ln -sf $(here) emoncms /etc/logrotate.d/emoncms
+	@sudo ln -sf $(here)/emoncms /etc/logrotate.d/emoncms
 	@echo "creating custom emonhub config"
 	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub
 	@printf "    maxsize 3M\n" >> emonhub
