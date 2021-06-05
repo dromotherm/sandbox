@@ -393,9 +393,9 @@ log2ram:
 	@sudo chown root /etc/logrotate.d/emonhub
 	@echo "log2ram cron hourly entry"
 	@printf "#!/usr/bin/env sh\n" > log2ram
-	@printf "test -x /usr/sbin/logrotate || exit 0" >> log2ram
-	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1" >> log2ram
-	@printf "systemctl reload log2ram" >> log2ram
+	@printf "test -x /usr/sbin/logrotate || exit 0\n" >> log2ram
+	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1\n" >> log2ram
+	@printf "systemctl reload log2ram\n" >> log2ram
 	@sudo ln -sf log2ram /etc/cron.hourly/log2ram
 	@sudo chmod +x /etc/cron.hourly/log2ram
 	@echo "copy in commented out placeholder logrotate file"
