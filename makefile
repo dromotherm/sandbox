@@ -145,8 +145,9 @@ emoncms:
 	@echo "creating $(emoncms_dir) directory"
 	@sudo mkdir -p $(emoncms_dir)
 	@sudo chown $(user) $(emoncms_dir)
-	
+
 sudoers:
+	@echo "enabling shutdown for www-data"
         @echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | sudo tee /etc/sudoers.d/emoncms-rebootbutton
         @sudo chmod 0440 /etc/sudoers.d/emoncms-rebootbutton
 
@@ -288,3 +289,9 @@ mosquitto:
 	@echo "Add mosquitto to php mods available"
 	@printf "extension=mosquitto.so" | sudo tee /etc/php/$(php_ver)/mods-available/mosquitto.ini 1>&2
 	@sudo phpenmod mosquitto
+
+graph:
+	@if [ ! -d "$(emoncms_www)/Modules/graph" ]; then\
+		echo "Installing module graph";\
+		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/graph;\
+	fi
