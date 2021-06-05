@@ -349,7 +349,7 @@ log2ram:
 		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram logtoram;\
 	fi
 	@chmod +x logtoram/install.sh && cd logtoram && sudo ./install.sh
-	@rm -rf log2ram
+	@rm -rf logtoram
 	@if [ ! -d /var/log/logrotate ]; then\
 		sudo mkdir /var/log/logrotate;\
 		sudo chown -R root:adm /var/log/logrotate;\
