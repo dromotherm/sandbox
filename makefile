@@ -294,7 +294,7 @@ module:
 	@printf "<?php\n" > emoncmsdbupdate.php
 	@printf "%sapplychanges = true;\n" $$ >> emoncmsdbupdate.php
 	@printf "define('EMONCMS_EXEC', 1);\n" >> emoncmsdbupdate.php
-	@printf "chdir('/var/www/emoncms');\n" >> emoncmsdbupdate.php
+	@printf "chdir('$(emoncms_www)');\n" >> emoncmsdbupdate.php
 	@printf "require 'process_settings.php';\n" >> emoncmsdbupdate.php
 	@printf "require 'core.php';\n" >> emoncmsdbupdate.php
 	@printf "%smysqli = @new mysqli(\n" $$ >> emoncmsdbupdate.php
