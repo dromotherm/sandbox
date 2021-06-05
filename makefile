@@ -1,7 +1,7 @@
 # Emoncms stack makefile
 # Copyright (C) 2021 Alexandre Cuer <alexandre.cuer at cerema dot fr>
 
-.PHONY: investigate
+.PHONY: help
 
 mysql_user := emoncms
 mysql_password := emonpiemoncmsmysql2016
