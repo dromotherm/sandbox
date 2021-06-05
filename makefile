@@ -342,3 +342,15 @@ symodule:
         fi
 	@echo "update emoncms database"
 	@php emoncmsdbupdate.php
+
+log2ram:
+	@if [ ! -d "log2ram" ]; then\
+		echo "cloning log2ram";\
+		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram;\
+	fi
+	@cd log2ram && chmod +x install.sh && sudo ./install.sh
+	@cd .. && rm -rf log2ram
+	@if [ ! -d /var/log/logrotate ]; then\
+		sudo mkdir /var/log/logrotate;\
+		sudo chown -R root:adm /var/log/logrotate;\
+	fi
