@@ -309,6 +309,6 @@ module:
 	@if [ ! -d "$(emoncms_www)/Modules/$(name)" ]; then\
 		echo "Installing module $(name)";\
 		cd $(emoncms_www)/Modules && git clone -b stable http://github.com/emoncms/$(name);\
-		echo "Update Emoncms database";\
-		php emoncmsdbupdate.php;\
 	fi
+	@echo "update emoncms database";
+	@php emoncmsdbupdate.php
