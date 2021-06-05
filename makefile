@@ -35,7 +35,7 @@ osupdate:
 	@sudo apt --fix-broken install
 	@sudo apt-get install -y git build-essential python3-pip python3-dev
 
-investigate:
+help:
 	@echo "php version : $(php_ver)"
 	@echo "TO INSTALL THE STACK:"
 	@echo "make apache"
@@ -47,6 +47,10 @@ investigate:
 	@echo "make emoncms"
 	@echo "make feedwriter"
 	@echo "make service-runner"
+	@echo "make emoncms_mqtt"
+	@echo "FOR MODULES :"
+	@echo "make module name=graph"
+	@echo "make module name=dashboard"
 
 apache:
 	@sudo apt-get install -y apache2 gettext
