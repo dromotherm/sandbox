@@ -327,7 +327,7 @@ symlinkmodule:
 	@$(MAKE) --no-print-directory createDBupdatefile
 	@if [ ! -d "$(emoncms_dir)/modules/$(name)" ]; then\
 		echo "Installing module $(name)";\
-		cd $(emoncms_www)/modules && git clone -b stable http://github.com/emoncms/$(name);\
+		cd $(emoncms_dir)/modules && git clone -b stable http://github.com/emoncms/$(name);\
 	fi
 	@if [ -d $(emoncms_dir)/modules/$(name)/$(name)-module ]; then\
         	echo "symlinking IU directory";\
