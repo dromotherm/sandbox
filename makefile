@@ -346,9 +346,9 @@ symodule:
 log2ram:
 	@if [ ! -d "log2ram" ]; then\
 		echo "cloning log2ram";\
-		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram;\
+		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram logtoram;\
 	fi
-	@chmod +x log2ram/install.sh && sudo log2ram/./install.sh
+	@chmod +x logtoram/install.sh && sudo logtoram/./install.sh
 	@rm -rf log2ram
 	@if [ ! -d /var/log/logrotate ]; then\
 		sudo mkdir /var/log/logrotate;\
