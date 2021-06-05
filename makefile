@@ -178,7 +178,7 @@ feedwriter:
 	@echo "enabling the feedwriter service"
 	@sudo systemctl enable feedwriter.service
 	@sudo systemctl restart feedwriter.service
-	
+
 service-runner:
 	@echo "creating service-runner service file"
 	@printf "[Unit]\n" > service-runner.service
