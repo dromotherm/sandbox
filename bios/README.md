@@ -1,3 +1,7 @@
+# BIOS
+
+## préparation de la carte SD
+
 Télécharger la dernière raspios :
 
 https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
