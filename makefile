@@ -56,6 +56,7 @@ help:
 	@echo "FOR SYMLINKED MODULES :"
 	@echo "make symodule name=sync"
 	@echo "make symodule name=postprocess"
+	@echo "make symodule name=backup"
 
 apache:
 	@sudo apt-get install -y apache2 gettext
@@ -343,17 +344,7 @@ symodule:
 	@echo "update emoncms database"
 	@php emoncmsdbupdate.php
 
-log2ram:
-	@if [ ! -d "log2ram" ]; then\
-		echo "cloning log2ram";\
-		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram logtoram;\
-	fi
-	@chmod +x logtoram/install.sh && cd logtoram && sudo ./install.sh
-	@rm -rf logtoram
-	@if [ ! -d /var/log/logrotate ]; then\
-		sudo mkdir /var/log/logrotate;\
-		sudo chown -R root:adm /var/log/logrotate;\
-	fi
+custom_logrotate:
 	@echo "creating custom default config"
 	@printf "maxsize 500k\n" > 00_defaults
 	@printf "\n" >> 00_defaults
@@ -391,17 +382,28 @@ log2ram:
 	@sudo chown root /etc/logrotate.d/00_defaults
 	@sudo chown root /etc/logrotate.d/emoncms
 	@sudo chown root /etc/logrotate.d/emonhub
+
+log2ram:
+	@if [ ! -d "log2ram" ]; then\
+		echo "cloning log2ram";\
+		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram;\
+	fi
+	@chmod +x log2ram/install.sh && cd log2ram && sudo ./install.sh
+	@rm -rf log2ram
+	@sudo mkdir -p /var/log/logrotate
+	@sudo chown -R root:adm /var/log/logrotate
+	@mkdir -p cron
 	@echo "log2ram cron hourly entry"
-	@printf "#!/usr/bin/env sh\n" > log2ram
-	@printf "test -x /usr/sbin/logrotate || exit 0\n" >> log2ram
-	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1\n" >> log2ram
-	@printf "systemctl reload log2ram\n" >> log2ram
-	@sudo ln -sf $(here)/log2ram /etc/cron.hourly/log2ram
+	@printf "#!/usr/bin/env sh\n" > cron/log2ram
+	@printf "test -x /usr/sbin/logrotate || exit 0\n" >> cron/log2ram
+	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1\n" >> cron/log2ram
+	@printf "systemctl reload log2ram\n" >> cron/log2ram
+	@sudo ln -sf $(here)/cron/log2ram /etc/cron.hourly/log2ram
 	@sudo chmod +x /etc/cron.hourly/log2ram
 	@echo "copy in commented out placeholder logrotate file"
-	@printf "#!/bin/sh\n" > logrotate
-	@printf "# test -x /usr/sbin/logrotate || exit 0\n" >> logrotate
-	@printf "# /usr/sbin/logrotate /etc/logrotate.conf\n" >> logrotate
-	@printf "# logrotate now triggered by log2ram\n" >> logrotate
-	@printf "# see /etc/cron.hourly/log2ram\n" >> logrotate
-	@sudo cp logrotate /etc/cron.daily/logrotate
+	@printf "#!/bin/sh\n" > cron/logrotate
+	@printf "# test -x /usr/sbin/logrotate || exit 0\n" >> cron/logrotate
+	@printf "# /usr/sbin/logrotate /etc/logrotate.conf\n" >> cron/logrotate
+	@printf "# logrotate now triggered by log2ram\n" >> cron/logrotate
+	@printf "# see /etc/cron.hourly/log2ram\n" >> cron/logrotate
+	@sudo cp cron/logrotate /etc/cron.daily/logrotate
