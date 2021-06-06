@@ -47,6 +47,7 @@ help:
 	@echo "make mosquitto"
 	@echo "NOTA : always run make redis or make mosquitto AFTER make php !!"
 	@echo "make emoncms"
+	@echo "make apacheconf"
 	@echo "make feedwriter"
 	@echo "make service-runner"
 	@echo "make emoncms_mqtt"
@@ -63,6 +64,8 @@ apache:
 	@sudo sed -i "s/^CustomLog/#CustomLog/" /etc/apache2/conf-available/other-vhosts-access-log.conf
 	@echo "Enabling apache mod rewrite"
 	@sudo a2enmod rewrite
+	
+apacheconf:
 	@echo "Creating default apache2 configuration"
 	@printf "# ServerName\n" > emonsd.conf
 	@printf "ServerName localhost\n" >> emonsd.conf
@@ -100,7 +103,7 @@ emoncms:
 		echo "Installing emoncms core repository with git";\
 		cd $(www) && git clone -b $(emoncms_core_branch) $(git_repo[emoncms_core]);\
 	fi
-	@echo "creating log file"
+	@echo "creating emoncms log file"
 	@sudo mkdir -p $(emoncms_log_location)
 	@sudo chown $(user) $(emoncms_log_location)
 	@sudo touch $(emoncms_log_location)/emoncms.log
@@ -162,11 +165,6 @@ sudoers:
 	@sudo chmod 0440 /etc/sudoers.d/emoncms-rebootbutton
 
 feedwriter:
-	@echo "creating log file for emoncms"
-	@sudo mkdir -p $(emoncms_log_location)
-	@sudo chown $(user) $(emoncms_log_location)
-	@sudo touch $(emoncms_log_location)/emoncms.log
-	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
 	@echo "creating feedwriter.service"
 	@printf "[Unit]\n" > feedwriter.service
 	@printf "Description=Emoncms feedwriter script\n" >> feedwriter.service
@@ -214,11 +212,6 @@ service-runner:
 	@sudo systemctl restart service-runner.service
 
 emoncms_mqtt:
-	@echo "creating log file for emoncms"
-	@sudo mkdir -p $(emoncms_log_location)
-	@sudo chown $(user) $(emoncms_log_location)
-	@sudo touch $(emoncms_log_location)/emoncms.log
-	@sudo chmod 666 $(emoncms_log_location)/emoncms.log
 	@echo "creating emoncms_mqtt service file"
 	@printf "[Unit]\n" >> emoncms_mqtt.service
 	@printf "Description=Emoncms emoncms_mqtt script\n" >> emoncms_mqtt.service
