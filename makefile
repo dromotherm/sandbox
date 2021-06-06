@@ -64,7 +64,7 @@ apache:
 	@sudo sed -i "s/^CustomLog/#CustomLog/" /etc/apache2/conf-available/other-vhosts-access-log.conf
 	@echo "Enabling apache mod rewrite"
 	@sudo a2enmod rewrite
-	
+
 apacheconf:
 	@echo "Creating default apache2 configuration"
 	@printf "# ServerName\n" > emonsd.conf
