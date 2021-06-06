@@ -69,3 +69,12 @@ on injecte les paramètres spécifiques pour la rotation des logs :
 make custom_logrotate
 make log2ram
 ```
+On reboote pour activer log2ram
+
+```
+cd /opt/openenergymonitor
+git clone http://github.com/alexjunk/BIOS
+cd BIOS
+./requires.sh
+```
+On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
