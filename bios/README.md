@@ -82,3 +82,13 @@ cd BIOS
 ./requires.sh
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
+
+## configuration du routeur de BIOS
+
+On démarre BIOS sans carte SD ds le raspberry
+
+On connecte en filaire au port eth0 un pc configuré pour du DHCP
+
+On change le mot de passe du root
+
+
