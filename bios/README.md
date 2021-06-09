@@ -87,7 +87,7 @@ On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
 On démarre BIOS sans carte SD ds le raspberry
 
-On connecte en filaire au port eth0 un pc configuré pour du DHCP
+On connecte un pc configuré pour du DHCP au port eth0 du routeur, en filaire
 
 On change le mot de passe du root
 
