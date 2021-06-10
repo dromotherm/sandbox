@@ -123,16 +123,18 @@ Si on a un troisième port ethernet, on peut laisser sa configuration inchangée
 
 ### 
 
-le raspberry `MAC b8:27:eb:de:87:48` a un bail fixe sur 192.168.2.2
-
-## NAT
+#### NAT - provisoire
 
 Configuration > NAT : on coche les cases : 
 
 - `Enable remote HTTP access on port 80` 
 - et surtout `Enable remote HTTPS access on port 443`
 
-## Synthèse
+## 
+
+
+le raspberry `MAC b8:27:eb:de:87:48` a un bail fixe sur 192.168.2.2
+
 
 
 # dyndns (quant le routeur contient une SIM)
