@@ -121,19 +121,18 @@ Si on a un troisième port ethernet, on peut laisser sa configuration inchangée
 
 #### wifi & wlan
 
-### 
+### bail fixe pour le raspberry sur 192.168.2.2
 
 #### NAT - provisoire
 
-Configuration > NAT : on coche les cases : 
+Configuration > NAT
+
+On renseigne les translations d'adresses vers 192.168.2.2 sur les ports 80 (web) et 22 (ssh)
+
+Vu qu'on est sur réseau privé, pas besoin de cocher les cases : 
 
 - `Enable remote HTTP access on port 80` 
-- et surtout `Enable remote HTTPS access on port 443`
-
-## 
-
-
-le raspberry `MAC b8:27:eb:de:87:48` a un bail fixe sur 192.168.2.2
+- `Enable remote HTTPS access on port 443`
 
 
 
