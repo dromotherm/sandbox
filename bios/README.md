@@ -91,4 +91,54 @@ On connecte un pc configuré pour du DHCP au port eth0 du routeur, en filaire
 
 On change le mot de passe du root
 
+### Architecture LAN
 
+#### Primary
+
+192.168.2.1 : adresse du routeur
+
+DHCP Client : disabled
+
+IP Pool de 192.168.2.3 à 192.168.2.254 (on garde l'adresse 192.168.2.2 pour le raspberry)
+
+On applique, ce qui coupe la connection. On peut relancer BIOS pour reprendre la configuration 
+
+#### secondary
+
+DHCP Client : enabled
+
+default gateway : 192.168.1.1
+
+la case "Enable dynamic DHCP leases" n'est pas cochée
+
+**Cette configuration secondaire permet d'utiliser le second port éthernet à un réseau de type livebox, configuré en 192.168.1.1, ce qui est utile pour disposer d'un accès internet quant il n'y a pas de carte SIM dans le routeur** 
+
+En utilisant l'adresse qui est attribuée par la box, on peut accéder à l'interface de management du routeur depuis un ordi connecté en WIFI à la box
+
+Nota : quant on n'a pas de carte SIM dans le routeur, il faut aller dans Configuration > Mobile WAN, et décocher la case "create connection to mobile network". Sinon le routeur va chercher à établir une connection en permanence.
+
+Si on a un troisième port ethernet, on peut laisser sa configuration inchangée (4.1)
+
+#### wifi & wlan
+
+### 
+
+le raspberry `MAC b8:27:eb:de:87:48` a un bail fixe sur 192.168.2.2
+
+## NAT
+
+Configuration > NAT : on coche les cases : 
+
+- `Enable remote HTTP access on port 80` 
+- et surtout `Enable remote HTTPS access on port 443`
+
+## Synthèse
+
+
+# dyndns (quant le routeur contient une SIM)
+
+Configuration > Service > DynDNS
+
+la case "Enable DynDNS Client" est cochée
+
+Hostname : dromotherm.ddns.net
