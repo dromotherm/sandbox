@@ -99,7 +99,7 @@ On change le mot de passe du root
 
 DHCP Client : disabled
 
-IP Pool de 192.168.2.3 à 192.168.2.254 (on garde l'adresse 192.168.2.2 pour le raspberry)
+IP Pool de 192.168.2.2 à 192.168.2.254
 
 On applique, ce qui coupe la connection. On peut relancer BIOS pour reprendre la configuration 
 
@@ -121,7 +121,17 @@ Si on a un troisième port ethernet, on peut laisser sa configuration inchangée
 
 #### wifi & wlan
 
-### bail fixe pour le raspberry sur 192.168.2.2
+On choisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
+
+On active le wlan en gardant la configuration proposée (3.1)
+
+#### bail fixe pour le raspberry sur 192.168.2.2
+
+A ce stade, on peut éteindre BIOS, insérer la carte SD dans le raspberry et tt rallumer
+
+On peut alors fixer l'adresse du Pi en copiant sa mac depuis l'onglet DHCP
+
+IP Pool de 192.168.2.3 à 192.168.2.254
 
 #### NAT - provisoire
 
