@@ -87,7 +87,7 @@ On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
 On démarre BIOS sans carte SD ds le raspberry
 
-On connecte un pc configuré pour du DHCP au port eth0 du routeur, en filaire
+On connecte un pc configuré pour du DHCP au ***premier port du routeur (eth0)***, en filaire
 
 On change le mot de passe du root
 
@@ -121,7 +121,7 @@ Si on a un troisième port ethernet, on peut laisser sa configuration inchangée
 
 #### wifi & wlan
 
-On choisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
+On saisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
 
 On active le wlan en gardant la configuration proposée (3.1)
 
