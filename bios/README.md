@@ -132,11 +132,11 @@ IP Pool de 192.168.2.3 à 192.168.2.254
 
 ### RS485
 
-si on a un bus RS485 promux à connecter au routeur, on injecte la library tcp2rtu. et 
+Si on a un bus RS485 promux à connecter au routeur, on injecte la library tcp2rtu.
 
 Cette injection se fait par upload sans décompression d'un fichier tgz via le menu Customization -> User Module
 
-on active le modbus TCP sur le port 2 (Enable MODBUS-TCP2RTU) sans changer quoi que soit.
+On active le modbus TCP sur le port 2 (Enable MODBUS-TCP2RTU) sans changer quoi que soit.
 
 ### NAT - provisoire
 
