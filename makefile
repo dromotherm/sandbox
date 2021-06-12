@@ -272,6 +272,23 @@ redis:
 	@sudo sed -i "s/^save 60 1/#save 60 1/" /etc/redis/redis.conf
 	@sudo systemctl restart redis-server
 
+phpRedisAdmin:
+	@echo "Installing phpRedisAdmin"
+	@sudo git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
+	@cd phpRedisAdmin && sudo git clone https://github.com/nrk/predis.git vendor
+	@printf "modifying apache emoncms conf file"
+        @sed -i "s/^<\/VirtualHost>//" emoncms.conf
+        @printf "    Alias /phpRedisAdmin  $(here)/phpRedisAdmin\n" >> emoncms.conf
+        @printf "    <Directory $(here)/phpRedisAdmin>\n" >> emoncms.conf
+        @printf "        Options Indexes FollowSymLinks\n" >> emoncms.conf
+        @printf "        AllowOverride None\n" >> emoncms.conf
+        @printf "        Require all granted\n" >> emoncms.conf
+        @printf "    </Directory>\n" >> emoncms.conf
+        @printf "</VirtualHost>" >> emoncms.conf
+	@sudo cp emoncms.conf /etc/apache2/sites-available/emoncms.conf
+	@echo "restarting apache"
+	@sudo systemctl restart apache2
+
 mosquitto:
 	@echo "Installing mosquitto server"
 	@sudo apt-get install -y mosquitto
