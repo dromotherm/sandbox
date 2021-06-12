@@ -296,13 +296,13 @@ phpRedisAdmin:
 	@printf "creating a new apache emoncms conf file"
 	@$(MAKE) --no-print-directory apacheVconfInit
 	@printf "\n" >> emoncms.conf
-        @printf "    Alias /phpRedisAdmin  $(here)/phpRedisAdmin\n" >> emoncms.conf
-        @printf "    <Directory $(here)/phpRedisAdmin>\n" >> emoncms.conf
-        @printf "        Options Indexes FollowSymLinks\n" >> emoncms.conf
-        @printf "        AllowOverride None\n" >> emoncms.conf
-        @printf "        Require all granted\n" >> emoncms.conf
-        @printf "    </Directory>\n" >> emoncms.conf
-        @printf "</VirtualHost>" >> emoncms.conf
+	@printf "    Alias /phpRedisAdmin  $(here)/phpRedisAdmin\n" >> emoncms.conf
+	@printf "    <Directory $(here)/phpRedisAdmin>\n" >> emoncms.conf
+	@printf "        Options Indexes FollowSymLinks\n" >> emoncms.conf
+	@printf "        AllowOverride None\n" >> emoncms.conf
+	@printf "        Require all granted\n" >> emoncms.conf
+	@printf "    </Directory>\n" >> emoncms.conf
+	@printf "</VirtualHost>" >> emoncms.conf
 	@sudo cp emoncms.conf /etc/apache2/sites-available/emoncms.conf
 	@echo "restarting apache"
 	@sudo systemctl restart apache2
