@@ -237,14 +237,14 @@ emoncms_mqtt:
 mysql:
 	@echo "Installing the Mariadb server (MYSQL)"
 	@sudo apt-get install -y mariadb-server mariadb-client
-	@echo "1 - Secure MYSQL"
+	@echo "1 - Securing MYSQL"
 	@sudo mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
 	@sudo mysql -e "DELETE FROM mysql.user WHERE User='';"
 	@sudo mysql -e "DROP DATABASE IF EXISTS test;"
 	@sudo mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'; FLUSH PRIVILEGES;"
-	@echo "2 - Create $(mysql_database) database"
+	@echo "2 - Creating $(mysql_database) database"
 	@sudo mysql -e "CREATE DATABASE $(mysql_database) DEFAULT CHARACTER SET utf8;"
-	@echo "3 - Add user:$(mysql_user) and assign to database:$(mysql_database)"
+	@echo "3 - Adding user:$(mysql_user) and assign to database:$(mysql_database)"
 	@sudo mysql -e "CREATE USER '$(mysql_user)'@'localhost' IDENTIFIED BY '$(mysql_password)';"
 	@sudo mysql -e "GRANT ALL ON $(mysql_database).* TO '$(mysql_user)'@'localhost'; flush privileges;"
 
