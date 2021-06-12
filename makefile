@@ -263,6 +263,7 @@ redis:
 	@sudo pecl install redis
 	@printf "extension=redis.so" | sudo tee /etc/php/$(php_ver)/mods-available/redis.ini 1>&2
 	@sudo phpenmod redis
+	@echo "\n"
 	@echo "installing redis for python"
 	@pip3 install redis
 	@echo "disabling redis persistance"
