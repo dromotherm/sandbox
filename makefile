@@ -293,8 +293,9 @@ phpRedisAdmin:
 	@echo "Installing phpRedisAdmin"
 	@sudo git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
 	@cd phpRedisAdmin && sudo git clone https://github.com/nrk/predis.git vendor
-	@printf "modifying apache emoncms conf file"
-        @sed -i "s/^<\/VirtualHost>//" emoncms.conf
+	@printf "creating a new apache emoncms conf file"
+	@$(MAKE) --no-print-directory apacheVconfInit
+	@printf "\n" >> emoncms.conf
         @printf "    Alias /phpRedisAdmin  $(here)/phpRedisAdmin\n" >> emoncms.conf
         @printf "    <Directory $(here)/phpRedisAdmin>\n" >> emoncms.conf
         @printf "        Options Indexes FollowSymLinks\n" >> emoncms.conf
