@@ -64,6 +64,23 @@ apache:
 	@sudo sed -i "s/^CustomLog/#CustomLog/" /etc/apache2/conf-available/other-vhosts-access-log.conf
 	@echo "Enabling apache mod rewrite"
 	@sudo a2enmod rewrite
+	
+apacheVconfInit:
+	@echo "virtual host configuration"
+	@printf "<VirtualHost *:80>\n" > emoncms.conf
+	@printf "    ServerName localhost\n" >> emoncms.conf
+	@printf "    ServerAdmin webmaster@localhost\n" >> emoncms.conf
+	@printf "    DocumentRoot $(emoncms_www)\n" >> emoncms.conf
+	@printf "\n" >> emoncms.conf
+	@printf "    # Virtual Host specific error log\n" >> emoncms.conf
+	@printf "    ErrorLog $(emoncms_log_location)/apache2-error.log\n" >> emoncms.conf
+	@printf "\n" >> emoncms.conf
+	@printf "    <Directory $(emoncms_www)>\n" >> emoncms.conf
+	@printf "        Options FollowSymLinks\n" >> emoncms.conf
+	@printf "        AllowOverride All\n" >> emoncms.conf
+	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
+	@printf "        Order allow,deny\n" >> emoncms.conf
+	@printf "        Allow from all\n" >> emoncms.conf
 
 apacheconf:
 	@echo "Creating default apache2 configuration"
