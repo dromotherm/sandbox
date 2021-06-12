@@ -82,7 +82,7 @@ cd BIOS
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
-## configuration du routeur de BIOS
+## configuration du routeur de BIOS - partie 1 - sans carte SIM
 
 On démarre BIOS sans carte SD ds le raspberry
 
@@ -141,14 +141,16 @@ Vu qu'on est sur réseau privé, pas besoin de cocher les cases :
 - `Enable remote HTTP access on port 80` 
 - `Enable remote HTTPS access on port 443`
 
-## configuration mobile
+## configuration du routeur de BIOS - partie 2 - avec carte SIM
+
+### configuration mobile
 
 on insère la carte SIM et on active la connection mobile
 
-# dyndns (quant le routeur contient une SIM)
+### dyndns
 
 Configuration > Service > DynDNS
 
-la case "Enable DynDNS Client" est cochée
+on coche la case "Enable DynDNS Client"
 
-Hostname : dromotherm.ddns.net
+on fournit renseigne le Hostname (eg : dromotherm.ddns.net)
