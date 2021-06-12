@@ -11,7 +11,6 @@ Une fois l'image gravée :
 cd /media/alexandrecuer/boot
 touch ssh
 cp cmdline.txt cmdline2.txt
-nano cmdline.txt
 sed -i "s~init=\/usr\/lib\/raspi-config\/init_resize.sh~~" cmdline.txt
 ```
 On boote le Pi
