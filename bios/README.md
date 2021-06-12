@@ -91,9 +91,7 @@ On connecte un pc configuré pour du DHCP au ***premier port du routeur (eth0)**
 
 On change le mot de passe du root
 
-### Architecture LAN
-
-#### Primary
+### Primary LAN
 
 192.168.2.1 : adresse du routeur
 
@@ -103,7 +101,7 @@ IP Pool de 192.168.2.2 à 192.168.2.254
 
 On applique, ce qui coupe la connection. On peut relancer BIOS pour reprendre la configuration 
 
-#### secondary
+### secondary LAN & al
 
 DHCP Client : enabled
 
@@ -119,13 +117,13 @@ Nota : quant on n'a pas de carte SIM dans le routeur, il faut aller dans Configu
 
 Si on a un troisième port ethernet, on peut laisser sa configuration inchangée (4.1)
 
-#### wifi & wlan
+### wifi & wlan
 
 On saisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
 
 On active le wlan en gardant la configuration proposée (3.1)
 
-#### bail fixe pour le raspberry sur 192.168.2.2
+### bail fixe pour le raspberry sur 192.168.2.2
 
 A ce stade, on peut éteindre BIOS, insérer la carte SD dans le raspberry et tt rallumer
 
@@ -133,7 +131,7 @@ On peut alors fixer l'adresse du Pi en copiant sa mac depuis l'onglet DHCP
 
 IP Pool de 192.168.2.3 à 192.168.2.254
 
-#### NAT - provisoire
+### NAT - provisoire
 
 Configuration > NAT
 
@@ -144,7 +142,9 @@ Vu qu'on est sur réseau privé, pas besoin de cocher les cases :
 - `Enable remote HTTP access on port 80` 
 - `Enable remote HTTPS access on port 443`
 
+## configuration mobile
 
+on insère la carte SIM et on active la connection mobile
 
 # dyndns (quant le routeur contient une SIM)
 
