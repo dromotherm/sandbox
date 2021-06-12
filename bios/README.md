@@ -82,7 +82,7 @@ cd BIOS
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
-## configuration du routeur de BIOS - partie 1 - sans carte SIM
+## configuration routeur - partie 1 - sans carte SIM
 
 On démarre BIOS sans carte SD ds le raspberry
 
@@ -141,7 +141,7 @@ Vu qu'on est sur réseau privé, pas besoin de cocher les cases :
 - `Enable remote HTTP access on port 80` 
 - `Enable remote HTTPS access on port 443`
 
-## configuration du routeur de BIOS - partie 2 - avec carte SIM
+## configuration routeur - partie 2 - avec carte SIM
 
 ### configuration mobile
 
