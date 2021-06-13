@@ -157,8 +157,12 @@ on insère la carte SIM et on active la connection mobile
 
 ### dyndns
 
-Configuration > Service > DynDNS
+Configuration > Services > DynDNS
 
 on coche la case "Enable DynDNS Client"
 
 on renseigne le Hostname (eg : dromotherm.ddns.net) et dans le champ serveur, on saisit : `dynupdate.no-ip.com`
+
+### configuration SMS
+
+toujours dans Services, on configure la gestion via SMS (`Send SMS on connect to mobile network` et `Send SMS when datalimit is exceeded` cochées)
