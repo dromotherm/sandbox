@@ -79,8 +79,7 @@ apacheVconfInit:
 	@printf "        Options FollowSymLinks\n" >> emoncms.conf
 	@printf "        AllowOverride All\n" >> emoncms.conf
 	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
-	@printf "        Order allow,deny\n" >> emoncms.conf
-	@printf "        Allow from all\n" >> emoncms.conf
+	@printf "        Require all granted\n" >> emoncms.conf
 
 apacheconf:
 	@echo "Creating default apache2 configuration"
