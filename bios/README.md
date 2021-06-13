@@ -166,3 +166,7 @@ on renseigne le Hostname (eg : dromotherm.ddns.net) et dans le champ serveur, on
 ### configuration SMS
 
 toujours dans Services, on configure la gestion via SMS (`Send SMS on connect to mobile network` et `Send SMS when datalimit is exceeded` cochées)
+
+La gestion de la consommation de données s’effectue via la page Configuration > mobile WAN.
+
+Il convient de cocher la case « enable trafic monitoring ». On choisit 8000 MB comme seuil et on choisit 60% comme niveau d'alerte.
