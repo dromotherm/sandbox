@@ -66,7 +66,7 @@ apache:
 	@sudo a2enmod rewrite
 
 apacheVconfInit:
-	@echo "virtual host configuration"
+	@echo "virtual host configuration\n"
 	@printf "<VirtualHost *:80>\n" > emoncms.conf
 	@printf "    ServerName localhost\n" >> emoncms.conf
 	@printf "    ServerAdmin webmaster@localhost\n" >> emoncms.conf
