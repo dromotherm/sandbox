@@ -161,4 +161,4 @@ Configuration > Service > DynDNS
 
 on coche la case "Enable DynDNS Client"
 
-on fournit renseigne le Hostname (eg : dromotherm.ddns.net)
+on renseigne le Hostname (eg : dromotherm.ddns.net) et dans le champ serveur, on saisit : `dynupdate.no-ip.com`
