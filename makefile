@@ -91,22 +91,7 @@ apacheconf:
 	@printf "ErrorLog $(emoncms_log_location)/apache2-error.log\n" >> emonsd.conf
 	@sudo cp emonsd.conf /etc/apache2/conf-available/emonsd.conf
 	@sudo a2enconf emonsd.conf
-	@echo "virtual host configuration"
-	@printf "<VirtualHost *:80>\n" > emoncms.conf
-	@printf "    ServerName localhost\n" >> emoncms.conf
-	@printf "    ServerAdmin webmaster@localhost\n" >> emoncms.conf
-	@printf "    DocumentRoot $(emoncms_www)\n" >> emoncms.conf
-	@printf "\n" >> emoncms.conf
-	@printf "    # Virtual Host specific error log\n" >> emoncms.conf
-	@printf "    ErrorLog $(emoncms_log_location)/apache2-error.log\n" >> emoncms.conf
-	@printf "\n" >> emoncms.conf
-	@printf "    <Directory $(emoncms_www)>\n" >> emoncms.conf
-	@printf "        Options FollowSymLinks\n" >> emoncms.conf
-	@printf "        AllowOverride All\n" >> emoncms.conf
-	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
-	@printf "        Order allow,deny\n" >> emoncms.conf
-	@printf "        Allow from all\n" >> emoncms.conf
-	@printf "    </Directory>\n" >> emoncms.conf
+	@$(MAKE) --no-print-directory apacheVconfInit
 	@printf "</VirtualHost>\n" >> emoncms.conf
 	@sudo cp emoncms.conf /etc/apache2/sites-available/emoncms.conf
 	@sudo a2dissite 000-default.conf
