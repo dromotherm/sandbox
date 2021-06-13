@@ -80,6 +80,7 @@ apacheVconfInit:
 	@printf "        AllowOverride All\n" >> emoncms.conf
 	@printf "        DirectoryIndex index.php\n" >> emoncms.conf
 	@printf "        Require all granted\n" >> emoncms.conf
+	@printf "    </Directory>\n" >> emoncms.conf
 
 apacheconf:
 	@echo "Creating default apache2 configuration"
