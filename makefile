@@ -23,6 +23,8 @@ emoncms_dir := /opt/emoncms
 service_dir := /etc/systemd/system
 here := $(shell pwd)
 
+hostname := emonpi
+
 osupdate:
 	@echo "apt-get update"
 	@sudo apt-get update -y
@@ -34,6 +36,15 @@ osupdate:
 	@sudo apt-get clean
 	@sudo apt --fix-broken install
 	@sudo apt-get install -y git build-essential python3-pip python3-dev
+
+customize:
+	@echo "changing the hostname\n"
+	@sudo sed -i "s/raspberrypi/$hostname/g" /etc/hosts
+	@printf $hostname > hostname
+	@sudo cp hostname /etc/hostname
+	@echo "enter a new SSH password to secure your system\n"
+	@read ssh_password
+	@printf "raspberry\n$ssh_password\n$ssh_password" | passwd
 
 help:
 	@echo "php version : $(php_ver)"
