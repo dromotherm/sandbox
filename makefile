@@ -39,12 +39,12 @@ osupdate:
 
 customize:
 	@echo "changing the hostname\n"
-	@sudo sed -i "s/raspberrypi/$hostname/g" /etc/hosts
-	@printf $hostname > hostname
+	@sudo sed -i "s/raspberrypi/$(hostname)/g" /etc/hosts
+	@printf $(hostname) > hostname
 	@sudo cp hostname /etc/hostname
 	@echo "enter a new SSH password to secure your system\n"
 	@read ssh_password
-	@printf "raspberry\n$ssh_password\n$ssh_password" | passwd
+	@printf "raspberry\n$(ssh_password)\n$(ssh_password)" | passwd
 
 help:
 	@echo "php version : $(php_ver)"
