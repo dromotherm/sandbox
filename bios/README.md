@@ -142,12 +142,14 @@ On active le modbus TCP sur le port 2 (Enable MODBUS-TCP2RTU) sans changer quoi 
 
 Configuration > NAT
 
-On renseigne les translations d'adresses vers 192.168.2.2 sur les ports 80 (web) et 22 (ssh)
+On renseigne la translation d'adresse vers 192.168.2.2 sur le ports 80 (web)
 
-Vu qu'on est sur réseau privé, pas besoin de cocher les cases : 
+On coche les cases : 
 
 - `Enable remote HTTP access on port 80` 
 - `Enable remote HTTPS access on port 443`
+
+Nota : si le routeur n'a pas de wifi, si on est sans carte SIM et qu'on va rester sur un réseau de type livebox, il faut renseigner la translation d'adresse sur le port 22 pour faire du SSH depuis le réseau livebox
 
 ## configuration routeur - 2 = avec SIM
 
