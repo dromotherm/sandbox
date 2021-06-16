@@ -23,6 +23,7 @@ emoncms_dir := /opt/emoncms
 service_dir := /etc/systemd/system
 here := $(shell pwd)
 
+actualhostname := $(shell cat /etc/hostname)
 hostname := emonpi
 
 osupdate:
@@ -39,14 +40,14 @@ osupdate:
 
 customize:
 	@echo "changing the hostname\n"
-	@sudo sed -i "s/raspberrypi/$(hostname)/g" /etc/hosts
+	@sudo sed -i "s/$(actualhostname)/$(hostname)/g" /etc/hosts
 	@printf $(hostname) > hostname
 	@sudo cp hostname /etc/hostname
 	@echo "enter actual SSH password"; \
-	read actual; \
+	read actual_pass; \
 	echo "enter a new SSH password to secure your system"; \
-	read ssh_password; \
-	printf "$$actual\n$$ssh_password\n$$ssh_password" | passwd
+	read ssh_pass; \
+	printf "$$actual_pass\n$$ssh_pass\n$$ssh_pass" | passwd
 
 help:
 	@echo "php version : $(php_ver)"
