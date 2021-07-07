@@ -2,6 +2,8 @@
 
 première carte de prototypage achetée : F030R8
 
+Le pinout est dispo içi : https://os.mbed.com/platforms/ST-Nucleo-F030R8/
+
 elle comporte une interface ST-Link qui permet de télécharger les firmwares compilés, se présentant sous la forme de fichiers .bin, sur le microcontroleur, par simple copier-coller !
 
 Pour compiler pour STM32 : 
