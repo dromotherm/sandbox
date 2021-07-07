@@ -87,7 +87,7 @@ pour téléverser le binaire sur le microcontrolleur :
 ```
 cp .pio/build/nucleo_f030r8/firmware.bin /media/alexandrecuer/NODE_F030R8/
 ```
-Lors du téléversement, la LED1 sur l'interface ST-Link (qui est rouge si on n'a pas téléversé depuis qu'on a mis la carte sous tension) se met à clignoter rouge/vert puis s'éclaire en vert si le téléversement est réussi.
+Lors du téléversement, la LED1 sur l'interface ST-Link (qui est rouge si on n'a jamais téléversé depuis qu'on a mis la carte sous tension) se met à clignoter rouge/vert puis s'éclaire en vert si le téléversement est réussi.
 
 Pour afficher les données arrivant sur le port série :
 ```
