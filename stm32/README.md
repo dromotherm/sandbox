@@ -1,4 +1,4 @@
-# carte STM32
+# microcontrolleur STM32
 
 première carte de prototypage achetée : F030R8
 
@@ -98,7 +98,9 @@ on trouve un certain nombre d'exemples içi :
 
 https://github.com/platformio/platform-ststm32
 
-# Install STM32Cube initialization code generator
+# STM32Cube
+
+Ce code generator va créer tous les patterns du projet
 
 créer un compte my.st.com
 
@@ -106,9 +108,47 @@ https://my.st.com/content/my_st_com/en/products/development-tools/software-devel
 
 https://www.st.com/stm32cube
 
-le logiciel s'installe dans : /usr/local/STMicroelectronics/STM32Cube/STM32CubeMX
+Le logiciel s'installe dans : 
+
+```
+/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX
+```
 
 On crée un nouveau projet en choisissant la carte dont on a fait l'acquisition (eg: F030R8)
 
+Avec l'outil graphique, on configure le pin PA5, ou D13 en notation arduino (sur lequel la LED2 est branchée) sur GPIO_Output
 
+Dans Project Settings, on donne à son projet : 
+-  un nom, par exemple F030R8_1st, 
+-  une localisation, par exemple la même que pour les projets platformio, ie `/home/alexandrecuer/Documents/PlatformIO/Projects`
 
+Comme méthode de compilation (Toolchain / IDE) on choisit Makefile
+
+Dans Code generator, on choisit de cocher les cases suivantes :
+- copy all used libraries into the project folder
+- generate peripheral initialization as pair of '.c/.h' files per peripheral
+- keep User Code when re-generating
+- set all free pins as analog
+
+On clique sur GENERATE CODE
+
+Il reste ensuite à modifier le fichier Core/Src/main.c, en ajoutant les lignes suivantes dans la boucle while de la section USER CODE :
+
+```
+/* Infinite loop */
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+  HAL_Delay(200);
+/* USER CODE END WHILE */
+
+/* USER CODE BEGIN 3 */
+
+}
+/* USER CODE END 3 */
+```
+
+Pour compiler, un simple `make` à la racine du projet suffit.
+
+Pour téléverser, on procéde comme on a fait lorsqu'on a compilé avec platformio
