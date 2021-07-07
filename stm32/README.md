@@ -12,11 +12,13 @@ Pour compiler pour STM32 :
 
 # platformio
 
-platformio est intégré à Atom, mais si on veut bien comprendre ce qu'on fait, il peut être utile de l'utiliser en ligne de commande
+platformio est intégré à Atom, mais pour l'installer en ligne de commande: 
+```
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+```
+Si on veut bien comprendre ce qu'on fait, il est bien d'utiliser pio en ligne de commande. Il est souvent installé dans le home directory de l'utilisateur en cours, dans un répertoire .platformio
 
-il est souvent installé dans le home directory de l'utilisateur en cours, dans un répertoire .platformio
-
-il faut lancer un environnement virtuel python pour pouvoir utiliser la ligne de commande de platformio :
+Pour passer en ligne de commande, il faut lancer l'environnement virtuel python dans un shell :
 ```
 cd .platformio/penv
 source activate
