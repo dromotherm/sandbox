@@ -17,3 +17,9 @@ Tool Manager: toolchain-gccarmnoneeabi @ 1.70201.0 has been installed!
 The platform 'ststm32' has been successfully installed!
 The rest of the packages will be installed later depending on your build environment.
 ```
+
+# Install STM32Cube initialization code generator
+
+create an account on my.st.com
+
+https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.html
