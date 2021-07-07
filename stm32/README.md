@@ -124,7 +124,7 @@ On crée un nouveau projet en choisissant la carte dont on a fait l'acquisition 
 
 Avec l'outil graphique, on configure le pin PA5, ou D13 en notation arduino (sur lequel la LED2 est branchée) sur GPIO_Output
 
-Dans Project Settings, on donne à son projet : 
+Dans Project Settings, on donne au projet : 
 -  un nom, par exemple F030R8_1st, 
 -  une localisation, par exemple la même que pour les projets platformio, ie `/home/alexandrecuer/Documents/PlatformIO/Projects`
 
