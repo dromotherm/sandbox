@@ -46,6 +46,9 @@ void loop() {
 int readDHT() {
   /*
    * demande et décode la réponse numérique d'un capteur DHT22 ou DHT11
+   * retourne 0 en cas de succès 
+   * -2 : timeout
+   * -1 : erreur de checksum - paquet corrompu
    */
   // start signal
   pinMode(pin,OUTPUT);
@@ -60,8 +63,8 @@ int readDHT() {
   uint8_t bits[5];
   uint8_t idx = 0;
   uint8_t cnt = 7;
-  unsigned int loopc;
-  for(int i=0; i<5; i++) bits[i]=0;
+  unsigned long loopc;
+  for(uint8_t i=0; i<5; i++) bits[i]=0;
 
   // response signal from sensor
   loopc = NBCYCLES;
