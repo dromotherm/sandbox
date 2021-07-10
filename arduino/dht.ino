@@ -87,9 +87,10 @@ int readDHT() {
      if ((micros()-t) > 40) bits[idx] |= (1 << cnt);
      if (cnt == 0)
      {
+      // on passe a l'octet/bytes suivant
       cnt=7;
       idx++;
-     }
+     } // on passe au bit suivant
      else cnt--;
   }
 
