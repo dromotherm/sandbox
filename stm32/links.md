@@ -1,0 +1,2 @@
+https://shawnhymel.com/blog/
+
