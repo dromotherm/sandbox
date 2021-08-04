@@ -26,7 +26,7 @@ sudo systemctl restart apache2
 
 pear/pecl is not really maintained and will not be available in further php versions : cf https://forum.directadmin.com/threads/php-7-4-pecl.59649/ and https://externals.io/message/103977
 
-so installation or phpredis has to be made with phpize : cf https://github.com/phpredis/phpredis/blob/develop/INSTALL.markdown
+so installation of phpredis has to be made with phpize : cf https://github.com/phpredis/phpredis/blob/develop/INSTALL.markdown
 
 ```
 git clone https://github.com/phpredis/phpredis
