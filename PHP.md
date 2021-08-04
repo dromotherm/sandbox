@@ -42,12 +42,25 @@ Zend Extension Api No:   320190902
 ```
 ```
 ./configure
-make && sudo makeinstall
-printf 
+make
+sudo makeinstall
+printf "extension=redis.so" | sudo tee /etc/php/7.4/mods-available/redis.ini 1>&2
+sudo phpenmod redis
 sudo systemctl restart apache2
 ```
+# Mosquitto-PHP
 
-
+```
+git clone https://github.com/mgdm/Mosquitto-PHP
+cd Mosquitto-PHP/
+phpize
+./configure
+make
+sudo makeinstall
+printf "extension=mosquitto.so" | sudo tee /etc/php/7.4/mods-available/mosquitto.ini 1>&2
+sudo phpenmod mosquitto
+sudo systemctl restart apache2
+```
 
 # installed modules on php7.2 for emoncms
 ```
