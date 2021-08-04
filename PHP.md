@@ -2,7 +2,7 @@
 
 using https://github.com/oerdnj PPA (Personal Package Archive)
 
-cf https://launchpad.net/~ondrej/+archive/ubuntu/php/
+cf https://launchpad.net/~ondrej/+archive/ubuntu/php/ and https://deb.sury.org/#bug-reporting
 
 ```
 sudo apt-get update
@@ -24,7 +24,7 @@ sudo systemctl restart apache2
 ```
 # phpredis
 
-pear/pecl is not really maintained and will not be available in further php versions : cf https://forum.directadmin.com/threads/php-7-4-pecl.59649/
+pear/pecl is not really maintained and will not be available in further php versions : cf https://forum.directadmin.com/threads/php-7-4-pecl.59649/ and https://externals.io/message/103977
 
 so installation or phpredis has to be made with phpize : cf https://github.com/phpredis/phpredis/blob/develop/INSTALL.markdown
 
