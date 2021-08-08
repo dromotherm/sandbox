@@ -323,7 +323,6 @@ mosquitto:
 	@sudo mosquitto_passwd -b /etc/mosquitto/passwd $(mqtt_user) $(mqtt_password)
 	@echo "installing PHP mosquitto client"
 	@sudo apt-get install -y libmosquitto-dev
-	@sudo pecl install Mosquitto-beta
 	@git clone -b https://github.com/mgdm/Mosquitto-PHP
         @cd Mosquitto-PHP && phpize && ./configure && make && sudo make install
 	@echo "Add mosquitto to php mods available"
