@@ -324,7 +324,7 @@ mosquitto:
 	@echo "installing PHP mosquitto client"
 	@sudo apt-get install -y libmosquitto-dev
 	@git clone -b https://github.com/mgdm/Mosquitto-PHP
-        @cd Mosquitto-PHP && phpize && ./configure && make && sudo make install
+	@cd Mosquitto-PHP && phpize && ./configure && make && sudo make install
 	@echo "Add mosquitto to php mods available"
 	@printf "extension=mosquitto.so" | sudo tee /etc/php/$(php_ver)/mods-available/mosquitto.ini 1>&2
 	@sudo phpenmod mosquitto
