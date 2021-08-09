@@ -68,5 +68,15 @@ cd hardware
 make install name=modbusTCP
 ```
 
+## ota
 
+```
+cd BIOS
+make otauninstall
+cd ..
+cd BIOS2
+cd hardware
+./ota2.py
+make install name=ota2
+```
 
