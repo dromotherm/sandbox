@@ -54,6 +54,7 @@ on change le nom de machine et le mot de passe du sudoer :
 ```
 make customize
 ```
+On reboote le PI
 
 On installe le moteur :
 ```
