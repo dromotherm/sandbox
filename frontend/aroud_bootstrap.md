@@ -13,3 +13,5 @@ https://getbootstrap.com/docs/4.0/migration/ | Dropped the Glyphicons icon font
 https://getbootstrap.com/docs/5.1/components/modal/
 
 https://getbootstrap.com/docs/5.0/components/modal/
+
+https://getbootstrap.com/2.3.2/javascript.html#modals
