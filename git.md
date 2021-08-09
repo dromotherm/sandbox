@@ -35,6 +35,17 @@ on peut modifier le fichier shared.php en rajoutant "enless"=>"over the air prim
 
 Mais OBMmonitor n'affichera pas les log correctement puisque cette version initiale utilise comme log /var/log/bios/ota.log
 
+```
+cd /opt/emoncms/modules
+cd postprocess
+git pull
+cd ..
+cd sync
+git pull
+```
+on ne fait rien pour backup dont l'installation n'a pas été correctement fait à l'origine
+
+# ceremaida : migration vers la nouvelle version de bios
 
 
 
