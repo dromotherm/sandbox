@@ -47,5 +47,26 @@ on ne fait rien pour backup dont l'installation n'a pas été correctement fait 
 
 # ceremaida : migration vers la nouvelle version de bios
 
+l'idée est de changer 2 services : enless par ota2 et modbusTCP par sa nouvelle version
+
+on va procéder service par service, on ne prend pas le risque d'arrêter les 2 en même temps
+
+on crée un nouveau répertoire BIOS2 par clonage
+```
+cd /opt/openenergymonitor
+git clone http://github.com/alexjunk/BIOS ./BIOS2
+```
+## modbusTCP
+
+```
+cd BIOS
+make modbusTCPuninstall
+cd ..
+cd BIOS2
+cd hardware
+./modbusTCP.py
+make install name=modbusTCP
+```
+
 
 
