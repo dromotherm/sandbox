@@ -50,6 +50,11 @@ make php
 make redis
 make mosquitto
 ```
+on change le nom de machine et le mot de passe du sudoer :
+```
+make customize
+```
+
 On installe le moteur :
 ```
 make emoncms
