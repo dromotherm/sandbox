@@ -276,7 +276,8 @@ redis:
 	@echo "Installing redis server"
 	@sudo apt-get install -y redis-server
 	@echo "installing PHPRedis"
-	@sudo pecl install redis
+	@git clone https://github.com/phpredis/phpredis
+	@cd phpredis && phpize && ./configure && make && sudo make install
 	@printf "extension=redis.so" | sudo tee /etc/php/$(php_ver)/mods-available/redis.ini 1>&2
 	@sudo phpenmod redis
 	@echo "\n"
