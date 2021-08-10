@@ -39,10 +39,17 @@ cd /opt
 sudo mkdir openenergymonitor
 sudo chown pi:pi openenergymonitor
 cd openenergymonitor
-git clone https://github.com/openenergymonitor/EmonScripts
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 make osupdate
 ```
+Pour que l'installation du module backup ne pose pas de questions :
+```
+git clone https://github.com/openenergymonitor/EmonScripts
+cd EmonScripts/install
+cp emonsd.config.ini config.ini
+cd /opt/openenergymonitor
+```
+
 On installe les dépendances :
 ```
 make apache
