@@ -42,7 +42,7 @@ cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 make osupdate
 ```
-Pour que l'installation du module backup ne pose pas de questions :
+Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
 ```
 git clone https://github.com/openenergymonitor/EmonScripts
 cd EmonScripts/install
