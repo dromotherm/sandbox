@@ -39,6 +39,7 @@ cd /opt
 sudo mkdir openenergymonitor
 sudo chown pi:pi openenergymonitor
 cd openenergymonitor
+git clone https://github.com/openenergymonitor/EmonScripts
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 make osupdate
 ```
