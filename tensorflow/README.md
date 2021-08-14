@@ -988,3 +988,11 @@ Paramétrage de cuda-documentation-11-0 (11.0.228-1) ...
 Paramétrage de cuda-toolkit-11-0 (11.0.3-1) ...
 Paramétrage de cuda-11-0 (11.0.3-1) ...
 ```
+
+# tensor RT
+
+```
+sudo apt-get install -y --no-install-recommends libnvinfer7=7.1.3-1+cuda11.0 \
+    libnvinfer-dev=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin7=7.1.3-1+cuda11.0
+```
