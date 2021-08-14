@@ -11,6 +11,8 @@ GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d
 
 # installation des drivers cuda 
 
+CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by Nvidia.
+
 https://www.tensorflow.org/install/gpu?hl=fr
 
 ```
