@@ -1,5 +1,12 @@
 # BIOS
 
+## sur une machine ubuntu
+
+à rajouter dans le makefile avec un test sur le type d'architecture (x86 vs ARM)
+```
+sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
+```
+
 ## préparation de la carte SD
 
 Télécharger la dernière raspios :
