@@ -3,15 +3,32 @@
 
 https://askubuntu.com/questions/5417/how-to-get-the-gpu-info
 
-la commande `lspci` déatille le matériel présent sur le PC notamment la carte graphique
-
-```
-GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);echo $GPU $RAM
-```
+la commande `lspci` détaille le matériel présent sur le PC notamment la carte graphique
 
 # installation des drivers cuda 
 
 CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by Nvidia.
+
+## méthode nvidia
+
+vérifier que tf reconnait bien les gpu
+
+```
+python3
+Python 3.8.10 (default, Jun  2 2021, 10:49:15) 
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> tf.config.list_physical_devices("GPU")
+2021-08-14 19:55:21.479232: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-08-14 19:55:21.513437: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-08-14 19:55:21.514109: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+```
+
+## méthode tensorflow
+
+pas concluante - pour ubuntu18 alors qu'on a une ubuntu20
 
 https://www.tensorflow.org/install/gpu?hl=fr
 
