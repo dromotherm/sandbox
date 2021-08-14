@@ -15,6 +15,8 @@ https://developer.nvidia.com/cuda-downloads
 
 https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local
 
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#ubuntu-installation
+
 ```
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
 sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
