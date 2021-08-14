@@ -39,6 +39,8 @@ Sat Aug 14 14:13:54 2021
 |    0   N/A  N/A      1781      G   /usr/lib/xorg/Xorg                  3MiB |
 +-----------------------------------------------------------------------------+
 ```
+for real time updates : `watch -n 1 nvidia-smi`
+
 
 ```
 wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
