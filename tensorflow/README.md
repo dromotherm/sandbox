@@ -11,6 +11,20 @@ CUDA (an acronym for Compute Unified Device Architecture) is a parallel computin
 
 ## méthode nvidia
 
+https://developer.nvidia.com/cuda-downloads
+
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local
+
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.4.1/local_installers/cuda-repo-ubuntu2004-11-4-local_11.4.1-470.57.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-4-local_11.4.1-470.57.02-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-4-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
 vérifier que tf reconnait bien les gpu
 
 ```
@@ -25,13 +39,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 2021-08-14 19:55:21.514109: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
-
-## méthode tensorflow
-
-pas concluante - pour ubuntu18 alors qu'on a une ubuntu20
-
-https://www.tensorflow.org/install/gpu?hl=fr
-
+utilitaire nvidia-smi
 ```
 nvidia-smi
 Sat Aug 14 14:13:54 2021       
@@ -58,6 +66,11 @@ Sat Aug 14 14:13:54 2021
 ```
 for real time updates : `watch -n 1 nvidia-smi`
 
+## méthode tensorflow
+
+pas concluante - pour ubuntu18 alors qu'on a une ubuntu20
+
+https://www.tensorflow.org/install/gpu?hl=fr
 
 ```
 wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
