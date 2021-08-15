@@ -68,6 +68,8 @@ Sat Aug 14 14:13:54 2021
 ```
 for real time updates : `watch -n 1 nvidia-smi`
 
+ou nvtop : https://github.com/Syllo/nvtop.git
+
 ## méthode tensorflow
 
 pas concluante - pour ubuntu18 alors qu'on a une ubuntu20
