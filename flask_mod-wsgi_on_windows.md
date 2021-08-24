@@ -107,4 +107,4 @@ WSGIPythonHome "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39"
   </Directory>
 </VirtualHost>
 ```
-**il faut bien sûr avoir créer le fichier app.wsgi**
+**il faut bien sûr avoir crée le fichier app.wsgi**
