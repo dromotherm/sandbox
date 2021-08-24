@@ -27,6 +27,11 @@ pour lancer le serveur et vérifier son fonctionnement, lancer la commande
 ```
 c:\Apache24\bin>httpd.exe
 ```
+pour installer en tant que service, ouvrir un invité msdos en tant qu'administrateur 
+
+![image](https://user-images.githubusercontent.com/24553739/130686770-3499291b-b81a-41aa-88b3-e1ca2b7d276d.png)
+
+
 
 # installer visual C++
 
