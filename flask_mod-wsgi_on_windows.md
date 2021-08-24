@@ -14,6 +14,7 @@ if __name__ == "__main__":
 On peut lancer le serveur de développement via python :
 
 ```
+cd C:\Users\alexandre.cuer\Desktop\work_2021\GTT\CD63\original
 py -m app
 ```
 
