@@ -23,7 +23,10 @@ https://www.apachelounge.com/download/
 
 décompacter sous C:/ ce qui construira un répertoire C:/Apache24 avec tous les fichiers et binaires compilés dedans
 
-pour lancer le serveur et vérifier son fonctionnement, lancer la commande c:\Apache24\bin>httpd.exe
+pour lancer le serveur et vérifier son fonctionnement, lancer la commande 
+```
+c:\Apache24\bin>httpd.exe
+```
 
 # installer visual C++
 
