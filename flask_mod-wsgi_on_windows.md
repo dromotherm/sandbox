@@ -59,6 +59,8 @@ https://visualstudio.microsoft.com/fr/visual-cpp-build-tools/
 ![image](https://user-images.githubusercontent.com/24553739/130683629-3d167940-64a1-426d-8a4d-222955710ca8.png)
 
 # installer mod-wsgi
+
+cf https://modwsgi.readthedocs.io/en/master/
 ```
 py -m pip install mod-wsgi
 ```
