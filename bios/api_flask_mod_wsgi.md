@@ -8,6 +8,8 @@ mod_wsgi source code : https://github.com/GrahamDumpleton/mod_wsgi
 
 https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
+Sous windows (donc pas pour BIOS :-) https://towardsdatascience.com/deploying-flask-on-windows-b2839d8148fa
+
 # sur bios avec la stack openenergymonitor préinstallée 
 
 ## dépendances
