@@ -43,6 +43,12 @@ The 'Apache2.4' service is successfully installed.
 Testing httpd.conf....
 Errors reported here must be corrected before the service can be started.
 ```
+le service doit être démarré avec un compte qui a des privilèges
+
+![image](https://user-images.githubusercontent.com/24553739/130691028-b49921ce-5f4f-4d69-b63e-8a73baa7f17a.png)
+
+![image](https://user-images.githubusercontent.com/24553739/130691297-26b50719-3025-4507-97d0-1febe5cd1d91.png)
+
 
 # installer visual C++
 
