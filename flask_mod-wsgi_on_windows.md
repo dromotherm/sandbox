@@ -59,4 +59,23 @@ https://visualstudio.microsoft.com/fr/visual-cpp-build-tools/
 ![image](https://user-images.githubusercontent.com/24553739/130683629-3d167940-64a1-426d-8a4d-222955710ca8.png)
 
 # installer mod-wsgi
+```
+py -m pip install mod-wsgi
+```
+On vérifie que l'installation s'est bien passée via `py -m pip list' et on cherche où le package est installé :
+```
+py -m pip show mod-wsgi
+Name: mod-wsgi
+Version: 4.9.0
+Summary: Installer for Apache/mod_wsgi.
+Home-page: https://www.modwsgi.org/
+Author: Graham Dumpleton
+Author-email: Graham.Dumpleton@gmail.com
+License: Apache License, Version 2.0
+Location: c:\users\alexandre.cuer\appdata\local\programs\python\python39\lib\site-packages\mod_wsgi-4.9.0-py3.9-win-amd64.egg
+Requires:
+Required-by:
+```
+Le fichier mod_wsgi-express doit être dans c:\users\alexandre.cuer\appdata\local\programs\python\python39\lib\site-packages
 
+![image](https://user-images.githubusercontent.com/24553739/130692706-f2cd4516-01f8-4de6-a0e7-c71fb99f02fa.png)
