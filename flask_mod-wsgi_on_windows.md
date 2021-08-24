@@ -79,3 +79,32 @@ Required-by:
 Le fichier mod_wsgi-express doit être dans c:\users\alexandre.cuer\appdata\local\programs\python\python39\lib\site-packages
 
 ![image](https://user-images.githubusercontent.com/24553739/130692706-f2cd4516-01f8-4de6-a0e7-c71fb99f02fa.png)
+
+```
+cd c:\users\alexandre.cuer\appdata\local\programs\python\python39\lib\site-packages\scripts
+mod_wsgi-express module-config
+```
+le retour est le suivant :
+```
+LoadFile "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39/python39.dll"
+LoadModule wsgi_module "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39/lib/site-packages/mod_wsgi-4.9.0-py3.9-win-amd64.egg/mod_wsgi/server/mod_wsgi.cp39-win_amd64.pyd"
+WSGIPythonHome "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39"
+```
+On modifie alors le fichier httpd.conf en conséquence :
+```
+LoadFile "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39/python39.dll"
+LoadModule wsgi_module "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39/lib/site-packages/mod_wsgi-4.9.0-py3.9-win-amd64.egg/mod_wsgi/server/mod_wsgi.cp39-win_amd64.pyd"
+WSGIPythonHome "C:/Users/alexandre.cuer/AppData/Local/Programs/Python/Python39"
+
+<VirtualHost *:80>
+  WSGIScriptAlias /wsgi "C:/Users/alexandre.cuer/Desktop/work_2021/GTT/CD63/original/app.wsgi"
+  <Directory "C:/Users/alexandre.cuer/Desktop/work_2021/GTT/CD63/original">
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIScriptReloading On
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+</VirtualHost>
+```
+**il faut bien sûr avoir créer le fichier app.wsgi**
