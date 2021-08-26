@@ -38,6 +38,8 @@ Avec des secteurs de 512 octets :
 
 # parted
 
+https://serverfault.com/questions/870594/resize-partition-to-maximum-using-parted-in-non-interactive-mode
+
 quant on a oublié de modifier le init_resize.sh pour que les datas emoncms occupent la totalité de la carte 32 Go, l'espace est alloué au système sur mmcblk0p2 
 
 ```
