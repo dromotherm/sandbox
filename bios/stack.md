@@ -20,4 +20,14 @@ Les modules UX : /var/www/emoncms/Modules
 module OBMmonitor qui monitore n'importe quel service associé pourvu qu'il soit déclaré : http://github.com/alexjunk/OBMmonitor
 
 # récupération des données à distance
+la solution 1 est de passer par le module de synchro :
 ![](sync.svg)
+la solution 2 est de faire un backup avec le module de backup et de le décompacter
+
+pour exploiter avec python :
+
+```
+python3 -m pip install PyFina
+```
+
+cf https://pypi.org/project/PyFina/
