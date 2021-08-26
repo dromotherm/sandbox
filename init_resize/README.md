@@ -38,7 +38,7 @@ Avec des secteurs de 512 octets :
 
 # parted
 
-quant on a oublié de modifier le init_resize.sh pour que les datas emoncms occupent la totalité de la carte 32 Go 
+quant on a oublié de modifier le init_resize.sh pour que les datas emoncms occupent la totalité de la carte 32 Go, l'espace est alloué au système sur mmcblk0p2 
 
 ```
 sudo parted -s -a opt /dev/mmcblk0 "print free"
@@ -55,3 +55,21 @@ Number  Start   End     Size    Type     File system  Flags
  3      21.2GB  31.9GB  10.7GB  primary  ext2
         31.9GB  31.9GB  524kB            Free Space
 ```
+
+```
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        20G  3.1G   16G  17% /
+devtmpfs        430M     0  430M   0% /dev
+tmpfs           462M     0  462M   0% /dev/shm
+tmpfs           462M   12M  450M   3% /run
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           462M     0  462M   0% /sys/fs/cgroup
+tmpfs            30M     0   30M   0% /tmp
+tmpfs           1.0M  4.0K 1020K   1% /var/lib/php/sessions
+tmpfs           1.0M     0  1.0M   0% /var/tmp
+/dev/mmcblk0p3  9.9G  3.8M  9.4G   1% /var/opt/emoncms
+/dev/mmcblk0p1  253M   49M  205M  20% /boot
+log2ram          50M  7.0M   44M  14% /var/log
+tmpfs            93M     0   93M   0% /run/user/1000
+``̀`
