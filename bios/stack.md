@@ -24,7 +24,7 @@ la solution 1 est de passer par le module de synchro :
 ![](sync.svg)
 la solution 2 est de faire un backup avec le module de backup et de le décompacter
 
-pour exploiter avec python :
+pour exploiter avec python et numpy :
 
 ```
 python3 -m pip install PyFina
