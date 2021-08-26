@@ -35,3 +35,23 @@ Avec des secteurs de 512 octets :
 10 Gio = 10 * 1073741824 / 512 = 20971520 secteurs
 
 20 Gio = 41943040 secteurs
+
+# parted
+
+quant on a oublié de modifier le init_resize.sh pour que les datas emoncms occupent la totalité de la carte 32 Go 
+
+```
+sudo parted -s -a opt /dev/mmcblk0 "print free"
+Model: SD SC32G (sd/mmc)
+Disk /dev/mmcblk0: 31.9GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system  Flags
+        16.4kB  4194kB  4178kB           Free Space
+ 1      4194kB  273MB   268MB   primary  fat32        lba
+ 2      273MB   21.2GB  20.9GB  primary  ext4
+ 3      21.2GB  31.9GB  10.7GB  primary  ext2
+        31.9GB  31.9GB  524kB            Free Space
+```
