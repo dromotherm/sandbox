@@ -1,3 +1,5 @@
+# services et modules UX
+
 Services python de niveau II | code source sur github | emplacement sur PI
 --|--|--
 Emonhub, pour récupérer les données des matériels emonTx et emonPi | http://github.com/openenergymonitor/emonhub | /opt/openenergymonitor/emonhub
@@ -13,5 +15,9 @@ service-runner | /var/www/emoncms/scripts/services/service-runner/service-runner
 
 Emoncms est dans /var/www/emoncms
 
-Les modules : /var/www/emoncms/Modules
+Les modules UX : /var/www/emoncms/Modules
 
+module OBMmonitor qui monitore n'importe quel service associé pourvu qu'il soit déclaré : http://github.com/alexjunk/OBMmonitor
+
+# récupération des données à distance
+![](sync.svg)
