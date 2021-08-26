@@ -19,6 +19,8 @@ Les modules UX : /var/www/emoncms/Modules
 
 module OBMmonitor qui monitore n'importe quel service associé pourvu qu'il soit déclaré : http://github.com/alexjunk/OBMmonitor
 
+module helloWorld : http://github.com/dromotherm/dromotherm
+
 # récupération des données à distance
 la solution 1 est de passer par le module de synchro :
 ![](sync.svg)
