@@ -8,4 +8,9 @@
 
 [install apache, mod-wsgi and flask on windows !](flask_mod-wsgi_on_windows.md)
 
+# the hardware side
+
+[upload emonTx firmware with platformio](emonTX/emonTxV3CM.md)
+
+[upload emonpi firmware](emonpifirmware)
 
