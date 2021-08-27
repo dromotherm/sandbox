@@ -6,7 +6,7 @@
 
 [managing bios version with git](git.md)
 
-[Installing PHP on linux with oerdnj ppa](PHP.md)
+[Upgrading PHP on linux with oerdnj ppa](PHP.md)
 
 [managing python modules](python_modules/python_modules.md)
 
