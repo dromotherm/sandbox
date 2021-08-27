@@ -163,13 +163,13 @@
              style="fill:none;stroke:#3465a4;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
              id="path110" /></g><g
            id="g112"><text
-             transform="matrix(1,0,0,-1,601.2,276.547)"
-             style="font-style:italic;font-variant:normal;font-size:15.987px;font-family:'Liberation Sans';-inkscape-font-specification:LiberationSans-Italic;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,598.989,278.56)"
+             style="font-style:italic;font-variant:normal;font-size:10.006px;font-family:'Liberation Sans';-inkscape-font-specification:LiberationSans-Italic;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text116"><tspan
-               x="0 4.4763598 12.46986 21.358631 26.65033 31.046755 39.935528 48.824299 53.220722 57.617149 66.50592 75.394691 84.283463 88.679886 92.260979 101.14975"
+               x="0 2.7916739 7.7946739 13.388028 16.690008 19.481682 24.984982 30.488281 33.279957 35.981575 41.574928 49.87991 55.383209 60.886509 65.889511 74.194489 79.197487 81.989166 87.492462 93.085815 98.589119 101.29074 103.49206 108.99536"
                y="0"
                sodipodi:role="line"
-               id="tspan114">/var/opt/phpfina</tspan></text></g><g
+               id="tspan114">/var/opt/emoncms/phpfina</tspan></text></g><g
            id="g118"><path
              d="M 470.551,282.047 H 595.276"
              style="fill:none;stroke:#3465a4;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
