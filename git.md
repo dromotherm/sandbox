@@ -18,7 +18,7 @@ git pull
 ```
 Si l'on veut fonctionner avec la branche bios_menuv3 d'emoncms
 ```
-git remote set-url origin https://github.com/emoncms/emoncms.git
+git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git pull
 git checkout bios_menuv3
 ```
