@@ -13,7 +13,7 @@ ota2, service over the air pour récupérer les données radio 169 Mhz Enless | 
 modbusTCP, pour interroger une ligne modbusTCP (promux, pyranomètres KippNzonen) | https://github.com/alexjunk/BIOS/blob/master/hardware/modbusTCP.py | /opt/openenergymonitor/BIOS/hardware
 bios, pour piloter des circuits de chaufferie + disposer en temps réel de la météo prévisionnelle sur les 7 prochains jours | https://github.com/alexjunk/BIOS | /opt/openenergymonitor/BIOS
 
-Documentation ota2, modbusTCP, bios : https://github.com/alexjunk/BIOS/tree/master/hardware
+Documentation ota2, modbusTCP : https://github.com/alexjunk/BIOS/tree/master/hardware
 
 On y trouve le positionnement des jumpers pour le récepteur enless en mode USB
 
