@@ -21,7 +21,8 @@ module OBMmonitor qui monitore n'importe quel service associé pourvu qu'il soit
 
 module helloWorld : http://github.com/dromotherm/dromotherm
 
-les log sont dans /var/log
+Les log sont dans /var/log et les services sont de type systemd. 
+Pour plus détails, cf https://github.com/openenergymonitor/EmonScripts/blob/master/EmonPiFileSystem.md#emoncms-systemd-services
 
 # récupération des données à distance
 la solution 1 est de passer par le module de synchro :
