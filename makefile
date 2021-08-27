@@ -399,16 +399,16 @@ custom_logrotate:
 	@printf "}\n" >> emoncms
 	@sudo ln -sf $(here)/emoncms /etc/logrotate.d/emoncms
 	@echo "creating custom emonhub config"
-	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub
-	@printf "    maxsize 3M\n" >> emonhub
-	@printf "    norenamecopy\n" >> emonhub
-	@printf "    copytruncate\n" >> emonhub
-	@printf "    su root root\n" >> emonhub
-	@printf "    compress\n" >> emonhub
-	@printf "    olddir /var/log.old/emonhub\n" >> emonhub
-	@printf "    createolddir 775 root emonhub\n" >> emonhub
-	@printf "}\n" >> emonhub
-	@sudo ln -sf $(here)/emonhub /etc/logrotate.d/emonhub
+	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub.1
+	@printf "    maxsize 3M\n" >> emonhub.1
+	@printf "    norenamecopy\n" >> emonhub.1
+	@printf "    copytruncate\n" >> emonhub.1
+	@printf "    su root root\n" >> emonhub.1
+	@printf "    compress\n" >> emonhub.1
+	@printf "    olddir /var/log.old/emonhub\n" >> emonhub.1
+	@printf "    createolddir 775 root emonhub\n" >> emonhub.1
+	@printf "}\n" >> emonhub.1
+	@sudo ln -sf $(here)/emonhub.1 /etc/logrotate.d/emonhub
 	@sudo chown root /etc/logrotate.d/00_defaults
 	@sudo chown root /etc/logrotate.d/emoncms
 	@sudo chown root /etc/logrotate.d/emonhub
