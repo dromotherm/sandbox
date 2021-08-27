@@ -71,7 +71,7 @@ I did not bothered about `strace: |autoreset: Broken pipe` lines in the return..
 
 then restart emonhub so that the changes are taken into account :
 ```
-sudo systemctl stop emonhub
+sudo systemctl start emonhub
 ```
 when I monitor, I have to specify the baudrate :
 ```
