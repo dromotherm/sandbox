@@ -1,6 +1,3 @@
-sandbox - diverses méthodes en tt genre :-)
-
-
 # md5 bios 32 Go Sandisk - 17/03/2021
 ```
 45b5ff83cbd5a45573fad44c2ef3a536  bios.img.zip
