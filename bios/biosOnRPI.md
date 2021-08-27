@@ -1,6 +1,6 @@
 # install dependancies for BIOS
 
-normally the command `make dependancies` should do that for you but if the automatic mode fails, you have to do it by hand
+normally the command `./requires.sh` should do that for you but if the automatic mode fails, you have to do it by hand
 
 if your raspberry is in production and was not updated for a while :
 ```
