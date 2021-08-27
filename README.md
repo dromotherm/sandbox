@@ -14,3 +14,5 @@
 
 [emonpi firmware update via emoncms admin module - log trace](emonpifirmware/2020-08-28.md)
 
+[arduino C code to decode DHT22 DHT11 - no library](arduino/DHT/dht.ino)
+
