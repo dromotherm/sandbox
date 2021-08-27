@@ -6,6 +6,10 @@
 
 [managing bios version with git](git.md)
 
+[managing python modules](python_modules/python_modules.md)
+
+[packaging python modules - creating a wheel and uploading to pypi](python_modules/packaging_modules.md)
+
 [install apache, mod-wsgi and flask on windows !](flask_mod-wsgi_on_windows.md)
 
 # the hardware side
