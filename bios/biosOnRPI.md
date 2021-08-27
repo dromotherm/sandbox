@@ -60,7 +60,8 @@ pip3 install redis
 checkout from themis to master (the "redis feeds" implementation, to store meteo forecasts, has not yet been committed to the themis branch)
 ```
 cd /var/www/emoncms
-git checkout master
+git remote set-url origin https://github.com/alexandrecuer/emoncms.git
+git checkout bios_menuv3
 git pull
 ```
 
