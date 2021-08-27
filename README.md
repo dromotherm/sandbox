@@ -6,6 +6,8 @@
 
 [managing bios version with git](git.md)
 
+[Installing PHP on linux with oerdnj ppa](PHP.md)
+
 [managing python modules](python_modules/python_modules.md)
 
 [packaging python modules - creating a wheel and uploading to pypi](python_modules/packaging_modules.md)
