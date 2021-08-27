@@ -4,7 +4,7 @@
 
 [managing partitions with init_resize](init_resize)
 
-[managing bios version with git](git.md)
+[managing bios versions with git](git.md)
 
 [Upgrading PHP on linux with oerdnj ppa](PHP.md)
 
