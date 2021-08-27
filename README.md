@@ -10,7 +10,7 @@
 
 # the hardware side
 
-[upload emonTx firmware with platformio](emonTX/emonTxV3CM.md)
+[upload emonpi firmware with platformio](emonTX/emonTxV3CM.md)
 
-[upload emonpi firmware](emonpifirmware)
+[emonpi firmware update - log trace](emonpifirmware/2020-08-28.md)
 
