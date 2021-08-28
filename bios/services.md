@@ -52,3 +52,14 @@ public function post($feedid,$time,$value,$args=null)
     }
 ```
 Désormais c'est au service feedwriter de prendre la main.
+
+# fonctionnement du feedwriter
+```
+while(true)
+    {
+        $feed->EngineClass(Engine::REDISBUFFER)->process_buffers();
+        sleep((int)$settings['feed']['redisbuffer']['sleep']);
+    }
+```
+pour tous numéros de flux indiqués dans le set redis `feed:bufferactive`, on va lire le zset `feed:$feedid:buffer`
+
