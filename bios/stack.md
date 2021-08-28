@@ -1,4 +1,6 @@
-# services et modules UX
+L'application web Emoncms est dans /var/www/emoncms
+
+# services
 
 Services de niveau I | emplacement sur PI
 -- | --
@@ -17,16 +19,16 @@ Documentation ota2, modbusTCP : https://github.com/alexjunk/BIOS/tree/master/har
 
 On y trouve le positionnement des jumpers pour le récepteur enless en mode USB
 
-L'application web Emoncms est dans /var/www/emoncms
+Les log sont dans /var/log et les services sont de type systemd. 
+Pour plus détails, cf https://github.com/openenergymonitor/EmonScripts/blob/master/EmonPiFileSystem.md#emoncms-systemd-services
 
-Les modules UX : /var/www/emoncms/Modules
+# modules UX
+
+Les modules UX sont dans /var/www/emoncms/Modules
 
 module OBMmonitor qui monitore n'importe quel service associé pourvu qu'il soit déclaré : http://github.com/alexjunk/OBMmonitor
 
 module helloWorld : http://github.com/dromotherm/dromotherm
-
-Les log sont dans /var/log et les services sont de type systemd. 
-Pour plus détails, cf https://github.com/openenergymonitor/EmonScripts/blob/master/EmonPiFileSystem.md#emoncms-systemd-services
 
 # récupération des données à distance
 la solution 1 est de passer par le module de synchro :
