@@ -8,7 +8,7 @@ Cet exemple de payload contient 2 inputs : temp et rh
 Pour le premier input, on a :
 ```
 $name = "temp";
-$value=24.7;
+$value = 24.7;
 ```
 
 quant un payload json est reçu depuis le broker, le service met à jour des hash dans redis:
