@@ -104,6 +104,16 @@ cd BIOS
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
+On peut installer phpRedisAdmin si on veut une machine éducative :
+```
+make phpRedisAdmin
+```
+dans ce cas, il convient de sécuriser un minimum :
+```
+nano phpRedisAdmin/includes/config.sample.inc.php
+```
+on décommente la section login et on choisit un mot de passe pour admin
+
 ## configuration routeur - 1 = sans SIM
 
 On démarre BIOS sans carte SD ds le raspberry
