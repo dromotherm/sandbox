@@ -2,6 +2,8 @@
 
 [install BIOS with makefile](bios)
 
+[bios specificity: storing meteoforecasts as emoncms redis temporary feeds :-)](enhancingEmonCMS.md)
+
 [managing partitions with init_resize](init_resize)
 
 [managing bios versions with git](git.md)
