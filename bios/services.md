@@ -88,6 +88,6 @@ for ($n=0; $n<$npadding; $n++)
 $this->writebuffer[$feedid] .= pack("f",$value);
 $this->lastvalue_cache[$feedid] = $value;
 ```
-$padding_value vaut soit NAN si on accepte les trous de données, soit une valeur interpolée linéairement
+`$padding_value` est soit un NAN si on accepte les trous de données, soit une valeur interpolée linéairement
 
 
