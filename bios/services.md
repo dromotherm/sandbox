@@ -76,7 +76,7 @@ if ($arg == "U" || $lasttime == $time) {
 }
 $lasttime=$time;
 ```
-post_bulk_prepare va nourrir 2 variables du moteur de données : `$writebuffer` et `$lastvalue_cache`
+post_bulk_prepare nourrit 2 variables du moteur de données : `$writebuffer` et `$lastvalue_cache`
 ```
 $pos = floor(($time - $meta->start_time) / $meta->interval);
 $last_pos = $meta->npoints - 1;
@@ -90,4 +90,8 @@ $this->lastvalue_cache[$feedid] = $value;
 ```
 `$padding_value` est soit un NAN si on accepte les trous de données, soit une valeur interpolée linéairement
 
+Enfin, l'écriture dans les flux est réalisé par `post_bulk_save()` en parcourant `$writebuffer`:
+```
+$this->feed->EngineClass($engine)->post_bulk_save();
+```
 
