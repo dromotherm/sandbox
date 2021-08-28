@@ -6,6 +6,8 @@
 
 [managing bios versions with git](git.md)
 
+[Linux basics - users management, systemd services, file transfer with scp](linux)
+
 [Upgrading PHP on linux with oerdnj ppa](PHP.md)
 
 [managing python modules](python_modules/python_modules.md)
