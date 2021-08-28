@@ -1,4 +1,4 @@
-# sandbox
+# bios
 
 [install BIOS with makefile](bios)
 
@@ -8,7 +8,11 @@
 
 [managing bios versions with git](git.md)
 
+# the sysadmin side
+
 [Linux basics - users management, systemd services, file transfer with scp](linux)
+
+[install tensor flow - raspberry case, gpu case with cuda drivers](tensorflow)
 
 [Upgrading PHP on linux with oerdnj ppa](PHP.md)
 
