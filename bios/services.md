@@ -76,7 +76,7 @@ if ($arg == "U" || $lasttime == $time) {
 }
 $lasttime=$time;
 ```
-post_bulk_prepare va nourrir 2 variables du moteur de données : $writebuffer et $lastvalue_cache
+post_bulk_prepare va nourrir 2 variables du moteur de données : `$writebuffer` et `$lastvalue_cache`
 ```
 $pos = floor(($time - $meta->start_time) / $meta->interval);
 $last_pos = $meta->npoints - 1;
