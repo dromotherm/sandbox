@@ -8,6 +8,8 @@
 
 [managing bios versions with git](git.md)
 
+# [create an sd card image](create_sd_cards_images.md )
+
 # the sysadmin side
 
 [Linux basics - users management, systemd services, file transfer with scp](linux)
