@@ -17,28 +17,28 @@ hash | valeur
 --|--
 `input:lastvalue:$inputid` | `{"time":$time, "value":$value}`
 
-Pour celà, le service appelle la méthode set_timevalue($nodeid,$time,$value) de la class Input (cf input_model.php)
+Pour celà, le service appelle la méthode `set_timevalue($nodeid,$time,$value)` de la class Input (cf input_model.php)
 ```
 $dbinputs = $input->get_inputs($userid);
 $inputid = $dbinputs[$nodeid][$name]['id'];
 $input->set_timevalue($inputid,$time,$value);
 ```
 
-En parallèle, le service vérifie s'il y a un ou des process sur chaque input concerné et les applique, en appelant la méthode input de la class Process (cf process_model.php)
+En parallèle, le service vérifie s'il y a un ou des process sur chaque input concerné et les applique, en appelant la méthode `input` de la class Process (cf process_model.php)
 
 Emoncms offre beaucoup de process mais on utilise principalement log_to_feed
 
-la méthode log_to_feed de la classe Process_ProcessList (cf process_processlist.php) appelle la méthode insert_data de classe Feed (cf feed_model.php)
+la méthode `log_to_feed` de la classe Process_ProcessList (cf process_processlist.php) appelle la méthode `insert_data` de classe Feed (cf feed_model.php)
 ```
 $this->feed->insert_data($id, $time, $time, $value);
 ```
-Cette méthode insert_data($feedid,$updatetime,$feedtime,$value,$arg=null) écrit directement dans la timeserie avec le moteur correspondant ou crée le buffer dans redis :
+Cette méthode `insert_data($feedid,$updatetime,$feedtime,$value,$arg=null)` écrit directement dans la timeserie avec le moteur correspondant ou crée le buffer dans redis :
 ```
 $engine = $this->get_engine($feedid);
 $args = array('engine'=>$engine,'updatetime'=>$updatetime,'arg'=>$arg);
 $this->EngineClass(Engine::REDISBUFFER)->post($feedid,$feedtime,$value,$args); 
 ```
-Le code de la méthode post de la classe RedisBuffer est le suivant :
+Le code de la méthode `post` de la classe RedisBuffer est le suivant :
 ```
 public function post($feedid,$time,$value,$args=null)
     {
