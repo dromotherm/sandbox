@@ -61,5 +61,33 @@ while(true)
         sleep((int)$settings['feed']['redisbuffer']['sleep']);
     }
 ```
-pour tous numéros de flux indiqués dans le set redis `feed:bufferactive`, on va lire le zset `feed:$feedid:buffer`
+pour tous numéros de flux indiqués dans le set redis `feed:bufferactive`, on récupère le numéro du moteur de données :
+```
+$feeddata = $this->redis->hGetAll("feed:$feedid");
+$engine = $feeddata['engine'];
+```
+on lit ensuite les éléments contenus dans le zset `feed:$feedid:buffer` et on les traite les uns après les autres de la manière suivante :
+
+```
+if ($arg == "U" || $lasttime == $time) {
+    $this->feed->EngineClass($engine)->update($feedid,$time,$value);
+} else {
+    $this->feed->EngineClass($engine)->post_bulk_prepare($feedid,$time,$value,$arg);
+}
+$lasttime=$time;
+```
+post_bulk_prepare va nourrir 2 variables du moteur de données : $writebuffer et $lastvalue_cache
+```
+$pos = floor(($time - $meta->start_time) / $meta->interval);
+$last_pos = $meta->npoints - 1;
+$npadding = ($pos - $last_pos)-1;
+for ($n=0; $n<$npadding; $n++)
+    {
+    $this->writebuffer[$feedid] .= pack("f",$padding_value);
+    }
+$this->writebuffer[$feedid] .= pack("f",$value);
+$this->lastvalue_cache[$feedid] = $value;
+```
+$padding_value vaut soit NAN si on accepte les trous de données, soit une valeur interpolée linéairement
+
 
