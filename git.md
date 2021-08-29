@@ -4,9 +4,15 @@ git config --list
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git pull
 git branch -a
-git checkout bios_menuv3
+git checkout bios_master
 ```
 on installe seulement graph, sync et OBMmonitor (branche v3menu)
+```
+cd /var/www/emoncms/Modules
+git clone https://github.com/alexjunk/OBMmonitor
+cd OBMmonitor
+git checkout v3menu
+```
 
 # ceremaida : migration vers menu_v3
 ```
