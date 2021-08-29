@@ -109,8 +109,9 @@ cd BIOS
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
-On peut installer phpRedisAdmin si on veut une machine éducative :
+## installation de phpRedisAdmin si on veut une machine datalake éducative :
 ```
+cd /opt/openenergymonitor
 make phpRedisAdmin
 ```
 dans ce cas, il convient de sécuriser un minimum :
