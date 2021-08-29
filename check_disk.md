@@ -1,6 +1,7 @@
 https://askubuntu.com/questions/490671/fix-half-installed-package
 
 # fsck
+à faire après avoir démonté les partitions
 
 sans erreur :
 ```
