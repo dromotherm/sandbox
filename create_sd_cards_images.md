@@ -1,10 +1,3 @@
-# md5 bios 32 Go Sandisk - 17/03/2021
-```
-45b5ff83cbd5a45573fad44c2ef3a536  bios.img.zip
-d8012c497545175a9cc0a8e2a8cd944c  bios.img
-```
-
-
 # create image from SD cards
 
 L'idée est de créer une image qui passe sur toutes les marques de cartes SD a compter d'une certaine taille (16 Go)
