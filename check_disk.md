@@ -1,3 +1,5 @@
+https://askubuntu.com/questions/490671/fix-half-installed-package
+
 # fsck
 
 sans erreur :
