@@ -87,6 +87,8 @@ on peut alors créer un zip pour compresser et gagner de l'espace...
 zip test.img.zip test.img
   adding: test.img (deflated 92%)
 ```
+ou encore `zip -9 test.img.zip test.img` si on veut compresser au maximum
+
 on vérifie la taille du zip (1.2 Go)
 
 ```
