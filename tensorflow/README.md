@@ -26,6 +26,9 @@ sudo apt-key add /var/cuda-repo-ubuntu2004-11-4-local/7fa2af80.pub
 sudo apt-get update
 sudo apt-get -y install cuda
 ```
+En lançant l'utilitaire nvidia X server settings, on peut obtenir le nombre de coeurs de GPU disponibles
+![image](https://user-images.githubusercontent.com/24553739/133930399-edbb0e44-d35d-485e-82a0-a80eca13dd9f.png)
+
 On vient d'installer les cuda libraries. Il faut installer les cudaNN libraries : https://developer.nvidia.com/rdp/cudnn-download
 ```
 sudo dpkg -i libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb
