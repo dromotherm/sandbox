@@ -229,7 +229,7 @@ service-runner:
 
 emoncms_mqtt:
 	@echo "creating emoncms_mqtt service file"
-	@printf "[Unit]\n" >> emoncms_mqtt.service
+	@printf "[Unit]\n" > emoncms_mqtt.service
 	@printf "Description=Emoncms emoncms_mqtt script\n" >> emoncms_mqtt.service
 	@printf "Wants=mosquitto.service mysql.service redis-server.service\n" >> emoncms_mqtt.service
 	@printf "After=mosquitto.service mysql.service redis-server.service\n" >> emoncms_mqtt.service
