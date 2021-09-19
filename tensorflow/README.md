@@ -26,6 +26,10 @@ sudo apt-key add /var/cuda-repo-ubuntu2004-11-4-local/7fa2af80.pub
 sudo apt-get update
 sudo apt-get -y install cuda
 ```
+On vient d'installer les cuda libraries. Il faut installer les cudaNN libraries : https://developer.nvidia.com/rdp/cudnn-download
+```
+sudo dpkg -i libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb
+```
 
 vérifier que tf reconnait bien les gpu
 
