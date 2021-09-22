@@ -1,6 +1,6 @@
 # fonctionnement du service emoncms_mqtt
 
-Pour rappel, quant on poste dans le broker sur le topic `emon/nodeid` ou sur `emon/userid/nodeid` quant on est en multiutilisateur, on envoie généralement un payload au format json :
+Pour rappel, quant on poste dans le broker sur le topic `emon/nodeid` ou sur `emon/userid/nodeid` en mode multiutilisateur, on envoie généralement un payload au format json :
 `{temp:24.7, rh:56.8}`
 
 Cet exemple de payload contient 2 inputs : temp et rh 
