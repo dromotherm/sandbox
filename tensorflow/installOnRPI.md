@@ -127,3 +127,123 @@ Nota : the 2.10.0 version is not available via apt-get
 ```
 sudo apt-get install python3-h5py=2.10.0
 ```
+## EDIT :
+si on a la version 3.4.0 de h5py
+```
+python3 -m pip list
+Package                Version
+---------------------- ---------
+absl-py                0.13.0
+asn1crypto             0.24.0
+astor                  0.8.1
+attrs                  18.2.0
+Automat                0.6.0
+cached-property        1.5.2
+cachetools             4.2.2
+certifi                2018.8.24
+chardet                3.0.4
+Click                  7.0
+colorama               0.3.7
+colorzero              1.1
+configobj              5.0.6
+constantly             15.1.0
+cryptography           2.6.1
+entrypoints            0.3
+gast                   0.2.2
+google-auth            1.35.0
+google-auth-oauthlib   0.4.5
+google-pasta           0.2.0
+gpiozero               1.6.2
+grpcio                 1.39.0
+h5py                   3.4.0
+hyperlink              17.3.1
+idna                   2.6
+importlib-metadata     4.8.1
+incremental            16.10.1
+Keras-Applications     1.0.8
+Keras-Preprocessing    1.1.2
+keyring                17.1.1
+keyrings.alt           3.1.1
+Markdown               3.3.4
+minimalmodbus          2.0.1
+mysql-connector-python 8.0.15
+numpy                  1.16.2
+oauthlib               3.1.1
+opt-einsum             3.3.0
+paho-mqtt              1.5.1
+pip                    21.2.4
+protobuf               3.17.3
+py-sds011              0.9
+pyasn1                 0.4.2
+pyasn1-modules         0.2.1
+PyBluez                0.23
+pycrypto               2.6.1
+PyGObject              3.30.4
+pymodbus               2.5.2
+pyOpenSSL              19.0.0
+pyserial               3.4
+pyserial-asyncio       0.4
+python-apt             1.8.4.3
+pyxdg                  0.25
+redis                  3.5.3
+requests               2.21.0
+requests-oauthlib      1.3.0
+RPi.GPIO               0.7.0
+rsa                    4.7.2
+scipy                  1.4.1
+sdm-modbus             0.4.6
+SecretStorage          2.3.1
+service-identity       16.0.0
+setuptools             57.4.0
+six                    1.16.0
+spidev                 3.5
+ssh-import-id          5.7
+tensorboard            2.1.1
+tensorflow             2.1.0
+tensorflow-estimator   2.1.0
+termcolor              1.1.0
+Twisted                18.9.0
+typing-extensions      3.10.0.1
+urllib3                1.24.1
+Werkzeug               2.0.1
+wheel                  0.32.3
+wrapt                  1.12.1
+xmltodict              0.12.0
+zipp                   3.5.0
+zope.interface         4.3.2
+```
+il faut le désinstaller
+```
+pip3 uninstall h5py
+Found existing installation: h5py 3.4.0
+Uninstalling h5py-3.4.0:
+  Would remove:
+    /home/pi/.local/lib/python3.7/site-packages/h5py-3.4.0.dist-info/*
+    /home/pi/.local/lib/python3.7/site-packages/h5py/*
+Proceed (Y/n)? y
+  Successfully uninstalled h5py-3.4.0
+```
+puis installer h5py via apt :
+```
+sudo apt-get install python3-h5py
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  python-colorzero
+Use 'sudo apt autoremove' to remove it.
+Suggested packages:
+  python-h5py-doc
+The following NEW packages will be installed:
+  python3-h5py
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 809 kB of archives.
+After this operation, 5,599 kB of additional disk space will be used.
+Get:1 http://mirrors.ircam.fr/pub/raspbian/raspbian buster/main armhf python3-h5py armhf 2.8.0-3 [809 kB]
+Fetched 809 kB in 3s (277 kB/s)       
+Selecting previously unselected package python3-h5py.
+(Reading database ... 49322 files and directories currently installed.)
+Preparing to unpack .../python3-h5py_2.8.0-3_armhf.deb ...
+Unpacking python3-h5py (2.8.0-3) ...
+Setting up python3-h5py (2.8.0-3) ...
+```
