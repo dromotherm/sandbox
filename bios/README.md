@@ -115,6 +115,8 @@ On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
 ## installation de emonhub
 
+Si on veut faire du monitoring électrique 
+
 ```
 cd /opt/openenergymonitor/EmonScripts/install
 ./emonhub.sh
