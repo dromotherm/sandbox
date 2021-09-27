@@ -113,6 +113,17 @@ cd BIOS
 ```
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
+## installation de emonhub
+
+```
+cd /opt/openenergymonitor/EmonScripts/install
+./emonhub.sh
+cd /opt/openenergymonitor
+make module name=config
+```
+
+
+
 ## installation de phpRedisAdmin si on veut une machine datalake éducative :
 ```
 cd /opt/openenergymonitor
