@@ -46,6 +46,9 @@ sudo cp fstab /etc/fstab
 sudo reboot
 ```
 On définit la bonne timezone : `sudo raspi-config`
+
+## installation 
+
 ```
 cd /opt
 sudo mkdir openenergymonitor
