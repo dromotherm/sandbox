@@ -206,7 +206,7 @@ On coche les cases :
 
 Nota : si le routeur n'a pas de wifi, si on est sans carte SIM et qu'on va rester sur un réseau de type livebox, il faut renseigner la translation d'adresse sur le port 22 pour faire du SSH depuis le réseau livebox
 
-** si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
+**si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
 
 ## configuration routeur - 2 = avec SIM
 
