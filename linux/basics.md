@@ -9,6 +9,12 @@ cat /etc/os-release
 df -h
 ```
 
+# taille d'un répertoire
+
+```
+du -c path_folder
+```
+
 # Vérifier le modèle de raspberry
 
 `cat /proc/device-tree/model` ou `pinout`
