@@ -1,3 +1,7 @@
+## self documented makefile
+
+https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+
 ## makefile
 
 https://www.gnu.org/software/make/manual/
