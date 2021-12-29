@@ -114,6 +114,14 @@ make log2ram
 ```
 On reboote pour activer log2ram
 
+
+On peut passer sur la branche BIOS d'emoncms :
+```
+cd /var/www/emoncms
+git remote set-url origin https://github.com/alexandrecuer/emoncms.git
+git checkout bios-master
+```
+on installer les sources de BIOS :
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS
