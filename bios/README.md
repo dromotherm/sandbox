@@ -114,6 +114,11 @@ make log2ram
 ```
 On reboote pour activer log2ram
 
+[difficultés avec log2ram](log2ram.md)
+pour trouver ce qui occupe l'espace dans les log :
+```
+sudo du -a /var/log/* | sort -n -r | head -n 30
+```
 
 On peut passer sur la branche BIOS d'emoncms :
 ```
