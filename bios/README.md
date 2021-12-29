@@ -119,7 +119,7 @@ On peut passer sur la branche BIOS d'emoncms :
 ```
 cd /var/www/emoncms
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
-git checkout bios-master
+git checkout bios_master
 ```
 on installer les sources de BIOS :
 ```
