@@ -1,3 +1,8 @@
+Pour vérifier la RAM utilisée :
+```
+free
+```
+
 Pour lister les processus : `ps -aux`
 
 ```
