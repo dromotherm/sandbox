@@ -70,31 +70,21 @@ Pour rendre le montage pérenne :
 pi@raspberrypi:~$ sudo nano /etc/fstab
 ```
 
-```
-  GNU nano 2.2.6              File: /etc/fstab
-
-proc            /proc           proc    defaults          0       0
-/dev/mmcblk0p1  /boot           vfat    defaults          0       2
-/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
-# a swapfile is not a swap partition, no line here
-#   use  dphys-swapfile swap[on|off]  for that
-tmpfs /tmp tmpfs defaults,size=32M 0 0
-/dev/sda2 /USB1 ext4 defaults 0 3
-
-
-
-
-
-
-
-
-
-
-
-
-                                [ Read 7 lines ]
-^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
-^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
+```diff
+-  GNU nano 2.2.6              File: /etc/fstab
+-
+- proc            /proc           proc    defaults          0       0
+- /dev/mmcblk0p1  /boot           vfat    defaults          0       2
+- /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
+- # a swapfile is not a swap partition, no line here
+- #   use  dphys-swapfile swap[on|off]  for that
+- tmpfs /tmp tmpfs defaults,size=32M 0 0
+- /dev/sda2 /USB1 ext4 defaults 0 3
+-
+-
+-                                [ Read 7 lines ]
+- ^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+- ^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
 ```
 On peut déplacer des fichiers vers ce nouveau disque depuis un client samba, en ayant pris soin de nommer l’user samba propriétaire du répertoire /USB1....
 On peut ensuite rendre ce répertoire accessible via apache2
@@ -105,31 +95,20 @@ pi@raspberrypi:/etc/apache2$ cd conf-available
 pi@raspberrypi:/etc/apache2/conf-available$ sudo nano files.conf
 ```
 
-```
-  GNU nano 2.2.6              File: files.conf
-
-Alias /USB1 /USB1
-
-<Directory /USB1>
-        Options Indexes
-        Require all granted
-</Directory>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                [ Read 6 lines ]
-^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
-^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
+```diff
+-  GNU nano 2.2.6              File: files.conf
+-
+- Alias /USB1 /USB1
+-
+- <Directory /USB1>
+-       Options Indexes
+-       Require all granted
+- </Directory>
+-
+-
+-                               [ Read 6 lines ]
+- ^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+- ^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
 ```
 
 On relance le service apache
