@@ -4,7 +4,7 @@ cat /etc/os-release
 ```
 
 # Voir le partionnement du disque dur
-
+ou la mémoire flash utilisée sur la SD lorsqu'on est sur rapsberry
 ```
 df -h
 ```
