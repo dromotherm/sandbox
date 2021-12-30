@@ -1,3 +1,11 @@
+pour vérifier l'état des connections au serveur :
+```
+netstat
+netstat -6 -W -c
+```
+
+# IP fixe
+
 sur un vieux pi :
 ```
 sudo rpi-rw
