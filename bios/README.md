@@ -114,19 +114,20 @@ make log2ram
 ```
 On reboote pour activer log2ram
 
-[difficultés avec log2ram](log2ram.md)
+### [difficultés avec log2ram](log2ram.md)
+
 pour trouver ce qui occupe l'espace dans les log :
 ```
 sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
-
-On peut passer sur la branche BIOS d'emoncms :
+### BIOS
+On passe sur la branche BIOS d'emoncms :
 ```
 cd /var/www/emoncms
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git checkout bios_master
 ```
-on installer les sources de BIOS :
+on installe les dépendances :
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS
