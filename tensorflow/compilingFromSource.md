@@ -11,7 +11,7 @@ https://github.com/bitsy-ai/tensorflow-arm-bin
 https://www.tensorflow.org/install/source_rpi
 
 
-# lite wheels
+# tf lite wheels
 
 https://github.com/PINTO0309/TensorflowLite-bin
 
