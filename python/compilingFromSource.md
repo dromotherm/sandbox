@@ -35,3 +35,19 @@ On vérifie :
 python3.7 --version
 Python 3.7.12
 ```
+## python3.7 par défault
+```
+which python3.7
+/usr/local/bin/python3.7
+```
+```
+nano ~/.bashrc
+```
+on ajoute la ligne suivante :
+```
+alias python='/usr/local/bin/python3.7'
+```
+on applique les changements
+```
+source ~/.bashrc
+```
