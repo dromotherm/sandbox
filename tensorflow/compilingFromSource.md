@@ -1,14 +1,29 @@
+# tf wheels
+
+https://github.com/PINTO0309/Tensorflow-bin
+
+https://giters.com/PINTO0309/Tensorflow-bin/issues/44
+
 https://towardsdatascience.com/3-ways-to-install-tensorflow-2-on-raspberry-pi-fe1fa2da9104
 
 https://github.com/bitsy-ai/tensorflow-arm-bin
 
 https://www.tensorflow.org/install/source_rpi
 
-# install docker
+
+# lite wheels
+
+https://github.com/PINTO0309/TensorflowLite-bin
+
+https://www.tensorflow.org/lite/guide/build_arm
+
+# tensorflow compilation
+
+## install docker
 
 https://docs.docker.com/engine/install/ubuntu/
 
-# compilation for version v2.4.0-rc2
+## compilation for version v2.4.0-rc2
 
 ```
 git status
