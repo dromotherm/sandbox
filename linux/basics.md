@@ -58,3 +58,7 @@ CPU min MHz:         600.0000
 BogoMIPS:            38.40
 Flags:               half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
 ```
+ou
+```
+cat /proc/cpuinfo
+```
