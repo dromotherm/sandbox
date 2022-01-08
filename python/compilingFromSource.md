@@ -1,9 +1,12 @@
-# compiling from source
+# getting the source
 ```
 wget https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tar.xz
 
 tar -xf Python-3.7.12.tar.xz
+```
 
+# creating the makefile
+```
 cd Python-3.7.12
 
 /configure --enable-optimizations
