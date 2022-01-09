@@ -152,7 +152,6 @@ wget https://github.com/dromotherm/sandbox/releases/download/v2.7.0lite/tflite_r
 python3 -m pip install --upgrade tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
 ```
 
-On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
 ## installation de emonhub si on veut faire du monitoring électrique 
 
