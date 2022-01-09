@@ -134,6 +134,24 @@ git clone http://github.com/alexjunk/BIOS
 cd BIOS
 ./requires.sh
 ```
+Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement
+```
+cd /var/opt
+sudo mkdir test
+sudo chown pi:pi test
+cd test
+```
+si on est sous buster, on peut installer une version complète de tensorflow :
+```
+wget https://github.com/dromotherm/sandbox/releases/download/v2.1.0/tensorflow-2.1.0-cp37-none-linux_armv7l.whl
+python3 -m pip install --upgrade tensorflow-2.1.0-cp37-none-linux_armv7l.whl
+```
+si on est sous bullseye, on installe la version lite :
+```
+wget https://github.com/dromotherm/sandbox/releases/download/v2.7.0lite/tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
+python3 -m pip install --upgrade tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
+```
+
 On peut à ce stade arrêter le Pi de préparation et enlever la carte SD
 
 ## installation de emonhub si on veut faire du monitoring électrique 
