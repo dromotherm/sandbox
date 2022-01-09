@@ -17,15 +17,12 @@ https://github.com/PINTO0309/TensorflowLite-bin
 
 https://www.tensorflow.org/lite/guide/build_arm
 
-# tensorflow compilation
-
-## install docker
-
-https://docs.docker.com/engine/install/ubuntu/
-
-## compilation for version v2.4.0-rc2
+# tensorflow compilation for version v2.4.0-rc2
 
 ```
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow
+git checkout v2.4.0-rc2
 git status
 HEAD détachée sur v2.4.0-rc2
 rien à valider, la copie de travail est propre
