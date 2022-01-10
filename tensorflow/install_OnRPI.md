@@ -1,4 +1,11 @@
-extract of a correct install :
+# extract of a correct install
+
+raspiOS Buster python3.7
+
+prerequisite : `sudo pip3 install pip --upgrade`
+
+for the TMPDIR tip : https://github.com/pypa/pip/issues/5816
+
 ```
 TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl 
 Defaulting to user installation because normal site-packages is not writeable
