@@ -114,3 +114,85 @@ Installing collected packages: typing-extensions, six, rsa, oauthlib, cachetools
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 Successfully installed absl-py-0.15.0 astunparse-1.6.3 cachetools-4.2.4 flatbuffers-1.12 gast-0.3.3 google-auth-2.3.3 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.32.0 h5py-2.10.0 keras-preprocessing-1.1.2 markdown-3.3.6 numpy-1.19.5 oauthlib-3.1.1 opt-einsum-3.3.0 protobuf-3.13.0 requests-oauthlib-1.3.0 rsa-4.8 six-1.15.0 tensorboard-2.7.0 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.4.0rc2 tensorflow-estimator-2.4.0 termcolor-1.1.0 typing-extensions-3.7.4.3 werkzeug-2.0.2 wheel-0.37.1 wrapt-1.12.1
 ```
+# suites
+installation de libatlas
+```
+sudo apt-get install libatlas-base-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  python-colorzero python3-crypto python3-dbus python3-entrypoints
+  python3-keyring python3-keyrings.alt python3-secretstorage python3-xdg
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libatlas3-base
+Suggested packages:
+  libatlas-doc liblapack-doc
+The following NEW packages will be installed:
+  libatlas-base-dev libatlas3-base
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,365 kB of archives.
+After this operation, 32.1 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://mirrors.ircam.fr/pub/raspbian/raspbian buster/main armhf libatlas3-base armhf 3.10.3-8+rpi1 [2,399 kB]
+Get:2 https://ftp.igh.cnrs.fr/pub/os/linux/raspbian/raspbian buster/main armhf libatlas-base-dev armhf 3.10.3-8+rpi1 [2,966 kB]
+Fetched 5,365 kB in 5s (1,178 kB/s)                                          
+Selecting previously unselected package libatlas3-base:armhf.
+(Reading database ... 49403 files and directories currently installed.)
+Preparing to unpack .../libatlas3-base_3.10.3-8+rpi1_armhf.deb ...
+Unpacking libatlas3-base:armhf (3.10.3-8+rpi1) ...
+Selecting previously unselected package libatlas-base-dev:armhf.
+Preparing to unpack .../libatlas-base-dev_3.10.3-8+rpi1_armhf.deb ...
+Unpacking libatlas-base-dev:armhf (3.10.3-8+rpi1) ...
+Setting up libatlas3-base:armhf (3.10.3-8+rpi1) ...
+update-alternatives: using /usr/lib/arm-linux-gnueabihf/atlas/libblas.so.3 to provide /usr/lib/arm-linux-gnueabihf/libblas.so.3 (libblas.so.3-arm-linux-gnueabihf) in auto mode
+update-alternatives: using /usr/lib/arm-linux-gnueabihf/atlas/liblapack.so.3 to provide /usr/lib/arm-linux-gnueabihf/liblapack.so.3 (liblapack.so.3-arm-linux-gnueabihf) in auto mode
+Setting up libatlas-base-dev:armhf (3.10.3-8+rpi1) ...
+update-alternatives: using /usr/lib/arm-linux-gnueabihf/atlas/libblas.so to provide /usr/lib/arm-linux-gnueabihf/libblas.so (libblas.so-arm-linux-gnueabihf) in auto mode
+update-alternatives: using /usr/lib/arm-linux-gnueabihf/atlas/liblapack.so to provide /usr/lib/arm-linux-gnueabihf/liblapack.so (liblapack.so-arm-linux-gnueabihf) in auto mode
+Processing triggers for libc-bin (2.28-10+rpt2+rpi1) ...
+```
+toutefois, tensorflow ne fonctionnait pas encore :
+```
+python3 replayNN.py 
+RuntimeError: module compiled against API version 0xe but this version of numpy is 0xd
+RuntimeError: module compiled against API version 0xe but this version of numpy is 0xd
+ImportError: numpy.core._multiarray_umath failed to import
+ImportError: numpy.core.umath failed to import
+2022-01-10 20:37:09.859081: F tensorflow/python/lib/core/bfloat16.cc:714] Check failed: PyBfloat16_Type.tp_base != nullptr 
+Aborted
+```
+on upgrade numpy
+```
+pip3 install --upgrade numpy
+Defaulting to user installation because normal site-packages is not writeable
+Looking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+Requirement already satisfied: numpy in /home/pi/.local/lib/python3.7/site-packages (1.19.2)
+Collecting numpy
+  Using cached https://www.piwheels.org/simple/numpy/numpy-1.21.5-cp37-cp37m-linux_armv7l.whl (12.3 MB)
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.2
+    Uninstalling numpy-1.19.2:
+      Successfully uninstalled numpy-1.19.2
+  WARNING: The scripts f2py, f2py3 and f2py3.7 are installed in '/home/pi/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.4.0rc2 requires numpy~=1.19.2, but you have numpy 1.21.5 which is incompatible.
+Successfully installed numpy-1.21.5
+```
+il y a une erreur mais tensorflow fonctionne
+```
+python3 replayNN.py 
+température extérieure ? [8.56]: 9.17
+température intérieure ? [14.8]: 17.8
+température de consigne ? [0]: 0
+nombre d'heures au changement d'occupation ? [43.0]: 14.5
+pas de temps en heures ? [1.0]: 0.5
+nom de l'agent ? (2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20, 4parsChh) [2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20]: 
+sortie du réseau au moment présent [[-5.0913396 -5.1482563]] soit chauffage 0
+[0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1.]
+chauffage dans 1.0 heures au maximum
+```
