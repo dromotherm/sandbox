@@ -136,15 +136,19 @@ cd BIOS
 ```
 Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement
 ```
-cd /var/opt
+cd /var/opt/emoncms
 sudo mkdir test
 sudo chown pi:pi test
-cd test
 ```
-si on est sous buster, on peut installer une version complète de tensorflow :
+si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation :
 ```
 wget https://github.com/dromotherm/sandbox/releases/download/v2.1.0/tensorflow-2.1.0-cp37-none-linux_armv7l.whl
-python3 -m pip install --upgrade tensorflow-2.1.0-cp37-none-linux_armv7l.whl
+TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.1.0-cp37-none-linux_armv7l.whl
+```
+ou
+```
+wget https://github.com/dromotherm/sandbox/releases/download/v2.4.0/tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
+TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
 ```
 si on est sous bullseye, on installe la version lite :
 ```
