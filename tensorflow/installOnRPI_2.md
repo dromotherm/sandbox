@@ -48,6 +48,11 @@ Setting up python3-venv (3.7.3-1) ...
 Processing triggers for man-db (2.8.5-2) ...
 ```
 # very important if the wheel comes from piwheels and not from pypi
+
+cf https://github.com/numpy/numpy/issues/14772#issuecomment-638323300
+
+or https://github.com/numpy/numpy/issues/11110
+
 ```
 sudo apt install libatlas-base-dev
 ```
