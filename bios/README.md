@@ -76,7 +76,7 @@ make mosquitto
 On passe redis-py en package global (review)
 ```
 sudo mv /home/pi/.local/lib/python3.7/site-packages/redis /usr/lib/python3/dist-packages/redis
-sudo mv /home/pi/.local/lib/python3.7/site-packages/redis-3.5.3.dist-info /usr/lib/python3/dist-packages/redis-3.5.3.dist-info
+sudo mv /home/pi/.local/lib/python3.7/site-packages/redis-4.1.0.dist-info /usr/lib/python3/dist-packages/redis-4.1.0.dist-info
 ```
 ou
 ```
