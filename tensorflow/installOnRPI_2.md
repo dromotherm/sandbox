@@ -47,6 +47,7 @@ Setting up python3.7-venv (3.7.3-2+deb10u2) ...
 Setting up python3-venv (3.7.3-1) ...
 Processing triggers for man-db (2.8.5-2) ...
 ```
+# very important if the wheel comes from piwheels and not from pypi
 ```
 sudo apt install libatlas-base-dev
 ```
@@ -74,6 +75,10 @@ sudo chown pi:pi test
 TMPDIR=/var/opt/test pip3 install --cache-dir=/var/opt/test --build /var/opt/test --upgrade https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.1.0/tensorflow-2.1.0-cp37-none-linux_armv7l.whl
 TMPDIR=/var/opt/test pip3 install --cache-dir=/var/opt/test --build /var/opt/test --upgrade https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 ```
+
+NOTA : the --build option is no more available
+
+what is important if you dont have enough space on your root is TMPDIR. you can use --no-cache-dir.
 
 # uninstall
 
