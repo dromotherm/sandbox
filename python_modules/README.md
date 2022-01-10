@@ -2,6 +2,11 @@
 
 Sur une raspiOS buster, on a pip 18.1
 ```
+pip3 --version
+pip 18.1 from /usr/lib/python3/dist-packages/pip (python 3.7)
+```
+ou encore
+```
 pip3 list
 Package                Version  
 ---------------------- ---------
