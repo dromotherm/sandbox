@@ -147,7 +147,7 @@ TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade ten
 ```
 ou
 ```
-wget https://github.com/dromotherm/sandbox/releases/download/v2.4.0/tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
+wget https://github.com/dromotherm/sandbox/releases/download/v2.4.0rc2/tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
 TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
 ```
 si on est sous bullseye, on installe la version lite :
