@@ -162,7 +162,7 @@ export TF=tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
 ```
 on télécharge la wheel et on l'installe avec pip
 ```
-wget $RELEASE
+wget https://github.com/dromotherm/sandbox/releases/download/$RELEASE/$TF
 TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --upgrade $TF
 ```
 pas besoin de TMPDIR avec les versions lite.....
