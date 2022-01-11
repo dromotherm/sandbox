@@ -127,34 +127,45 @@ cd /var/www/emoncms
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git checkout bios_master
 ```
-on installe les dépendances :
+#### installation des dépendances
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS
 cd BIOS
 ./requires.sh
 ```
-Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement
+#### tensorflow
+Si on est sur plateforme arm (raspberry), il faut installer tensorflow
+
 ```
 cd /var/opt/emoncms
 sudo mkdir test
 sudo chown pi:pi test
+cd test
 ```
-si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation :
+Si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation 
+
+pour v2.1.0
 ```
-wget https://github.com/dromotherm/sandbox/releases/download/v2.1.0/tensorflow-2.1.0-cp37-none-linux_armv7l.whl
-TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.1.0-cp37-none-linux_armv7l.whl
+export RELEASE=v2.1.0
+export TF=tensorflow-2.1.0-cp37-none-linux_armv7l.whl
 ```
-ou
+pour v2.4.0rc2 (on ne devrait pas rester sur une release candidate)
 ```
-wget https://github.com/dromotherm/sandbox/releases/download/v2.4.0rc2/tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
-TMPDIR=/var/opt/emoncms/test pip3 install --upgrade --no-cache-dir --upgrade tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
+export RELEASE=v2.4.0rc2
+export TF=tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
 ```
-si on est sous bullseye, on installe la version lite :
+si on est sous bullseye avec python3.9, on doit se contenter de la version lite, car difficile de crosscompiler :
 ```
-wget https://github.com/dromotherm/sandbox/releases/download/v2.7.0lite/tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
-python3 -m pip install --upgrade tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
+export RELEASE=v2.7.0lite
+export TF=tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
 ```
+on télécharge la wheel et on l'installe avec pip
+```
+wget $RELEASE
+TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --upgrade $TF
+```
+pas besoin de TMPDIR avec les versions lite.....
 
 
 ## installation de emonhub si on veut faire du monitoring électrique 
