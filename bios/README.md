@@ -123,6 +123,7 @@ On passe sur la branche BIOS d'emoncms :
 ```
 cd /var/www/emoncms
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
+git pull
 git checkout bios_master
 ```
 #### installation des dépendances
