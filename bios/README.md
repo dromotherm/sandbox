@@ -74,14 +74,12 @@ make redis
 make mosquitto
 ```
 On passe redis-py en package global (review)
+
 ```
-sudo mv /home/pi/.local/lib/python3.7/site-packages/redis /usr/lib/python3/dist-packages/redis
-sudo mv /home/pi/.local/lib/python3.7/site-packages/redis-4.1.0.dist-info /usr/lib/python3/dist-packages/redis-4.1.0.dist-info
-```
-ou
-```
-sudo mv /home/pi/.local/lib/python3.9/site-packages/redis /usr/lib/python3/dist-packages/redis
-sudo mv /home/pi/.local/lib/python3.9/site-packages/redis-4.1.0.dist-info /usr/lib/python3/dist-packages/redis-4.1.0.dist-info
+export PV=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+export RV=$(pip3 show redis | grep -oP "\Version:\s+\K.*")
+sudo mv /home/pi/.local/lib/python$PV/site-packages/redis /usr/lib/python3/dist-packages/redis
+sudo mv /home/pi/.local/lib/python$PV/site-packages/redis-$RV.dist-info /usr/lib/python3/dist-packages/redis-$RV.dist-info
 ```
 
 on change le nom de machine et le mot de passe du sudoer :
