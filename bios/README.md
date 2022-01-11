@@ -135,7 +135,7 @@ cd BIOS
 ./requires.sh
 ```
 #### tensorflow
-Si on est sur plateforme arm (raspberry), il faut installer tensorflow
+Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement. `./required.sh` ne prend en charge l'installation de tensorflow que sur x86.
 
 ```
 cd /var/opt/emoncms
