@@ -1,3 +1,5 @@
+all this is deprecated, it's DIY but we keep it as history because similar failures can always occur, especially when we use a lot of opensource software
+
 # install dependancies for BIOS
 
 normally the command `./requires.sh` should do that for you but if the automatic mode fails, you have to do it by hand
