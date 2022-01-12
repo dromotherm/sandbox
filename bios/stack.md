@@ -32,7 +32,7 @@ module helloWorld : http://github.com/dromotherm/dromotherm
 
 # récupération des données à distance
 la solution 1 est de passer par le module de synchro :
-![](sync.svg)
+![](sync/sync.svg)
 la solution 2 est de faire un backup avec le module de backup et de le décompacter
 
 pour exploiter avec python et numpy :
