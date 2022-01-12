@@ -1,3 +1,5 @@
+bios utilise log2ram pour le management des fichiers log en ram
+
 # log2ram ne veut pas démarrer
 
 ```
@@ -44,6 +46,9 @@ Dec 29 18:00:29 emonpi log2ram[834]: total size is 52,103,163  speedup is 1.00
 Dec 29 18:00:29 emonpi systemd[1]: Finished Log2Ram.
 ```
 # /var/log se remplit
+
+pour trouver les gros fichiers dans /var/log
+
 ```
 sudo du -a /var/log/* | sort -n -r | head -n 30
 49164	/var/log/journal/428e68fb775e41d5904f1a673b4211e2
@@ -76,4 +81,8 @@ sudo du -a /var/log/* | sort -n -r | head -n 30
 4	/var/log/mosquitto/mosquitto.log
 4	/var/log/mosquitto
 4	/var/log/log2ram.log
+```
+si la rotation des log ne fonctionne pas
+```
+sudo truncate -s 0 /var/log/logrotate/logrotate.log
 ```
