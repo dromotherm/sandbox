@@ -1,5 +1,14 @@
 # I2C LCD 1602
 
+activer i2c via raspi-config ou bien en éditant /boot/config.txt et /etc/modules
+
+```
+# Uncomment dtparam=i2c_arm=on
+sudo sed -i "s/^#dtparam=i2c_arm=on/dtparam=i2c_arm=on/" /boot/config.txt
+# Append line i2c-dev to /etc/modules
+sudo sed -i -n '/i2c-dev/!p;$a i2c-dev' /etc/modules
+```
+
 ## dependancies
 
 ```
