@@ -166,6 +166,8 @@ TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --u
 ```
 pas besoin de TMPDIR avec les versions lite.....
 
+#### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
+
 
 ## installation de emonhub si on veut faire du monitoring électrique 
 
