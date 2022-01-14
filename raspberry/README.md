@@ -6,6 +6,8 @@ https://ubuntu.com/download/server/arm
 
 # PI4 - port ethernet qui reste allumé après l'arrêt du système
 
+cf https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#updating-the-eeprom-configuration
+
 le PI4 peut être allumé via le power vers ethernet, aussi son port ethernet reste allmé quant on l'éteint.
 
 Pour rétablir un fonctionnement standard, il faut modifier la config de l'eeprom. `WAKE_ON_GPIO` doit prendre la valeur 1 et `POWER_OFF_ON_HALT` la valeur 0
