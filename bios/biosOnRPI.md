@@ -59,11 +59,11 @@ pip3 install redis
 
 ~~pip3 install python-dateutil~~
 
-checkout from themis to master (the "redis feeds" implementation, to store meteo forecasts, has not yet been committed to the themis branch)
+checkout to the emoncms branch implementing the "redis feeds" (meteo forecasts storage)
 ```
 cd /var/www/emoncms
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
-git checkout bios_menuv3
+git checkout xxxx
 git pull
 ```
 
