@@ -44,7 +44,7 @@ drwxr-xr-x   1 root  root      4096 Aug  4 19:01 var
 
 # monter un répertoire externe (ie de la machine hôte) dans le container
 
-içi on monte le répertoire courant qui apparaitra dans le container comme le dossier scripts
+içi on monte le répertoire courant qui apparaitra dans le container comme un dossier `scripts`
 
 ```
 docker run -it -v $(pwd):/scripts tf_ci.pi-python39
