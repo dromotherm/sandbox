@@ -76,11 +76,24 @@ docker image rm nom_image ou id_image
 ```
 Attention, on ne pas supprimer des images qui sont mobilisés dans des containers, même arrêtés
 
+# gestion des containers
+
 supprimer tous les containers stoppés :
 ```
 docker container prune
 ```
-## emplacement sur le disque
+lister les containers actifs:
+```
+docker ps
+```
+lister tous les containers, même ceux arrêtés
+```
+docker ps -a
+CONTAINER ID   IMAGE               COMMAND       CREATED          STATUS                     PORTS     NAMES
+be8d92ccbfb0   tf_ci.pi-python39   "/bin/bash"   22 minutes ago   Exited (0) 4 seconds ago             hardcore_galois
+```
+
+# emplacement des données docker sur le disque
 ```
 docker info
 docker info | grep -e "Root Dir"
