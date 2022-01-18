@@ -6,20 +6,10 @@ pour construire une image à partir d'un dockerfile :
 docker build -t alex_aarch64 -f tensorflow/tools/ci_build/Dockerfile.pi-python39 tensorflow/tools/ci_build
 ```
 
-```
-docker info
-docker info | grep -e "Root Dir"
-Docker Root Dir: /var/lib/docker
-```
-les images sont dans /var/lib/docker
-
-pour connaître l'espace occupé par docker et ses images
-```
-sudo du -c /var/lib/docker
-```
 # gestion des images
 
 pour lister les images docker sur un système
+
 ```
 docker image ls
 REPOSITORY          TAG       IMAGE ID       CREATED        SIZE
@@ -45,4 +35,15 @@ supprimer tous les containers stoppés :
 ```
 docker container prune
 ```
+## emplacement sur le disque
+```
+docker info
+docker info | grep -e "Root Dir"
+Docker Root Dir: /var/lib/docker
+```
+les images sont dans /var/lib/docker
 
+pour connaître l'espace occupé par docker et ses images
+```
+sudo du -c /var/lib/docker
+```
