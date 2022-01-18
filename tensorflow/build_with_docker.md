@@ -26,10 +26,17 @@ Docker Root Dir: /var/lib/docker
 ```
 les images sont dans /var/lib/docker
 
+pour connaître l'espace occupé par docker et ses containers/images
+```
+sudo du -c /var/lib/docker
+```
+
 supprimer une image
 ```
 docker image rm nom_image
 ```
+Attention, on ne pas supprimer des images qui sont mobilisés dans des containers, même arrêtés
+
 supprimer tous les containers stoppés :
 ```
 docker container prune
