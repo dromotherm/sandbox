@@ -30,3 +30,8 @@ supprimer une image
 ```
 docker image rm nom_image
 ```
+supprimer tous les containers stoppés :
+```
+docker container prune
+```
+
