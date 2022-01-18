@@ -74,7 +74,7 @@ pour supprimer une image:
 ```
 docker image rm nom_image ou id_image
 ```
-Attention, on ne pas supprimer des images qui sont mobilisés dans des containers, même arrêtés
+Attention, on ne peut pas supprimer des images qui sont mobilisées dans des containers, même arrêtés
 
 # gestion des containers
 
