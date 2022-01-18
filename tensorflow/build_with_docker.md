@@ -1,3 +1,8 @@
+# run image in interactive mode
+```
+docker run -it -v $(pwd):/scripts tf_ci.pi-python39
+```
+
 # dockerfile
 
 pour construire une image à partir d'un dockerfile :
