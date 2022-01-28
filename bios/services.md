@@ -26,7 +26,7 @@ $input->set_timevalue($inputid,$time,$value);
 
 En parallèle, le service vérifie s'il y a un ou des process sur chaque input concerné et les applique, en appelant la méthode `input` de la class Process (cf process_model.php)
 
-Emoncms offre beaucoup de process mais on utilise principalement log_to_feed
+Emoncms offre beaucoup de process et utilise le process log_to_feed pour l'historisation
 
 la méthode `log_to_feed` de la classe Process_ProcessList (cf process_processlist.php) appelle la méthode `insert_data` de classe Feed (cf feed_model.php)
 ```
