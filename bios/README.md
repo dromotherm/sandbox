@@ -129,8 +129,8 @@ git checkout bios_master
 #### installation des dépendances
 ```
 cd /opt/openenergymonitor
-git clone http://github.com/alexjunk/BIOS
-cd BIOS
+git clone http://github.com/alexjunk/BIOS2
+cd BIOS2
 ./requires.sh
 ```
 #### tensorflow
