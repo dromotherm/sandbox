@@ -28,10 +28,21 @@ Linux
 uname -a
 Linux emonpi 5.4.51-v7+ #1333 SMP Mon Aug 10 16:45:19 BST 2020 armv7l GNU/Linux
 ```
+with a 32 bits OS and a raspberry PI4 :
 ```
 uname -m
 armv7l
 ```
+with a 64 bits OS and a raspberry PI4 :
+```
+uname -a
+Linux raspberrypi 5.10.63-v8+ #1459 SMP PREEMPT Wed Oct 6 16:42:49 BST 2021 aarch64 GNU/Linux
+
+uname -m
+aarch64
+```
+
+# bash
 
 Pour trouver le bash :
 
