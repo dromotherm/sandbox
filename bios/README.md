@@ -1,6 +1,6 @@
 # BIOS
 
-## sur une machine de bureau avec ubuntu (sur un raspberry : RAS)
+## sur une machine de bureau avec ubuntu (Pas nécessaire sur un raspberry)
 
 à rajouter dans le makefile avec un test sur le type d'architecture (x86 vs ARM)
 ```
