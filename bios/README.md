@@ -168,7 +168,7 @@ pas besoin de TMPDIR avec les versions lite.....
 
 un repo avec plus de wheels : https://github.com/PINTO0309/Tensorflow-bin
 
-![Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
+[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
 
 #### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
