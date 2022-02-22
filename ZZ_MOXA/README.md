@@ -22,6 +22,11 @@ On télécharge les sources :
 ```
 wget https://cdn-cms.azureedge.net/getmedia/57dfa4c1-8a2a-4da6-84c1-a36944ead74d/moxa-uport-1100-series-linux-kernel-5.x-driver-v5.1.tgz
 ```
+Autre option non testée depuis le répertoire github de Moxa:
+```
+git clone http://github.com/Moxa-Linux/mxu11x0
+```
+
 on les décompacte :
 ```
 tar -xvf moxa-uport-1100-series-linux-kernel-5.x-driver-v5.1.tgz mxu11x0/
