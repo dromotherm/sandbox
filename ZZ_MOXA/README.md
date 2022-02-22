@@ -1,5 +1,5 @@
 
-# télécharger les drivers sur le site moxa
+# compiler les drivers moxa
 
 https://www.moxa.com/en/support/product-support/software-and-documentation/search?psid=114473
 
