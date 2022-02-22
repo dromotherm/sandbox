@@ -3,7 +3,7 @@
 
 https://www.moxa.com/en/support/product-support/software-and-documentation/search?psid=114473
 
-pour connaitre la version de son moyau linux :
+pour connaitre la version de son noyau linux :
 
 ```
 cat /proc/version
