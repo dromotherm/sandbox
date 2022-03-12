@@ -1,3 +1,5 @@
+pour voir les différences : `git diff`
+
 # emoncms bios version
 
 on peut choisir une branche bios_master, bios_stable ou bios_menuv3
