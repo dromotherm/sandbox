@@ -5,7 +5,7 @@ https://askubuntu.com/questions/5417/how-to-get-the-gpu-info
 
 la commande `lspci` détaille le matériel présent sur le PC notamment la carte graphique
 
-# supervision de la mémoire utilisée
+# supervision de la mémoire GPU utilisée
 
 ## utilitaire nvidia-smi
 il faut avoir installé les drivers cuda
