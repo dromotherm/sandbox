@@ -16,6 +16,15 @@ https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
 
 Prendre la [lite version](https://downloads.raspberrypi.org/raspbian_lite_latest) sans desktop
 
+Les images les plus récentes sont compressées au format xz. Il faut installer les utilitaires.
+```
+sudo apt install xz-utils
+
+xz -d -v 2022-04-04-raspios-bullseye-armhf-lite.img.xz
+2022-04-04-raspios-bullseye-armhf-lite.img.xz (1/1)
+  100 %     296,6 MiB / 1 924,0 MiB = 0,154    53 MiB/s       0:36
+```
+
 Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
 Une fois l'image gravée :
