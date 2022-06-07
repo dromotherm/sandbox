@@ -2,6 +2,36 @@ bios utilise log2ram pour le management des fichiers log en ram
 
 # log2ram ne veut pas démarrer
 
+## cas 1
+
+cf https://github.com/azlux/log2ram/issues/90
+
+```
+ systemctl status log2ram
+● log2ram.service - Log2Ram
+     Loaded: loaded (/etc/systemd/system/log2ram.service; enabled; vendor prese>
+     Active: failed (Result: exit-code) since Tue 2022-06-07 23:24:04 CEST; 34s>
+    Process: 1033 ExecStart=/usr/local/bin/log2ram start (code=exited, status=1>
+   Main PID: 1033 (code=exited, status=1/FAILURE)
+        CPU: 67ms
+
+Jun 07 23:24:04 emonpi systemd[1]: Starting Log2Ram...
+Jun 07 23:24:04 emonpi log2ram[1033]: ERROR: RAM disk too small. Can't sync.
+Jun 07 23:24:04 emonpi log2ram[1045]: /usr/local/bin/log2ram: 39: mail: not fou>
+Jun 07 23:24:04 emonpi systemd[1]: log2ram.service: Main process exited, code=e>
+Jun 07 23:24:04 emonpi systemd[1]: log2ram.service: Failed with result 'exit-co>
+Jun 07 23:24:04 emonpi systemd[1]: Failed to start Log2Ram.
+```
+On vérifie l'espace occupé par /var/log :
+```
+sudo du -sh /var/log
+66M	/var/log
+```
+et on augmente SIZE en conséquence dans /etc/log2ram.conf
+
+
+## cas 2
+
 ```
 sudo systemctl status log2ram
 ● log2ram.service - Log2Ram
