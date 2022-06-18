@@ -1,4 +1,10 @@
 # vérifier si le raspberry contient les headers
+
+la commande générique :
+```
+ls -l /usr/src/linux-headers-$(uname -r)
+```
+
 ```
 uname -a
 Linux emonpi 5.10.63-v7l+ #1488 SMP Thu Nov 18 16:15:28 GMT 2021 armv7l GNU/Linux
