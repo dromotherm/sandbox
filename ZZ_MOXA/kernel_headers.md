@@ -16,7 +16,10 @@ cette fiche commence par un clonage du repo de référence, ce qui crée sur not
 ```
 git clone --depth=1 https://github.com/raspberrypi/linux
 ```
-On peut choisir la branche correspondant le mieux à la version de son noyau.
+On peut choisir la branche correspondant le mieux à la version de son noyau. Par exemple, pour aller sur la version 5.13 du noyau :
+```
+git clone --depth=1 --branch rpi-5.13.y https://github.com/raspberrypi/linux
+```
 
 Lorsqu'on parcourt les sources à la recherche du mot clé `*headers*` on tombe sur un fichier `Documentation/kbuild/headers_install.rst`
 ```
