@@ -1,5 +1,12 @@
 # autour des kernel headers
 
+pour connaître la version de son noyau
+
+```
+uname -r
+5.15.32-v7+
+```
+
 # exploration de /usr/src
 
 la commande générique :
@@ -8,10 +15,8 @@ ls -l /usr/src/linux-headers-$(uname -r)
 ```
 
 # lien vers /lib/modules
-```
-uname -r
-5.15.32-v7+
-```
+
+S'il n'existe pas, on peut le créer manuellement
 ```
 cd /lib/modules/$(uname -r)
 sudo ln -s ./build /usr/src/linux-headers-$(uname -r)
