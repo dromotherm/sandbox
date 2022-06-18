@@ -1,15 +1,25 @@
-# vérifier si le raspberry contient les headers
+# autour des kernel headers
+
+# exploration de /usr/src
 
 la commande générique :
 ```
 ls -l /usr/src/linux-headers-$(uname -r)
 ```
 
+# lien vers /lib/modules
 ```
-uname -a
-Linux emonpi 5.10.63-v7l+ #1488 SMP Thu Nov 18 16:15:28 GMT 2021 armv7l GNU/Linux
+uname -r
+5.15.32-v7+
 ```
-On parcourt le contenu de /usr/src
+```
+cd /lib/modules/$(uname -r)
+sudo ln -s ./build /usr/src/linux-headers-$(uname -r)
+```
+
+# Misc
+
+On parcourt le contenu de /usr/src sur une distribution buster 5.10
 ```
 pi@emonpi:/usr/src $ ls
 linux-headers-5.10.63+  linux-headers-5.10.63-v7+  linux-headers-5.10.63-v7l+
