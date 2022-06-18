@@ -7,6 +7,10 @@ uname -r
 5.15.32-v7+
 ```
 
+pour crosscompiler le noyau :
+
+https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel
+
 # exploration de /usr/src
 
 la commande générique :
