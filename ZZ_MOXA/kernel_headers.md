@@ -6,10 +6,26 @@ pour connaître la version de son noyau
 uname -r
 5.15.32-v7+
 ```
+# Construction à partir des sources
 
-pour crosscompiler le noyau :
+fiche pratique pour cross-compiler le noyau :
 
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel
+
+cette fiche commence par un clonage du repo de référence, ce qui crée sur notre machine de cross-compilation un répertoire `linux' avec les sources à l'intérieur :
+```
+git clone --depth=1 https://github.com/raspberrypi/linux
+```
+On peut choisir la branche correspondant le mieux à la version de son noyau.
+
+Lorsqu'on parcourt les sources à la recherche du mot clé `*headers*` on tombe sur un fichier `Documentation/kbuild/headers_install.rst`
+```
+cd linux
+make headers_install ARCH=arm
+```
+celà crée les kernel headers dans `usr/src/include`
+
+On peut alors copier le contenu de ce répertoire vers la carte SD à l'emplacement `/lib/modules/<version du noyau>/build` 
 
 # Installation via apt-get
 ```
