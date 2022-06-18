@@ -1,4 +1,4 @@
-# autour des kernel headers
+# Autour des kernel headers
 
 pour connaître la version de son noyau
 
@@ -11,14 +11,20 @@ pour crosscompiler le noyau :
 
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel
 
-# exploration de /usr/src
+# Installation via apt-get
+```
+sudo apt-get install raspberrypi-kernel-headers
+```
+Cette méthode installe les kernel headers dans `/usr/src/linux-headers-$(uname -r)` puis crée un lien vers ce répertoire dans `/lib/modules/$(uname -r)`. Ce lien a pour nom `build`.
+
+## exploration de /usr/src
 
 la commande générique :
 ```
 ls -l /usr/src/linux-headers-$(uname -r)
 ```
 
-# lien vers /lib/modules
+## lien vers /lib/modules
 
 S'il n'existe pas, on peut le créer manuellement
 ```
