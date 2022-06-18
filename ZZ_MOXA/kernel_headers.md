@@ -47,8 +47,13 @@ ls -l /usr/src/linux-headers-$(uname -r)
 
 S'il n'existe pas, on peut le créer manuellement
 ```
+sudo ln -s /usr/src/linux-headers-$(uname -r) /lib/modules/$(uname -r)/build
+```
+pour vérifier qu'il existe bien :
+
+```
 cd /lib/modules/$(uname -r)
-sudo ln -s ./build /usr/src/linux-headers-$(uname -r)
+ls -al
 ```
 
 # Misc
