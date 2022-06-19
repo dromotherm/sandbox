@@ -2,7 +2,7 @@ Pour savoir d'où provient un paquet :
 ```
 apt show redis-server
 ```
-le retour est le suivant :
+le retour devrait être de ce type :
 ```
 Package: redis-server
 Version: 5:6.0.16-1+deb11u2
