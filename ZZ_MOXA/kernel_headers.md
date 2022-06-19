@@ -14,7 +14,11 @@ fiche pratique pour cross-compiler le noyau :
 
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel
 
-cette fiche commence par un clonage du repo de référence, ce qui crée sur notre machine de cross-compilation un répertoire `linux' avec les sources à l'intérieur :
+## obtention des sources 
+
+### par clonage
+
+Pour créer sur notre machine de cross-compilation un répertoire `linux' avec les sources à l'intérieur :
 ```
 git clone --depth=1 https://github.com/raspberrypi/linux
 ```
@@ -22,6 +26,22 @@ On peut choisir la branche correspondant le mieux à la version de son noyau. Pa
 ```
 git clone --depth=1 --branch rpi-5.13.y https://github.com/raspberrypi/linux
 ```
+### par téléchargement
+
+On peut télécharger des sources correspondant à des releases dans https://github.com/raspberrypi/linux/tags
+
+On se repère dans les tags via les dates. Par exemple, pour la raspiOS de 4 Avril 2022 qui utilise le noyau 5.15.32,  on peut prendre le tag https://github.com/raspberrypi/linux/releases/tag/1.20220331 qui date du 31 mars 2022
+
+On télécharge le zip et on dézippe....
+
+Pour vérifier la version du noyau :
+```
+cd linux-1.20220331/
+make kernelversion
+5.15.32
+```
+
+## génération des headers
 
 Lorsqu'on parcourt les sources à la recherche du mot clé `*headers*` on tombe sur un fichier `Documentation/kbuild/headers_install.rst`
 ```
