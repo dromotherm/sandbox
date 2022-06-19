@@ -73,9 +73,7 @@ make osupdate
 Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
 ```
 git clone https://github.com/openenergymonitor/EmonScripts
-cd EmonScripts/install
-cp emonsd.config.ini config.ini
-cd /opt/openenergymonitor
+cp EmonScripts/install/emonsd.config.ini EmonScripts/install/config.ini
 ```
 
 On installe les dépendances :
