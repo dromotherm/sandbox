@@ -398,20 +398,22 @@ custom_logrotate:
 	@printf "    createolddir 775 root root\n" >> emoncms
 	@printf "}\n" >> emoncms
 	@sudo ln -sf $(here)/emoncms /etc/logrotate.d/emoncms
-	@echo "creating custom emonhub config"
-	@printf "/var/log/emonhub/emonhub.log {\n" > emonhub.1
-	@printf "    maxsize 3M\n" >> emonhub.1
-	@printf "    norenamecopy\n" >> emonhub.1
-	@printf "    copytruncate\n" >> emonhub.1
-	@printf "    su root root\n" >> emonhub.1
-	@printf "    compress\n" >> emonhub.1
-	@printf "    olddir /var/log.old/emonhub\n" >> emonhub.1
-	@printf "    createolddir 775 root emonhub\n" >> emonhub.1
-	@printf "}\n" >> emonhub.1
-	@sudo ln -sf $(here)/emonhub.1 /etc/logrotate.d/emonhub
+	@if [ -f "/var/log/emonhub/emonhub.log" ]; then\
+		echo "creating custom emonhub config";\
+		printf "/var/log/emonhub/emonhub.log {\n" > emonhub.1;\
+		printf "    maxsize 3M\n" >> emonhub.1;\
+		printf "    norenamecopy\n" >> emonhub.1;\
+		printf "    copytruncate\n" >> emonhub.1;\
+		printf "    su root root\n" >> emonhub.1;\
+		printf "    compress\n" >> emonhub.1;\
+		printf "    olddir /var/log.old/emonhub\n" >> emonhub.1;\
+		printf "    createolddir 775 root emonhub\n" >> emonhub.1;\
+		printf "}\n" >> emonhub.1;\
+		sudo ln -sf $(here)/emonhub.1 /etc/logrotate.d/emonhub;\
+		sudo chown root /etc/logrotate.d/emonhub;\
+	fi
 	@sudo chown root /etc/logrotate.d/00_defaults
 	@sudo chown root /etc/logrotate.d/emoncms
-	@sudo chown root /etc/logrotate.d/emonhub
 
 log2ram:
 	@if [ ! -d "log2ram" ]; then\
