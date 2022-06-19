@@ -16,7 +16,7 @@ https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
 
 Prendre la [lite version](https://downloads.raspberrypi.org/raspbian_lite_latest) sans desktop
 
-Les images les plus récentes sont compressées au format xz. Il faut installer les utilitaires.
+Les images les plus récentes sont compressées au format xz qui a un bien meilleur taux de compression que zip. Il faut installer les utilitaires.
 ```
 sudo apt install xz-utils
 
