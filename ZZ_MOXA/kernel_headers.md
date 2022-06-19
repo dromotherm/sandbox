@@ -58,13 +58,19 @@ Celà crée les kernel headers dans `usr/include`
 
 On peut alors copier le contenu de ce répertoire vers la carte SD à l'emplacement `/lib/modules/<version du noyau>/build` 
 
-ou alors, en supposant que la partition `root` de la carte SD ait été montée dans `mnt/ext4` :
+### si la partition `root` de la carte SD ait été montée dans `mnt/ext4`
 
 ```
 sudo mkdir mnt/ext4/usr/src/linux-headers-5.13.19-v7+
 sudo cp -r usr/include/* mnt/ext4/usr/src/linux-headers-5.13.19-v7+
 ```
-puis une fois le noyau mis en place et le rapsberry booté, on fait un lien - cf plus loin
+### si on laisse faire la machine hôte lors du montage de la SD
+```
+sudo mkdir /media/alexandrecuer/rootfs/usr/src/linux-headers-5.15.32-v8+
+sudo cp -r usr/include/* /media/alexandrecuer/rootfs/usr/src/linux-headers-5.15.32-v8+
+```
+
+Une fois le noyau mis en place et le rapsberry booté, on fait un lien - cf plus loin
 
 # Installation via apt-get
 ```
