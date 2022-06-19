@@ -207,6 +207,13 @@ un repo avec plus de wheels : https://github.com/PINTO0309/Tensorflow-bin
 
 ### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
+### installation du module pour emoncms
+
+permet de visualiser les log des services liés à BIOS et de modifier les fichiers conf
+```
+cd /var/www/emoncms/Modules
+git clone https://github.com/alexjunk/OBMmonitor
+```
 
 ## configuration routeur - 1 = sans SIM
 
