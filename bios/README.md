@@ -138,6 +138,28 @@ nano phpRedisAdmin/includes/config.sample.inc.php
 ```
 on décommente la section login et on choisit un mot de passe pour admin
 
+## si on compte utiliser la carte dans un boitier emonpi
+
+```
+cd /opt/openenergymonitor
+git clone https://github.com/openenergymonitor/emonpi
+```
+On peut installer le service mais pour vérifier que le lcd fonctionne bien :
+
+```
+cd emonpi/lcd
+nano emonPiLCD.conf
+```
+on modifie la première ligne ainsi :
+```
+uselogfile = False
+```
+Pour activer le LCD de l'emonpi
+
+```
+./emonPiLCD.py
+```
+
 ## mise en ram des log
 
 on injecte les paramètres spécifiques pour la rotation des logs :
