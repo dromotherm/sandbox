@@ -14,6 +14,8 @@ fiche pratique pour cross-compiler le noyau :
 
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel
 
+https://linux-sunxi.org/Mainline_Kernel_Howto
+
 ## obtention des sources 
 
 ### par clonage
@@ -47,6 +49,10 @@ Lorsqu'on parcourt les sources à la recherche du mot clé `*headers*` on tombe 
 ```
 cd linux
 make headers_install ARCH=arm
+```
+ou pour le cas d'une distribution 64 bits :
+```
+make headers_install ARCH=arm64
 ```
 Celà crée les kernel headers dans `usr/include`
 
