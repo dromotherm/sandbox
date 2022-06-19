@@ -44,6 +44,10 @@ sudo mv init_resize.sh /usr/lib/raspi-config/init_resize.sh
 sudo mv /boot/cmdline2.txt /boot/cmdline.txt
 sudo reboot
 ```
+init_resize.sh uptodate par rapport à l'officiel - cf https://github.com/RPi-Distro/raspi-config/blob/master/usr/lib/raspi-config/init_resize.sh:
+```
+https://raw.githubusercontent.com/alexandrecuer/EmonScripts/init_resize/install/init_resize.sh
+```
 étape 2 - redimensionnement de la carte SD :
 ```
 sudo resize2fs /dev/mmcblk0p2
