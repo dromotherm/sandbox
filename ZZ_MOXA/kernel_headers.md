@@ -65,7 +65,7 @@ make headers_install ARCH=arm64
 ```
 Celà crée les kernel headers dans `usr/include`
 
-On peut alors copier le contenu de ce répertoire vers la carte SD à l'emplacement `/lib/modules/<version du noyau>/build` 
+On peut alors copier le contenu de ce répertoire vers la carte SD
 
 ### si la partition `root` de la carte SD ait été montée dans `mnt/ext4`
 
