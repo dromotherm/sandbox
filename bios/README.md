@@ -12,11 +12,11 @@ sinon, sync ne fonctionnera pas
 
 ## préparation de la carte SD
 
-Télécharger la dernière raspios :
+Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
 
-https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
+https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-64-bit
 
-Prendre la [lite version](https://downloads.raspberrypi.org/raspbian_lite_latest) sans desktop
+Prendre la lite version sans desktop
 
 Les images les plus récentes sont compressées au format xz qui a un bien meilleur taux de compression que zip. Il faut installer les utilitaires.
 ```
