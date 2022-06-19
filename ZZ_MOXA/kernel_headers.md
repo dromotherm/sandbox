@@ -2,8 +2,6 @@ Attention, work in progress - cross-compilation du noyau pas encore maîtrisée.
 
 Bootlin est une entreprise qui forme à la compilation du noyau : https://bootlin.com/blog/enabling-new-hardware-on-raspberry-pi-with-device-tree-overlays/
 
-les paquets pour raspiOS installables par APT sont içi : https://archive.raspberrypi.org/debian/
-
 # Autour des kernel headers
 
 pour connaître la version de son noyau
