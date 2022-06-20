@@ -1,6 +1,10 @@
-https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/
 
-https://downloads.raspberrypi.org/raspbian/images/
+
+https://downloads.raspberrypi.org raspiOS images
+
+https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/  aarch64
+
+http://archive.raspberrypi.org/debian/pool/main/ debian packages
 
 https://ubuntu.com/download/server/arm
 
