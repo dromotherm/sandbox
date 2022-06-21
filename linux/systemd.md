@@ -2,7 +2,7 @@
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
-pour du détail sur les processus démarrant en toile de fond : `sudo demsg`
+pour du détail sur les processus démarrant en toile de fond : `sudo dmesg`
 
 cf https://fr.wikipedia.org/wiki/Dmesg
 
