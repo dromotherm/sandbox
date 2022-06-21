@@ -67,7 +67,7 @@ On définit la bonne timezone : `sudo raspi-config`
 ```
 cd /opt
 sudo mkdir openenergymonitor
-sudo chown pi:pi openenergymonitor
+sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 make osupdate
