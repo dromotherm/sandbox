@@ -20,11 +20,19 @@ https://downloads.raspberrypi.org/raspios_lite_armhf/release_notes.txt
 
 http://archive.raspberrypi.org/debian/pool/main/ 
 
+
+
 # Ubuntu for ARM
 
 https://ubuntu.com/download/server/arm
 
 https://ubuntu.com/download/raspberry-pi
+
+https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview
+
+https://cdimage.ubuntu.com/releases/
+
+The Linux kernel is the foundation for all Ubuntu systems. Ubuntu 21.10 uses the upstream 5.13 kernel as it’s baseline and so takes advantage of a number of improvements since the 5.11 kernel which is used in Ubuntu 21.04.
 
 # raspberry PI4 
 
