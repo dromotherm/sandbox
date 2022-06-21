@@ -20,6 +20,8 @@ http://archive.raspberrypi.org/debian/pool/main/
 
 https://ubuntu.com/download/server/arm
 
+https://ubuntu.com/download/raspberry-pi
+
 # raspberry PI4 
 
 ## port ethernet qui reste allumé après l'arrêt du système
