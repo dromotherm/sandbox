@@ -276,6 +276,7 @@ redis:
 	@echo "Installing redis server"
 	@sudo apt-get install -y redis-server
 	@echo "installing PHPRedis"
+	@rm -rf phpredis
 	@git clone https://github.com/phpredis/phpredis
 	@cd phpredis && phpize && ./configure && make && sudo make install
 	@printf "extension=redis.so" | sudo tee /etc/php/$(php_ver)/mods-available/redis.ini 1>&2
@@ -323,7 +324,7 @@ mosquitto:
 	@sudo touch /etc/mosquitto/passwd
 	@sudo mosquitto_passwd -b /etc/mosquitto/passwd $(mqtt_user) $(mqtt_password)
 	@echo "installing PHP mosquitto client"
-	@sudo apt-get install -y libmosquitto-dev
+	@rm -rf Mosquitto-PHP
 	@git clone https://github.com/mgdm/Mosquitto-PHP
 	@cd Mosquitto-PHP && phpize && ./configure && make && sudo make install
 	@echo "Add mosquitto to php mods available"
