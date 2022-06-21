@@ -2,6 +2,10 @@
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
+pour du détail sur les processus démarrant en toile de fond : `sudo demsg`
+
+cf https://fr.wikipedia.org/wiki/Dmesg
+
 ### basic usage
 
 Vérifier l'état des services, gérés par systemd
