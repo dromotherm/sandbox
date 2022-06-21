@@ -148,7 +148,7 @@ On peut installer le service mais pour vérifier que le lcd fonctionne bien :
 
 ```
 cd emonpi/lcd
-nano emonPiLCD.conf
+nano emonPiLCD.cfg
 ```
 on modifie la première ligne ainsi :
 ```
