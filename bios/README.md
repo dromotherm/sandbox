@@ -196,7 +196,7 @@ Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellem
 ```
 cd /var/opt/emoncms
 sudo mkdir test
-sudo chown pi:pi test
+sudo chown $(id -u -n):$(id -u -n) test
 cd test
 ```
 Si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation 
