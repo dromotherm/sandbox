@@ -12,6 +12,10 @@ https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2
 
 https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/  
 
+check release notes to find kernel versions and new policies :
+
+https://downloads.raspberrypi.org/raspios_lite_armhf/release_notes.txt
+
 # raspiOS debian packages
 
 http://archive.raspberrypi.org/debian/pool/main/ 
