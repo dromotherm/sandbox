@@ -1,14 +1,28 @@
+# raspiOS images
 
+before 2020-05-28, raspiOS was called raspbian
 
-https://downloads.raspberrypi.org raspiOS images
+https://downloads.raspberrypi.org 
 
-https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/  aarch64
+## arm 32 bits
 
-http://archive.raspberrypi.org/debian/pool/main/ debian packages
+https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-11-08/ 
+
+## aarch64
+
+https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/  
+
+# raspiOS debian packages
+
+http://archive.raspberrypi.org/debian/pool/main/ 
+
+# Ubuntu for ARM
 
 https://ubuntu.com/download/server/arm
 
-# PI4 - port ethernet qui reste allumé après l'arrêt du système
+# raspberry PI4 
+
+## port ethernet qui reste allumé après l'arrêt du système
 
 cf https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#updating-the-eeprom-configuration
 
