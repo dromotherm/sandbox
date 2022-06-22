@@ -1,3 +1,8 @@
+alternative download :
+```
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_linux_uport1p_v5.1.5_build_22053114.tgz
+```
+
 
 # compiler les drivers moxa
 
