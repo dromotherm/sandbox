@@ -1,6 +1,8 @@
 # BIOS
 
-## sur une machine de bureau avec ubuntu (Pas nécessaire sur un raspberry)
+## A faire si installation sur une machine de bureau avec ubuntu
+
+**étape non nécessaire sur un raspberry**
 
 à rajouter dans le makefile avec un test sur le type d'architecture (x86 vs ARM)
 ```
@@ -10,11 +12,11 @@ sinon, sync ne fonctionnera pas
 
 ## préparation de la carte SD
 
-Télécharger la dernière raspios :
+Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
 
-https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
+https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-64-bit
 
-Prendre la [lite version](https://downloads.raspberrypi.org/raspbian_lite_latest) sans desktop
+Prendre la lite version sans desktop
 
 Les images les plus récentes sont compressées au format xz qui a un bien meilleur taux de compression que zip. Il faut installer les utilitaires.
 ```
@@ -65,7 +67,7 @@ On définit la bonne timezone : `sudo raspi-config`
 ```
 cd /opt
 sudo mkdir openenergymonitor
-sudo chown pi:pi openenergymonitor
+sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 make osupdate
@@ -89,8 +91,8 @@ On passe redis-py en package global (review)
 ```
 export PV=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 export RV=$(pip3 show redis | grep -oP "\Version:\s+\K.*")
-sudo mv /home/pi/.local/lib/python$PV/site-packages/redis /usr/lib/python3/dist-packages/redis
-sudo mv /home/pi/.local/lib/python$PV/site-packages/redis-$RV.dist-info /usr/lib/python3/dist-packages/redis-$RV.dist-info
+sudo mv /home/$(id -u -n)/.local/lib/python$PV/site-packages/redis /usr/lib/python3/dist-packages/redis
+sudo mv /home/$(id -u -n)/.local/lib/python$PV/site-packages/redis-$RV.dist-info /usr/lib/python3/dist-packages/redis-$RV.dist-info
 ```
 
 on change le nom de machine et le mot de passe du sudoer :
@@ -116,6 +118,50 @@ make symodule name=sync
 make symodule name=postprocess
 make symodule name=backup
 ```
+## installation de emonhub si on veut faire du monitoring électrique 
+
+```
+cd /opt/openenergymonitor/EmonScripts/install
+./emonhub.sh
+cd /opt/openenergymonitor
+make module name=config
+```
+
+## installation de phpRedisAdmin si on veut une machine datalake éducative :
+```
+cd /opt/openenergymonitor
+make phpRedisAdmin
+```
+dans ce cas, il convient de sécuriser un minimum :
+```
+nano phpRedisAdmin/includes/config.sample.inc.php
+```
+on décommente la section login et on choisit un mot de passe pour admin
+
+## si on compte utiliser la carte dans un boitier emonpi
+
+```
+cd /opt/openenergymonitor
+git clone https://github.com/openenergymonitor/emonpi
+```
+On peut installer le service mais pour vérifier que le lcd fonctionne bien :
+
+```
+cd emonpi/lcd
+nano emonPiLCD.cfg
+```
+on modifie la première ligne ainsi :
+```
+uselogfile = False
+```
+Pour activer le LCD de l'emonpi
+
+```
+./emonPiLCD.py
+```
+
+## mise en ram des log
+
 on injecte les paramètres spécifiques pour la rotation des logs :
 ```
 make custom_logrotate
@@ -129,7 +175,7 @@ pour trouver ce qui occupe l'espace dans les log :
 ```
 sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
-### BIOS
+## BIOS
 On passe sur la branche BIOS d'emoncms :
 ```
 cd /var/www/emoncms
@@ -137,20 +183,20 @@ git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git pull
 git checkout bios_master
 ```
-#### installation des dépendances
+### installation des dépendances
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS2
 cd BIOS2
 ./requires.sh
 ```
-#### tensorflow
+### tensorflow
 Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement. `./required.sh` ne prend en charge l'installation de tensorflow que sur x86.
 
 ```
 cd /var/opt/emoncms
 sudo mkdir test
-sudo chown pi:pi test
+sudo chown $(id -u -n):$(id -u -n) test
 cd test
 ```
 Si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation 
@@ -181,30 +227,15 @@ un repo avec plus de wheels : https://github.com/PINTO0309/Tensorflow-bin
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
 
-#### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
+### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
+### installation du module pour emoncms
 
-## installation de emonhub si on veut faire du monitoring électrique 
-
+permet de visualiser les log des services liés à BIOS et de modifier les fichiers conf
 ```
-cd /opt/openenergymonitor/EmonScripts/install
-./emonhub.sh
-cd /opt/openenergymonitor
-make module name=config
+cd /var/www/emoncms/Modules
+git clone https://github.com/alexjunk/OBMmonitor
 ```
-
-
-
-## installation de phpRedisAdmin si on veut une machine datalake éducative :
-```
-cd /opt/openenergymonitor
-make phpRedisAdmin
-```
-dans ce cas, il convient de sécuriser un minimum :
-```
-nano phpRedisAdmin/includes/config.sample.inc.php
-```
-on décommente la section login et on choisit un mot de passe pour admin
 
 ## configuration routeur - 1 = sans SIM
 

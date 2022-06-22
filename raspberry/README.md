@@ -1,10 +1,42 @@
-https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/
+# raspiOS images
 
-https://downloads.raspberrypi.org/raspbian/images/
+before 2020-05-28, raspiOS was called raspbian
+
+https://downloads.raspberrypi.org 
+
+## arm 32 bits
+
+https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-11-08/ 
+
+## aarch64
+
+https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-11-08/  
+
+check release notes to find kernel versions and new policies :
+
+https://downloads.raspberrypi.org/raspios_lite_armhf/release_notes.txt
+
+# raspiOS debian packages
+
+http://archive.raspberrypi.org/debian/pool/main/ 
+
+
+
+# Ubuntu for ARM
 
 https://ubuntu.com/download/server/arm
 
-# PI4 - port ethernet qui reste allumé après l'arrêt du système
+https://ubuntu.com/download/raspberry-pi
+
+https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview
+
+https://cdimage.ubuntu.com/releases/
+
+The Linux kernel is the foundation for all Ubuntu systems. Ubuntu 21.10 uses the upstream 5.13 kernel as it’s baseline and so takes advantage of a number of improvements since the 5.11 kernel which is used in Ubuntu 21.04. Attention, ce n'est pas une LTS : prendre une ubuntu 22 pour avoir une LTS.
+
+# raspberry PI4 
+
+## port ethernet qui reste allumé après l'arrêt du système
 
 cf https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#updating-the-eeprom-configuration
 
