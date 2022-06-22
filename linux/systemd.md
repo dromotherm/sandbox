@@ -17,6 +17,11 @@ journalctl -f -u bios
 sudo systemctl daemon-reload
 ```
 
+### queued jobs 
+```
+systemctl list-jobs
+```
+
 ### check which version of systemd is installed
 ```
 pkg-config --modversion systemd
