@@ -29,7 +29,9 @@ xz -d -v 2022-04-04-raspios-bullseye-armhf-lite.img.xz
 
 Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
-avec les nouvelles image raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur, prendre `pi` et `raspberry` puisque les choses sont changées en suivant. Pour les images ubuntu, le 
+Avec les nouvelles image raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur, prendre `pi` et `raspberry` puisque les choses sont changées en suivant. 
+
+Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/releases/
 
 ### activer le SSH
 
@@ -85,7 +87,26 @@ wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defa
 sudo cp fstab /etc/fstab
 sudo reboot
 ```
-On définit la bonne timezone : `sudo raspi-config`
+## Timezone
+
+Si on est sous raspios : `sudo raspi-config`
+
+Si on est sous Ubuntu, on commence par regarder la timezone :
+```
+timedatectl list-timezones | grep -i paris
+Europe/Paris
+ls -al /etc/localtime 
+lrwxrwxrwx 1 root root 27 Apr 19 10:06 /etc/localtime -> /usr/share/zoneinfo/Etc/UTC
+```
+On met en place la nouvelle timezone :
+```
+sudo unlink /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
+```
+Pour vérifier que la nouvelle timezone est bien prise en compte :
+```
+timedatectl
+```
 
 ## installation 
 
