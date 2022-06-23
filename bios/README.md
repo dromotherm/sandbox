@@ -236,6 +236,13 @@ pour trouver ce qui occupe l'espace dans les log :
 ```
 sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
+## NodeRED
+
+```
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+sudo systemctl enable nodered.service
+```
+
 ## BIOS
 On passe sur la branche BIOS d'emoncms :
 ```
