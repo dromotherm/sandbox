@@ -29,16 +29,36 @@ xz -d -v 2022-04-04-raspios-bullseye-armhf-lite.img.xz
 
 Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
-Une fois l'image gravée :
+avec les nouvelles image raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur, prendre `pi` et `raspberry` puisque les choses sont changées en suivant. Pour les images ubuntu, le 
+
+### activer le SSH
+
+Uniquement si on utilise raspiOS, pas nécessaire sous Ubuntu :
 ```
 cd /media/alexandrecuer/boot
 touch ssh
+```
+
+### repartionner - solution 1 : gparted
+
+C'est la solution la plus ergonomique pour organiser l'espace disque comme on le souhaite.
+```
+sudo gparted &
+```
+On redimensionne l'image qui contient le système et on utilise tout l'espace disque restant pour créer une nouvelle partition appelée datas en utilisant un système de fichier ext2
+
+On boote le Pi
+
+Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
+
+### repartionner - solution 2 : utiliser init_resize.sh
+
+```
+cd /media/alexandrecuer/boot
 cp cmdline.txt cmdline2.txt
 sed -i "s~init=\/usr\/lib\/raspi-config\/init_resize.sh~~" cmdline.txt
 ```
-On boote le Pi
-
-étape 1 :
+On boote le Pi :
 ```
 wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/install/init_resize.sh
 chmod +x init_resize.sh
@@ -50,10 +70,15 @@ init_resize.sh uptodate par rapport à l'officiel - cf https://github.com/RPi-Di
 ```
 https://raw.githubusercontent.com/alexandrecuer/EmonScripts/init_resize/install/init_resize.sh
 ```
-étape 2 - redimensionnement de la carte SD :
+On redimensionne la carte SD :
 ```
 sudo resize2fs /dev/mmcblk0p2
 sudo mkfs.ext2 -b 1024 /dev/mmcblk0p3
+```
+
+## montage des systèmes de fichiers avec la mise en place d'un nouveau fstab
+
+```
 sudo mkdir /var/opt/emoncms
 sudo chown www-data /var/opt/emoncms
 wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defaults/etc/fstab
@@ -70,8 +95,23 @@ sudo mkdir openenergymonitor
 sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
+```
+Si pas de prise en compte des promux
+```
 make osupdate
 ```
+Si prise en compte des promux
+```
+sudo apt-get update
+sudo apt install git bc bison flex libssl-dev
+sudo apt-get install raspberrypi-kernel-headers
+sudo apt-get install -y git build-essential python3-pip python3-dev
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_linux_uport1p_v5.1.5_build_22053114.tgz
+tar -xvf driv_linux_uport1p_v5.1.5_build_22053114.tgz
+cd ./mxu11x0/
+sudo ./mxinstall
+```
+
 Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
 ```
 git clone https://github.com/openenergymonitor/EmonScripts
