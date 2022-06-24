@@ -10,7 +10,7 @@ sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sud
 ```
 sinon, sync ne fonctionnera pas
 
-## préparation de la carte SD
+## Préparation de la carte SD
 
 Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
 
@@ -33,7 +33,7 @@ Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écr
 
 Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/releases/
 
-### activer le SSH
+### Activer le SSH
 
 Uniquement si on utilise raspiOS, pas nécessaire sous Ubuntu :
 ```
@@ -41,7 +41,7 @@ cd /media/alexandrecuer/boot
 touch ssh
 ```
 
-### repartionner - solution 1 : gparted
+### Repartionner - solution 1 : gparted
 
 C'est la solution la plus ergonomique pour organiser l'espace disque comme on le souhaite.
 ```
@@ -53,7 +53,7 @@ On boote le Pi
 
 Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 
-### repartionner - solution 2 : utiliser init_resize.sh
+### Repartionner - solution 2 : utiliser init_resize.sh
 
 ```
 cd /media/alexandrecuer/boot
@@ -78,7 +78,7 @@ sudo resize2fs /dev/mmcblk0p2
 sudo mkfs.ext2 -b 1024 /dev/mmcblk0p3
 ```
 
-## montage des systèmes de fichiers avec la mise en place d'un nouveau fstab
+## Montage des systèmes de fichiers avec la mise en place d'un nouveau fstab
 
 ```
 sudo mkdir /var/opt/emoncms
@@ -108,7 +108,7 @@ Pour vérifier que la nouvelle timezone est bien prise en compte :
 timedatectl
 ```
 
-## installation 
+## Installation 
 
 ```
 cd /opt
@@ -179,7 +179,7 @@ make symodule name=sync
 make symodule name=postprocess
 make symodule name=backup
 ```
-## installation de emonhub si on veut faire du monitoring électrique 
+## Installation de emonhub si on veut faire du monitoring électrique 
 
 ```
 cd /opt/openenergymonitor/EmonScripts/install
@@ -188,7 +188,7 @@ cd /opt/openenergymonitor
 make module name=config
 ```
 
-## installation de phpRedisAdmin si on veut une machine datalake éducative :
+## Installation de phpRedisAdmin si on veut une machine datalake éducative :
 ```
 cd /opt/openenergymonitor
 make phpRedisAdmin
@@ -199,7 +199,7 @@ nano phpRedisAdmin/includes/config.sample.inc.php
 ```
 on décommente la section login et on choisit un mot de passe pour admin
 
-## si on compte utiliser la carte dans un boitier emonpi
+## Si on compte utiliser la carte dans un boitier emonpi
 
 ```
 cd /opt/openenergymonitor
@@ -222,7 +222,7 @@ Pour activer le LCD de l'emonpi
 ./emonPiLCD.py
 ```
 
-## mise en ram des log
+## Mise en ram des log
 
 on injecte les paramètres spécifiques pour la rotation des logs :
 ```
@@ -231,7 +231,7 @@ make log2ram
 ```
 On reboote pour activer log2ram
 
-### [difficultés avec log2ram](log2ram.md)
+### [Difficultés avec log2ram](log2ram.md)
 
 pour trouver ce qui occupe l'espace dans les log :
 ```
@@ -252,14 +252,14 @@ git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git pull
 git checkout bios_master
 ```
-### installation des dépendances
+### Installation des dépendances
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS2
 cd BIOS2
 ./requires.sh
 ```
-### tensorflow
+### Tensorflow
 Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement. `./required.sh` ne prend en charge l'installation de tensorflow que sur x86.
 
 ```
@@ -296,9 +296,9 @@ un repo avec plus de wheels : https://github.com/PINTO0309/Tensorflow-bin
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
 
-### [ce qu'il se passe si on n'installe pas les dépendances](break.md)
+### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
-### installation du module pour emoncms
+### Installation du module pour emoncms
 
 permet de visualiser les log des services liés à BIOS et de modifier les fichiers conf
 ```
@@ -306,7 +306,7 @@ cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
 ```
 
-## configuration routeur - 1 = sans SIM
+## Configuration routeur - 1 = sans SIM
 
 On démarre BIOS sans carte SD ds le raspberry
 
@@ -324,7 +324,7 @@ IP Pool de 192.168.2.2 à 192.168.2.254
 
 On applique, ce qui coupe la connection. On peut relancer BIOS pour reprendre la configuration 
 
-### secondary LAN & al
+### Secondary LAN & al
 
 DHCP Client : enabled
 
@@ -340,13 +340,13 @@ Nota : quant on n'a pas de carte SIM dans le routeur, il faut aller dans Configu
 
 Si on a un troisième port ethernet, on peut laisser sa configuration inchangée (4.1)
 
-### wifi & wlan
+### Wifi & wlan
 
 On saisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
 
 On active le wlan en gardant la configuration proposée (3.1)
 
-### bail fixe pour le raspberry sur 192.168.2.2
+### Bail fixe pour le raspberry sur 192.168.2.2
 
 A ce stade, on peut éteindre BIOS, insérer la carte SD dans le raspberry et tt rallumer
 
@@ -377,13 +377,13 @@ Nota : si le routeur n'a pas de wifi, si on est sans carte SIM et qu'on va reste
 
 **si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
 
-## configuration routeur - 2 = avec SIM
+## Configuration routeur - 2 = avec SIM
 
-### configuration mobile
+### Donfiguration mobile
 
 on insère la carte SIM et on active la connection mobile
 
-### dyndns
+### DNS dynamique
 
 Configuration > Services > DynDNS
 
@@ -391,7 +391,7 @@ on coche la case "Enable DynDNS Client"
 
 on renseigne le Hostname (eg : dromotherm.ddns.net) et dans le champ serveur, on saisit : `dynupdate.no-ip.com`
 
-### configuration SMS
+### Configuration SMS
 
 toujours dans Services, on configure la gestion via SMS (`Send SMS on connect to mobile network` et `Send SMS when datalimit is exceeded` cochées)
 
