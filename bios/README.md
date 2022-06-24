@@ -117,11 +117,11 @@ sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 ```
-Si pas de prise en compte des promux
+Si pas de prise en compte des drivers MOXA
 ```
 make osupdate
 ```
-Si prise en compte des promux
+Si prise en compte des drivers MOXA
 ```
 sudo apt-get update
 sudo apt install git bc bison flex libssl-dev
