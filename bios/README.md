@@ -208,6 +208,7 @@ git clone https://github.com/openenergymonitor/emonpi
 On peut installer le service mais pour vérifier que le lcd fonctionne bien :
 
 ```
+pip3 install xmltodict
 cd emonpi/lcd
 nano emonPiLCD.cfg
 ```
