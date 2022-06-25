@@ -359,7 +359,7 @@ default gateway : 192.168.1.1
 
 la case "Enable dynamic DHCP leases" n'est pas cochée
 
-**Cette configuration secondaire permet d'utiliser le second port éthernet à un réseau de type livebox, configuré en 192.168.1.1, ce qui est utile pour disposer d'un accès internet quant il n'y a pas de carte SIM dans le routeur** 
+**Cette configuration secondaire permet de connnecter le second port éthernet à un réseau de type livebox, configuré en 192.168.1.1, ce qui est utile pour disposer d'un accès internet quant il n'y a pas de carte SIM dans le routeur** 
 
 En utilisant l'adresse qui est attribuée par la box, on peut accéder à l'interface de management du routeur depuis un ordi connecté en WIFI à la box
 
@@ -406,7 +406,7 @@ Nota : si le routeur n'a pas de wifi, si on est sans carte SIM et qu'on va reste
 
 ## Configuration routeur - 2 = avec SIM
 
-### Donfiguration mobile
+### Configuration mobile
 
 on insère la carte SIM et on active la connection mobile
 
