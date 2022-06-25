@@ -13,7 +13,7 @@ sinon, sync ne fonctionnera pas
 
 
 <details id=2>
-<summary><h2>Préparation de la carte SD</h2></summary>
+<summary><h2>Préparation SDcard</h2></summary>
 
 Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
 
