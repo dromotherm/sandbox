@@ -202,6 +202,7 @@ make module name=config
 
 <details id=6>
 <summary><h2>Installation de phpRedisAdmin si on veut une machine datalake éducative</h2></summary>
+
 ```
 cd /opt/openenergymonitor
 make phpRedisAdmin
