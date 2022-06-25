@@ -1,11 +1,10 @@
 # BIOS
 
 <details id=1>
-<summary><h2>A faire si installation sur une machine de bureau avec ubuntu</h2></summary>
+<summary><h2>A faire si installation sur une machine de bureau x86 avec ubuntu</h2></summary>
 
-**étape non nécessaire sur un raspberry**
+**étape non nécessaire sur plateforme ARM de type raspberry **
 
-à rajouter dans le makefile avec un test sur le type d'architecture (x86 vs ARM)
 ```
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
 ```
