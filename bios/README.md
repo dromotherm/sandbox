@@ -1,7 +1,7 @@
 # BIOS
 
 <details id=1>
-<summary><h2>A faire si installation sur une machine de bureau x86 avec ubuntu</h2></summary>
+<summary><h2>Installation sur x86 ubuntu</h2></summary>
 
 __étape non nécessaire sur plateforme ARM de type raspberry__
 
