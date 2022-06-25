@@ -92,7 +92,10 @@ wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defa
 sudo cp fstab /etc/fstab
 sudo reboot
 ```
-## Timezone
+</details>
+
+<details id=4>
+<summary><h2>Timezone</h2></summary>
 
 Si on est sous raspios : `sudo raspi-config`
 
@@ -114,7 +117,7 @@ timedatectl
 ```
 </details>
 
-<details id=4>
+<details id=5>
 <summary><h2>Installation</h2></summary>
   
 ```
@@ -188,7 +191,7 @@ make symodule name=backup
 ```
 </details>
 
-<details id=5>
+<details id=6>
 <summary><h2>Installation de emonhub si on veut faire du monitoring électrique</h2></summary>
   
 ```
@@ -199,7 +202,7 @@ make module name=config
 ```
 </details>
 
-<details id=6>
+<details id=7>
 <summary><h2>Installation de phpRedisAdmin si on veut une machine datalake éducative</h2></summary>
 
 ```
@@ -214,7 +217,7 @@ on décommente la section login et on choisit un mot de passe pour admin
 
 </details>
 
-<details id=7>
+<details id=8>
 <summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
 
 ```
@@ -240,7 +243,7 @@ Pour activer le LCD de l'emonpi
 
 </details>
 
-<details id=8>
+<details id=9>
 <summary><h2>Mise en ram des log</h2></summary>
 
 on injecte les paramètres spécifiques pour la rotation des logs :
@@ -258,7 +261,7 @@ sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
 </details>
 
-<details id=9>
+<details id=10>
 <summary><h2>NodeRED</h2></summary>
 
 ```
@@ -268,7 +271,7 @@ sudo systemctl enable nodered.service
 
 </details>
 
-<details id=10>
+<details id=11>
 <summary><h2>BIOS</h2></summary>
 
 On passe sur la branche BIOS d'emoncms :
