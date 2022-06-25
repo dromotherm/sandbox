@@ -3,7 +3,7 @@
 <details id=1>
 <summary><h2>A faire si installation sur une machine de bureau x86 avec ubuntu</h2></summary>
 
-**étape non nécessaire sur plateforme ARM de type raspberry **
+__étape non nécessaire sur plateforme ARM de type raspberry__
 
 ```
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
@@ -71,7 +71,7 @@ sudo mv init_resize.sh /usr/lib/raspi-config/init_resize.sh
 sudo mv /boot/cmdline2.txt /boot/cmdline.txt
 sudo reboot
 ```
-init_resize.sh uptodate par rapport à l'officiel - cf https://github.com/RPi-Distro/raspi-config/blob/master/usr/lib/raspi-config/init_resize.sh:
+init_resize.sh uptodate par rapport à l'officiel - cf https://github.com/RPi-Distro/raspi-config/blob/master/usr/lib/raspi-config/init_resize.sh
 ```
 https://raw.githubusercontent.com/alexandrecuer/EmonScripts/init_resize/install/init_resize.sh
 ```
