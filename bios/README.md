@@ -1,6 +1,7 @@
 # BIOS
 
-## A faire si installation sur une machine de bureau avec ubuntu
+<details id=1>
+<summary><h2>A faire si installation sur une machine de bureau avec ubuntu</h2></summary>
 
 **étape non nécessaire sur un raspberry**
 
@@ -9,8 +10,11 @@
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
 ```
 sinon, sync ne fonctionnera pas
+</details>
 
-## Préparation de la carte SD
+
+<details id=2>
+<summary><h2>Préparation de la carte SD</h2></summary>
 
 Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
 
@@ -77,8 +81,10 @@ On redimensionne la carte SD :
 sudo resize2fs /dev/mmcblk0p2
 sudo mkfs.ext2 -b 1024 /dev/mmcblk0p3
 ```
+</details>
 
-## Montage des systèmes de fichiers avec la mise en place d'un nouveau fstab
+<details id=3>
+<summary><h2>Montage des systèmes de fichiers avec la mise en place d'un nouveau fstab</h2></summary>
 
 ```
 sudo mkdir /var/opt/emoncms
@@ -107,16 +113,18 @@ Pour vérifier que la nouvelle timezone est bien prise en compte :
 ```
 timedatectl
 ```
+</details>
 
-## Installation 
-
+<details id=4>
+<summary><h2>Installation</h2></summary>
+  
 ```
 cd /opt
 sudo mkdir openenergymonitor
 sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
-```
+```  
 **Si pas de prise en compte des drivers MOXA**
 ```
 make osupdate
@@ -179,16 +187,21 @@ make symodule name=sync
 make symodule name=postprocess
 make symodule name=backup
 ```
-## Installation de emonhub si on veut faire du monitoring électrique 
+</details>
 
+<details id=5>
+<summary><h2>Installation de emonhub si on veut faire du monitoring électrique</h2></summary>
+  
 ```
 cd /opt/openenergymonitor/EmonScripts/install
 ./emonhub.sh
 cd /opt/openenergymonitor
 make module name=config
 ```
+</details>
 
-## Installation de phpRedisAdmin si on veut une machine datalake éducative :
+<details id=6>
+<summary><h2>Installation de phpRedisAdmin si on veut une machine datalake éducative</h2></summary>
 ```
 cd /opt/openenergymonitor
 make phpRedisAdmin
@@ -199,7 +212,10 @@ nano phpRedisAdmin/includes/config.sample.inc.php
 ```
 on décommente la section login et on choisit un mot de passe pour admin
 
-## Si on compte utiliser la carte dans un boitier emonpi
+</details>
+
+<details id=7>
+<summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
 
 ```
 cd /opt/openenergymonitor
@@ -222,7 +238,10 @@ Pour activer le LCD de l'emonpi
 ./emonPiLCD.py
 ```
 
-## Mise en ram des log
+</details>
+
+<details id=8>
+<summary><h2>Mise en ram des log</h2></summary>
 
 on injecte les paramètres spécifiques pour la rotation des logs :
 ```
@@ -237,14 +256,21 @@ pour trouver ce qui occupe l'espace dans les log :
 ```
 sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
-## NodeRED
+</details>
+
+<details id=9>
+<summary><h2>NodeRED</h2></summary>
 
 ```
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo systemctl enable nodered.service
 ```
 
-## BIOS
+</details>
+
+<details id=10>
+<summary><h2>BIOS</h2></summary>
+
 On passe sur la branche BIOS d'emoncms :
 ```
 cd /var/www/emoncms
@@ -268,31 +294,31 @@ sudo mkdir test
 sudo chown $(id -u -n):$(id -u -n) test
 cd test
 ```
-Si on est sous buster, on peut installer une version complète de tensorflow, obtenue par crosscompilation 
 
-pour v2.1.0
+v2.1.0 pour buster 32 bits
 ```
 export RELEASE=v2.1.0
 export TF=tensorflow-2.1.0-cp37-none-linux_armv7l.whl
 ```
-pour v2.4.0rc2 (on ne devrait pas rester sur une release candidate)
+v2.4.0rc2 pour buster 32 bits
 ```
 export RELEASE=v2.4.0rc2
 export TF=tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
 ```
-si on est sous bullseye avec python3.9, on doit se contenter de la version lite, car difficile de crosscompiler :
+v2.9.0 pour bullseye 64 bits :
 ```
-export RELEASE=v2.7.0lite
-export TF=tflite_runtime-2.7.0-cp39-cp39-linux_armv7l.whl
+export RELEASE=v2.9.0
+export TF=tensorflow-2.9.0-cp39-none-linux_aarch64.whl
 ```
 on télécharge la wheel et on l'installe avec pip
 ```
 wget https://github.com/dromotherm/sandbox/releases/download/$RELEASE/$TF
 TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --upgrade $TF
 ```
-pas besoin de TMPDIR avec les versions lite.....
 
-un repo avec plus de wheels : https://github.com/PINTO0309/Tensorflow-bin
+un repo avec plus de wheels, dont des versions lite plus légères : https://github.com/PINTO0309/Tensorflow-bin
+
+pas besoin de TMPDIR avec les versions lite.....
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
 
@@ -305,6 +331,7 @@ permet de visualiser les log des services liés à BIOS et de modifier les fichi
 cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
 ```
+</details>
 
 ## Configuration routeur - 1 = sans SIM
 
