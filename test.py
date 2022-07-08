@@ -1,13 +1,14 @@
 """
 ceci est un fichier de test
 """
-print("hello")
+print("hello planet earth !")
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
 a=sys.argv[0]
 print(a)
+
 
 for arg in sys.argv:
     print(arg)
