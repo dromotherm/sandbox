@@ -87,7 +87,9 @@ on peut alors créer un zip pour compresser et gagner de l'espace...
 zip test.img.zip test.img
   adding: test.img (deflated 92%)
 ```
-ou encore `zip -9 test.img.zip test.img` si on veut compresser au maximum
+ou encore :
+- `zip -9 test.img.zip test.img` si on veut compresser au maximum
+- `xz test.img` pour produire un fichier test.img.xz, qui viendra remplacer le fichier test.img ou `xz -k test.img` si on veut conserver le fichier test.img
 
 on vérifie la taille du zip (1.2 Go)
 
