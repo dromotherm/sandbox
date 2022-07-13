@@ -5,6 +5,8 @@ print("hello planet earth !")
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+from contextlib import closing
+from urllib.request import urlopen
 
 a=sys.argv[0]
 print(a)
