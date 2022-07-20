@@ -8,9 +8,12 @@ lister les périphériques vidéo :
 ```
 v4l2-ctl --list-devices
 ```
-Pour obtenir les carastéritiques du capteur :
+
+Pour obtenir les caractéristiques du capteur : `v4l2-ctl --all` ou `v4l2-ctl -d 0 --all`
+<details id=1>
+<summary>exemple de sortie</summary>
+	
 ```
-v4l2-ctl --all
 Driver Info (not using libv4l2):
 	Driver name   : uvcvideo
 	Card type     : TOSHIBA Web Camera - FHD: TOSHI
@@ -61,10 +64,13 @@ Streaming Parameters Video Capture:
          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=0 value=0
          exposure_auto_priority 0x009a0903 (bool)   : default=0 value=1
 ```
-ou encore :
+</details>
+
+Pour le détail des formats de sortie : `v4l2-ctl -d /dev/video0 --list-formats-ext` :
+<details id=2>
+<summary>exemple de sortie</summary>
 
 ```
-v4l2-ctl -d /dev/video0 --list-formats-ext
 ioctl: VIDIOC_ENUM_FMT
 	Index       : 0
 	Type        : Video Capture
@@ -140,6 +146,8 @@ ioctl: VIDIOC_ENUM_FMT
 			Interval: Discrete 0.033s (30.000 fps)
 			Interval: Discrete 0.067s (15.000 fps)
 ```
+</details>
+
 pour capturer un frame :
 ```
 v4l2-ctl --stream-mmap --stream-skip=1 --stream-to=frame.raw --stream-count=1
