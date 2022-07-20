@@ -1,5 +1,7 @@
 # usb camera and command line
-installation des utilitaires v4l2
+
+## installation des utilitaires v4l2
+
 ```
 sudo apt install v4l-utils
 ```
@@ -177,6 +179,7 @@ ffmpeg -y -f v4l2 -video_size 1280x720 -i /dev/video0 -frames 1 out.jpg
 
 ![out](https://user-images.githubusercontent.com/24553739/179964204-8bcd4c7b-fa5c-48e7-8328-5cd45c0f6c6c.jpg)
 
+## links
 
 https://raspberrypi-guide.github.io/electronics/using-usb-webcams
 
