@@ -152,7 +152,9 @@ pour capturer un frame :
 ```
 v4l2-ctl --stream-mmap --stream-skip=1 --stream-to=frame.raw --stream-count=1
 ```
+Pour transformer en png : ` convert -size 1280x720 uyvy:frame.raw frame.png`
 
+ou encore : `convert -size 1280x720 yuv:frame.raw frame1.png`
 
 https://raspberrypi-guide.github.io/electronics/using-usb-webcams
 
