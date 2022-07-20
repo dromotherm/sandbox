@@ -11,7 +11,7 @@ v4l2-ctl --list-devices
 
 Pour obtenir les caractéristiques du capteur : `v4l2-ctl --all` ou `v4l2-ctl -d 0 --all`
 <details id=1>
-<summary>exemple de sortie</summary>
+<summary><i><b>exemple de sortie</b></i></summary>
 	
 ```
 Driver Info (not using libv4l2):
@@ -68,7 +68,7 @@ Streaming Parameters Video Capture:
 
 Pour le détail des formats de sortie : `v4l2-ctl -d /dev/video0 --list-formats-ext` :
 <details id=2>
-<summary>exemple de sortie</summary>
+<summary><i><b>exemple de sortie</b></i></summary>
 
 ```
 ioctl: VIDIOC_ENUM_FMT
