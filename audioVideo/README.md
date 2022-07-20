@@ -187,6 +187,12 @@ https://doc.ubuntu-fr.org/webcam
 
 https://github.com/csete/uvccapture
 
+http://trac.gateworks.com/wiki/linux/v4l2
+
+https://medium.com/@athul929/capture-an-image-using-v4l2-api-5b6022d79e1d
+
+https://askubuntu.com/questions/348838/how-to-check-available-webcams-from-the-command-line
+
 # to install non free codecs :
 ```
 sudo apt install ubuntu-restricted-extras
