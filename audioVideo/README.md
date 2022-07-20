@@ -148,13 +148,32 @@ ioctl: VIDIOC_ENUM_FMT
 ```
 </details>
 
+on s'apercoit que la caméra fait du 1280x720
+
 pour capturer un frame :
 ```
 v4l2-ctl --stream-mmap --stream-skip=1 --stream-to=frame.raw --stream-count=1
 ```
 Pour transformer en png : ` convert -size 1280x720 uyvy:frame.raw frame.png`
 
+![frame](https://user-images.githubusercontent.com/24553739/179963785-008b6be2-63fc-4d3e-a8a3-e82933e6b2da.png)
+
 ou encore : `convert -size 1280x720 yuv:frame.raw frame1.png`
+
+![frame1](https://user-images.githubusercontent.com/24553739/179963816-176d6484-6c27-4024-8956-a3c13539487b.png)
+
+## ffmpeg
+```
+sudo apt  install ffmpeg
+```
+pour capturer un snapshot directement en jpg
+
+```
+ffmpeg -y -f v4l2 -video_size 1280x720 -i /dev/video0 -frames 1 out.jpg
+```
+
+![out](https://user-images.githubusercontent.com/24553739/179964204-8bcd4c7b-fa5c-48e7-8328-5cd45c0f6c6c.jpg)
+
 
 https://raspberrypi-guide.github.io/electronics/using-usb-webcams
 
