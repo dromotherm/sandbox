@@ -16,11 +16,14 @@ cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
 ```
 
+Tous les service files relatifs à BIOS sont dans /etc/systemd/system
+
 service | exe | conf | log
 --|--|--|--
-bios |etc/bios/bios.conf ||/var/log/bios/bios.log
-ota2, modbus, rpihwm, ihm| usr/local/bin/bios_hardware|/etc/bios|/var/log/bios
+bios |etc/bios/bios.conf | /usr/local/bin/bios | /var/log/bios/bios.log
+ota2, modbus, rpihwm, ihm| /usr/local/bin/bios_hardware| /etc/bios|/var/log/bios
 
+Si le service s'appelle aaa, le log est aaa.log et le conf aaa.conf, si un conf est nécessaire 
 
 # ceremaida : migration vers menu_v3
 ```
