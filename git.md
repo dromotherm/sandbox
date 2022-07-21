@@ -25,7 +25,7 @@ ota2, modbus, rpihwm, ihm| /usr/local/bin/bios_hardware| /etc/bios|/var/log/bios
 
 Si le service s'appelle aaa, le log est aaa.log et le conf aaa.conf, si un conf est nécessaire 
 
-# ceremaida : migration vers menu_v3
+# ceremaida : migration vers une UI compatible menu_v3
 ```
 cd /var/www/emoncms
 ```
@@ -52,9 +52,7 @@ La liste des services pris en compte par OBMmonitor est précisée dans la varia
 
 Cette variable est une liste contenant autant de lignes que de services. Exemple :
 
-"enless"=>"over the air primitive version" 
-
-Mais OBMmonitor n'affichera pas les log correctement puisque cette version initiale utilise comme log /var/log/bios/ota.log
+"ota"=>"over the air" 
 
 ```
 cd /opt/emoncms/modules
@@ -65,8 +63,6 @@ cd sync
 git pull
 ```
 on ne fait rien pour backup dont l'installation n'a pas été correctement fait à l'origine
-
-# ceremaida : migration vers la nouvelle version de bios
 
 l'idée est de changer 2 services : enless par ota2 et modbusTCP par sa nouvelle version
 
