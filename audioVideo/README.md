@@ -1,3 +1,8 @@
+Pour lister les périphériques vidéo : 
+```
+ls /dev | grep video
+```
+
 # usb camera and command line
 
 ## installation des utilitaires v4l2
