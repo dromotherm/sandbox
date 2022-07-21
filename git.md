@@ -16,9 +16,10 @@ cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
 ```
 
-service | conf | log
---|--|--
-bios |etc/bios/bios.conf |/var/log/bios/bios.log
+service | exe | conf | log
+--|--|--|--
+bios |etc/bios/bios.conf ||/var/log/bios/bios.log
+ota2, modbus, rpihwm, ihm| usr/local/bin/bios_hardware|/etc/bios|/var/log/bios
 
 
 # ceremaida : migration vers menu_v3
