@@ -2,7 +2,7 @@ pour voir les différences : `git diff`
 
 # emoncms bios version
 
-on peut choisir une branche bios_master, bios_stable ou bios_menuv3
+on peut choisir une branche bios_master, bios_stable
 ```
 git config --list
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
@@ -10,12 +10,10 @@ git pull
 git branch -a
 git checkout bios_master
 ```
-on installe OBMmonitor (branche v3menu)
+on installe OBMmonitor
 ```
 cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
-cd OBMmonitor
-git checkout v3menu
 ```
 
 # ceremaida : migration vers menu_v3
@@ -27,11 +25,11 @@ Si l'on veut fonctionner avec la branche master d'emoncms
 git remote set-url origin https://github.com/emoncms/emoncms.git
 git pull
 ```
-Si l'on veut fonctionner avec la branche bios_menuv3 d'emoncms
+Si l'on veut fonctionner avec la branche bios_master d'emoncms
 ```
 git remote set-url origin https://github.com/alexandrecuer/emoncms.git
 git pull
-git checkout bios_menuv3
+git checkout bios_master
 ```
 On update les modules:
 ```
@@ -40,9 +38,12 @@ cd graph
 git pull
 cd OBMmonitor
 git pull
-git checkout v3menu
 ```
-on peut modifier le fichier shared.php en rajoutant "enless"=>"over the air primitive version" dans $services 
+La liste des services pris en compte par OBMmonitor est précisée dans la variable $services du fichier shared.php
+
+Cette variable est une liste contenant autant de lignes que de services. Exemple :
+
+"enless"=>"over the air primitive version" 
 
 Mais OBMmonitor n'affichera pas les log correctement puisque cette version initiale utilise comme log /var/log/bios/ota.log
 
