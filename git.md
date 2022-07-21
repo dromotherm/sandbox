@@ -23,7 +23,7 @@ service | exe | conf | log
 bios | /usr/local/bin/bios | /etc/bios/bios.conf| /var/log/bios/bios.log
 ota2, modbus, rpihwm, ihm| /usr/local/bin/bios_hardware| /etc/bios|/var/log/bios
 
-Si le service s'appelle aaa, le log est aaa.log et le conf aaa.conf, si un conf est nécessaire 
+Si le service s'appelle aaa, le log est aaa.log et le conf aaa.conf, si un conf est utilisé 
 
 # ceremaida : migration vers une UI compatible menu_v3
 ```
