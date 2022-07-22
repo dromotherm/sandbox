@@ -1,3 +1,5 @@
+https://github.com/nodejs/node/blob/main/BUILDING.md#building-nodejs-1
+
 # compiling from source
 ``` 
 git clone https://github.com/nodejs/node
