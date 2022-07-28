@@ -1,3 +1,6 @@
+
+https://github.com/facundoolano/software-papers
+
 # bios
 
 [install BIOS with makefile](bios)
