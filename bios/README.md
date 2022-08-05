@@ -321,6 +321,8 @@ TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --u
 
 un repo avec plus de wheels, dont des versions lite plus légères : https://github.com/PINTO0309/Tensorflow-bin
 
+https://qengineering.eu/
+
 pas besoin de TMPDIR avec les versions lite.....
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
