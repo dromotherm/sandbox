@@ -9,6 +9,10 @@ uname -r
 
 Bootlin est une entreprise qui forme à la compilation du noyau : https://bootlin.com/blog/enabling-new-hardware-on-raspberry-pi-with-device-tree-overlays/
 
+https://opensource.com/article/21/7/custom-raspberry-pi-image
+
+https://github.com/RPi-Distro/pi-gen
+
 # Autour des kernel headers
 
 https://wiki.gentoo.org/wiki/Linux-headers
