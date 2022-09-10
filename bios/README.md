@@ -218,32 +218,6 @@ on décommente la section login et on choisit un mot de passe pour admin
 </details>
 
 <details id=8>
-<summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
-
-```
-cd /opt/openenergymonitor
-git clone https://github.com/openenergymonitor/emonpi
-```
-On peut installer le service mais pour vérifier que le lcd fonctionne bien :
-
-```
-pip3 install xmltodict
-cd emonpi/lcd
-nano emonPiLCD.cfg
-```
-on modifie la première ligne ainsi :
-```
-uselogfile = False
-```
-Pour activer le LCD de l'emonpi
-
-```
-./emonPiLCD.py
-```
-
-</details>
-
-<details id=9>
 <summary><h2>Mise en ram des log</h2></summary>
 
 on injecte les paramètres spécifiques pour la rotation des logs :
@@ -261,7 +235,7 @@ sudo du -a /var/log/* | sort -n -r | head -n 30
 ```
 </details>
 
-<details id=10>
+<details id=9>
 <summary><h2>NodeRED</h2></summary>
 
 ```
@@ -271,7 +245,7 @@ sudo systemctl enable nodered.service
 
 </details>
 
-<details id=11>
+<details id=10>
 <summary><h2>BIOS</h2></summary>
 
 On passe sur la branche BIOS d'emoncms :
@@ -325,7 +299,7 @@ https://qengineering.eu/
 
 pas besoin de TMPDIR avec les versions lite.....
 
-[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md#suites)
+[Tester que tensorflow fonctionne correctement](..+/tensorflow/installOnRPI.md#suites)
 
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
@@ -336,6 +310,29 @@ permet de visualiser les log des services liés à BIOS et de modifier les fichi
 cd /var/www/emoncms/Modules
 git clone https://github.com/alexjunk/OBMmonitor
 ```
+</details>
+
+<details id=11>
+<summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
+
+```
+nano /opt/openenergymonitor/BIOS2/hardwareihm.py
+```
+on modifie l'adresse du lcd et le pin du bouton de commande :
+
+```
+i2c_address = 0x27
+gpiobutton = 23
+```
+Dans le run(), on remplace la ligne  :
+```
+push_btn = Button(gpiobutton, hold_time=5)
+```
+par :
+```
+push_btn = Button(gpiobutton, pull_up=False, hold_time=5)
+```
+
 </details>
 
 ## Configuration routeur - 1 = sans SIM
