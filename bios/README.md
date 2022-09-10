@@ -316,7 +316,7 @@ git clone https://github.com/alexjunk/OBMmonitor
 <summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
 
 ```
-nano /opt/openenergymonitor/BIOS2/hardwareihm.py
+nano /opt/openenergymonitor/BIOS2/hardware/ihm.py
 ```
 on modifie l'adresse du lcd et le pin du bouton de commande :
 
