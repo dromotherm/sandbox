@@ -58,6 +58,18 @@ sudo -l -U bios
 L'utilisateur bios n'est pas autorisé à exécuter sudo sur
         alexandrecuer-PORTEGE-R30-A.
 ```
+## gpasswd
+
+La commande gpasswd permet d’ajouter ou de supprimer un utilisateur d’un groupe. 
+
+Avec l’option --add, gpasswd ajoute un utilisateur à un groupe.
+
+Avec l’option --delete, gpasswd supprime un utilisateur d’un groupe.
+
+```
+gpasswd --delete nom-utilisateur nom-groupe
+```
+
 ## change password for user pi
 ```
 sudo passwd pi
