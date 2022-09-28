@@ -1,3 +1,7 @@
+# easy log from python to journald
+
+https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-python
+
 
 https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
 
