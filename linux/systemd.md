@@ -1,14 +1,15 @@
 
+## systemd
+
 https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
 
 https://github.com/systemd/systemd/blob/main/docs/UIDS-GIDS.md
 
-# easy log from python to journald
+### easy log from python to journald
 
 https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-python
 
 
-## systemd
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
