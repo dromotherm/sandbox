@@ -1,15 +1,9 @@
 
-## systemd
+# systemd
 
 https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
 
 https://github.com/systemd/systemd/blob/main/docs/UIDS-GIDS.md
-
-### easy log from python to journald
-
-https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-python
-
-
 
 **If your run a python script as a service, it is good to have a little knowledge on systemd**
 
@@ -17,7 +11,13 @@ pour du détail sur les processus démarrant en toile de fond : `sudo dmesg`
 
 cf https://fr.wikipedia.org/wiki/Dmesg
 
-### basic usage
+
+## easy log from python to journald
+
+https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-python
+
+
+## basic usage
 
 Vérifier l'état des services, gérés par systemd
 
@@ -28,12 +28,12 @@ journalctl -f -u bios
 sudo systemctl daemon-reload
 ```
 
-### queued jobs 
+## queued jobs 
 ```
 systemctl list-jobs
 ```
 
-### check which version of systemd is installed
+## check which version of systemd is installed
 ```
 pkg-config --modversion systemd
 237
@@ -50,7 +50,7 @@ sudo readlink -f /proc/1/exe
 ```
 should return `/lib/systemd/systemd`
 
-#### for more on pkg-config :
+### for more on pkg-config :
 
 https://www.freedesktop.org/wiki/Software/pkg-config/
 
