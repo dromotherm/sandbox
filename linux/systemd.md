@@ -19,6 +19,14 @@ https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-
 How to allow a user to use journalctl to see user-specific systemd service logs ? 
 https://lists.freedesktop.org/archives/systemd-devel/2016-October/037554.html
 
+on utilise la commande `journalctl -u nom_service` en ajax 
+
+cf https://github.com/alexjunk/OBMmonitor/blob/main/OBMmonitor_controller.php#L95
+
+et il faut que l'user www-data ait les bonnes permissions
+
+cf https://github.com/alexjunk/BIOS2/requires.sh
+
 
 ## basic usage
 
