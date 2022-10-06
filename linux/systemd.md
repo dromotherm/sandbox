@@ -16,6 +16,9 @@ cf https://fr.wikipedia.org/wiki/Dmesg
 
 https://stackoverflow.com/questions/34588421/how-to-log-to-journald-systemd-via-python
 
+How to allow a user to use journalctl to see user-specific systemd service logs ? 
+https://lists.freedesktop.org/archives/systemd-devel/2016-October/037554.html
+
 
 ## basic usage
 
