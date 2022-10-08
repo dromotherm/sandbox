@@ -30,6 +30,6 @@ Dans settings.ini d'emoncms, ne pas oublier d'activer mqtt
 [mqtt]
 enabled = true
 ```
-Il n'y a pas l'user dans le service file, peut-être le rajouter et supprimer le dropin
+Il n'y a pas l'user dans le service file, peut-être le rajouter et supprimer le dropin que crée service.sh
 
 Édit : le makefile ne rajoute pas l'user et ne crée pas de dropin
