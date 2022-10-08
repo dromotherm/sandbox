@@ -15,6 +15,8 @@ mosquitto_pub -t 'emon/test/t3' -m 12
 
 
 # comment installer le service emoncms_mqtt
+
+Désormais c'est le makefile de BIOS qui crée le fichier service
 ```
 chmod +x mosquitto.sh
 ./mosquitto.sh
@@ -27,4 +29,6 @@ Dans settings.ini d'emoncms, ne pas oublier d'activer mqtt
 [mqtt]
 enabled = true
 ```
-il n'y a pas l'user dans le service file, peut-être le rajouter et supprimer le dropin
+Il n'y a pas l'user dans le service file, peut-être le rajouter et supprimer le dropin
+
+Édit : le makefile ne rajoute pas l'user et ne crée pas de dropin
