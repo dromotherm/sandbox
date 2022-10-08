@@ -15,3 +15,5 @@ https://blog.alexellis.io/self-hosting-kubernetes-on-your-raspberry-pi/
 https://github.com/alexellis/k3sup
 
 https://k3s.io/
+
+https://github.com/k3s-io/k3s
