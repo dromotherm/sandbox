@@ -16,7 +16,8 @@ mosquitto_pub -t 'emon/test/t3' -m 12
 
 # comment installer le service emoncms_mqtt
 
-Désormais c'est le makefile de BIOS qui crée le fichier service
+Désormais c'est le makefile de BIOS qui crée le fichier service mais la procédure Openenergymonitor est la suivante :
+ 
 ```
 chmod +x mosquitto.sh
 ./mosquitto.sh
