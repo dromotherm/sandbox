@@ -50,9 +50,9 @@ en wifi, remplacez eth0 par wlan0
 
 # permettre au maître de se connecter à chaque nœud via SSH sans mot de passe
 
-Sur le maître, créez la clé SSH avec :
+Sur le maître et dans `home/pi`, créez la clé SSH avec :
 ```
-ssh -keygen -t rsa
+ssh-keygen
 ```
 Acceptez les valeurs par défaut (chemin par défaut et pas de mot de passe).
 Cet outil génère deux clés dans /home/pi/.ssh :
