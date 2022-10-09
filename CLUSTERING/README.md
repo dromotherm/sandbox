@@ -20,7 +20,7 @@ https://github.com/k3s-io/k3s
 
 # nom de machine
 
-il est dans `/etc/hosts` mais on peut utiliser `sudo raspi-config`
+il est dans `/etc/hostname` et dans `/etc/hosts` mais on peut utiliser `sudo raspi-config` pour modifier ces 2 fichiers d'un sel coup
 
 en profiter pour mettre la mémoire gpu à 16Mb
 
