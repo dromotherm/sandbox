@@ -18,6 +18,36 @@ https://k3s.io/
 
 https://github.com/k3s-io/k3s
 
+# nom de machine
+
+il est dans `/etc/hosts` mais on peut utiliser `sudo raspi-config`
+
+en profiter pour mettre la mémoire gpu à 16Mb
+
+# définir des adresses IP fixes
+
+Modifier le fichier de configuration suivant :
+```
+sudo nano /etc/dhcpcd.conf
+```
+Ajouter ces lignes (ou décommentez les et modifiez-les)
+
+```
+interface eth0
+static ip_address=192.168.1.200/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1
+```
+
+N’oubliez pas de changer les valeurs par celles correspondantes à votre configuration réseau
+
+Redémarrer le Raspberry Pi
+```
+sudo reboot
+```
+
+en wifi, remplacez eth0 par wlan0
+
 # permettre au maître de se connecter à chaque nœud via SSH sans mot de passe
 
 Sur le maître, créez la clé SSH avec :
