@@ -1,9 +1,9 @@
 # Ubuntu
 
-add yourself to the tty group :
+add yourself to the tty and dialout group :
 
 ``` 
-sudo usermod -a -G tty yourname
+sudo usermod -a -G tty,dialout yourname
 ```
 
 sur Ubuntu22, il faut enlever le Braille screen reader si on veut pouvoir utiliser des dongle USB :
