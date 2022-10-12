@@ -4,6 +4,7 @@ sur Ubuntu22, il faut enlever le Braille screen reader si on veut pouvoir utilis
 sudo apt remove brltty
 ```
 
+cf https://askubuntu.com/questions/1403705/dev-ttyusb0-not-present-in-ubuntu-22-04
 
 # RPI USB RS485 Raspberry Pi - Interface USB RS485, CH340C
 
