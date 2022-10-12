@@ -1,3 +1,10 @@
+sur Ubuntu22, il faut enlever le Braille screen reader si on veut pouvoir utiliser des dongle USB :
+
+``` 
+sudo apt remove brltty
+```
+
+
 # RPI USB RS485 Raspberry Pi - Interface USB RS485, CH340C
 
 https://www.reichelt.com/fr/fr/raspberry-pi-interface-usb-rs485-ch340c-rpi-usb-rs485-p242783.html
