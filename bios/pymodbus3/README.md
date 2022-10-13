@@ -50,7 +50,7 @@ Aborted!
 enfin
 
 ```
-ython3 promuxDiscovery.py 
+python3 promuxDiscovery.py 
 mode : rtu ou tcp ? [rtu]: 
 {'success': True, 'text': 'modbus RTU connexion opened port /dev/ttyUSB0 - 9600 bauds'}
 unit 0 inexistant
