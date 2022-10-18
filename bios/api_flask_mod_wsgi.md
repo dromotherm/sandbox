@@ -19,6 +19,7 @@ Une fois loggé, on installe flask et flask-cors pour l'utilisateur pi, et on in
 pip3 install flask
 pip3 install flask-cors
 sudo apt-get install libapache2-mod-wsgi-py3 python-dev
+sudo apt-get install libapache2-mod-wsgi-py3 python-dev-is-python3
 ```
 flask-cors est indispensable pour les requêtes ajax et pour fonctionner en mode API avec un serveur de cloud qui interroge des machines BIOS terrain.
 
