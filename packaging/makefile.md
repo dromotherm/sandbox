@@ -54,3 +54,5 @@ https://krzysztofzuraw.com/blog/2016/makefiles-in-python-projects
 
 https://medium.com/@habibdhif/simple-makefile-to-automate-python-projects-e233af7681ad
 
+https://stackoverflow.com/questions/2214575/passing-arguments-to-make-run/14061796#14061796
+
