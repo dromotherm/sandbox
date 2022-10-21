@@ -4,6 +4,10 @@ https://www.cisco.com/c/dam/en/us/td/docs/switches/lan/catalyst2960/hardware/qui
 
 https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/hardware/installation/guide/2960_hg/higinstl.html
 
+to reset :
+
+https://notthenetwork.me/blog/2013/05/28/reset-a-cisco-2960-switch-to-factory-default-settings/
+
 # how to configure a CISCO CATALYST 3750
 
 ![](https://www.cisco.com/c/dam/en/us/support/web/images/series/switches-catalyst-3750-series-switches.jpg)
