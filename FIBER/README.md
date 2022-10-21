@@ -1,3 +1,9 @@
+# catalyst 2960
+
+https://www.cisco.com/c/dam/en/us/td/docs/switches/lan/catalyst2960/hardware/quick/guide_stack/All_languages/2960S_gsg_fr.pdf
+
+https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/hardware/installation/guide/2960_hg/higinstl.html
+
 # how to configure a CISCO CATALYST 3750
 
 ![](https://www.cisco.com/c/dam/en/us/support/web/images/series/switches-catalyst-3750-series-switches.jpg)
