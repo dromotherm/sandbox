@@ -1,5 +1,13 @@
 https://www.fs.com/fr?c_site=community_fr&c_ctype=home&c_from=navlogo
 
+# making rj45 câbles
+
+https://www.groundcontrol.com/en/knowledge/guides/making-ethernet-cables-simple-and-easy/
+
+The best way is passthrough connectors
+
+
+
 # catalyst 2960
 
 https://www.cisco.com/c/dam/en/us/td/docs/switches/lan/catalyst2960/hardware/quick/guide_stack/All_languages/2960S_gsg_fr.pdf
