@@ -1,3 +1,6 @@
+
+http://make.mad-scientist.net/recursive-expansion/
+
 ## self documented makefile
 
 https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
