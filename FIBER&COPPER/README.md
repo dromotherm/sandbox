@@ -4,7 +4,9 @@ https://www.fs.com/fr?c_site=community_fr&c_ctype=home&c_from=navlogo
 
 https://www.groundcontrol.com/en/knowledge/guides/making-ethernet-cables-simple-and-easy/
 
-The best way is passthrough connectors
+The best way is passthrough connectors : https://www.amazon.com/dp/B07VZZZWGH
+
+RJ45 Crimp Tool Pass Through Crimper Cutter : https://www.amazon.com/dp/B07YC9TQKH
 
 
 
