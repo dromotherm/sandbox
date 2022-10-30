@@ -1,6 +1,6 @@
 # creating a deb file for pymodbus
 
-installing pip 
+installing pip to check after with `pip show pymodbus | grep Location`
 
 ```
 sudo apt install python3-pip
@@ -14,15 +14,13 @@ mkdir test
 cd test
 git clone https://salsa.debian.org/python-team/packages/pymodbus.git pymodbus_3.0.0
 curl -L https://github.com/riptideio/pymodbus/archive/refs/tags/v3.0.0.tar.gz > pymodbus_3.0.0.orig.tar.gz
-```
-
-
-trying a build
-```
+sudo apt install dh-python python3-humanfriendly python3-m2r python3-mock python3-prompt-toolkit python3-pytest python3-pytest-asyncio python3-pytest-cov python3-recommonmark python3-redis python3-serial python3-serial-asyncio python3-setuptools python3-sphinx python3-sphinx-rtd-theme python3-sqlalchemy python3-typer
 cd pymodbus_3.0.0
 debuild -us -uc
 ```
-the output shows a failure :
+
+
+# trying a build without dependancies installed should fail
 
 ```
  dpkg-buildpackage -us -uc -ui
@@ -43,14 +41,8 @@ debuild: fatal error at line 1182:
 dpkg-buildpackage -us -uc -ui failed
 ``` 
 
-installing the missing dependancies :
 
-```
-sudo apt install dh-python python3-humanfriendly python3-m2r python3-mock python3-prompt-toolkit python3-pytest python3-pytest-asyncio python3-pytest-cov python3-recommonmark python3-redis python3-serial python3-serial-asyncio python3-setuptools python3-sphinx python3-sphinx-rtd-theme python3-sqlalchemy python3-typer
-```
-after that, the build is successfull...
-
-to install the created deb file with apt :
+# to install the created deb file with apt
 
 ```
 cd ..
