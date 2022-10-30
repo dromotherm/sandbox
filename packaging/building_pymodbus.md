@@ -1,3 +1,5 @@
+# creating a deb file for pymodbus
+
 installing pip 
 
 ```
@@ -11,6 +13,7 @@ cd `~
 mkdir test
 cd test
 git clone https://salsa.debian.org/python-team/packages/pymodbus.git pymodbus_3.0.0
+curl https://github.com/riptideio/pymodbus/archive/refs/tags/v3.0.0.tar.gz > pymodbus_3.0.0.tar.gz
 ```
 
 
@@ -45,6 +48,6 @@ installing the missing dependancies :
 ```
 sudo apt install dh-python python3-humanfriendly python3-m2r python3-mock python3-prompt-toolkit python3-pytest python3-pytest-asyncio python3-pytest-cov python3-recommonmark python3-redis python3-serial python3-serial-asyncio python3-setuptools python3-sphinx python3-sphinx-rtd-theme python3-sqlalchemy python3-typer
 ```
-after that the build is successfull...
+after that, the build is successfull...
 
 
