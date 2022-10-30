@@ -6,7 +6,7 @@ installing pip
 sudo apt install python3-pip
 ```
 
-cloning the debian folder
+cloning the debian folder from the python team and fetching the upstream tar.gz
 
 ```
 cd `~
