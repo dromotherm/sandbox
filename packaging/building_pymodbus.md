@@ -9,7 +9,7 @@ sudo apt install python3-pip
 cloning the debian folder from the python debian team, fetching the upstream tar.gz, installing the dependancies and building :
 
 ```
-cd `/tmp
+cd /tmp
 mkdir test
 cd test
 git clone https://salsa.debian.org/python-team/packages/pymodbus.git pymodbus_3.0.0
