@@ -13,7 +13,7 @@ cd `~
 mkdir test
 cd test
 git clone https://salsa.debian.org/python-team/packages/pymodbus.git pymodbus_3.0.0
-curl https://github.com/riptideio/pymodbus/archive/refs/tags/v3.0.0.tar.gz > pymodbus_3.0.0.tar.gz
+curl https://github.com/riptideio/pymodbus/archive/refs/tags/v3.0.0.tar.gz > pymodbus_3.0.0.orig.tar.gz
 ```
 
 
