@@ -29,3 +29,12 @@ Description: Persistent key-value database with network interface
 Il y a un certains nombre de paquets maintenus par la fondation raspberry
  
 https://archive.raspberrypi.org/debian/
+
+# dépraspberrypi
+
+`ǹano /etc/apt/sources.list`
+
+http://raspbian.raspberrypi.org/raspbian/
+
+
+http://raspbian.raspberrypi.org/raspbian/pool/main/p/pymodbus/
