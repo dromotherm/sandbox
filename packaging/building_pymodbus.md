@@ -6,7 +6,7 @@ installing pip to check after with `pip show pymodbus | grep Location`
 sudo apt install python3-pip
 ```
 
-cloning the debian folder from the python team and fetching the upstream tar.gz
+cloning the debian folder from the python debian team, fetching the upstream tar.gz, installing the dependancies and building :
 
 ```
 cd `~
