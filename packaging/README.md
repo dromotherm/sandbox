@@ -30,7 +30,7 @@ Il y a un certains nombre de paquets maintenus par la fondation raspberry
  
 https://archive.raspberrypi.org/debian/
 
-# dépraspberrypi
+# dépôts apt raspberrypi
 
 `ǹano /etc/apt/sources.list`
 
