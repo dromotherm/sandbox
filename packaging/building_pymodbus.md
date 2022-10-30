@@ -9,7 +9,7 @@ sudo apt install python3-pip
 cloning the debian folder from the python debian team, fetching the upstream tar.gz, installing the dependancies and building :
 
 ```
-cd `~
+cd `/tmp
 mkdir test
 cd test
 git clone https://salsa.debian.org/python-team/packages/pymodbus.git pymodbus_3.0.0
@@ -19,6 +19,12 @@ cd pymodbus_3.0.0
 debuild -us -uc
 ```
 
+## to install the created deb file with apt
+
+```
+cd ..
+sudo apt install ./python3-pymodbus_3.0.0-1_all.deb
+```
 
 # trying a build without dependancies installed should fail
 
@@ -42,33 +48,5 @@ dpkg-buildpackage -us -uc -ui failed
 ``` 
 
 
-# to install the created deb file with apt
 
-```
-cd ..
-sudo apt install ./python3-pymodbus_3.0.0-1_all.deb
-```
-output :
-```
-Lecture des listes de paquets... Fait
-Construction de l'arbre des dépendances... Fait
-Lecture des informations d'état... Fait      
-Note : sélection de « python3-pymodbus » au lieu de « ./python3-pymodbus_3.0.0-1_all.deb »
-Les paquets suivants ont été installés automatiquement et ne sont plus nécessaires :
-  libflashrom1 libftdi1-2
-Veuillez utiliser « sudo apt autoremove » pour les supprimer.
-Les NOUVEAUX paquets suivants seront installés :
-  python3-pymodbus
-0 mis à jour, 1 nouvellement installés, 0 à enlever et 2 non mis à jour.
-Il est nécessaire de prendre 0 o/90,6 ko dans les archives.
-Après cette opération, 622 ko d'espace disque supplémentaires seront utilisés.
-Réception de :1 /home/alexandrecuer/test/test2/python3-pymodbus_3.0.0-1_all.deb python3-pymodbus all 3.0.0-1 [90,6 kB]
-Sélection du paquet python3-pymodbus précédemment désélectionné.
-(Lecture de la base de données... 236179 fichiers et répertoires déjà installés.
-)
-Préparation du dépaquetage de .../python3-pymodbus_3.0.0-1_all.deb ...
-Dépaquetage de python3-pymodbus (3.0.0-1) ...
-Paramétrage de python3-pymodbus (3.0.0-1) ...
-N: Le téléchargement est effectué en dehors du bac à sable en tant que « root » car le fichier « /home/alexandrecuer/test/test2/python3-pymodbus_3.0.0-1_all.deb » n'est pas accessible par l'utilisateur « _apt ». - pkgAcquire::Run (13: Permission non accordée)
-```
 
