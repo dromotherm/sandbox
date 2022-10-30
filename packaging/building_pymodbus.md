@@ -56,7 +56,7 @@ to install the created deb file with apt :
 cd ..
 sudo apt install ./python3-pymodbus_3.0.0-1_all.deb
 ```
-output should be :
+output :
 ```
 Lecture des listes de paquets... Fait
 Construction de l'arbre des dépendances... Fait
