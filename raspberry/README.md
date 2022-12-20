@@ -1,3 +1,20 @@
+# under voltage problems
+
+with the LCD connected even in sleeping mode, you may need to adjust the voltage from 4.9V to 5.xV in order not to experience under voltage problems.
+
+To track under voltage problems :
+
+
+```
+journalctl | grep Under
+Dec 20 10:45:24 emonpi kernel: Under-voltage detected! (0x00050005)
+Dec 20 10:46:01 emonpi kernel: Under-voltage detected! (0x00050005)
+Dec 20 10:46:58 emonpi kernel: Under-voltage detected! (0x00050005)
+Dec 20 10:52:24 emonpi kernel: Under-voltage detected! (0x00050005)
+Dec 20 10:54:04 emonpi kernel: Under-voltage detected! (0x00050005)
+Dec 20 10:57:24 emonpi kernel: Under-voltage detected! (0x00050005)
+```
+
 # raspiOS images
 
 before 2020-05-28, raspiOS was called raspbian
