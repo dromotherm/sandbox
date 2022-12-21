@@ -1,6 +1,6 @@
 bios utilise log2ram pour le management des fichiers log en ram
 
-bios est sur une architecture emonpi sur laquelle c'est log2ram qui lance logrotate toutes les heures
+bios est sur une architecture emonpi avec log2ram qui lance logrotate toutes les heures
 ```
 ls -al /etc/cron*
 ```
