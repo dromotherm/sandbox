@@ -1,18 +1,11 @@
 bios utilise log2ram pour le management des fichiers log en ram
 
-bios est sur une architecture emonpi sur laquelle c'est log2ram qui lance logrotate toutes les heures (tache /etc/cron.hourly) 
+bios est sur une architecture emonpi sur laquelle c'est log2ram qui lance logrotate toutes les heures
 ```
 ls -al /etc/cron*
--rw-r--r-- 1 root root 1042 Feb 22  2021 /etc/crontab
-
-/etc/cron.d:
-total 20
-drwxr-xr-x  2 root root 4096 Jan 11  2022 .
-drwxr-xr-x 87 root root 4096 Oct 13 18:42 ..
--rw-r--r--  1 root root  204 Jun  7  2021 e2scrub_all
--rw-r--r--  1 root root  712 May 11  2020 php
--rw-r--r--  1 root root  102 Feb 22  2021 .placeholder
-
+```
+extraits des contenus des répertoires daily et hourly :
+```
 /etc/cron.daily:
 total 32
 drwxr-xr-x  2 root root 4096 Jan 11  2022 .
@@ -31,20 +24,9 @@ drwxr-xr-x 87 root root 4096 Oct 13 18:42 ..
 -rwxr-xr-x  1 root root  191 Feb 22  2012 fake-hwclock
 lrwxrwxrwx  1 root root   35 Jan 11  2022 log2ram -> /opt/openenergymonitor/cron/log2ram
 -rw-r--r--  1 root root  102 Feb 22  2021 .placeholder
-
-/etc/cron.monthly:
-total 12
-drwxr-xr-x  2 root root 4096 Oct 30  2021 .
-drwxr-xr-x 87 root root 4096 Oct 13 18:42 ..
--rw-r--r--  1 root root  102 Feb 22  2021 .placeholder
-
-/etc/cron.weekly:
-total 16
-drwxr-xr-x  2 root root 4096 Oct 30  2021 .
-drwxr-xr-x 87 root root 4096 Oct 13 18:42 ..
--rwxr-xr-x  1 root root  813 Feb 19  2021 man-db
--rw-r--r--  1 root root  102 Feb 22  2021 .placeholder
 ```
+sur un emonpi, le fichier /etc/cron.daily/logrotate ne contient aucune instruction. C'est le fichier /etc/cron.hourly/log2ram qui appelle logrotate
+
 
 pour voir les derniers évènements relatifs à log2ram dans le syslog
 ```
