@@ -1,5 +1,29 @@
 bios utilise log2ram pour le management des fichiers log en ram
 
+bios est sur une architecture emonpi sur laquelle c'est log2ram qui lance logrotate toutes les heures (tache /etc/cron.hourly) 
+
+pour voir les derniers évènements relatifs à log2ram dans le syslog
+```
+grep log2ram /var/log/syslog
+```
+on a crée un fichier de rotation pour bios :
+
+```
+/var/log/bios/*.log {
+        hourly
+        missingok
+        rotate 7
+        compress
+        notifempty
+        size 3M
+}
+```
+pour le mettre en place :
+
+```
+sudo ln -sf /opt/openenergymonitor/bios /etc/logrotate.d/bios
+```
+
 # log2ram ne veut pas démarrer
 
 ## cas 1
