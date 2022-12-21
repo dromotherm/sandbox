@@ -32,7 +32,7 @@ pour voir les derniers évènements relatifs à log2ram dans le syslog
 ```
 grep log2ram /var/log/syslog
 ```
-on a crée un fichier de rotation pour bios :
+on crée un fichier de rotation pour bios :
 ```
 cd /opt/openenergymonitor
 nano bios
