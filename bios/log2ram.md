@@ -33,9 +33,13 @@ pour voir les derniers évènements relatifs à log2ram dans le syslog
 grep log2ram /var/log/syslog
 ```
 on a crée un fichier de rotation pour bios :
-
 ```
-/var/log/bios/*.log {
+cd /opt/opnenergymonitor
+nano bios
+```
+avec le contenu suivant, pour n'envoyer dans `var/log.old` que les fichiers log.1, afin de soulager la ram utilisée par les log :
+```
+/var/log/bios/*.1 {
         hourly
         missingok
         rotate 7
@@ -43,6 +47,10 @@ on a crée un fichier de rotation pour bios :
         notifempty
         size 3M
 }
+```
+on lui donne les bonnes permissions, car sinon on pourrait avoir l'erreur suivante error: `Ignoring bios because the file owner is wrong (should be root or user with uid 0)` :
+```
+sudo chown root bios
 ```
 pour le mettre en place :
 
