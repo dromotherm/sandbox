@@ -34,13 +34,12 @@ grep log2ram /var/log/syslog
 ```
 on a crée un fichier de rotation pour bios :
 ```
-cd /opt/opnenergymonitor
+cd /opt/openenergymonitor
 nano bios
 ```
 avec le contenu suivant, pour n'envoyer dans `var/log.old` que les fichiers log.1, afin de soulager la ram utilisée par les log :
 ```
 /var/log/bios/*.1 {
-        hourly
         missingok
         rotate 7
         compress
