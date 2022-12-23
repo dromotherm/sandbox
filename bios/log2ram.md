@@ -67,7 +67,7 @@ sudo logrotate -v /etc/logrotate.d/bios
 ```
 # logrotate
 
-logrotate est lancé par un timersystemd
+logrotate est lancé par un timer systemd
 ```
 systemctl status logrotate
 ○ logrotate.service - Rotate log files
