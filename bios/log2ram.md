@@ -65,6 +65,19 @@ pour lancer la rotation manuellement en mode verbose :
 ```
 sudo logrotate -v /etc/logrotate.d/bios
 ```
+
+# contenu de /var/log/old
+
+voici un extrait ce ce que donne la commande `ls -al /var/log.old`, n'affichant que les fichier du service ota (over the air)
+
+```
+-rw-r--r--  1 pi    pi    541403 Dec 23 13:28 ota2.log.1.1.gz
+-rw-r--r--  1 pi    pi    532269 Dec 23 08:02 ota2.log.1.2.gz
+-rw-r--r--  1 pi    root  537903 Dec 23 01:31 ota2.log.1.3.gz
+-rw-r--r--  1 pi    root  538361 Dec 22 11:08 ota2.log.1.4.gz
+```
+Pour ouvrir ces fichiers gz : `gzip -d nom_archive`
+`
 # logrotate
 
 logrotate est lancé par un timer systemd
