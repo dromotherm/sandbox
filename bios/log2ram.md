@@ -91,7 +91,7 @@ systemctl status logrotate.timer
              man:logrotate.conf(5)
 ```
 
-généralement sur une base journalière.
+**Le timer opère généralement sur une base journalière.**
 
 Voici ce qu'affiche la commande `sudo nano /lib/systemd/system/logrotate.timer` :
 
@@ -107,8 +107,22 @@ Persistent=true
 
 [Install]
 WantedBy=timers.target
-
 ```
+Pour passer en mode horaire :
+```
+[Unit]
+Description=Hourly rotation of log files
+Documentation=man:logrotate(8) man:logrotate.conf(5)
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
 
 # log2ram ne veut pas démarrer
 
