@@ -68,7 +68,7 @@ sudo logrotate -v /etc/logrotate.d/bios
 
 # contenu de /var/log/old
 
-voici un extrait ce ce que donne la commande `ls -al /var/log.old`, n'affichant que les fichier du service ota (over the air)
+voici un extrait ce ce que donne la commande `ls -al /var/log.old`, avec seulement les fichiers du service ota (over the air)
 
 ```
 -rw-r--r--  1 pi    pi    541403 Dec 23 13:28 ota2.log.1.1.gz
