@@ -56,6 +56,59 @@ pour le mettre en place :
 ```
 sudo ln -sf /opt/openenergymonitor/bios /etc/logrotate.d/bios
 ```
+pour tester en mode debug :
+```
+sudo logrotate -d /etc/logrotate.d/bios
+```
+
+pour lancer la rotation manuellement en mode verbose :
+```
+sudo logrotate -v /etc/logrotate.d/bios
+```
+# logrotate
+
+logrotate est lancé par un timersystemd
+```
+systemctl status logrotate
+○ logrotate.service - Rotate log files
+     Loaded: loaded (/lib/systemd/system/logrotate.service; static)
+     Active: inactive (dead) since Fri 2022-12-23 09:57:43 CET; 2h 16min ago
+TriggeredBy: ● logrotate.timer
+       Docs: man:logrotate(8)
+             man:logrotate.conf(5)
+    Process: 2763780 ExecStart=/usr/sbin/logrotate /etc/logrotate.conf (code=exited, status=0/SUCCESS)
+   Main PID: 2763780 (code=exited, status=0/SUCCESS)
+        CPU: 97ms
+
+
+systemctl status logrotate.timer
+● logrotate.timer - Daily rotation of log files
+     Loaded: loaded (/lib/systemd/system/logrotate.timer; enabled; vendor preset: enabled)
+     Active: active (waiting) since Tue 2022-12-13 10:29:51 CET; 1 week 3 days ago
+    Trigger: Sat 2022-12-24 00:00:00 CET; 11h left
+   Triggers: ● logrotate.service
+       Docs: man:logrotate(8)
+             man:logrotate.conf(5)
+```
+
+généralement sur une base journalière.
+
+Voici ce qu'affiche la commande `sudo nano /lib/systemd/system/logrotate.timer` :
+
+```
+Unit]
+Description=Daily rotation of log files
+Documentation=man:logrotate(8) man:logrotate.conf(5)
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+```
 
 # log2ram ne veut pas démarrer
 
