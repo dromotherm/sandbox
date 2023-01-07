@@ -35,7 +35,7 @@ Vérifier l'état des services, gérés par systemd
 ```
 systemctl status
 systemctl status bios
-journalctl -f -u bios
+journalctl -u bios
 sudo systemctl daemon-reload
 ```
 
