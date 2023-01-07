@@ -39,6 +39,20 @@ journalctl -f -u bios
 sudo systemctl daemon-reload
 ```
 
+## timers
+```
+systemctl list-timers
+NEXT                        LEFT          LAST                        PASSED     UNIT                         ACTIVATES
+Sat 2023-01-07 20:39:00 CET 24min left    Sat 2023-01-07 20:09:20 CET 5min ago   phpsessionclean.timer        phpsessionclean.service
+Sun 2023-01-08 00:00:00 CET 3h 45min left Sat 2023-01-07 00:00:20 CET 20h ago    logrotate.timer              logrotate.service
+Sun 2023-01-08 00:00:00 CET 3h 45min left Sat 2023-01-07 00:00:20 CET 20h ago    man-db.timer                 man-db.service
+Sun 2023-01-08 00:35:44 CET 4h 21min left Sat 2023-01-07 10:01:20 CET 10h ago    apt-daily.timer              apt-daily.service
+Sun 2023-01-08 03:10:46 CET 6h left       Sun 2023-01-01 03:10:33 CET 6 days ago e2scrub_all.timer            e2scrub_all.service
+Sun 2023-01-08 06:23:26 CET 10h left      Sat 2023-01-07 06:26:55 CET 13h ago    apt-daily-upgrade.timer      apt-daily-upgrade.service
+Sun 2023-01-08 08:28:28 CET 12h left      Sat 2023-01-07 08:28:28 CET 11h ago    systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Mon 2023-01-09 00:37:48 CET 1 day 4h left Mon 2023-01-02 00:51:04 CET 5 days ago fstrim.timer                 fstrim.service
+```
+
 ## queued jobs 
 ```
 systemctl list-jobs
