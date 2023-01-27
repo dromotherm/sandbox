@@ -299,7 +299,7 @@ https://qengineering.eu/
 
 pas besoin de TMPDIR avec les versions lite.....
 
-[Tester que tensorflow fonctionne correctement](..+/tensorflow/installOnRPI.md#suites)
+[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
 
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
