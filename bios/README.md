@@ -127,20 +127,9 @@ sudo chown $(id -u -n):$(id -u -n) openenergymonitor
 cd openenergymonitor
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
 ```  
-**Si pas de prise en compte des drivers MOXA**
+On met à jour la distribution
 ```
 make osupdate
-```
-**Si prise en compte des drivers MOXA**
-```
-sudo apt-get update
-sudo apt install git bc bison flex libssl-dev
-sudo apt-get install raspberrypi-kernel-headers
-sudo apt-get install -y git build-essential python3-pip python3-dev
-wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_linux_uport1p_v5.1.5_build_22053114.tgz
-tar -xvf driv_linux_uport1p_v5.1.5_build_22053114.tgz
-cd ./mxu11x0/
-sudo ./mxinstall
 ```
 
 Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
