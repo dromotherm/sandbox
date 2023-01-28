@@ -3,6 +3,19 @@ alternative download :
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_linux_uport1p_v5.1.5_build_22053114.tgz
 ```
 
+# Bios avec prise en compte des drivers MOXA
+
+ne fonctionne pas - les drivers linux ne sont jamais à jour. il y a tjrs un problème avec les kernel headers
+```
+sudo apt-get update
+sudo apt install git bc bison flex libssl-dev
+sudo apt-get install raspberrypi-kernel-headers
+sudo apt-get install -y git build-essential python3-pip python3-dev
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_linux_uport1p_v5.1.5_build_22053114.tgz
+tar -xvf driv_linux_uport1p_v5.1.5_build_22053114.tgz
+cd ./mxu11x0/
+sudo ./mxinstall
+```
 
 # compiler les drivers moxa
 
