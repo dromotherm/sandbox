@@ -229,10 +229,6 @@ On reboote pour activer log2ram
 
 ### [Difficultés avec log2ram](log2ram.md)
 
-pour trouver ce qui occupe l'espace dans les log :
-```
-sudo du -a /var/log/* | sort -n -r | head -n 30
-```
 </details>
 
 <details id=9>
