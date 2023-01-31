@@ -6,6 +6,11 @@ wget https://raw.githubusercontent.com/dromotherm/sandbox/master/ZZ_MOXA/driv_li
 # Bios avec prise en compte des drivers MOXA
 
 ne fonctionne pas - les drivers linux ne sont jamais à jour. il y a tjrs un problème avec les kernel headers
+2 options :
+1) relancer le support moxa à chaque fois que le build ne fonctionne pas
+2) comprendre le code du driver
+
+Les 2 options demandent trop de temps
 ```
 sudo apt-get update
 sudo apt install git bc bison flex libssl-dev
