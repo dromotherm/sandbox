@@ -1,3 +1,19 @@
+# tester que tensorflow fonctionne
+
+```
+python3 replayNN.py 
+température extérieure ? [8.56]: 9.17
+température intérieure ? [14.8]: 17.8
+température de consigne ? [0]: 0
+nombre d'heures au changement d'occupation ? [43.0]: 14.5
+pas de temps en heures ? [1.0]: 0.5
+nom de l'agent ? (2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20, 4parsChh) [2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20]: 
+sortie du réseau au moment présent [[-5.0913396 -5.1482563]] soit chauffage 0
+[0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1.]
+chauffage dans 1.0 heures au maximum
+```
+
 # extract of a correct install
 
 raspiOS Buster python3.7
@@ -183,16 +199,3 @@ tensorflow 2.4.0rc2 requires numpy~=1.19.2, but you have numpy 1.21.5 which is i
 Successfully installed numpy-1.21.5
 ```
 il y a une erreur mais tensorflow fonctionne
-```
-python3 replayNN.py 
-température extérieure ? [8.56]: 9.17
-température intérieure ? [14.8]: 17.8
-température de consigne ? [0]: 0
-nombre d'heures au changement d'occupation ? [43.0]: 14.5
-pas de temps en heures ? [1.0]: 0.5
-nom de l'agent ? (2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20, 4parsChh) [2021_09_23_07_42_32_hys20_retrained_k0dot9_hys20]: 
-sortie du réseau au moment présent [[-5.0913396 -5.1482563]] soit chauffage 0
-[0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
- 1. 1. 1. 1. 1.]
-chauffage dans 1.0 heures au maximum
-```
