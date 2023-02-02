@@ -1,6 +1,7 @@
 # tester que tensorflow fonctionne
 
 ```
+cd /opt/openenergymonitor/BIOS/pilots
 python3 replayNN.py 
 température extérieure ? [8.56]: 9.17
 température intérieure ? [14.8]: 17.8
