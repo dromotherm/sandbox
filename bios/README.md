@@ -286,6 +286,11 @@ pas besoin de TMPDIR avec les versions lite.....
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
 
+si problème de fonctionnement, on peut avoir à installer une version bien précise de numpy :
+```
+pip3 install --force-reinstall numpy==1.23
+```
+
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
 ### Installation du module pour emoncms
