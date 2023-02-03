@@ -117,6 +117,24 @@ timedatectl
 ```
 </details>
 
+<details id=8>
+<summary><h2>Mise en ram des log</h2></summary>
+  
+si on veut utiliser log2ram, il vaut mieux l'installer avant d'installer apache
+
+https://github.com/azlux/log2ram
+
+```
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+sudo apt update
+sudo apt install log2ram
+```
+
+On reboote pour activer log2ram
+
+</details>
+
 <details id=5>
 <summary><h2>Installation</h2></summary>
   
@@ -180,6 +198,14 @@ make symodule name=backup
 ```
 </details>
 
+<details id=8>
+<summary><h2>custom logrotate</h2></summary>
+A FINALISER DANS LE MAKEFILE
+```
+make custom_logrotate
+```
+</details>
+
 <details id=6>
 <summary><h2>Installation de emonhub si on veut faire du monitoring électrique</h2></summary>
   
@@ -203,20 +229,6 @@ dans ce cas, il convient de sécuriser un minimum :
 nano phpRedisAdmin/includes/config.sample.inc.php
 ```
 on décommente la section login et on choisit un mot de passe pour admin
-
-</details>
-
-<details id=8>
-<summary><h2>Mise en ram des log</h2></summary>
-
-on injecte les paramètres spécifiques pour la rotation des logs :
-```
-make custom_logrotate
-make log2ram
-```
-On reboote pour activer log2ram
-
-### [Difficultés avec log2ram](log2ram.md)
 
 </details>
 
