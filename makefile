@@ -377,8 +377,12 @@ symodule:
 
 custom_logrotate:
 	@echo "creating custom default config"
-	@printf "maxsize 500k\n" > 00_defaults
-	@printf "\n" >> 00_defaults
+	@printf "maxsize 250k\n" > 00_defaults
+	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
+	@printf "olddir /var/log.old\n" > 00_olddir
+	@printf "createolddir 755 root root\n" > 00_olddir
+	@printf "renamecopy" > 00_olddir
+	@sudo ln -sf $(here)/00_olddir /etc/logrotate.d/00_olddir
 	@printf "/var/log/logrotate/*.log {\n" >> 00_defaults
 	@printf "    rotate 7\n" >> 00_defaults
 	@printf "    daily\n" >> 00_defaults
@@ -390,7 +394,6 @@ custom_logrotate:
 	@printf "    notifempty\n" >> 00_defaults
 	@printf "    delaycompress\n" >> 00_defaults
 	@printf "}\n" >> 00_defaults
-	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
 	@echo "creating custom emoncms config"
 	@printf "/var/log/emoncms/*.log {\n" > emoncms
 	@printf "    maxsize 3M\n" >> emoncms
@@ -414,6 +417,7 @@ custom_logrotate:
 		sudo chown root /etc/logrotate.d/emonhub;\
 	fi
 	@sudo chown root /etc/logrotate.d/00_defaults
+	@sudo chown root /etc/logrotate.d/00_olddir
 	@sudo chown root /etc/logrotate.d/emoncms
 
 log2ram:
