@@ -201,7 +201,6 @@ make symodule name=backup
 <details id=8>
 <summary><h2>custom logrotate</h2></summary>
 
-A FINALISER DANS LE MAKEFILE
 ```
 make custom_logrotate
 ```
