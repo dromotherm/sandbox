@@ -376,71 +376,21 @@ symodule:
 	@php emoncmsdbupdate.php
 
 custom_logrotate:
-	@echo "creating custom default config"
+	@echo "creating custom logrotate configs"
 	@printf "maxsize 250k\n" > 00_defaults
-	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
 	@printf "olddir /var/log.old\n" > 00_olddir
 	@printf "createolddir 755 root root\n" > 00_olddir
 	@printf "renamecopy" > 00_olddir
-	@sudo ln -sf $(here)/00_olddir /etc/logrotate.d/00_olddir
-	@printf "/var/log/logrotate/*.log {\n" >> 00_defaults
-	@printf "    rotate 7\n" >> 00_defaults
-	@printf "    daily\n" >> 00_defaults
-	@printf "    compress\n" >> 00_defaults
-	@printf "    copytruncate\n" >> 00_defaults
-	@printf "    size 100k\n" >> 00_defaults
-	@printf "    nocreate\n" >> 00_defaults
-	@printf "    missingok\n" >> 00_defaults
-	@printf "    notifempty\n" >> 00_defaults
-	@printf "    delaycompress\n" >> 00_defaults
-	@printf "}\n" >> 00_defaults
-	@echo "creating custom emoncms config"
 	@printf "/var/log/emoncms/*.log {\n" > emoncms
 	@printf "    maxsize 3M\n" >> emoncms
 	@printf "    compress\n" >> emoncms
 	@printf "    olddir /var/log.old/emoncms\n" >> emoncms
 	@printf "    createolddir 775 root root\n" >> emoncms
+	@printf "    renamecopy\n" >> emoncms
 	@printf "}\n" >> emoncms
+	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
+	@sudo ln -sf $(here)/00_olddir /etc/logrotate.d/00_olddir
 	@sudo ln -sf $(here)/emoncms /etc/logrotate.d/emoncms
-	@if [ -f "/var/log/emonhub/emonhub.log" ]; then\
-		echo "creating custom emonhub config";\
-		printf "/var/log/emonhub/emonhub.log {\n" > emonhub.1;\
-		printf "    maxsize 3M\n" >> emonhub.1;\
-		printf "    norenamecopy\n" >> emonhub.1;\
-		printf "    copytruncate\n" >> emonhub.1;\
-		printf "    su root root\n" >> emonhub.1;\
-		printf "    compress\n" >> emonhub.1;\
-		printf "    olddir /var/log.old/emonhub\n" >> emonhub.1;\
-		printf "    createolddir 775 root emonhub\n" >> emonhub.1;\
-		printf "}\n" >> emonhub.1;\
-		sudo ln -sf $(here)/emonhub.1 /etc/logrotate.d/emonhub;\
-		sudo chown root /etc/logrotate.d/emonhub;\
-	fi
 	@sudo chown root /etc/logrotate.d/00_defaults
 	@sudo chown root /etc/logrotate.d/00_olddir
 	@sudo chown root /etc/logrotate.d/emoncms
-
-log2ram:
-	@if [ ! -d "log2ram" ]; then\
-		echo "cloning log2ram";\
-		git clone -b rsync_mods https://github.com/openenergymonitor/log2ram;\
-	fi
-	@chmod +x log2ram/install.sh && cd log2ram && sudo ./install.sh
-	@rm -rf log2ram
-	@sudo mkdir -p /var/log/logrotate
-	@sudo chown -R root:adm /var/log/logrotate
-	@mkdir -p cron
-	@echo "log2ram cron hourly entry"
-	@printf "#!/usr/bin/env sh\n" > cron/log2ram
-	@printf "test -x /usr/sbin/logrotate || exit 0\n" >> cron/log2ram
-	@printf "/usr/sbin/logrotate -v -s /var/log/logrotate/logrotate.status /etc/logrotate.conf >> /var/log/logrotate/logrotate.log 2>&1\n" >> cron/log2ram
-	@printf "systemctl reload log2ram\n" >> cron/log2ram
-	@sudo ln -sf $(here)/cron/log2ram /etc/cron.hourly/log2ram
-	@sudo chmod +x /etc/cron.hourly/log2ram
-	@echo "copy in commented out placeholder logrotate file"
-	@printf "#!/bin/sh\n" > cron/logrotate
-	@printf "# test -x /usr/sbin/logrotate || exit 0\n" >> cron/logrotate
-	@printf "# /usr/sbin/logrotate /etc/logrotate.conf\n" >> cron/logrotate
-	@printf "# logrotate now triggered by log2ram\n" >> cron/logrotate
-	@printf "# see /etc/cron.hourly/log2ram\n" >> cron/logrotate
-	@sudo cp cron/logrotate /etc/cron.daily/logrotate
