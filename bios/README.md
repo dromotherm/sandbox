@@ -130,6 +130,7 @@ sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/rep
 sudo apt update
 sudo apt install log2ram
 ```
+On passe SIZE à 128Mo  `sudo nano /etc/log2ram.conf`
 
 On reboote pour activer log2ram
 
