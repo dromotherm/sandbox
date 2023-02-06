@@ -142,6 +142,7 @@ On reboote pour activer log2ram
 
 Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
 ```
+cd /opt/openenergymonitor
 git clone https://github.com/openenergymonitor/EmonScripts
 cp EmonScripts/install/emonsd.config.ini EmonScripts/install/config.ini
 ```
