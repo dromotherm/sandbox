@@ -25,6 +25,7 @@ here := $(shell pwd)
 
 actualhostname := $(shell cat /etc/hostname)
 hostname := emonpi
+azlux_gpg := /usr/share/keyrings/azlux-archive-keyring.gpg
 
 osupdate:
 	@echo "apt-get update"
@@ -37,6 +38,15 @@ osupdate:
 	@sudo apt-get clean
 	@sudo apt --fix-broken install
 	@sudo apt-get install -y git build-essential python3-pip python3-dev
+	@echo "installing iostat"
+	@sudo apt-get install -y sysstat
+
+log2ram:
+	@echo "installing log2ram to protect the SD card"
+	@echo "deb [signed-by=$(azlux_gpg)] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+	@sudo wget -O $(azlux_gpg)  https://azlux.fr/repo.gpg
+	@sudo apt update
+	@sudo apt install -y log2ram
 
 customize:
 	@echo "changing the hostname\n"
