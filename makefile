@@ -398,6 +398,6 @@ custom_logrotate:
 	@printf "    createolddir 775 root root\n" >> emoncms
 	@printf "    renamecopy\n" >> emoncms
 	@printf "}\n" >> emoncms
-	@install -m 644 /etc/logrotate.d/00_defaults
-	@install -m 644 /etc/logrotate.d/00_olddir
-	@install -m 644 /etc/logrotate.d/emoncms
+	@install -m 644 00_defaults /etc/logrotate.d/00_defaults
+	@install -m 644 00_olddir /etc/logrotate.d/00_olddir
+	@install -m 644 emoncms /etc/logrotate.d/emoncms
