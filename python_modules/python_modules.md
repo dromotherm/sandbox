@@ -49,7 +49,11 @@ numpy is a global package : it has been installed through apt-get
 
 dateutil is a user package, installed via pip3. On some platforms, it is installed as a global package, on many, it is only installed locally.
 
-what is possible is the following, although not very nice and specific to debian !!!
+# changing a package from local to global
+
+the easiest is to install globally with `sudo pip3` 
+
+when the package has been installed locally, what is possible is the following, although not very nice and specific to debian !!!
 
 ```
 sudo mv /home/pi/.local/lib/python3.7/site-packages/dateutil /usr/lib/python3/dist-packages/dateutil
@@ -73,6 +77,15 @@ so we have to simply do :
 sudo mv /home/pi/.local/lib/python3.7/site-packages/redis /usr/lib/python3/dist-packages/redis
 sudo mv /home/pi/.local/lib/python3.7/site-packages/redis-3.5.3.dist-info /usr/lib/python3/dist-packages/redis-3.5.3.dist-info
 ```
+possible process automatique :
+
+```
+export PV=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+export RV=$(pip3 show redis | grep -oP "\Version:\s+\K.*")
+sudo mv /home/$(id -u -n)/.local/lib/python$PV/site-packages/redis /usr/lib/python3/dist-packages/redis
+sudo mv /home/$(id -u -n)/.local/lib/python$PV/site-packages/redis-$RV.dist-info /usr/lib/python3/dist-packages/redis-$RV.dist-info
+```
+
 same for pymodbus :
 
 ```
@@ -80,7 +93,7 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus /usr/lib
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/pymodbus-2.4.0.dist-info /usr/lib/python3/dist-packages/pymodbus-2.4.0.dist-info
 ```
 
-# flask
+## flask
 
 ```
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/flask /usr/lib/python3/dist-packages/flask
@@ -90,7 +103,7 @@ sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/itsdangerous-1.1.
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/flask_cors /usr/lib/python3/dist-packages/flask_cors
 sudo mv /home/alexandrecuer/.local/lib/python3.6/site-packages/Flask_Cors-3.0.10.dist-info /usr/lib/python3/dist-packages/Flask_Cors-3.0.10.dist-info
 ```
-# tensorflow
+## tensorflow
 
 tried the following commands to transform a tensorflow user installation into a system wide install, with no succes 
 ```
