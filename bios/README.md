@@ -117,25 +117,6 @@ timedatectl
 ```
 </details>
 
-<details id=8>
-<summary><h2>Mise en ram des log</h2></summary>
-  
-si on veut utiliser log2ram, il vaut mieux l'installer avant d'installer apache
-
-https://github.com/azlux/log2ram
-
-```
-echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
-sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
-sudo apt update
-sudo apt install log2ram
-```
-On passe SIZE à 128Mo  `sudo nano /etc/log2ram.conf`
-
-On reboote pour activer log2ram
-
-</details>
-
 <details id=5>
 <summary><h2>Installation</h2></summary>
   
@@ -150,6 +131,14 @@ On met à jour la distribution
 ```
 make osupdate
 ```
+Si on veut utiliser log2ram (https://github.com/azlux/log2ram), il vaut mieux l'installer avant d'installer apache
+
+```
+make log2ram
+```
+On passe SIZE à 128Mo  `sudo nano /etc/log2ram.conf`
+
+On reboote pour activer log2ram
 
 Pour que l'installation du module backup ne pose pas de questions, on clone le repo EmonScripts
 ```
