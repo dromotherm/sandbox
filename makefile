@@ -388,7 +388,7 @@ symodule:
 custom_logrotate:
 	@echo "creating custom logrotate configs"
 	@printf "maxsize 250k\n" > 00_defaults
-	@printf "olddir /var/log.old\n" >> 00_olddir
+	@printf "olddir /var/log.old\n" > 00_olddir
 	@printf "createolddir 755 root root\n" >> 00_olddir
 	@printf "renamecopy" >> 00_olddir
 	@printf "/var/log/emoncms/*.log {\n" > emoncms
