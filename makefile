@@ -401,3 +401,4 @@ custom_logrotate:
 	@sudo install -m 644 00_defaults /etc/logrotate.d/00_defaults
 	@sudo install -m 644 00_olddir /etc/logrotate.d/00_olddir
 	@sudo install -m 644 emoncms /etc/logrotate.d/emoncms
+	@sudo systemctl restart logrotate
