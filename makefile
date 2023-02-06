@@ -398,9 +398,6 @@ custom_logrotate:
 	@printf "    createolddir 775 root root\n" >> emoncms
 	@printf "    renamecopy\n" >> emoncms
 	@printf "}\n" >> emoncms
-	@sudo ln -sf $(here)/00_defaults /etc/logrotate.d/00_defaults
-	@sudo ln -sf $(here)/00_olddir /etc/logrotate.d/00_olddir
-	@sudo ln -sf $(here)/emoncms /etc/logrotate.d/emoncms
-	@sudo chown root /etc/logrotate.d/00_defaults
-	@sudo chown root /etc/logrotate.d/00_olddir
-	@sudo chown root /etc/logrotate.d/emoncms
+	@install -m 644 /etc/logrotate.d/00_defaults
+	@install -m 644 /etc/logrotate.d/00_olddir
+	@install -m 644 /etc/logrotate.d/emoncms
