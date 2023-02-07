@@ -1,6 +1,6 @@
 bios utilise log2ram pour le management des fichiers log en ram
 
-La communauté openenergymonitor utilise une version modifiée et obsolète de log2ram qui utilise log2ram pour lancer logrotate toutes les heures
+Histoire de compliquer des choses simples, la communauté openenergymonitor utilise une version modifiée et obsolète de log2ram qui utilise log2ram pour lancer logrotate toutes les heures
 ```
 ls -al /etc/cron*
 ```
