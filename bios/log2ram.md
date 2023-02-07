@@ -1,6 +1,6 @@
 bios utilise log2ram pour le management des fichiers log en ram
 
-bios est sur une architecture emonpi avec log2ram qui lance logrotate toutes les heures
+La communauté openenergymonitor utilise une version modifiée et obsolète de log2ram qui utilise log2ram pour lancer logrotate toutes les heures
 ```
 ls -al /etc/cron*
 ```
