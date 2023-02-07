@@ -27,6 +27,7 @@ lrwxrwxrwx  1 root root   35 Jan 11  2022 log2ram -> /opt/openenergymonitor/cron
 ```
 sur un emonpi, le fichier /etc/cron.daily/logrotate ne contient aucune instruction. C'est le fichier /etc/cron.hourly/log2ram qui appelle logrotate
 
+Cf https://github.com/openenergymonitor/EmonScripts/blob/master/defaults/etc/cron.hourly/log2ram
 
 pour voir les derniers évènements relatifs à log2ram dans le syslog
 ```
