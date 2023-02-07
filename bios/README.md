@@ -239,12 +239,10 @@ git checkout bios_master
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS2
-```
-si on veut utiliser la v1.0.0
-```
 cd BIOS2
-git checkout v1.0.0
 ```
+si on veut utiliser la v1.0.0 : `git checkout v1.0.0`
+
 pour installer les dépendances : `./requires.sh`
 
 ### Tensorflow
