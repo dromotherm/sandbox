@@ -70,7 +70,7 @@ help:
 	@echo "make redis"
 	@echo "make mosquitto"
 	@echo "NOTA : always run make redis or make mosquitto AFTER make php !!"
-	@echo "make emoncms"
+	@echo "make emoncms_www"
 	@echo "make apacheconf"
 	@echo "make feedwriter"
 	@echo "make service-runner"
@@ -123,7 +123,7 @@ apacheconf:
 	@echo "restarting apache"
 	@sudo systemctl restart apache2
 
-emoncms:
+emoncms_www:
 	@sudo chown $(user) $(www)
 	@if [ ! -d $(emoncms_www) ]; then\
 		echo "Installing emoncms core repository with git";\
