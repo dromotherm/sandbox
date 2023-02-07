@@ -38,6 +38,8 @@ osupdate:
 	@sudo apt-get clean
 	@sudo apt --fix-broken install
 	@sudo apt-get install -y git build-essential python3-pip python3-dev
+	@echo "installing venv for python"
+	@sudo apt-get install -y python3-venv
 	@echo "installing iostat"
 	@sudo apt-get install -y sysstat
 
