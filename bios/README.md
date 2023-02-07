@@ -164,7 +164,7 @@ On reboote le PI
 On installe le moteur :
 ```
 cd /opt/openenergymonitor
-make emoncms
+make emoncms_www
 make sudoers
 make apacheconf
 make feedwriter
