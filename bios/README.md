@@ -239,9 +239,14 @@ git checkout bios_master
 ```
 cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS2
-cd BIOS2
-./requires.sh
 ```
+si on veut utiliser la v1.0.0
+```
+cd BIOS2
+git checkout v1.0.0
+```
+pour installer les dépendances : `./requires.sh`
+
 ### Tensorflow
 Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement. `./required.sh` ne prend en charge l'installation de tensorflow que sur x86.
 
