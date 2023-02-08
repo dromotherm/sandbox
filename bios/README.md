@@ -245,8 +245,10 @@ Si on veut utiliser la v1.0.0 : `git checkout v1.0.0`
 
 Pour installer les dépendances : `./requires.sh main`
 
-Puis `.\requires.sh python` pour initialiser l'environnement virtuel `bios` dans `/opt/v` et y installer tous les packages nécessaires dont pymodbus et tensorflow. Tous les exécutables python de BIOS utilise le shebang `#!/opt/v/bios/bin/python3`
-`
+Puis `.\requires.sh python` pour initialiser l'environnement virtuel `bios` dans `/opt/v` et y installer tous les packages nécessaires dont pymodbus et tensorflow. 
+
+Tous les exécutables python de BIOS utilisent le shebang `#!/opt/v/bios/bin/python3`
+
 L'installation de tensorflow sur arm se fait gràce à une wheel. Pour en savoir plus, [tensorflow sur arm](tensorflow_on_arm.md)
 
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
