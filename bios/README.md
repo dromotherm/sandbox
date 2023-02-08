@@ -241,53 +241,13 @@ cd /opt/openenergymonitor
 git clone http://github.com/alexjunk/BIOS2
 cd BIOS2
 ```
-si on veut utiliser la v1.0.0 : `git checkout v1.0.0`
+Si on veut utiliser la v1.0.0 : `git checkout v1.0.0`
 
-pour installer les dépendances : `./requires.sh`
+Pour installer les dépendances : `./requires.sh main`
 
-### Tensorflow
-Si on est sur plateforme arm (raspberry), il faut installer tensorflow manuellement. `./required.sh` ne prend en charge l'installation de tensorflow que sur x86.
-
-```
-cd /var/opt/emoncms
-sudo mkdir test
-sudo chown $(id -u -n):$(id -u -n) test
-cd test
-```
-
-v2.1.0 pour buster 32 bits
-```
-export RELEASE=v2.1.0
-export TF=tensorflow-2.1.0-cp37-none-linux_armv7l.whl
-```
-v2.4.0rc2 pour buster 32 bits
-```
-export RELEASE=v2.4.0rc2
-export TF=tensorflow-2.4.0rc2-cp37-none-linux_armv7l.whl
-```
-v2.9.0 pour bullseye 64 bits :
-```
-export RELEASE=v2.9.0
-export TF=tensorflow-2.9.0-cp39-none-linux_aarch64.whl
-```
-on télécharge la wheel et on l'installe avec pip
-```
-wget https://github.com/dromotherm/sandbox/releases/download/$RELEASE/$TF
-TMPDIR=/var/opt/emoncms/test python3 -m pip install --upgrade --no-cache-dir --upgrade $TF
-```
-
-un repo avec plus de wheels, dont des versions lite plus légères : https://github.com/PINTO0309/Tensorflow-bin
-
-https://qengineering.eu/
-
-pas besoin de TMPDIR avec les versions lite.....
-
-[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
-
-si problème de fonctionnement, on peut avoir à installer une version bien précise de numpy :
-```
-pip3 install --force-reinstall numpy==1.23
-```
+Puis `.\requires.sh python` pour initialiser l'environnement virtuel `bios` dans `/opt/v` et y installer tous les packages nécessaires dont pymodbus et tensorflow. Tous les exécutables python de BIOS utilise le shebang `#!/opt/v/bios/bin/python3`
+`
+L'installation de tensorflow sur arm se fait gràce à une wheel. Pour en savoir plus, [tensorflow sur arm](tensorflow_on_arm.md)
 
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
