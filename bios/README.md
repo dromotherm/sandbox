@@ -15,7 +15,7 @@ si on n'applique pas cette modification sur X86, sync ne fonctionnera pas
 <details id=2>
 <summary><h2>Préparation SDcard</h2></summary>
 
-Télécharger la dernière raspios (ne plus utiliser les versions 32 bits) :
+Télécharger la dernière raspios (ne plus utiliser les versions 32 bits car les wheels tensorflow ne sont pas trop dispo sous 32 bits) :
 
 https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-64-bit
 
@@ -187,6 +187,19 @@ make symodule name=backup
 ```
 make custom_logrotate
 ```
+</details>
+
+<details id=6>
+<summary><h2>Fix temporaires</h2></summary>
+L'interface admin d'emoncms utilise git pour récupérer les url et branches des dépôts
+
+Hors des correctifs de sécurité font que git ne fait plus confiance aux dépôts par défaut
+
+Pour contourner ce problème, comme on est sur une machine à utilisateur unique :
+```
+sudo git config --system --replace-all safe.directory '*'
+```
+
 </details>
 
 <details id=6>
