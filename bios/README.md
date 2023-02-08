@@ -251,6 +251,8 @@ Tous les exécutables python de BIOS utilisent le shebang `#!/opt/v/bios/bin/pyt
 
 L'installation de tensorflow sur arm se fait gràce à une wheel. Pour en savoir plus, [tensorflow sur arm](tensorflow_on_arm.md)
 
+[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
+
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
 ### Installation du module pour emoncms
