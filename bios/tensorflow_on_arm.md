@@ -34,5 +34,3 @@ un repo avec plus de wheels, dont des versions lite plus légères : https://git
 https://qengineering.eu/
 
 pas besoin de TMPDIR avec les versions lite.....
-
-[Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
