@@ -266,6 +266,10 @@ L'installation de tensorflow sur arm se fait gràce à une wheel. Pour en savoir
 
 [Tester que tensorflow fonctionne correctement](../tensorflow/installOnRPI.md)
 
+sur armv7l : `sudo apt-get install libatlas-base-dev`
+
+pour installer une version spécifique de numpy (pas nécessaire mais bon pour la culture générale) `python3 -m pip install --force-reinstall numpy==1.23`
+
 ### [Ce qu'il se passe si on n'installe pas les dépendances](break.md)
 
 ### Installation du module pour emoncms
