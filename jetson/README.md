@@ -2,6 +2,10 @@ https://developer.nvidia.com/buy-jetson?product=jetson_nano&location=FR
 
 https://www.arrow.com/fr-fr/products/945-13450-0000-100/nvidia
 
+https://www.sparkfun.com/products/16271
+
+# softs
+
 www.nvidia.com/JetsonNano
 
 https://developer.nvidia.com/embedded/jetson-linux
