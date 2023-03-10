@@ -6,6 +6,8 @@ https://www.sparkfun.com/products/16271
 
 # softs
 
+https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
+
 www.nvidia.com/JetsonNano
 
 https://developer.nvidia.com/embedded/jetson-linux
