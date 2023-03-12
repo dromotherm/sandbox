@@ -4,6 +4,10 @@ https://www.arrow.com/fr-fr/products/945-13450-0000-100/nvidia
 
 https://www.sparkfun.com/products/16271
 
+# enable sd card
+
+https://wiki.seeedstudio.com/J101_Enable_SD_Card/
+
 # softs
 
 https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
