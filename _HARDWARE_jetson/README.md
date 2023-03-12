@@ -8,6 +8,8 @@ https://www.sparkfun.com/products/16271
 
 https://wiki.seeedstudio.com/J101_Enable_SD_Card/
 
+https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
+
 # softs
 
 https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
