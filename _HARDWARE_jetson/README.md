@@ -66,4 +66,6 @@ Les 2 dernières lignes devraient être les suivantes :
 *** The target t210ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
 ```
+# jtop
 
+sudo pip3 install -U jetson-stats
