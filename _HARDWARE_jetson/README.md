@@ -16,7 +16,11 @@ https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
 
 www.nvidia.com/JetsonNano
 
+https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
+
 https://developer.nvidia.com/embedded/jetson-linux
+
+https://developer.nvidia.com/embedded/jetson-linux-archive
 
 https://docs.nvidia.com/deeplearning/frameworks/index.html
 
