@@ -67,5 +67,6 @@ Les 2 dernières lignes devraient être les suivantes :
 Reset the board to boot from internal eMMC.
 ```
 # jtop
-
+```
 sudo pip3 install -U jetson-stats
+```
