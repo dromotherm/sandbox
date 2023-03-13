@@ -34,7 +34,7 @@ https://files.seeedstudio.com/products/102991694/reComputer%20J101V2%20datasheet
 
 https://files.seeedstudio.com/wiki/reComputer/reComputer-J101-PCBA-2D&3D.zip
 
-# flashing the jetpack os to the board
+# flashing the jetpack os to the 16Gb emmc memory
 
 passer la carte en force recovery mode
 
