@@ -18,13 +18,13 @@ www.nvidia.com/JetsonNano
 
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 
-https://developer.nvidia.com/embedded/jetson-linux
+
 
 https://docs.nvidia.com/deeplearning/frameworks/index.html
 
 # J101 board
 
-passer la carte en force recovery mode
+
 
 https://fr.farnell.com/en-FR/seeed-studio/110061362/nvidia-jetson-nano-ref-carrier/dp/4126473?st=jetson#anchorTechnicalDOCS
 
@@ -36,6 +36,8 @@ https://files.seeedstudio.com/wiki/reComputer/reComputer-J101-PCBA-2D&3D.zip
 
 # flashing the jetpack os to the board
 
+passer la carte en force recovery mode
+
 https://wiki.seeedstudio.com/reComputer_J1010_J101_Flash_Jetpack/
 
 Télécharger Driver Package (BSP) et Sample Root Filesystem :
@@ -44,6 +46,7 @@ Télécharger Driver Package (BSP) et Sample Root Filesystem :
 Jetson-210_Linux_R32.7.3_aarch64.tbz2
 Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
 ```
+l'OS le plus à jour est sur https://developer.nvidia.com/embedded/jetson-linux mais pour la carte nano, il faut aller dans les archives :
 
 https://developer.nvidia.com/embedded/jetson-linux-archive
 
