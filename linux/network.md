@@ -4,6 +4,24 @@ netstat
 netstat -6 -W -c
 ```
 
+# wifi
+
+pour se connecter à un routeur wifi
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+on modifie le fichier pour qu'il ressemble à ceci :
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=FR
+
+network={
+    ssid="Freebox xxx"
+    psk="motDePasse"
+}
+```
+
 # IP fixe
 
 on édite le fichier interfaces `sudo nano /etc/network/interfaces`
