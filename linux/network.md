@@ -21,6 +21,13 @@ network={
     psk="motDePasse"
 }
 ```
+il faut aussi changer le pays du wifi dans raspi-config
+```
+sudo raspi-config
+```
+-> localisation options
+
+-> change wifi country
 
 # IP fixe
 
