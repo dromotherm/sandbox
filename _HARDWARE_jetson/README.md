@@ -14,17 +14,13 @@ https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
 
 # softs
 
-
 www.nvidia.com/JetsonNano
 
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 
-
-
 https://docs.nvidia.com/deeplearning/frameworks/index.html
 
 # J101 board
-
 
 
 https://fr.farnell.com/en-FR/seeed-studio/110061362/nvidia-jetson-nano-ref-carrier/dp/4126473?st=jetson#anchorTechnicalDOCS
