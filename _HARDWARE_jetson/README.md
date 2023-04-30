@@ -6,6 +6,8 @@ https://www.sparkfun.com/products/16271
 
 https://github.com/JetsonHacksNano
 
+https://elinux.org/Jetson/General_debug
+
 # enable sd card
 
 https://wiki.seeedstudio.com/J101_Enable_SD_Card/
