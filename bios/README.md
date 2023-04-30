@@ -1,14 +1,12 @@
 # BIOS
 
 <details id=1>
-<summary><h2>Prérequis sur x86</h2></summary>
-
-__étape non nécessaire sur plateforme ARM de type raspberry__
+<summary><h2>Prérequis sur un autre OS que Raspbian</h2></summary>
 
 ```
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
 ```
-si on n'applique pas cette modification sur X86, sync ne fonctionnera pas
+nécessaire pour faire fonctionner sync
 </details>
 
 
