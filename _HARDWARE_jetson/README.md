@@ -185,3 +185,27 @@ on monte /dev/mmcblk1p1
 ```
 sudo mount /dev/mmcblk1p1
 ```
+on vérifie
+```
+df -Th
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/mmcblk0p1 ext4       14G  8,0G  5,1G  61% /
+none           devtmpfs  1,8G     0  1,8G   0% /dev
+tmpfs          tmpfs     2,0G   92K  2,0G   1% /dev/shm
+tmpfs          tmpfs     397M   13M  384M   4% /run
+tmpfs          tmpfs     5,0M  4,0K  5,0M   1% /run/lock
+tmpfs          tmpfs     2,0G     0  2,0G   0% /sys/fs/cgroup
+/dev/loop0     squashfs  128K  128K     0 100% /snap/bare/5
+/dev/loop1     squashfs   50M   50M     0 100% /snap/core18/2717
+/dev/loop2     squashfs  197M  197M     0 100% /snap/gnome-3-34-1804/94
+/dev/loop3     squashfs   45M   45M     0 100% /snap/snap-store/639
+/dev/loop4     squashfs   50M   50M     0 100% /snap/core18/2724
+/dev/loop5     squashfs   47M   47M     0 100% /snap/snapd/18940
+/dev/loop6     squashfs  198M  198M     0 100% /snap/gnome-3-34-1804/75
+/dev/loop7     squashfs   60M   60M     0 100% /snap/core20/1832
+/dev/loop8     squashfs   60M   60M     0 100% /snap/core20/1856
+/dev/loop9     squashfs   44M   44M     0 100% /snap/snapd/18363
+tmpfs          tmpfs     397M   16K  397M   1% /run/user/120
+tmpfs          tmpfs     397M   60K  397M   1% /run/user/1000
+/dev/mmcblk1p1 ext2       30G  4,6M   28G   1% /var/opt/emoncms
+```
