@@ -78,3 +78,85 @@ https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html
 ```
 sudo apt install gparted
 ```
+# change filesystem on sdcard
+
+On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner, construit avec une image de chez Qengineering.
+
+On vérifie l'état des partitions. Il y pas mal de petites partitions sur mmcblk1, on les supprimera plus tard
+
+```
+lsblk
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0          7:0    0     4K  1 loop /snap/bare/5
+loop1          7:1    0  49,1M  1 loop /snap/core18/2717
+loop2          7:2    0 196,9M  1 loop /snap/gnome-3-34-1804/94
+loop3          7:3    0  44,4M  1 loop /snap/snap-store/639
+loop4          7:4    0  49,1M  1 loop /snap/core18/2724
+loop5          7:5    0  46,4M  1 loop /snap/snapd/18940
+loop6          7:6    0 197,6M  1 loop /snap/gnome-3-34-1804/75
+loop7          7:7    0  59,1M  1 loop /snap/core20/1832
+loop8          7:8    0  59,1M  1 loop /snap/core20/1856
+loop9          7:9    0  43,2M  1 loop /snap/snapd/18363
+loop10         7:10   0    16M  1 loop
+mmcblk0      179:0    0  14,7G  0 disk
+├─mmcblk0p1  179:1    0    14G  0 part /
+├─mmcblk0p2  179:2    0     1M  0 part
+├─mmcblk0p3  179:3    0     6M  0 part
+├─mmcblk0p4  179:4    0    80K  0 part
+├─mmcblk0p5  179:5    0    64M  0 part
+├─mmcblk0p6  179:6    0     1M  0 part
+├─mmcblk0p7  179:7    0     6M  0 part
+├─mmcblk0p8  179:8    0    80K  0 part
+├─mmcblk0p9  179:9    0    64M  0 part
+├─mmcblk0p10 179:10   0   192K  0 part
+├─mmcblk0p11 179:11   0   256K  0 part
+├─mmcblk0p12 179:12   0    63M  0 part
+├─mmcblk0p13 179:13   0   512K  0 part
+├─mmcblk0p14 179:14   0   256K  0 part
+├─mmcblk0p15 179:15   0   256K  0 part
+├─mmcblk0p16 179:16   0   300M  0 part
+└─mmcblk0p17 179:17   0 185,4M  0 part
+mmcblk0boot0 179:32   0     4M  1 disk
+mmcblk0boot1 179:64   0     4M  1 disk
+mmcblk0rpmb  179:96   0     4M  0 disk
+mmcblk1      179:128  0  29,7G  0 disk
+├─mmcblk1p1  179:129  0  29,7G  0 part /media/pi/b1c100cd-cc74-4e7f-acb8-f0d34c931ee8
+├─mmcblk1p2  179:130  0   128K  0 part
+├─mmcblk1p3  179:131  0   448K  0 part
+├─mmcblk1p4  179:132  0   576K  0 part
+├─mmcblk1p5  179:133  0    64K  0 part
+├─mmcblk1p6  179:134  0   192K  0 part
+├─mmcblk1p7  179:135  0   384K  0 part
+├─mmcblk1p8  179:136  0    64K  0 part
+├─mmcblk1p9  179:137  0   448K  0 part
+├─mmcblk1p10 179:138  0   448K  0 part
+├─mmcblk1p11 179:139  0   768K  0 part
+├─mmcblk1p12 179:140  0    64K  0 part
+├─mmcblk1p13 179:141  0   192K  0 part
+└─mmcblk1p14 179:142  0   128K  0 part
+zram0        252:0    0 495,5M  0 disk [SWAP]
+zram1        252:1    0 495,5M  0 disk [SWAP]
+zram2        252:2    0 495,5M  0 disk [SWAP]
+zram3        252:3    0 495,5M  0 disk [SWAP]
+```
+on démonte mmcblk1p1 et on le formate en ext2 car c'est sur cette partition qu'on mettra les données emoncms
+```
+sudo umount /dev/mmcblk1p1
+sudo mkfs.ext2 -b 1024 /dev/mmcblk1p1
+mke2fs 1.45.5 (07-Jan-2020)
+/dev/mmcblk1p1 contains a ext4 file system
+        last mounted on /media/pi/b1c100cd-cc74-4e7f-acb8-f0d34c931ee8 on Sun Apr 30 15:17:06 2023
+Proceed anyway? (y,N) y
+Discarding device blocks: done
+Creating filesystem with 31152128 1k blocks and 1947136 inodes
+Filesystem UUID: cb0bbd91-abf4-441a-b503-461a4cc79637
+Superblock backups stored on blocks:
+        8193, 24577, 40961, 57345, 73729, 204801, 221185, 401409, 663553,
+        1024001, 1990657, 2809857, 5120001, 5971969, 17915905, 19668993,
+        25600001
+
+Allocating group tables: done
+Writing inode tables: done
+Writing superblocks and filesystem accounting information: done
+```
+
