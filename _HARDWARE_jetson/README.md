@@ -80,7 +80,7 @@ sudo apt install gparted
 ```
 # change filesystem on sdcard
 
-On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner, construit avec une image de chez Qengineering.
+On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner (impossible de booter depuis la carte SD) construit avec une image de chez Qengineering.
 
 On vérifie l'état des partitions. Il y pas mal de petites partitions sur mmcblk1, on les supprimera plus tard
 
@@ -159,9 +159,29 @@ Allocating group tables: done
 Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 ```
-# ménage sur mmcblkp1
+# ménage sur mmcblk1
 
 ![Screenshot from 2023-04-30 15-39-43](https://user-images.githubusercontent.com/24553739/235355984-e7d1c251-f8c2-47fa-a182-3edf4735b1c5.png)
 ![Screenshot from 2023-04-30 15-41-10](https://user-images.githubusercontent.com/24553739/235356018-5a237250-d789-46fb-9ba3-3b6b01ba25d3.png)
 on supprime une par une les petites partitions existantes sur mmcblk1 jusqu'à obtenir 15Mo de'espace libre
 ![Screenshot from 2023-04-30 15-42-20](https://user-images.githubusercontent.com/24553739/235356057-d14e5da5-0e56-47a4-b1cc-75a5c9b5a057.png)
+on peut ensuite réintégrer cet espace libre dans mmcblk1p1 en utilisant gparted
+
+# modification de /etc/fstab
+```
+sudo nano /etc/fstab
+
+# /etc/fstab: static file system information.
+#
+# These are the filesystems that are always mounted on boot, you can
+# override any of these by copying the appropriate line from this file into
+# /etc/fstab and tweaking it as you see fit.  See fstab(5).
+#
+# <file system> <mount point>             <type>          <options>                               <dump> <pass>
+/dev/root            /                     ext4           defaults                                     0 1
+/dev/mmcblk1p1  /var/opt/emoncms   ext2    defaults,noatime,nodiratime  0  2
+```
+on monte /dev/mmcblk1p1
+```
+sudo mount /dev/mmcblk1p1
+```
