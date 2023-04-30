@@ -66,7 +66,7 @@ Les 2 dernières lignes devraient être les suivantes :
 *** The target t210ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
 ```
-# checking trhe L4T release version
+# checking the L4T release version
 ```
 head -n 1 /etc/nv_tegra_release
 # R32 (release), REVISION: 7.3, GCID: 31982016, BOARD: t210ref, EABI: aarch64, DATE: Tue Nov 22 17:30:08 UTC 2022
