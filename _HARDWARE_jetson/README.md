@@ -70,3 +70,6 @@ Reset the board to boot from internal eMMC.
 ```
 sudo pip3 install -U jetson-stats
 ```
+# install ubuntu 20
+
+https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html
