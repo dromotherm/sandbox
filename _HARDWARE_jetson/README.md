@@ -14,7 +14,6 @@ https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
 
 # softs
 
-https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
 
 www.nvidia.com/JetsonNano
 
@@ -87,7 +86,8 @@ sudo apt install gparted
 ```
 # change filesystem on sdcard
 
-On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner (impossible de booter depuis la carte SD) construit avec une image de chez Qengineering.
+On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner (impossible de booter depuis la carte SD) construit avec une image de chez Qengineering : 
+https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
 
 On vérifie l'état des partitions. Il y pas mal de petites partitions sur mmcblk1, on les supprimera plus tard
 
