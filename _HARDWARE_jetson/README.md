@@ -159,4 +159,9 @@ Allocating group tables: done
 Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 ```
+# ménage sur mmcblkp1
 
+![Screenshot from 2023-04-30 15-39-43](https://user-images.githubusercontent.com/24553739/235355984-e7d1c251-f8c2-47fa-a182-3edf4735b1c5.png)
+![Screenshot from 2023-04-30 15-41-10](https://user-images.githubusercontent.com/24553739/235356018-5a237250-d789-46fb-9ba3-3b6b01ba25d3.png)
+on supprime une par une les petites partitions existantes sur mmcblk1 jusqu'à obtenir 15Mo de'espace libre
+![Screenshot from 2023-04-30 15-42-20](https://user-images.githubusercontent.com/24553739/235356057-d14e5da5-0e56-47a4-b1cc-75a5c9b5a057.png)
