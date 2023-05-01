@@ -18,6 +18,13 @@ cd CH341SER
 make
 sudo cp ch34x.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
 ```
+on vérifie que le port est reconnu :
+```
+python3 -m serial.tools.list_ports
+/dev/ttyUSB0        
+1 ports found
+```
+
 
 # enable sd card
 
