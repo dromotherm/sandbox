@@ -44,6 +44,7 @@ git clone https://github.com/juliagoda/CH341SER
 cd CH341SER
 make
 sudo cp ch34x.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
+sudo depmod -a
 ```
 on vérifie que le port est reconnu :
 ```
