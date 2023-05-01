@@ -23,6 +23,8 @@ on vérifie que le port est reconnu :
 python3 -m serial.tools.list_ports
 /dev/ttyUSB0        
 1 ports found
+cd /opt/openenergymonitor/BIOS2/tests
+python3 modbusFromScratch.py
 ```
 
 
