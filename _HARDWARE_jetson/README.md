@@ -26,6 +26,10 @@ python3 -m pip install pymodbus
 
 # CH34x RS485 USB key
 
+remove nvgetty
+
+https://github.com/JetsonHacksNano/UARTDemo/blob/master/README.md
+
 
 CONFIG_USB_SERIAL_CH341 must be set in /proc/config.gz
 
