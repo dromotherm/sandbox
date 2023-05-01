@@ -57,6 +57,7 @@ sudo apt-get install qemu-user-static
 tar xf Jetson-210_Linux_R32.7.3_aarch64.tbz2
 cd Linux_for_Tegra/rootfs/
 sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
+cd ..
 sudo ./apply_binaries.sh
 sudo ./flash.sh jetson-nano-devkit-emmc mmcblk0p1
 ```
