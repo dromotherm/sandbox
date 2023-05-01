@@ -10,11 +10,13 @@ https://elinux.org/Jetson/General_debug
 
 # CH34x RS485 USB key
 
+```
 cd /opt/openenergymonitor
 git clone https://github.com/juliagoda/CH341SER
 cd CH341SER
 make
 sudo cp ch34x.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
+```
 
 # enable sd card
 
