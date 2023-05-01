@@ -14,6 +14,14 @@ https://elinux.org/Jetson/General_debug
 CONFIG_USB_SERIAL_CH341 must be set in /proc/config.gz
 
 ```
+sudo apt-get install -y git build-essential python3-pip python3-dev
+sudo usermod -a -G tty,dialout $USER
+sudo apt remove brltty
+python3 -m pip install pip --upgrade
+python3 -m pip install pyserial
+```
+
+```
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 cd /opt/openenergymonitor
 git clone https://github.com/juliagoda/CH341SER
