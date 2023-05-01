@@ -8,6 +8,10 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# python 3.8
+
+sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
+
 # CH34x RS485 USB key
 
 
