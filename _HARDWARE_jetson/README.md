@@ -11,6 +11,7 @@ https://elinux.org/Jetson/General_debug
 # CH34x RS485 USB key
 
 ```
+sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 cd /opt/openenergymonitor
 git clone https://github.com/juliagoda/CH341SER
 cd CH341SER
