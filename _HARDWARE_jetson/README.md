@@ -26,6 +26,7 @@ python3 -m serial.tools.list_ports
 cd /opt/openenergymonitor/BIOS2/tests
 python3 modbusFromScratch.py
 ```
+something similar for raspberry https://github.com/aperepel/raspberrypi-ch340-driver
 
 
 # enable sd card
