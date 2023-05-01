@@ -10,6 +10,9 @@ https://elinux.org/Jetson/General_debug
 
 # CH34x RS485 USB key
 
+
+CONFIG_USB_SERIAL_CH341 must be set in /proc/config.gz
+
 ```
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 cd /opt/openenergymonitor
