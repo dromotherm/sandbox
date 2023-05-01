@@ -28,6 +28,8 @@ python3 modbusFromScratch.py
 ```
 something similar for raspberry https://github.com/aperepel/raspberrypi-ch340-driver
 
+see also https://github.com/skyrocknroll/CH341SER_LINUX
+
 
 # enable sd card
 
