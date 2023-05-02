@@ -62,6 +62,7 @@ on teste que celà fonctionne en loadant le driver :
 sudo modprobe usbserial
 sudo rmmod ch341.ko
 sudo insmod /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko
+dmesg | tail -10
 ```
 
 on vérifie que le port est reconnu :
