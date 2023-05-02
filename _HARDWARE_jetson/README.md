@@ -90,7 +90,7 @@ chaque registre étant un entier 16 bits non signé
 Pour rendre les choses persistantes :
 ```
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
-sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
+sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
 ```
 
