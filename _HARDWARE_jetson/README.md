@@ -57,7 +57,23 @@ python3 -m serial.tools.list_ports
 1 ports found
 cd /opt/openenergymonitor/BIOS2/tests
 python3 modbusFromScratch.py
+[2, 3, 0, 0, 0, 2, 196, 56]
+b'\x02\x03\x00\x00\x00\x02\xc48'
+press a key
+wrote 8 bytes on the serial port
+[2, 3, 4, 7, 109, 128, 0, 56, 90]
+crc correct
+les données lues en hexa :
+07
+6d
+80
+00
+les données lues sous la forme de registre(s)
+chaque registre étant un entier 16 bits non signé
+[1901, 32768]
+124616704
 ```
+
 something similar for raspberry https://github.com/aperepel/raspberrypi-ch340-driver
 
 see also https://github.com/skyrocknroll/CH341SER_LINUX
