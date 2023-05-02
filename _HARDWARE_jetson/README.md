@@ -10,6 +10,8 @@ https://elinux.org/Jetson/General_debug
 
 # python 3.8
 
+pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
+
 ```
 sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
 sudo mkdir /opt/v
@@ -26,32 +28,43 @@ python3 -m pip install pymodbus
 
 # CH34x RS485 USB key
 
-remove nvgetty
-
-https://github.com/JetsonHacksNano/UARTDemo/blob/master/README.md
-
-
-CONFIG_USB_SERIAL_CH341 must be set in /proc/config.gz
-
 ```
 sudo apt-get install -y git build-essential python3-pip python3-dev
-sudo usermod -a -G tty,dialout $USER
-sudo apt remove brltty
+sudo usermod -a -G dialout $USER
 python3 -m pip install pip --upgrade
 python3 -m pip install pyserial
 ```
 
+le driver ch341.ko contenu dans la release tegra de nvidia ne fonctionne pas
+
+il faut le compiler avec les sources
+
+on trouve les sources içi :
+
+http://www.wch-ic.com/search?t=all&q=CH34
+
+http://www.wch-ic.com/downloads/CH341SER_LINUX_ZIP.html
+
+file category	|file content	|version	|upload time
+--|--|--|--
+CH341SER_LINUX....	|Linux driver for USB to serial port, supports CH340 and CH341, supports 32/64-bit operating systems.	|1.6	|2023-03-16
+
+une fois le code source décompacté dans /opt/openenergymonitor, il faut remplacer la mention (à la fin du code) `ch341_tty_driver->name = "ttyCH341USB"` par `ch341_tty_driver->name = "ttyUSB"` pour assurer la compatibilité avec pyserial, puis on compile
+
 ```
-sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
-cd /opt/openenergymonitor
-git clone https://github.com/juliagoda/CH341SER
-cd CH341SER
+cd /opt/openenergymonitor/CH341SER_LINUX/driver
 make
-sudo cp ch34x.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
-sudo depmod -a
 ```
+on teste que celà fonctionne en loadant le driver :
+```
+sudo modprobe usbserial
+sudo rmmod ch341.ko
+sudo insmod /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko
+```
+
 on vérifie que le port est reconnu :
 ```
+cd /opt/openenergymonitor/BIOS2/tests/
 python3 -m serial.tools.list_ports
 /dev/ttyUSB0        
 1 ports found
@@ -73,10 +86,12 @@ chaque registre étant un entier 16 bits non signé
 [1901, 32768]
 124616704
 ```
-
-something similar for raspberry https://github.com/aperepel/raspberrypi-ch340-driver
-
-see also https://github.com/skyrocknroll/CH341SER_LINUX
+Pour rendre les choses persistantes :
+```
+sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
+sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/4.9.299-tegra/kernel/drivers/usb/serial/ch341.ko
+sudo depmod -a
+```
 
 
 # enable sd card
