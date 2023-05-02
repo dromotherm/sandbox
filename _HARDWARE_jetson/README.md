@@ -28,6 +28,8 @@ python3 -m pip install pymodbus
 
 # CH34x RS485 USB key
 
+tout ce qui suit a été testé avec python3.6.9
+
 ```
 sudo apt-get install -y git build-essential python3-pip python3-dev
 sudo usermod -a -G dialout $USER
@@ -64,7 +66,6 @@ sudo insmod /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko
 
 on vérifie que le port est reconnu :
 ```
-cd /opt/openenergymonitor/BIOS2/tests/
 python3 -m serial.tools.list_ports
 /dev/ttyUSB0        
 1 ports found
