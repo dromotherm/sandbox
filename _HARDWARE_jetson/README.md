@@ -9,6 +9,8 @@ https://github.com/JetsonHacksNano
 https://elinux.org/Jetson/General_debug
 
 # do not upgrade kernel
+
+cf https://forums.developer.nvidia.com/t/jetson-nano-custom-kernel-replaced-after-apt-upgrade/179399
 ```
 dpkg -S /boot/Image
 sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
