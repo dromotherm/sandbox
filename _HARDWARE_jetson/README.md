@@ -8,6 +8,12 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# do not upgrade kernel
+```
+dpkg -S /boot/Image
+sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
+```
+
 # python 3.8
 
 pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
