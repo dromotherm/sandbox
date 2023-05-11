@@ -8,6 +8,20 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# docker
+create a Dockerfile, build it and run it :
+
+```
+sudo docker build -t biosdocker .
+sudo docker run --privileged --rm -v /dev:/dev -it biosdocker
+```
+for management :
+```
+sudo docker images
+sudo docker container prune
+sudo docker system prune
+```
+
 # do not upgrade kernel
 
 cf https://forums.developer.nvidia.com/t/jetson-nano-custom-kernel-replaced-after-apt-upgrade/179399
