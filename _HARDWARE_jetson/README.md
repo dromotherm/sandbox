@@ -18,7 +18,7 @@ sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-he
 
 # tensorflow
 
-même la version lite ne fonctionne pas avec python3.8
+sous ubuntu18.04, même la version lite ne fonctionne pas avec python3.8
 
 ```
 python3
