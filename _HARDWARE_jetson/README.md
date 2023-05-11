@@ -16,6 +16,23 @@ dpkg -S /boot/Image
 sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
 ```
 
+# tensorflow
+
+même la version lite ne fonctionne pas avec python3.8
+
+```
+python3
+Python 3.8.16 (default, Dec  7 2022, 01:12:13) 
+[GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tflite_runtime.interpreter as tflite
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/v/bios/lib/python3.8/site-packages/tflite_runtime/interpreter.py", line 34, in <module>
+    from tflite_runtime import _pywrap_tensorflow_interpreter_wrapper as _interpreter_wrapper
+ImportError: /lib/aarch64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /opt/v/bios/lib/python3.8/site-packages/tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so)
+```
+
 # python 3.8
 
 pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
