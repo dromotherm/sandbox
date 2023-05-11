@@ -33,6 +33,8 @@ Traceback (most recent call last):
 ImportError: /lib/aarch64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /opt/v/bios/lib/python3.8/site-packages/tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so)
 ```
 
+cf https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host
+
 # python 3.8
 
 pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
