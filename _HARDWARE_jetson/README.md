@@ -177,6 +177,9 @@ WORKDIR /opt/BIOS2/hardware
 
 CMD ["python3", "modbus.py", "--conf=/etc/bios/modbus.conf", "--log=/var/log/bios/modbus.log"]
 ```
+on a utilisé un venv
+
+cf https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
 
 on construit l'image et on la teste en la démarrant en mode interactif :
 
