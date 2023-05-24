@@ -8,7 +8,7 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
-# docker
+# container docker pour BIOS
 create a Dockerfile, build it and run it :
 
 ```
@@ -17,7 +17,11 @@ sudo docker run --net=host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosd
 sudo docker run --network host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
 ```
 
-le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et de publier sur le broker de la machine hôte. On dit qu'on est en mode host networking
+le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et donc :
+- de publier sur le broker de la machine hôte, 
+- ou d'écrire sur le serveur redis de la machine hôte.
+
+On dit qu'on est en mode host networking
 
 cf https://docs.docker.com/network/network-tutorial-host/
 
