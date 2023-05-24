@@ -6,6 +6,7 @@ pour disposer de certains outils en mode interactif :
 RUN apt-get install -y \
     python3-pip \
     lsb-release \
+    usbutils \
     iputils-ping \
     net-tools \
     curl \
@@ -15,6 +16,10 @@ RUN apt-get install -y \
     mosquitto-clients \
     sudo
 ```
+le package usbutils permet d'utiliser lsusb
+
+le package mosquitto-clients permet d'utiliser mosquitto_pub
+
 pour cesser d'être root :
 ```
 RUN groupadd pi
