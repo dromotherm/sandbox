@@ -16,6 +16,7 @@ https://collabnix.com/easy-way-to-free-up-jetson-nano-sd-card-disk-space-by-40%E
 create a Dockerfile, build it and run it :
 
 ```
+sudo docker pull ubuntu:20.04
 sudo docker build -t biosdocker .
 sudo docker run --net=host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
 sudo docker run --network host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
