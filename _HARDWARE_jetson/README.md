@@ -19,7 +19,7 @@ sudo docker run --network host --privileged --rm -v /dev:/dev -v /opt:/opt -it b
 
 le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et donc :
 - de publier sur le broker de la machine hôte, 
-- ou d'écrire sur le serveur redis de la machine hôte.
+- ou de lire/écrire sur le serveur redis de la machine hôte.
 
 On dit qu'on est en mode host networking
 
