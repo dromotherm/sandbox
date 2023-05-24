@@ -138,6 +138,13 @@ on a commencé par le service modbus pour faire un essai simple
 
 A noter qu'en mode exploitation, il y a peu de chance qu'on utilise le service modbus, car tout est géré par le service bios vu qu'on a besoin d'un lock pour synchroniser les choses entre les périphériques modbus de monitoring et les périphériques modbus de pilotage
 
+on crée sur la machine hôte les répertoires de conf et de log sauf si on a déjà installé un autre service comme ota2 de façon classique
+
+```
+sudo mkdir /etc/bios
+sudo mkdir /var/log/bios
+```
+
 on crée un fichier Dockerfile de ce type :
 ```
 FROM ubuntu:20.04
