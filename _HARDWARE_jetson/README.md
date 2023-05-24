@@ -10,90 +10,15 @@ https://elinux.org/Jetson/General_debug
 
 # free space
 
+Si on manque de place :-)
+
 https://collabnix.com/easy-way-to-free-up-jetson-nano-sd-card-disk-space-by-40%EF%BF%BC%EF%BF%BC/
-
-# container docker pour BIOS
-create a Dockerfile, build it and run it :
-
-```
-sudo docker pull ubuntu:20.04
-sudo docker build -t biosdocker .
-sudo docker run --net=host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
-sudo docker run --network host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
-```
-
-le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et donc :
-- de publier sur le broker de la machine hôte, 
-- ou de lire/écrire sur le serveur redis de la machine hôte.
-
-On dit qu'on est en mode host networking
-
-cf https://docs.docker.com/network/network-tutorial-host/
-
-https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
-
-https://stackoverflow.com/questions/33013539/docker-loading-kernel-modules
-
-for management :
-```
-sudo docker images
-sudo docker container prune
-sudo docker system prune
-```
-on ne va pas utiliser de venv
-
-```
-sed -i 's/opt\/v\/bios/usr/' bios.py
-```
-
-# do not upgrade kernel
-
-cf https://forums.developer.nvidia.com/t/jetson-nano-custom-kernel-replaced-after-apt-upgrade/179399
-```
-dpkg -S /boot/Image
-sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
-```
-
-# tensorflow
-
-sous ubuntu18.04, même la version lite ne fonctionne pas avec python3.8
-
-```
-python3
-Python 3.8.16 (default, Dec  7 2022, 01:12:13) 
-[GCC 7.5.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import tflite_runtime.interpreter as tflite
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "/opt/v/bios/lib/python3.8/site-packages/tflite_runtime/interpreter.py", line 34, in <module>
-    from tflite_runtime import _pywrap_tensorflow_interpreter_wrapper as _interpreter_wrapper
-ImportError: /lib/aarch64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /opt/v/bios/lib/python3.8/site-packages/tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so)
-```
-
-cf https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host
-
-# python 3.8
-
-pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
-
-```
-sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
-sudo mkdir /opt/v
-sudo chown $(id -u -n):$(id -u -n) /opt/v
-python3.8 -m venv /opt/v/bios
-cd /opt/v/bios/bin/
-source activate
-python3 -m pip install pip --upgrade
-python3 -m pip install pyserial
-python3 -m pip install mysql-connector-python
-python3 -m pip install paho-mqtt
-python3 -m pip install pymodbus
-```
 
 # CH34x RS485 USB key
 
-tout ce qui suit a été testé avec python3.6.9
+Les drivers usb fournis avec la distribution ubuntu18 de chez nvidia ne fonctionnent pas. Il faut donc les recompiler.
+
+Tout ce qui suit a été testé avec python3.6.9
 
 ```
 sudo apt-get install -y git build-essential python3-pip python3-dev
@@ -158,6 +83,145 @@ Pour rendre les choses persistantes :
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
+```
+
+# do not upgrade kernel
+
+cf https://forums.developer.nvidia.com/t/jetson-nano-custom-kernel-replaced-after-apt-upgrade/179399
+```
+dpkg -S /boot/Image
+sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
+```
+
+# python 3.8
+
+pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
+
+```
+sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
+sudo mkdir /opt/v
+sudo chown $(id -u -n):$(id -u -n) /opt/v
+python3.8 -m venv /opt/v/bios
+cd /opt/v/bios/bin/
+source activate
+python3 -m pip install pip --upgrade
+python3 -m pip install pyserial
+python3 -m pip install mysql-connector-python
+python3 -m pip install paho-mqtt
+python3 -m pip install pymodbus
+```
+Cette astuce permettra de faire fonctionner les service ota2 et modbus sans problème, mais pas bios qui a besoin de tensorflow
+
+## tensorflow
+
+sous ubuntu18.04, même la version lite ne fonctionne pas avec python3.8
+
+```
+python3
+Python 3.8.16 (default, Dec  7 2022, 01:12:13) 
+[GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tflite_runtime.interpreter as tflite
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/v/bios/lib/python3.8/site-packages/tflite_runtime/interpreter.py", line 34, in <module>
+    from tflite_runtime import _pywrap_tensorflow_interpreter_wrapper as _interpreter_wrapper
+ImportError: /lib/aarch64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /opt/v/bios/lib/python3.8/site-packages/tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so)
+```
+cf https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host
+
+on a donc testé une solution avec un container docker
+
+# container docker pour BIOS
+
+on a commencé par le service modbus pour faire un essai simple
+
+A noter qu'en mode exploitation, il y a peu de chance qu'on utilise le service modbus, car tout est géré par le service bios vu qu'on a besoin d'un lock pour synchroniser les choses entre les périphériques modbus de monitoring et les périphériques modbus de pilotage
+
+on crée un fichier Dockerfile de ce type :
+```
+FROM ubuntu:20.04
+
+RUN apt-get update
+RUN apt-get upgrade -y
+
+RUN apt-get install -y python3.8 \
+    python3-pip
+
+RUN python3 -m pip install pip --upgrade
+RUN python3 -m pip install pyserial
+#RUN python3 -m pip install mysql-connector-python
+RUN python3 -m pip install paho-mqtt
+RUN python3 -m pip install pymodbus
+#RUN python3 -m pip install click
+
+ADD BIOS2 /opt/BIOS2
+WORKDIR /opt/BIOS2/hardware
+
+CMD ["python3", "modbus.py", "--conf=/etc/bios/modbus.conf", "--log=/var/log/bios/modbus.log"]
+```
+
+on construit l'image et on la teste en la démarrant en mode interactif :
+
+```
+sudo docker pull ubuntu:20.04
+sudo docker build -t biosdocker .
+sudo docker run --network host --privileged --rm -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev -it biosdocker
+sudo docker run --net=host --rm --privileged -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev -it biosdocker
+```
+
+le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et donc :
+- de publier sur le broker de la machine hôte, 
+- ou de lire/écrire sur le serveur redis de la machine hôte.
+
+On dit qu'on est en mode host networking
+
+cf https://docs.docker.com/network/network-tutorial-host/
+
+les flags `--privileged` et `-v /dev:/dev' permettent d'accéder aux ports usb depuis le container
+
+https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
+
+https://stackoverflow.com/questions/33013539/docker-loading-kernel-modules
+
+L'option priviledged n'est pas recommandée mais si on ne l'utilise pas, on a ce genre d'erreur :
+```
+[Errno 1] could not open port /dev/ttyUSB0
+```
+
+pour manager ses images :
+```
+sudo docker images
+sudo docker container prune
+sudo docker system prune
+```
+Pour l'instant, on n'utilise pas de venv, donc on modifie les shebangs des exécutables :
+
+```
+sed -i 's/opt\/v\/bios/usr/' bios.py
+```
+Toutefois, passer par un venv dans le container est tout à fait possible
+
+On peut ensuite mettre en mode service :
+
+https://docs.docker.com/config/containers/start-containers-automatically/
+
+exemple de service file :
+```
+[Unit]
+Description=modbus
+Wants=systemd-timesyncd.service
+After=docker.service systemd-timesyncd.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run --net=host --rm --privileged -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev biosdocker
+Type=exec
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
 ```
 
 
