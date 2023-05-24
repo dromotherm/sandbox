@@ -10,7 +10,7 @@ mosquitto_sub -v -u 'emonpi' -P 'emonpimqtt2016' -t 'emon/#'
 ```
 pour publier :
 ```
-sudo mosquitto_pub -u "emonpi" -P "emonpimqtt2016" -t 'emon/test/t3' -m 12
+mosquitto_pub -u "emonpi" -P "emonpimqtt2016" -t 'emon/test/t3' -m 12
 ```
 
 
