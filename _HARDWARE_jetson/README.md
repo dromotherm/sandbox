@@ -8,6 +8,10 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# free space
+
+https://collabnix.com/easy-way-to-free-up-jetson-nano-sd-card-disk-space-by-40%EF%BF%BC%EF%BF%BC/
+
 # container docker pour BIOS
 create a Dockerfile, build it and run it :
 
