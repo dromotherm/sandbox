@@ -39,6 +39,11 @@ sudo docker images
 sudo docker container prune
 sudo docker system prune
 ```
+on ne va pas utiliser de venv
+
+```
+sed -i 's/opt\/v\/bios/usr/' bios.py
+```
 
 # do not upgrade kernel
 
