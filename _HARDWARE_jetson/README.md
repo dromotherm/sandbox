@@ -14,9 +14,12 @@ create a Dockerfile, build it and run it :
 ```
 sudo docker build -t biosdocker .
 sudo docker run --net=host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
+sudo docker run --network host --privileged --rm -v /dev:/dev -v /opt:/opt -it biosdocker
 ```
 
-le flag `--net=host` permet de pouvoir utiliser localhost et de publier sur le broker de la machine hôte
+le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et de publier sur le broker de la machine hôte
+
+cf https://docs.docker.com/network/network-tutorial-host/
 
 https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
 
