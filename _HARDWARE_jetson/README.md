@@ -155,7 +155,15 @@ RUN apt-get install tzdata -y
 ENV TZ="Europe/Paris"
 
 RUN apt-get install -y python3.8 \
-    python3-pip
+    python3-pip \
+    python3.8-dev \
+    python3.8-distutils \
+    python3.8-venv
+
+RUN mkdir /opt/v
+ENV VIRTUAL_ENV=/opt/v/bios
+RUN python3.8 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN python3 -m pip install pip --upgrade
 RUN python3 -m pip install pyserial
@@ -204,12 +212,6 @@ sudo docker images
 sudo docker container prune
 sudo docker system prune
 ```
-Pour l'instant, on n'utilise pas de venv, donc on modifie les shebangs des exécutables :
-
-```
-sed -i 's/opt\/v\/bios/usr/' bios.py
-```
-Toutefois, passer par un venv dans le container est tout à fait possible
 
 On peut ensuite mettre en mode service :
 
@@ -232,7 +234,6 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 ```
-
 
 # enable sd card
 
