@@ -16,7 +16,7 @@ https://collabnix.com/easy-way-to-free-up-jetson-nano-sd-card-disk-space-by-40%E
 
 # CH34x RS485 USB key
 
-Les drivers usb fournis avec la distribution ubuntu18 de chez nvidia ne fonctionnent pas. Il faut donc les recompiler.
+Les drivers usb fournis avec la distribution ubuntu18 (release tegra) de chez nvidia ne fonctionnent pas. Il faut donc les recompiler.
 
 Tout ce qui suit a été testé avec python3.6.9
 
@@ -30,12 +30,7 @@ sudo apt-get install -y git build-essential python3-pip python3-dev
 python3 -m pip install pip --upgrade
 python3 -m pip install pyserial
 ```
-
-le driver ch341.ko contenu dans la release tegra de nvidia ne fonctionne pas
-
-il faut le compiler avec les sources
-
-on trouve les sources içi :
+on trouve les sources du driver ch341.ko içi :
 
 http://www.wch-ic.com/search?t=all&q=CH34
 
