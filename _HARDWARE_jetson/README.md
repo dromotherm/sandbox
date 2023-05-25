@@ -20,9 +20,13 @@ Les drivers usb fournis avec la distribution ubuntu18 de chez nvidia ne fonction
 
 Tout ce qui suit a été testé avec python3.6.9
 
+on commence par attibuer les droits à l'utilisateur courant :
+```
+sudo usermod -a -G dialout $USER
+```
+on reboote pour que les choses soient prises en compte par le système et on installe quelques packages
 ```
 sudo apt-get install -y git build-essential python3-pip python3-dev
-sudo usermod -a -G dialout $USER
 python3 -m pip install pip --upgrade
 python3 -m pip install pyserial
 ```
