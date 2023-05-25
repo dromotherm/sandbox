@@ -97,6 +97,14 @@ dpkg -S /boot/Image
 sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-headers nvidia-l4t-bootloader
 ```
 
+# install de la stack emoncms
+
+https://github.com/emoncms/emoncms/issues/1726
+
+https://github.com/dromotherm/sandbox/tree/master/bios
+
+faire fichier shell ?
+
 # python 3.8
 
 pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
