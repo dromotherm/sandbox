@@ -38,3 +38,14 @@ kube-system   kube-proxy-tsdf4                   1/1     Running   0            
 kube-system   kube-scheduler-minikube            1/1     Running   0             80s
 kube-system   storage-provisioner                1/1     Running   1 (36s ago)   77s
 ```
+# the hello app
+```
+kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+deployment.apps/hello-minikube created
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+service/hello-minikube exposed
+kubectl port-forward service/hello-minikube 8080:8080
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+```
