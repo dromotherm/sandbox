@@ -68,3 +68,16 @@ make
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 sudo cp /opt/openenergymonitor/CH341SER_LINUX_mod/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
+
+# python3.8 venv
+sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
+sudo mkdir /opt/v
+sudo chown $(id -u -n):$(id -u -n) /opt/v
+python3.8 -m venv /opt/v/bios
+cd /opt/v/bios/bin/
+source activate
+python3 -m pip install pip --upgrade
+python3 -m pip install pyserial
+python3 -m pip install mysql-connector-python
+python3 -m pip install paho-mqtt
+python3 -m pip install pymodbus
