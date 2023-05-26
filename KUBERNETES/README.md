@@ -51,12 +51,19 @@ kubectl expose deployment hello-minikube --type=NodePort --port=8080
 service/hello-minikube exposed
 ```
 3) access to the service
+option 1 : `minikube service hello-minikube`
+it should return :
 ```
-minikube service hello-minikube
+|-----------|----------------|-------------|-----------------------------|
+| NAMESPACE |      NAME      | TARGET PORT |             URL             |
+|-----------|----------------|-------------|-----------------------------|
+| default   | hello-minikube |        8080 | http://192.168.59.100:31879 |
+|-----------|----------------|-------------|-----------------------------|
+🎉  Ouverture du service default/hello-minikube dans le navigateur par défaut...
 ```
-or
+option 2 : `kubectl port-forward service/hello-minikube 8080:8080`
+it should return :
 ```
-kubectl port-forward service/hello-minikube 8080:8080
 Forwarding from 127.0.0.1:8080 -> 8080
 Forwarding from [::1]:8080 -> 8080
 Handling connection for 8080
