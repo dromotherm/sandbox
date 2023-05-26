@@ -1,5 +1,5 @@
 #!/bin/bash
-# installe la stack emoncms on jetson nano
+# install emoncms stack on jetson nano with php7.4
 
 sudo git config --system --replace-all safe.directory '*'
 
@@ -17,8 +17,13 @@ read -rsn1 -p"Press any key to install apache";echo
 make apache
 read -rsn1 -p"Press any key to install php";echo
 make mysql
-read -rsn1 -p"Press any key to install php";echo
-make php
+read -rsn1 -p"Press any key to install php 7.4";echo
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt install php7.4
+sudo apt-get install -y libapache2-mod-php
+sudo apt-get install -y php-gd php-pear php-common
+sudo apt install php7.4-curl php7.4-mbstring php7.4-xml php7.4-igbinary php7.4-dev php7.4-mysql
 read -rsn1 -p"Press any key to install redis";echo
 make redis
 read -rsn1 -p"Press any key to install mosquitto";echo
