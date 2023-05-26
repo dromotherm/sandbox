@@ -55,6 +55,7 @@ kubectl expose deployment hello-minikube --type=NodePort --port=8080
 service/hello-minikube exposed
 ```
 3) access to the service
+
 option 1 : `minikube service hello-minikube`
 it should return :
 ```
