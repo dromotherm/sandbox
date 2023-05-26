@@ -12,10 +12,13 @@ sudo apt-get install -y git build-essential python3-pip python3-dev
 python3 -m pip install pip --upgrade
 python3 -m pip install pyserial
 
+# remove some errors in emoncms admin module
 sudo git config --system --replace-all safe.directory '*'
 
+# for synchro module
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
 
+# for backup module quiet install
 git clone https://github.com/openenergymonitor/EmonScripts
 cp EmonScripts/install/emonsd.config.ini EmonScripts/install/config.ini
 
