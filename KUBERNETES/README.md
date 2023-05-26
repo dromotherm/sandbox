@@ -44,24 +44,28 @@ minikube dashboard
 ```
 # the hello app
 
-1) create a deployment
+## create a deployment
 ```
 kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
 deployment.apps/hello-minikube created
 ```
-2) expose on port 8080
+## expose on port 8080
 ```
 kubectl expose deployment hello-minikube --type=NodePort --port=8080
 service/hello-minikube exposed
 ```
-3) access to the service
+## access to the service
 
-option 1 : Run service tunnel `minikube service hello-minikube --url`
+### Run service tunnel 
+
+`minikube service hello-minikube --url`
 
 it should return the address app :
 http://192.168.59.100:31879
 
-option 2 (testing only) : `minikube service hello-minikube`
+### for testing only... 
+
+`minikube service hello-minikube`
 
 it should return :
 ```
@@ -72,7 +76,8 @@ it should return :
 |-----------|----------------|-------------|-----------------------------|
 🎉  Ouverture du service default/hello-minikube dans le navigateur par défaut...
 ```
-option 3 (testing only) : `kubectl port-forward service/hello-minikube 8080:8080`
+
+`kubectl port-forward service/hello-minikube 8080:8080`
 
 it should return :
 ```
