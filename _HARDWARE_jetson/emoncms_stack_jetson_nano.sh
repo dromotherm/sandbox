@@ -60,7 +60,7 @@ make symodule name=sync
 make symodule name=postprocess
 make symodule name=backup
 
-# serial drivers
+# serial drivers compilation
 wget https://github.com/dromotherm/sandbox/releases/download/v2.8.0/CH341SER_LINUX_mod.zip
 unzip CH341SER_LINUX_mod.zip
 cd CH341SER_LINUX_mod/driver
