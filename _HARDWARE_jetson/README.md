@@ -98,8 +98,6 @@ https://github.com/emoncms/emoncms/issues/1726
 
 https://github.com/dromotherm/sandbox/tree/master/bios
 
-faire fichier shell ?
-
 # python 3.8
 
 pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
