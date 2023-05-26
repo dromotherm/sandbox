@@ -63,8 +63,8 @@ make symodule name=backup
 # serial drivers
 wget https://github.com/dromotherm/sandbox/releases/download/v2.8.0/CH341SER_LINUX_mod.zip
 unzip CH341SER_LINUX_mod.zip
-cd CH341SER_LINUX/driver
+cd CH341SER_LINUX_mod/driver
 make
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
-sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
+sudo cp /opt/openenergymonitor/CH341SER_LINUX_mod/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
