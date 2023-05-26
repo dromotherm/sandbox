@@ -15,7 +15,7 @@ python3 -m pip install pyserial
 # remove some errors in emoncms admin module
 sudo git config --system --replace-all safe.directory '*'
 
-# for synchro module
+# for sync module
 sudo echo $USER' ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER && sudo chmod 0440 /etc/sudoers.d/$USER
 
 # for backup module quiet install
