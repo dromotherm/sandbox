@@ -38,6 +38,10 @@ kube-system   kube-proxy-tsdf4                   1/1     Running   0            
 kube-system   kube-scheduler-minikube            1/1     Running   0             80s
 kube-system   storage-provisioner                1/1     Running   1 (36s ago)   77s
 ```
+## launch dashboard
+```
+minikube dashboard
+```
 # the hello app
 
 1) create a deployment
