@@ -56,6 +56,8 @@ service/hello-minikube exposed
 ```
 3) access to the service
 
+ONLY FOR TESTING PURPOSES
+
 option 1 : `minikube service hello-minikube`
 it should return :
 ```
