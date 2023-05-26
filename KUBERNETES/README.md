@@ -56,9 +56,13 @@ service/hello-minikube exposed
 ```
 3) access to the service
 
-ONLY FOR TESTING PURPOSES
+option 1 : Run service tunnel `minikube service hello-minikube --url`
 
-option 1 : `minikube service hello-minikube`
+it should return the address app :
+http://192.168.59.100:31879
+
+option 2 (testing only) : `minikube service hello-minikube`
+
 it should return :
 ```
 |-----------|----------------|-------------|-----------------------------|
@@ -68,7 +72,8 @@ it should return :
 |-----------|----------------|-------------|-----------------------------|
 🎉  Ouverture du service default/hello-minikube dans le navigateur par défaut...
 ```
-option 2 : `kubectl port-forward service/hello-minikube 8080:8080`
+option 3 (testing only) : `kubectl port-forward service/hello-minikube 8080:8080`
+
 it should return :
 ```
 Forwarding from 127.0.0.1:8080 -> 8080
