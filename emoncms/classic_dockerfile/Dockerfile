@@ -1,15 +1,14 @@
 FROM ubuntu:20.04
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install tzdata -y
+RUN apt-get update && apt-get upgrade -y && apt-get install tzdata -y
+
 ENV TZ="Europe/Paris"
 
 RUN apt-get install -y python3.8 \
     python3-pip \
-    python3.8-dev \
-    python3.8-distutils \
-    python3.8-venv \
+    #python3.8-dev \
+    #python3.8-distutils \
+    #python3.8-venv \
     supervisor \
     wget \
     curl \
@@ -75,6 +74,7 @@ RUN set -eux; \
 	sed -i "s/^save 900 1/#save 900 1/" /etc/redis/redis.conf; \
 	sed -i "s/^save 300 1/#save 300 1/" /etc/redis/redis.conf; \
 	sed -i "s/^save 60 1/#save 60 1/" /etc/redis/redis.conf; \
+	cd $openenergymonitor_dir; \
 	apt-get install -y mosquitto; \
 	apt-get install -y libmosquitto-dev; \
 	sed -i "s/^persistence true/persistence false/" /etc/mosquitto/mosquitto.conf; \
@@ -183,6 +183,12 @@ RUN echo "[supervisord]\n"\
 "command=apache2ctl -D FOREGROUND\n"\
 "[program:emoncms_mqtt]\n"\
 "priority=999\n"\
-"command=php /var/www/emoncms/scripts/services/emoncms_mqtt/emoncms_mqtt.php\n" > $SUPERVISOR_PATH
+"command=php $www/emoncms/scripts/services/emoncms_mqtt/emoncms_mqtt.php\n"\
+"[program:service-runner]\n"\
+"priority=1000\n"\
+"command=python3 $www/emoncms/scripts/services/service-runner/service-runner.py\n"\
+"[program:feedwriter]\n"\
+"priority=1001\n"\
+"command=php $www/emoncms/scripts/feedwriter.php\n" > $SUPERVISOR_PATH
 
 #ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
