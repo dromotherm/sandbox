@@ -35,44 +35,59 @@ ENV MYSQL_DATABASE=emoncms
 ENV mysql_user=emoncms
 ENV mysql_password=emonpiemoncmsmysql2016
 ENV emoncms_log_location=/var/log/emoncms
-
-RUN set -eux; \
-	sudo apt-get install -y apache2 gettext; \
-	sudo sed -i "s/^CustomLog/#CustomLog/" /etc/apache2/conf-available/other-vhosts-access-log.conf; \
-	sudo a2enmod rewrite; \
-	sudo apt-get install -y mariadb-server mariadb-client; \
-	sudo service mysql start; \
-	sudo mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"; \
-	sudo mysql -e "DELETE FROM mysql.user WHERE User='';"; \
-	sudo mysql -e "DROP DATABASE IF EXISTS test;"; \
-	sudo mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'; FLUSH PRIVILEGES;"; \
-	sudo mysql -e "CREATE DATABASE $MYSQL_DATABASE DEFAULT CHARACTER SET utf8;"; \
-	sudo mysql -e "CREATE USER '$mysql_user'@'localhost' IDENTIFIED BY '$mysql_password';"; \
-	sudo mysql -e "GRANT ALL ON $MYSQL_DATABASE.* TO '$mysql_user'@'localhost'; flush privileges;"; \
-	make php
-
-RUN set -eux; \
-	export php_ver=$(php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"." ); \
-	sudo apt-get install -y redis-server; \
-	rm -rf phpredis; \
-	git clone https://github.com/phpredis/phpredis; \
-	cd phpredis && phpize && ./configure && make && sudo make install; \
-	printf "extension=redis.so" | sudo tee /etc/php/$php_ver/mods-available/redis.ini 1>&2; \
-	sudo phpenmod redis; \
-	pip3 install redis; \
-	sudo sed -i "s/daemonize yes/daemonize no/" /etc/redis/redis.conf; \
-	sudo sed -i "s/^save 900 1/#save 900 1/" /etc/redis/redis.conf; \
-	sudo sed -i "s/^save 300 1/#save 300 1/" /etc/redis/redis.conf; \
-	sudo sed -i "s/^save 60 1/#save 60 1/" /etc/redis/redis.conf
-
-RUN make mosquitto
-
 ENV www=/var/www
 ENV emoncms_datadir=/var/opt/emoncms
 ENV openenergymonitor_dir=/opt/openenergymonitor
 ENV emoncms_dir=/opt/emoncms
 ENV mqtt_user=emonpi
 ENV mqtt_password=emonpimqtt2016
+
+# install apache, mariadb and php
+RUN set -eux; \
+	apt-get install -y apache2 gettext; \
+	sed -i "s/^CustomLog/#CustomLog/" /etc/apache2/conf-available/other-vhosts-access-log.conf; \
+	a2enmod rewrite; \
+	apt-get install -y mariadb-server mariadb-client; \
+	service mysql start; \
+	mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"; \
+	mysql -e "DELETE FROM mysql.user WHERE User='';"; \
+	mysql -e "DROP DATABASE IF EXISTS test;"; \
+	mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'; FLUSH PRIVILEGES;"; \
+	mysql -e "CREATE DATABASE $MYSQL_DATABASE DEFAULT CHARACTER SET utf8;"; \
+	mysql -e "CREATE USER '$mysql_user'@'localhost' IDENTIFIED BY '$mysql_password';"; \
+	mysql -e "GRANT ALL ON $MYSQL_DATABASE.* TO '$mysql_user'@'localhost'; flush privileges;"; \
+	apt-get install -y php; \
+	apt-get install -y libapache2-mod-php; \
+	apt-get install -y php-mysql; \
+	apt-get install -y php-gd php-curl php-pear php-dev php-common php-mbstring; \
+	pecl channel-update pecl.php.net
+
+# install redis and mosquitto
+RUN set -eux; \
+	export php_ver=$(php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"." ); \
+	apt-get install -y redis-server; \
+	rm -rf phpredis; \
+	git clone https://github.com/phpredis/phpredis; \
+	cd phpredis && phpize && ./configure && make && make install; \
+	printf "extension=redis.so" | tee /etc/php/$php_ver/mods-available/redis.ini 1>&2; \
+	phpenmod redis; \
+	pip3 install redis; \
+	sed -i "s/^save 900 1/#save 900 1/" /etc/redis/redis.conf; \
+	sed -i "s/^save 300 1/#save 300 1/" /etc/redis/redis.conf; \
+	sed -i "s/^save 60 1/#save 60 1/" /etc/redis/redis.conf; \
+	apt-get install -y mosquitto; \
+	apt-get install -y libmosquitto-dev; \
+	sed -i "s/^persistence true/persistence false/" /etc/mosquitto/mosquitto.conf; \
+	sed -i -n '/allow_anonymous false/!p;$a\allow_anonymous false' /etc/mosquitto/mosquitto.conf; \
+	sed -i -n '/password_file \/etc\/mosquitto\/passwd/!p;$a\password_file \/etc\/mosquitto\/passwd' /etc/mosquitto/mosquitto.conf; \
+	sed -i -n '/log_type error/!p;$a\log_type error' /etc/mosquitto/mosquitto.conf; \
+	touch /etc/mosquitto/passwd; \
+	mosquitto_passwd -b /etc/mosquitto/passwd $mqtt_user $mqtt_password; \
+	rm -rf Mosquitto-PHP; \
+	git clone https://github.com/mgdm/Mosquitto-PHP; \
+	cd Mosquitto-PHP && phpize && ./configure && make && make install; \
+	printf "extension=mosquitto.so" | tee /etc/php/$php_ver/mods-available/mosquitto.ini 1>&2; \
+	phpenmod mosquitto
 
 RUN set -eux; \
 	cd $www && git clone -b stable https://github.com/emoncms/emoncms.git; \
@@ -117,7 +132,7 @@ RUN set -eux; \
 	mkdir -p $emoncms_datadir/phptimeseries; \
 	chown www-data:root $emoncms_datadir/phptimeseries; \
 	mkdir -p $emoncms_dir; \
-	echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | sudo tee /etc/sudoers.d/emoncms-rebootbutton; \
+	echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown" | tee /etc/sudoers.d/emoncms-rebootbutton; \
 	chmod 0440 /etc/sudoers.d/emoncms-rebootbutton; \
 	echo "# ServerName\n"\
 "ServerName localhost\n\n"\
@@ -142,22 +157,32 @@ RUN set -eux; \
 	a2dissite 000-default.conf; \
 	a2ensite emoncms
 
+RUN service mysql start; \
+	make module name=graph; \
+	make module name=dashboard; \
+	make symodule name=sync; \
+	make symodule name=postprocess; \
+	make symodule name=backup
+
 ENV SUPERVISOR_PATH=/etc/supervisor/supervisord.conf
 
 RUN ifconfig
 
 RUN echo "[supervisord]\n"\
-"[program:apache]\n"\
-"command=service apache2 start\n"\
-"priority=998\n"\
-"redirect_stderr=true\n"\
 "[program:mariadb]\n"\
-"command=service mysql start\n"\
+"priority=995\n"\
+"command=mysqld\n"\
 "[program:redis-server]\n"\
-"command=service redis-server start"\
+"priority=996\n"\
+"command=redis-server\n"\
 "[program:mosquitto-server]\n"\
-"command=service mosquitto start"\
+"priority=997\n"\
+"command=mosquitto -c /etc/mosquitto/mosquitto.conf\n"\
+"[program:apache]\n"\
+"priority=998\n"\
+"command=apache2ctl -D FOREGROUND\n"\
 "[program:emoncms_mqtt]\n"\
-"command=php /var/www/emoncms/scripts/services/emoncms_mqtt/emoncms_mqtt.php" > $SUPERVISOR_PATH
+"priority=999\n"\
+"command=php /var/www/emoncms/scripts/services/emoncms_mqtt/emoncms_mqtt.php\n" > $SUPERVISOR_PATH
 
 #ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
