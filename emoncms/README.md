@@ -1,5 +1,13 @@
 
+https://unix.stackexchange.com/questions/457473/supervisord-does-not-exit-after-one-service-crashed-in-a-docker-container
+
+# docker and systemd
+
+https://medium.com/swlh/docker-and-systemd-381dfd7e4628
+
 https://github.com/j8r/dockerfiles
+
+https://serverfault.com/questions/1053187/systemd-fails-to-run-in-a-docker-container-when-using-cgroupv2-cgroupns-priva
 
 https://stackoverflow.com/questions/39169403/not-able-to-use-systemd-on-ubuntu-docker-container
 
