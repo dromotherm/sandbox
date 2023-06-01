@@ -186,6 +186,7 @@ RUN echo "[supervisord]\n"\
 "command=python3 $www/emoncms/scripts/services/service-runner/service-runner.py\n"\
 "[program:feedwriter]\n"\
 "priority=1001\n"\
+"autorestart=true\n"\
 "command=php $www/emoncms/scripts/feedwriter.php\n" > $SUPERVISOR_PATH
 
-#ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
+ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
