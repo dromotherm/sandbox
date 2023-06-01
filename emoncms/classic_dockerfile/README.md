@@ -30,3 +30,5 @@ Containers": {
             }
 ```
 The container can be locally reached at 172.17.0.2
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/d52a0925-bcc5-4eb9-95e3-561a61d91708)
