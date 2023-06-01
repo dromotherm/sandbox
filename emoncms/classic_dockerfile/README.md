@@ -42,3 +42,8 @@ to post datas : `mosquitto_pub -h 172.17.0.2 -u "emonpi" -P "emonpimqtt2016" -t 
 to fetch datas from an emonpi with the sync module : 
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/d52a0925-bcc5-4eb9-95e3-561a61d91708)
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/2f1ded4a-6bd2-4d8f-8fc9-75b8860c3e8f)
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/1f05f9ad-f51a-4680-97c8-b91f352cc85d)
+
