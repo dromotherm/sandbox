@@ -31,4 +31,14 @@ Containers": {
 ```
 The container can be locally reached at 172.17.0.2
 
+![image](https://github.com/dromotherm/sandbox/assets/24553739/5cf5a5fe-28cc-4428-8b2f-55fd222d4f9f)
+
+install mosquitto_pub on the host, via apt : `sudo apt-get install mosquitto-clients`
+
+to post datas : `mosquitto_pub -h 172.17.0.2 -u "emonpi" -P "emonpimqtt2016" -t 'emon/test/t3' -m 15`
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/c8ff7f7e-a553-481b-96aa-248adfcffda7)
+
+to fetch datas from an emonpi with the sync module : 
+
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/d52a0925-bcc5-4eb9-95e3-561a61d91708)
