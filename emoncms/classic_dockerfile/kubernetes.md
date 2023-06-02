@@ -59,3 +59,28 @@ kubectl logs -f -l app=emoncms
 2023-06-02 18:17:10,484 INFO spawned: 'feedwriter' with pid 59
 2023-06-02 18:17:11,486 INFO success: feedwriter entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 ```
+check the service :
+```
+kubectl describe service emoncms
+Name:              emoncms
+Namespace:         default
+Labels:            app=emoncms
+Annotations:       <none>
+Selector:          app=emoncms
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.101.128.68
+IPs:               10.101.128.68
+Port:              <unset>  80/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.244.0.21:8080
+Session Affinity:  None
+Events:            <none>
+```
+we are running minikube cluster, so connect to the cluster via ssh :
+```
+minikube ssh
+curl 10.244.0.21
+```
+you should see the html :-)
