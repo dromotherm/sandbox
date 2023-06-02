@@ -1,3 +1,9 @@
+# blog de devops
+
+https://blog.stephane-robert.info
+
+# emoncms
+
 create a deployment file :
 ```
 kubectl create deployment --image=alexjunk/emoncms:0.0.2 emoncms --dry-run=client -o yaml > emoncms_deployment.yaml
