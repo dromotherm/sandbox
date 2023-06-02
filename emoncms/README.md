@@ -1,4 +1,6 @@
 
+https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends
+
 https://unix.stackexchange.com/questions/457473/supervisord-does-not-exit-after-one-service-crashed-in-a-docker-container
 
 # docker and systemd
