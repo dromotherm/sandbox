@@ -1,8 +1,8 @@
-# blog de devops
+# deploy emoncms to kubernetes 
 
-https://blog.stephane-robert.info
+## Day 1
 
-# emoncms
+en parcourant un blog de devops https://blog.stephane-robert.info
 
 create a deployment file :
 ```
@@ -84,3 +84,79 @@ minikube ssh
 curl 10.244.0.21
 ```
 you should see the html :-)
+
+`minikube service emoncms` ouvre l'application dans le navigateur
+
+## Day 2
+
+to get the cluster ip : 
+```
+minikube ip
+192.168.49.2
+```
+il semble qu'on peut faire la même chose avec un simple pod
+
+On crée le fichier emoncms_pod.yaml :
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emoncms
+spec:
+  containers:
+  - name: emoncms
+    image: alexjunk/emoncms:0.0.2
+    ports:
+    - containerPort: 80
+      hostPort: 32443
+```
+kubernetes va chercher l'e container source sur docker, donc le pod met un peu de temps à passer en running
+
+sur le dashboard, on a la vision suivante :
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/a479119d-19a9-41f7-ab3b-aa9ab5a3d59d)
+
+emoncms est disponible à l'adresse suivante sur le browser de la machine hôte : http://192.168.49.2:32443
+
+pour rendre le pod accessible depuis une autre machine du réseau local, il faut faire du routage.
+
+pour visualiser les tables de routage :
+```
+sudo iptables -t nat --line-numbers -L
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    MASQUERADE  all  --  192.168.49.0/24      anywhere            
+2    MASQUERADE  all  --  172.17.0.0/16        anywhere            
+3    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:32443
+4    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:8443
+5    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:5000
+6    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:2376
+7    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:ssh
+
+Chain DOCKER (2 references)
+num  target     prot opt source               destination         
+1    RETURN     all  --  anywhere             anywhere            
+2    RETURN     all  --  anywhere             anywhere            
+3    DNAT       tcp  --  anywhere             localhost            tcp dpt:49173 to:192.168.49.2:32443
+4    DNAT       tcp  --  anywhere             localhost            tcp dpt:49174 to:192.168.49.2:8443
+5    DNAT       tcp  --  anywhere             localhost            tcp dpt:49175 to:192.168.49.2:5000
+6    DNAT       tcp  --  anywhere             localhost            tcp dpt:49176 to:192.168.49.2:2376
+7    DNAT       tcp  --  anywhere             localhost            tcp dpt:49177 to:192.168.49.2:22
+8    DNAT       tcp  --  alexandrecuer-portege-r30-a.home  anywhere             tcp dpt:http-alt to:192.168.49.2:32443
+```
+pour supprimer la ligne 2 dans PREROUTING s'il y en avait une :
+```
+sudo iptables -t nat -D PREROUTING 2
+```
+
