@@ -153,10 +153,53 @@ num  target     prot opt source               destination
 5    DNAT       tcp  --  anywhere             localhost            tcp dpt:49175 to:192.168.49.2:5000
 6    DNAT       tcp  --  anywhere             localhost            tcp dpt:49176 to:192.168.49.2:2376
 7    DNAT       tcp  --  anywhere             localhost            tcp dpt:49177 to:192.168.49.2:22
-8    DNAT       tcp  --  alexandrecuer-portege-r30-a.home  anywhere             tcp dpt:http-alt to:192.168.49.2:32443
 ```
 pour supprimer la ligne 2 dans PREROUTING s'il y en avait une :
 ```
 sudo iptables -t nat -D PREROUTING 2
 ```
+pour router le traffic entrant depuis le réseau local vers le pod emoncms :
+```
+sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.49.2:32443
+```
+pour que l'on puisse aussi utiliser l'adresse 192.168.1.25:8080 depuis le browser de la machine hôte :
+```
+sudo iptables -t nat -A DOCKER -p tcp -s 192.168.1.25 --dport 8080 -j DNAT --to-destination 192.168.49.2:32443
+```
+la table de routage est devenue la suivante :
 
+```
+sudo iptables -t nat --line-numbers -L
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+2    DNAT       tcp  --  anywhere             anywhere             tcp dpt:http-alt to:192.168.49.2:32443
+
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    MASQUERADE  all  --  192.168.49.0/24      anywhere            
+2    MASQUERADE  all  --  172.17.0.0/16        anywhere            
+3    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:32443
+4    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:8443
+5    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:5000
+6    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:2376
+7    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:ssh
+
+Chain DOCKER (2 references)
+num  target     prot opt source               destination         
+1    RETURN     all  --  anywhere             anywhere            
+2    RETURN     all  --  anywhere             anywhere            
+3    DNAT       tcp  --  anywhere             localhost            tcp dpt:49173 to:192.168.49.2:32443
+4    DNAT       tcp  --  anywhere             localhost            tcp dpt:49174 to:192.168.49.2:8443
+5    DNAT       tcp  --  anywhere             localhost            tcp dpt:49175 to:192.168.49.2:5000
+6    DNAT       tcp  --  anywhere             localhost            tcp dpt:49176 to:192.168.49.2:2376
+7    DNAT       tcp  --  anywhere             localhost            tcp dpt:49177 to:192.168.49.2:22
+8    DNAT       tcp  --  alexandrecuer-portege-r30-a.home  anywhere             tcp dpt:http-alt to:192.168.49.2:32443
+```
