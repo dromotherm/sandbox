@@ -1,3 +1,5 @@
+# the build 
+
 to use the docker command without sudo
 ```
 sudo groupadd docker
@@ -5,6 +7,8 @@ sudo usermod -aG docker $USER
 ```
 
 to build : `docker build -t emoncms .`
+
+# run the emoncms container
 
 run as a volatile toy : `docker run --rm -it emoncms`
 
@@ -55,6 +59,13 @@ to launch emoncms :
 ```
 docker run --rm --name=emoncms -it alexjunk/emoncms:0.0.2
 ```
+check the emoncms docker IP address :
+```
+docker inspect emoncms | grep IPAddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.3",
+                    "IPAddress": "172.17.0.3",
+```
 browse to 172.17.0.3 to create the emoncms user so that redis will have a key "user:1"
 
 then run the client :
@@ -82,3 +93,4 @@ root@45198f975674:/# redis-cli
 1) "user:1"
 127.0.0.1:6379>
 ```
+this technique allows you to create emoncms clients that use its redis and mysql databases
