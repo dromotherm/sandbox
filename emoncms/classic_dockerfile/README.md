@@ -94,3 +94,8 @@ root@45198f975674:/# redis-cli
 127.0.0.1:6379>
 ```
 this technique allows you to create emoncms clients that use its redis and mysql databases
+
+to connect to mysl, use tcp, not socket :
+```
+mysql -u emoncms --protocol=tcp -pemonpiemoncmsmysql2016 emoncms
+```
