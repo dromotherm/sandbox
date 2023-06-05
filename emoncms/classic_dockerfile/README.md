@@ -47,3 +47,38 @@ to fetch datas from an emonpi with the sync module :
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/1f05f9ad-f51a-4680-97c8-b91f352cc85d)
 
+# emoncms base client
+
+if you want to access to the emoncms redis and mysql databases from an external container, you have to launch it on the same namespace
+
+to launch emoncms : 
+```
+docker run --rm --name=emoncms -it alexjunk/emoncms:0.0.2
+```
+browse to 172.17.0.3 to create the emoncms user so that redis will have a key "user:1"
+
+then run the client :
+```
+docker run --rm --network=container:emoncms -it client
+root@45198f975674:/# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.3  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:03  txqueuelen 0  (Ethernet)
+        RX packets 40  bytes 7140 (7.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 266  bytes 16333 (16.3 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 266  bytes 16333 (16.3 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@45198f975674:/# redis-cli
+127.0.0.1:6379> keys *
+1) "user:1"
+127.0.0.1:6379>
+```
