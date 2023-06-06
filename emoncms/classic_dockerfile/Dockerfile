@@ -75,6 +75,7 @@ RUN set -eux; \
 	sed -i "s/^save 900 1/#save 900 1/" /etc/redis/redis.conf; \
 	sed -i "s/^save 300 1/#save 300 1/" /etc/redis/redis.conf; \
 	sed -i "s/^save 60 1/#save 60 1/" /etc/redis/redis.conf; \
+	sed -i "s/^daemonize yes/daemonize no/" /etc/redis/redis.conf; \
 	cd $openenergymonitor_dir; \
 	apt-get install -y --no-install-recommends --yes mosquitto libmosquitto-dev; \
 	sed -i "s/^persistence true/persistence false/" /etc/mosquitto/mosquitto.conf; \
@@ -171,7 +172,7 @@ RUN echo "[supervisord]\n"\
 "command=mysqld\n"\
 "[program:redis-server]\n"\
 "priority=996\n"\
-"command=redis-server\n"\
+"command=redis-server /etc/redis/redis.conf\n"\
 "[program:mosquitto-server]\n"\
 "priority=997\n"\
 "command=mosquitto -c /etc/mosquitto/mosquitto.conf\n"\
@@ -188,5 +189,7 @@ RUN echo "[supervisord]\n"\
 "priority=1001\n"\
 "autorestart=true\n"\
 "command=php $www/emoncms/scripts/feedwriter.php\n" > $SUPERVISOR_PATH
+
+EXPOSE 3306
 
 ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
