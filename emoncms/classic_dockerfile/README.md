@@ -95,7 +95,7 @@ root@45198f975674:/# redis-cli
 ```
 this technique allows you to create emoncms clients that use its redis and mysql databases
 
-to connect to mysl, use tcp, not socket :
+to connect to mysl, use tcp, not socket - cf https://mariadb.com/kb/en/configuring-mariadb-for-remote-client-access/ :
 ```
 mysql -u emoncms --protocol=tcp -pemonpiemoncmsmysql2016 emoncms
 
