@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-#FROM php:8.0-apache
 
 RUN apt-get update && apt-get upgrade -y && apt-get install tzdata -y
 
@@ -20,18 +19,7 @@ RUN apt-get install -y --no-install-recommends --yes python3.8 \
     iputils-ping \
     net-tools
 
-RUN make --version; \
-	mkdir /opt/openenergymonitor
-
-WORKDIR /opt/openenergymonitor
-
-# for backup module quiet install
-RUN git clone https://github.com/openenergymonitor/EmonScripts; \
-	cp EmonScripts/install/emonsd.config.ini EmonScripts/install/config.ini
-
-#RUN wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
-COPY makefile .
-
+ENV docker_user=pi
 ENV MYSQL_DATABASE=emoncms
 ENV mysql_user=emoncms
 ENV mysql_password=emonpiemoncmsmysql2016
@@ -42,6 +30,21 @@ ENV openenergymonitor_dir=/opt/openenergymonitor
 ENV emoncms_dir=/opt/emoncms
 ENV mqtt_user=emonpi
 ENV mqtt_password=emonpimqtt2016
+
+RUN make --version; \
+	mkdir $openenergymonitor_dir; \
+	groupadd $docker_user; \
+	useradd -rm -d /home/$docker_user -s /bin/bash -g root -G sudo,dialout -u 1001 $docker_user; \
+        chown $docker_user:$docker_user $openenergymonitor_dir
+
+WORKDIR $openenergymonitor_dir
+
+# for backup module quiet install
+RUN git clone https://github.com/openenergymonitor/EmonScripts; \
+	cp EmonScripts/install/emonsd.config.ini EmonScripts/install/config.ini
+
+#RUN wget https://raw.githubusercontent.com/dromotherm/sandbox/master/makefile
+COPY makefile .
 
 # install apache, mariadb and php
 RUN set -eux; \
@@ -90,10 +93,27 @@ RUN set -eux; \
 	phpenmod mosquitto
 
 RUN set -eux; \
-	cd $www && git clone -b stable https://github.com/emoncms/emoncms.git; \
+	chown $docker_user $www; \
 	mkdir -p $emoncms_log_location; \
+	chown $docker_user $emoncms_log_location; \
 	touch $emoncms_log_location/emoncms.log; \
 	chmod 666 $emoncms_log_location/emoncms.log; \
+	mkdir -p $emoncms_datadir/phpfina; \
+	chown www-data:root $emoncms_datadir/phpfina; \
+	mkdir -p $emoncms_datadir/phpfiwa; \
+	chown www-data:root $emoncms_datadir/phpfiwa; \
+	mkdir -p $emoncms_datadir/phptimeseries; \
+	chown www-data:root $emoncms_datadir/phptimeseries; \
+	mkdir -p $emoncms_dir; \
+	chown $docker_user $emoncms_dir; \
+	sudo_file=/etc/sudoers.d/$docker_user; \
+	echo $docker_user' ALL=(ALL) NOPASSWD: ALL' | tee $sudo_file; \
+	chmod 0440 $sudo_file
+
+USER $docker_user
+
+RUN set -eux; \
+	cd $www && git clone -b stable https://github.com/emoncms/emoncms.git; \
 	cd $openenergymonitor_dir; \
 	echo "emoncms_dir = '$emoncms_dir'\n"\
 "openenergymonitor_dir = '$openenergymonitor_dir'\n\n"\
@@ -125,19 +145,12 @@ RUN set -eux; \
 "; Log Level: 1=INFO, 2=WARN, 3=ERROR\n"\
 "level = 2\n" > settings.ini; \
 	cp settings.ini $www/emoncms/settings.ini; \
-	mkdir -p $emoncms_datadir/phpfina; \
-	chown www-data:root $emoncms_datadir/phpfina; \
-	mkdir -p $emoncms_datadir/phpfiwa; \
-	chown www-data:root $emoncms_datadir/phpfiwa; \
-	mkdir -p $emoncms_datadir/phptimeseries; \
-	chown www-data:root $emoncms_datadir/phptimeseries; \
-	mkdir -p $emoncms_dir; \
 	echo "# ServerName\n"\
 "ServerName localhost\n\n"\
 "# Default apache2 error log\n"\
 "ErrorLog $emoncms_log_location/apache2-error.log\n" > emonsd.conf; \
-	cp emonsd.conf /etc/apache2/conf-available/emonsd.conf; \
-	a2enconf emonsd.conf; \
+	sudo cp emonsd.conf /etc/apache2/conf-available/emonsd.conf; \
+	sudo a2enconf emonsd.conf; \
 	echo "<VirtualHost *:80>\n"\
 "    ServerName localhost\n"\
 "    ServerAdmin webmaster@localhost\n"\
@@ -151,11 +164,11 @@ RUN set -eux; \
 "        Require all granted\n"\
 "    </Directory>\n"\
 "</VirtualHost>\n" > emoncms.conf; \
-	cp emoncms.conf /etc/apache2/sites-available/emoncms.conf; \
-	a2dissite 000-default.conf; \
-	a2ensite emoncms
+	sudo cp emoncms.conf /etc/apache2/sites-available/emoncms.conf; \
+	sudo a2dissite 000-default.conf; \
+	sudo a2ensite emoncms
 
-RUN service mysql start; \
+RUN sudo service mysql start; \
 	make module name=graph; \
 	make module name=dashboard; \
 	make symodule name=sync; \
@@ -164,9 +177,10 @@ RUN service mysql start; \
 
 ENV SUPERVISOR_PATH=/etc/supervisor/supervisord.conf
 
-RUN ifconfig
+USER root
 
 RUN echo "[supervisord]\n"\
+"user=root\n"\
 "[program:mariadb]\n"\
 "priority=995\n"\
 "command=mysqld\n"\
@@ -188,8 +202,7 @@ RUN echo "[supervisord]\n"\
 "[program:feedwriter]\n"\
 "priority=1001\n"\
 "autorestart=true\n"\
-"command=php $www/emoncms/scripts/feedwriter.php\n" > $SUPERVISOR_PATH
-
-EXPOSE 3306
+"command=php $www/emoncms/scripts/feedwriter.php\n" > supervisord.conf; \
+	sudo cp supervisord.conf $SUPERVISOR_PATH
 
 ENTRYPOINT /usr/bin/supervisord -n -c $SUPERVISOR_PATH
