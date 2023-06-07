@@ -1,3 +1,9 @@
+to check php.ini settings in command line :
+
+```
+php -i
+```
+
 # installing PHP 7.4
 
 using https://github.com/oerdnj PPA (Personal Package Archive)
