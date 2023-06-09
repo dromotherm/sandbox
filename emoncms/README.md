@@ -127,3 +127,12 @@ MariaDB [emoncms]> SHOW TABLES;
 +-------------------+
 10 rows in set (0.001 sec)
 ```
+
+# pushing to the hub
+
+```
+docker login --username=yourhubusername
+docker tag source alexjunk/emoncms/tag
+docker push
+```
+
