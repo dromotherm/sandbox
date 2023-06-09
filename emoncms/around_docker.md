@@ -1,11 +1,3 @@
-# pushing to the hub
-
-```
-docker login --username=yourhubusername
-docker tag source alexjunk/emoncms/tag
-docker push
-```
-
 # reducing image size
 
 https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends
