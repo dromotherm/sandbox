@@ -135,4 +135,7 @@ docker login --username=yourhubusername
 docker tag source alexjunk/emoncms/tag
 docker push
 ```
-
+# stop all containers
+```
+docker ps -aq | xargs docker stop | xargs docker rm
+```
