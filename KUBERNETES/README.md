@@ -1,87 +1,208 @@
-# install cubectl
+# deploy emoncms to kubernetes 
+
+## Day 1
+
+en parcourant un blog de devops https://blog.stephane-robert.info
+
+create a deployment file :
+```
+kubectl create deployment --image=alexjunk/emoncms:0.0.2 emoncms --dry-run=client -o yaml > emoncms_deployment.yaml
+```
+edit the deployment file and add `imagePullPolicy: Never` :
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: emoncms
+  name: emoncms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emoncms
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: emoncms
+    spec:
+      containers:
+      - image: alexjunk/emoncms:0.0.2
+        name: emoncms
+        imagePullPolicy: Never
+        resources: {}
+status: {}
+```
+apply the deployment :
+```
+kubectl apply -f emoncms_deployment.yaml
+```
+expose the deployment :
+```
+kubectl expose deployment emoncms --port 80 --dry-run=client -o yaml > emoncms_service.yaml
+kubectl apply -f emoncms_service.yaml
+```
+check the app logs
+```
+kubectl logs -f -l app=emoncms
+2023-06-02 18:17:08,473 INFO success: mariadb entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,473 INFO success: redis-server entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,474 INFO success: mosquitto-server entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,474 INFO success: apache entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,474 INFO success: emoncms_mqtt entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,474 INFO success: service-runner entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:08,474 INFO success: feedwriter entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-06-02 18:17:09,478 INFO exited: feedwriter (exit status 0; expected)
+2023-06-02 18:17:10,484 INFO spawned: 'feedwriter' with pid 59
+2023-06-02 18:17:11,486 INFO success: feedwriter entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+```
+check the service :
+```
+kubectl describe service emoncms
+Name:              emoncms
+Namespace:         default
+Labels:            app=emoncms
+Annotations:       <none>
+Selector:          app=emoncms
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.101.128.68
+IPs:               10.101.128.68
+Port:              <unset>  80/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.244.0.21:8080
+Session Affinity:  None
+Events:            <none>
+```
+we are running minikube cluster, so connect to the cluster via ssh :
+```
+minikube ssh
+curl 10.244.0.21
+```
+you should see the html :-)
+
+`minikube service emoncms` ouvre l'application dans le navigateur
+
+## Day 2
+
+to get the cluster ip : 
+```
+minikube ip
+192.168.49.2
+```
+il semble qu'on peut faire la même chose avec un simple pod
+
+On crée le fichier emoncms_pod.yaml :
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emoncms
+spec:
+  containers:
+  - name: emoncms
+    image: alexjunk/emoncms:0.0.2
+    ports:
+    - containerPort: 80
+      hostPort: 32443
+```
+kubernetes va chercher l'e container source sur docker, donc le pod met un peu de temps à passer en running
+
+sur le dashboard, on a la vision suivante :
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/a479119d-19a9-41f7-ab3b-aa9ab5a3d59d)
+
+emoncms est disponible à l'adresse suivante sur le browser de la machine hôte : http://192.168.49.2:32443
+
+pour rendre le pod accessible depuis une autre machine du réseau local, il faut faire du routage.
+
+pour visualiser les tables de routage :
+```
+sudo iptables -t nat --line-numbers -L
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    MASQUERADE  all  --  192.168.49.0/24      anywhere            
+2    MASQUERADE  all  --  172.17.0.0/16        anywhere            
+3    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:32443
+4    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:8443
+5    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:5000
+6    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:2376
+7    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:ssh
+
+Chain DOCKER (2 references)
+num  target     prot opt source               destination         
+1    RETURN     all  --  anywhere             anywhere            
+2    RETURN     all  --  anywhere             anywhere            
+3    DNAT       tcp  --  anywhere             localhost            tcp dpt:49173 to:192.168.49.2:32443
+4    DNAT       tcp  --  anywhere             localhost            tcp dpt:49174 to:192.168.49.2:8443
+5    DNAT       tcp  --  anywhere             localhost            tcp dpt:49175 to:192.168.49.2:5000
+6    DNAT       tcp  --  anywhere             localhost            tcp dpt:49176 to:192.168.49.2:2376
+7    DNAT       tcp  --  anywhere             localhost            tcp dpt:49177 to:192.168.49.2:22
+```
+pour supprimer la ligne 2 dans PREROUTING s'il y en avait une :
+```
+sudo iptables -t nat -D PREROUTING 2
+```
+pour router le traffic entrant depuis le réseau local vers le pod emoncms :
+```
+sudo iptables -t nat -A PREROUTING -p tcp --dport 32443 -j DNAT --to-destination 192.168.49.2:32443
+```
+pour que l'on puisse aussi utiliser l'adresse 192.168.1.25:8080 depuis le browser de la machine hôte :
+```
+sudo iptables -t nat -A DOCKER -p tcp --dport 32443 -j DNAT --to-destination 192.168.49.2:32443
+```
+la table de routage est devenue la suivante :
 
 ```
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-kubectl version --client
-```
+sudo iptables -t nat --line-numbers -L
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+2    DNAT       tcp  --  anywhere             anywhere             tcp dpt:32443 to:192.168.49.2:32443
 
-# minicube
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination         
 
-```
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-minikube start
-😄  minikube v1.30.1 sur Ubuntu 18.04
-✨  Utilisation du pilote virtualbox basé sur le profil existant
-👍  Démarrage du noeud de plan de contrôle minikube dans le cluster minikube
-🔄  Redémarrage du virtualbox VM existant pour "minikube" ...
-🐳  Préparation de Kubernetes v1.26.3 sur Docker 20.10.23...
-    ▪ Génération des certificats et des clés
-    ▪ Démarrage du plan de contrôle ...
-    ▪ Configuration des règles RBAC ...
-🔗  Configuration de bridge CNI (Container Networking Interface)...
-    ▪ Utilisation de l'image gcr.io/k8s-minikube/storage-provisioner:v5
-🔎  Vérification des composants Kubernetes...
-🌟  Modules activés: storage-provisioner, default-storageclass
-🏄  Terminé ! kubectl est maintenant configuré pour utiliser "minikube" cluster et espace de noms "default" par défaut.
-```
-## access to the cluster
-```
-kubectl get po -A
-NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
-kube-system   coredns-787d4945fb-99pvv           1/1     Running   0             67s
-kube-system   etcd-minikube                      1/1     Running   0             80s
-kube-system   kube-apiserver-minikube            1/1     Running   0             80s
-kube-system   kube-controller-manager-minikube   1/1     Running   0             79s
-kube-system   kube-proxy-tsdf4                   1/1     Running   0             67s
-kube-system   kube-scheduler-minikube            1/1     Running   0             80s
-kube-system   storage-provisioner                1/1     Running   1 (36s ago)   77s
-```
-## launch dashboard
-```
-minikube dashboard
-```
-# the hello app
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
 
-## create a deployment
-```
-kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
-deployment.apps/hello-minikube created
-```
-## expose on port 8080
-```
-kubectl expose deployment hello-minikube --type=NodePort --port=8080
-service/hello-minikube exposed
-```
-## access to the service
+Chain POSTROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    MASQUERADE  all  --  192.168.49.0/24      anywhere            
+2    MASQUERADE  all  --  172.17.0.0/16        anywhere            
+3    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:32443
+4    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:8443
+5    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:5000
+6    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:2376
+7    MASQUERADE  tcp  --  192.168.49.2         192.168.49.2         tcp dpt:ssh
+8    MASQUERADE  tcp  --  172.17.0.3           172.17.0.3           tcp dpt:http
 
-### Run service tunnel 
+Chain DOCKER (2 references)
+num  target     prot opt source               destination         
+1    RETURN     all  --  anywhere             anywhere            
+2    RETURN     all  --  anywhere             anywhere            
+3    DNAT       tcp  --  anywhere             localhost            tcp dpt:49173 to:192.168.49.2:32443
+4    DNAT       tcp  --  anywhere             localhost            tcp dpt:49174 to:192.168.49.2:8443
+5    DNAT       tcp  --  anywhere             localhost            tcp dpt:49175 to:192.168.49.2:5000
+6    DNAT       tcp  --  anywhere             localhost            tcp dpt:49176 to:192.168.49.2:2376
+7    DNAT       tcp  --  anywhere             localhost            tcp dpt:49177 to:192.168.49.2:22
+8    DNAT       tcp  --  anywhere             anywhere             tcp dpt:8090 to:172.17.0.3:80
+9    DNAT       tcp  --  anywhere             anywhere             tcp dpt:32443 to:192.168.49.2:32443
 
-`minikube service hello-minikube --url`
-
-it should return the address app :
-http://192.168.59.100:31879
-
-### for testing only... 
-
-`minikube service hello-minikube`
-
-it should return :
-```
-|-----------|----------------|-------------|-----------------------------|
-| NAMESPACE |      NAME      | TARGET PORT |             URL             |
-|-----------|----------------|-------------|-----------------------------|
-| default   | hello-minikube |        8080 | http://192.168.59.100:31879 |
-|-----------|----------------|-------------|-----------------------------|
-🎉  Ouverture du service default/hello-minikube dans le navigateur par défaut...
-```
-
-`kubectl port-forward service/hello-minikube 8080:8080`
-
-it should return :
-```
-Forwarding from 127.0.0.1:8080 -> 8080
-Forwarding from [::1]:8080 -> 8080
-Handling connection for 8080
 ```
