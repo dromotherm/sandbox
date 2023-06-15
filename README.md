@@ -27,9 +27,9 @@ https://github.com/facundoolano/software-papers
 
 [packaging python modules - creating a wheel and uploading to pypi](python_modules/packaging_modules.md)
 
-[Install mod-wsgi for apache and flask on linux to operate a python API](bios/api_flask_mod_wsgi.md)
+[Install mod-wsgi for apache and flask on linux to operate a python API](apache/api_flask_mod_wsgi.md)
 
-[install apache, mod-wsgi and flask on windows !](flask_mod-wsgi_on_windows.md)
+[install apache, mod-wsgi and flask on windows !](apache/flask_mod-wsgi_on_windows.md)
 
 # the hardware side
 
