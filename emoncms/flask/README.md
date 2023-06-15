@@ -16,13 +16,17 @@ apache2ctl -M | grep ssl
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
  ssl_module (shared)
 ```
-## create csr on the server
+## create CSR on the server
+
+CSR = Certificate Signing Request = message adressé à une Autorité de Certification pour obtenir un certificat d’identité numérique.
+
 cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
 ```
 openssl genrsa -out emoncms.ddns.net.key 2048
 openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 ```
-## use csr to ask for ssl certificate
+## use CSR to ask for SSL certificate
+
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
 ## install certificate on the server and configure apache
