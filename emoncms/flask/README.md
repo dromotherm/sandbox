@@ -16,19 +16,74 @@ apache2ctl -M | grep ssl
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
  ssl_module (shared)
 ```
-## create csr
+## create csr on the server
 cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
 ```
 openssl genrsa -out emoncms.ddns.net.key 2048
 openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 ```
-## ask for ssl certificate
+## use csr to ask for ssl certificate
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
-## install
+## install certificate on the server and configure apache
+
+https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
+
+### default-ssl
+
+```
+<IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+                ServerName emoncms.ddns.net
+                ServerAlias emoncms.ddns.net
+                ServerAdmin webmaster@localhost
+
+                WSGIDaemonProcess try user=alexandrecuer group=alexandrecuer threads=15>
+                WSGIScriptAlias /try /opt/obm/app.wsgi
+                <Directory /opt/obm/>
+                        WSGIProcessGroup try
+                        WSGIApplicationGroup %{GLOBAL}
+                        WSGIScriptReloading On
+                        Options Indexes FollowSymLinks
+                        AllowOverride None
+                        Require all granted
+                </Directory>
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+                
+                SSLEngine on
+                SSLCertificateFile /path/to/emoncms_ddns_net.crt
+                SSLCertificateKeyFile /path/to/emoncms.ddns.net.key
+                SSLCertificateChainFile /path/to/DigiCertCA.crt
+
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
+                </Directory>
+        </VirtualHost>
+</IfModule>
+```
+### 000-default
+```
+VirtualHost *:80>
+        ServerName emoncms.ddns.net
+        ServerAlias emoncms.ddns.net
+        Redirect permanent / https://emoncms.ddns.net/
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
 
 
-# check enabled apache conf
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+
+### check enabled apache conf
 
 ```
 a2query -s
