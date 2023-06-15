@@ -26,3 +26,12 @@ openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
 ## install
+
+
+# check enabled apache conf
+
+```
+a2query -s
+default-ssl (enabled by site administrator)
+000-default (enabled by site administrator)
+```
