@@ -1,5 +1,11 @@
 # serveur flask servant des containers emoncms 
 
+L'application permet à un utilisateur qui veut tester emoncms de tirer un numéro de port entre 8080 et 9090 et de lancer un container.
+
+L'application est disponible en https mais les containers sont accessibles en http seulement
+
+## installation des packages
+
 ```
 sudo apt install apache2 gettext
 sudo apt install python3-pip
@@ -16,7 +22,9 @@ apache2ctl -M | grep ssl
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
  ssl_module (shared)
 ```
-## create CSR on the server
+## configuration ssl
+
+### create CSR on the server
 
 CSR = Certificate Signing Request = message adressé à une Autorité de Certification pour obtenir un certificat d’identité numérique.
 
@@ -25,15 +33,17 @@ cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
 openssl genrsa -out emoncms.ddns.net.key 2048
 openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 ```
-## use CSR to ask for SSL certificate
+### use CSR to ask for SSL certificate
 
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
-## install certificate on the server and configure apache
+### install certificate on the server and configure apache
 
 https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 
-### default-ssl
+Il faut avoir autorisé la régle NAT https sur le routeur/BOX
+
+#### default-ssl
 
 ```
 <IfModule mod_ssl.c>
@@ -70,7 +80,7 @@ https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux
         </VirtualHost>
 </IfModule>
 ```
-### 000-default
+#### 000-default
 ```
 VirtualHost *:80>
         ServerName emoncms.ddns.net
@@ -87,7 +97,7 @@ VirtualHost *:80>
 ```
 
 
-### check enabled apache conf
+#### check enabled apache conf
 
 ```
 a2query -s
