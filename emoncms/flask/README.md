@@ -41,63 +41,61 @@ https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
 https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 
-Il faut avoir autorisé la régle NAT https sur le routeur/BOX
+Ce qui suit détaille la configuration apache au niveau du serveur, mais il faut avoir préalablement autorisé la régle NAT https sur le routeur/BOX
 
 #### default-ssl
 
 ```
 <IfModule mod_ssl.c>
-        <VirtualHost _default_:443>
-                ServerName emoncms.ddns.net
-                ServerAlias emoncms.ddns.net
-                ServerAdmin webmaster@localhost
+    <VirtualHost _default_:443>
+        ServerName emoncms.ddns.net
+        ServerAlias emoncms.ddns.net
+        ServerAdmin webmaster@localhost
 
-                WSGIDaemonProcess try user=alexandrecuer group=alexandrecuer threads=15>
-                WSGIScriptAlias /try /opt/obm/app.wsgi
-                <Directory /opt/obm/>
-                        WSGIProcessGroup try
-                        WSGIApplicationGroup %{GLOBAL}
-                        WSGIScriptReloading On
-                        Options Indexes FollowSymLinks
-                        AllowOverride None
-                        Require all granted
-                </Directory>
+        WSGIDaemonProcess try user=alexandrecuer group=alexandrecuer threads=15>
+        WSGIScriptAlias /try /opt/obm/app.wsgi
+        <Directory /opt/obm/>
+             WSGIProcessGroup try
+             WSGIApplicationGroup %{GLOBAL}
+             WSGIScriptReloading On
+             Options Indexes FollowSymLinks
+             AllowOverride None
+             Require all granted
+        </Directory>
 
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-                CustomLog ${APACHE_LOG_DIR}/access.log combined
-                
-                SSLEngine on
-                SSLCertificateFile /path/to/emoncms_ddns_net.crt
-                SSLCertificateKeyFile /path/to/emoncms.ddns.net.key
-                SSLCertificateChainFile /path/to/DigiCertCA.crt
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        
+        SSLEngine on
+        SSLCertificateFile /path/to/emoncms_ddns_net.crt
+        SSLCertificateKeyFile /path/to/emoncms.ddns.net.key
+        SSLCertificateChainFile /path/to/DigiCertCA.crt
 
-                <FilesMatch "\.(cgi|shtml|phtml|php)$">
-                                SSLOptions +StdEnvVars
-                </FilesMatch>
-                <Directory /usr/lib/cgi-bin>
-                                SSLOptions +StdEnvVars
-                </Directory>
-        </VirtualHost>
+        <FilesMatch "\.(cgi|shtml|phtml|php)$">
+            SSLOptions +StdEnvVars
+        </FilesMatch>
+        <Directory /usr/lib/cgi-bin>
+            SSLOptions +StdEnvVars
+        </Directory>
+    </VirtualHost>
 </IfModule>
 ```
 #### 000-default
 ```
 VirtualHost *:80>
-        ServerName emoncms.ddns.net
-        ServerAlias emoncms.ddns.net
-        Redirect permanent / https://emoncms.ddns.net/
+    ServerName emoncms.ddns.net
+    ServerAlias emoncms.ddns.net
+    Redirect permanent / https://emoncms.ddns.net/
 
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
 
-
-        ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
 
-
-#### check enabled apache conf
+#### check enabled conf files in apache
 
 ```
 a2query -s
