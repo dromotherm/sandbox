@@ -9,3 +9,8 @@ $subdir = gethostname()."/";
 return $path.$subdir;
 ```
 
+enable mod_proxy and mod_proxy_http
+```
+sudo a2enmod mod_proxy
+sudo a2enmod mod_proxy_http
+```
