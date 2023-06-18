@@ -2,6 +2,9 @@ https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Ho
 
 https://stackoverflow.com/questions/27710377/redirect-from-subfolder-to-main-domain-with-different-port
 
+about /etc/hosts which is not at all about port :
+https://www.baeldung.com/linux/mapping-hostnames-ports
+
 modify emoncms core.php, method get_application_path
 
 ```
