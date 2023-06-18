@@ -1,3 +1,5 @@
+L'idée est d'activer le https à l'intérieur du container
+
 https://forums.docker.com/t/setup-local-domain-and-ssl-for-php-apache-container/116015
 
 https://time2hack.com/dockerize-php-app-with-apache-on-https/
