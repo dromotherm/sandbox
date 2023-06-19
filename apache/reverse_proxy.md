@@ -11,9 +11,16 @@ modify emoncms core.php, method get_application_path
 $subdir = gethostname()."/";
 return $path.$subdir;
 ```
-
 enable mod_proxy and mod_proxy_http
+
 ```
-sudo a2enmod mod_proxy
-sudo a2enmod mod_proxy_http
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+```
+check mods enabled:
+
+```
+apache2ctl -M | grep proxy
+proxy_module (shared)
+proxy_http_module (shared)
 ```
