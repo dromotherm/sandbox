@@ -31,10 +31,11 @@ def get_free_port():
 
 @app.route("/")
 def home():
-    content = f'Vous en avez marre d\'excel'
-    content = f'{content}<br>Vous n\'êtes pas sur de vouloir développer vos scripts de dataviz sous python'
-    content = f'{content}<br>Vous pouvez lancer votre application de dataviz ici :'
-    content = f'{content}<br><a href={server_url}/try/start>START APP</a>'
+    content = f'<img src=./static/themis.svg>'
+    content = f'{content}<br><br>Vous en avez marre d\'excel'
+    content = f'{content}<br><br>Vous n\'êtes pas sur de vouloir développer vos scripts de dataviz sous python'
+    content = f'{content}<br><br>Vous pouvez lancer votre application de dataviz ici :'
+    content = f'{content}<br><br><a href=./start>START APP</a>'
     return content
 
 @app.route("/start")
@@ -43,23 +44,27 @@ def start():
     cmd = [f'docker run -d -p{nbp}:80 {docker_image}']
     token = exec_shell_command(cmd)
     short_token = token[:13].decode()
-    del_route = f'{server_url}/try/delete/{nbp}/{short_token}'
+    del_route = f'./delete/{nbp}/{short_token}'
     app_url = f'{server_url}:{nbp}'
-    content = f'BRAVO : on vous a attribué le port {nbp} pour y démarrer une application'
+    content = f'<b>BRAVO : on vous a attribué le port {nbp} pour y démarrer une application</b>'
     content = f'{content}<br>'
     content = f'{content}<br>1) Commencez par télécharger des données :'
-    content = f'{content}<br><a target=_blank href=http://emoncms.ddns.net/emoncms-bloch-2021.tar.gz>datas collège Marc Bloch</a>'
+    content = f'{content}<br><a target=_blank href=./static/emoncms-bloch-2021.tar.gz>collège Marc Bloch</a>'
+    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-summer2021.tar.gz>siège cerema - confort d\'été</a>'
+    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-2021-2022.tar.gz>siège cerema - juin 2021 à février 2022</a>'
     content = f'{content}<br>l\'archive se téléchargera dans le dossier téléchargements de votre ordinateur'
     content = f'{content}<br>'
     content = f'{content}<br>2) Lancer ensuite l\'application, créez vous un compte'
     content = f'{content}, injectez l\'archive en allant dans backup > import archive, puis allez dans graph pour les visualiser'
-    content = f'{content}<br> ATTENTION LES DATAS SONT VIELLES, IL VOUS FAUDRA REMONTER DANS LE TEMPS'
+    content = f'{content}<br> ATTENTION LES DATAS SONT VIEILLES, IL VOUS FAUDRA REMONTER DANS LE TEMPS'
     content = f'{content}<br><a target=_blank href={app_url}>ouvrir app</a>'
     content = f'{content}<br>'
     content = f'{content}<br>3) Tout ceci est gratuit alors éteignez l\'application avant de partir' 
     content = f'{content}<br><a href={del_route}>supprimer app et rendre le port</a>'
     content = f'{content}<br>'
-    content = f'{content}<br>Si vous voulez un accès persistant, contactez nous !'
+    content = f'{content}<br><b>Si vous voulez un accès persistant, contactez nous !</b>'
+    content = f'{content}<br><img src=./static/import_backup.png>'
+    content = f'{content}<br><img src=./static/graph.png>'
     content = f'{content}<br><script type="text/javascript">window.onbeforeunload = () => fetch({del_route});</script>'
     return content
 
