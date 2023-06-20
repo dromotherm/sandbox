@@ -1,3 +1,5 @@
+https://stackoverflow.com/questions/18872482/error-during-ssl-handshake-with-remote-server
+
 # https and ssl certificate
 
 https://web.dev/enable-https/
