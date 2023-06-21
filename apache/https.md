@@ -6,7 +6,7 @@ Donc pas d'image en ligne sur le docker Hub
 
 [../emoncms/emoncms_lamp/Dockerfile.ssl](../emoncms/emoncms_lamp/Dockerfile.ssl)
 
-Ensuite, c'est le serveur d'application flask qui se charge de la configuration du serveur apache sur l'hôte pour que les applications soient accessibles sans avoir besoin d'ouvrir d'autres ports que les ports 80 et 443. On passe par un reverse proxy. 
+Ensuite, c'est le serveur d'application flask qui se charge de la configuration du serveur apache sur l'hôte pour que les applications soient accessibles sans avoir besoin d'ouvrir d'autres ports que les ports 80 et 443. On passe par un reverse proxy.
 
 # https et proxy
 
@@ -27,3 +27,11 @@ https://codeburst.io/http-server-on-docker-with-https-7b5468f72874
 https://mindsers.blog/post/https-using-nginx-certbot-docker/
 
 https://www.devopsschool.com/blog/how-to-configure-docker-container-with-https/
+
+# flask and https
+
+http://www.subdimension.co.uk/2012/11/10/flask_modwsgi_ssl_oh_my.html
+
+https://www.olivierpons.fr/2018/12/01/flash-et-wsgi-howto/
+
+https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
