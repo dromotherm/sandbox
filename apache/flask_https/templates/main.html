@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<title>SERVEUR APPLICATIF DE DATAVIZ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<link href="./static/lib/bootstrap-5.3.0-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+{% if host_port %}
+    BRAVO : on vous a attribué le port {{host_port}} pour y démarrer une application
+    <br>
+{% endif %}
+
+<br>1) Commencez par télécharger des données :
+<br><a target=_blank href=./static/emoncms-bloch-2021.tar.gz>collège Marc Bloch</a>
+<br><a target=_blank href=./static/emoncms-siegecerema-summer2021.tar.gz>siège cerema - confort d'été</a>
+<br><a target=_blank href=./static/emoncms-siegecerema-2021-2022.tar.gz>siège cerema - juin 2021 à février 2022</a>
+<br>par défaut, l'archive ira dans le dossier téléchargements de votre ordinateur
+<br>
+<br>2) Lancer ensuite l'application, créez vous un compte
+, injectez l'archive en allant dans backup > import archive, puis allez dans graph pour les visualiser
+<br> ATTENTION LES DATAS SONT VIEILLES, IL VOUS FAUDRA REMONTER DANS LE TEMPS mais les graphes préenregistrés vous permettront de cibler automatiquement la plage de données disponible.
+
+{% if app_url %}
+    <br><a target=_blank href={{app_url}}>ouvrir app</a><br>
+{% endif %}
+
+{% if del_route %}
+    <br>3) Tout ceci est gratuit alors éteignez l'application avant de partir
+    <br><a href={{del_route}}>supprimer app et rendre le port</a>
+{% endif %}
+
+<br>
+<br>Si vous voulez un accès persistant, contactez nous !
+
+{% if del_route %}
+    <br><script type="text/javascript">window.onbeforeunload = () => fetch({{del_route}});</script>
+{% endif %}
+
+<br><img src=./static/register.png>
+<br><img src=./static/import_backup.png>
+<br><img src=./static/graph.png>
+<script src="./static/lib/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

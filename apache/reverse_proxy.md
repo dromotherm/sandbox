@@ -8,6 +8,7 @@ For this, we have to use a reverse proxy
 # on the web
 
 about /etc/hosts which is not at all about port :
+
 https://www.baeldung.com/linux/mapping-hostnames-ports
 
 https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-configure-Apache-as-a-reverse-proxy-example

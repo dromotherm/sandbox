@@ -1,8 +1,7 @@
-# serveur flask servant des containers emoncms 
+# serveur flask servant des containers emoncms
 
-L'application permet à un utilisateur qui veut tester emoncms de tirer un numéro de port entre 8080 et 9090 et de lancer un container.
+Le serveur d'applications permet à un utilisateur qui veut tester emoncms de tirer un numéro de port entre 8080 et 9090 et de lancer un container.
 
-L'application est disponible en https mais les containers sont accessibles en http seulement
 
 ## installation des packages
 
@@ -15,14 +14,17 @@ pip3 install redis
 pip3 install flask
 sudo apt install libapache2-mod-wsgi-py3 python-dev-is-python3
 sudo a2enmod ssl
+sudo a2enmod proxy
+sudo a2enmod proxy_http
 ```
-to check if ssl module is activated :
+to check if ssl and proxy modules are activated :
 ```
 apache2ctl -M | grep ssl
-AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- ssl_module (shared)
+apache2ctl -M | grep proxy
 ```
 ## configuration ssl
+
+Il faut créer une clé de chiffrement et la faire valider par une autorité de certification (CA)
 
 ### create CSR on the server
 
@@ -65,7 +67,7 @@ Ce qui suit détaille la configuration apache au niveau du serveur, mais il faut
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-        
+
         SSLEngine on
         SSLCertificateFile /path/to/emoncms_ddns_net.crt
         SSLCertificateKeyFile /path/to/emoncms.ddns.net.key
