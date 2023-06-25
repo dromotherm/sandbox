@@ -2,6 +2,6 @@
 
 create folder static/lib
 
-Download Bootstrap compiled CSS and JavaScript and save in static/lib
+Download Bootstrap 4.6.2 compiled CSS and JavaScript, save in static/lib and unzip
 
-Unzip
+Download Jquery version 3.7 and save in static/lib

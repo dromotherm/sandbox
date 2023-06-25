@@ -1,2 +1,5 @@
 *.key
 *.crt
+*.tar.gz
+*bootstrap*
+*jquery*

@@ -10,10 +10,10 @@ app = Flask(__name__)
 
 RCO = redis.Redis(host="localhost", port=6379, db=0)
 
-SERVER_NAME = "emoncms.ddns.net"
-DOCKER_IMAGE = "emoncms_ssh"
+SERVER_NAME = "192.168.1.25"
+DOCKER_IMAGE = "emoncms"
 # chemin du fichier apache de configuration des VirtualHosts
-APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
+APACHE_CONF = "/etc/apache2/sites-available/000-default.conf"
 
 def exec_shell_command(cmd):
     """execute a shell command"""
@@ -58,17 +58,19 @@ def read_apache_conf():
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    lang = request.accept_languages.best_match(['fr', 'en'])
+    return render_template('home.html', lang=lang)
 
 @app.route("/start")
 def start():
     proto = request.scheme
+    lang = request.accept_languages.best_match(['fr', 'en'])
     container_port = 443 if proto=="https" else 80
     host_port = get_free_port()
     cmd = [f'docker run -d -p{host_port}:{container_port} {DOCKER_IMAGE}']
     long_token = exec_shell_command(cmd)
     token = long_token[:12].decode()
-    del_route = f'./delete/{host_port}/{token}'
+    del_route = f'/delete/{host_port}/{token}'
     app_url = f'{proto}://{SERVER_NAME}/{token}'
     lines = read_apache_conf()
     end_balise = -1
@@ -97,7 +99,11 @@ def start():
     if not proxy_engine_configured:
         lines.insert(end_balise, proxy_engine_directive)
     maj_apache_conf(lines)
-    return render_template('main.html', host_port=host_port, app_url=app_url, del_route=del_route)
+    resp = app.make_response({"token": token, "port": host_port, "app_url": app_url, "del_route": del_route})
+    resp.set_cookie('emoncms_token', token,  samesite='Lax', secure=True)
+    resp.set_cookie('port', host_port,  samesite='Lax', secure=True)
+    resp.set_cookie('app_url', app_url,  samesite='Lax', secure=True)
+    return resp
 
 @app.route("/list")
 def list():
@@ -108,6 +114,11 @@ def list():
     content = f'Il y a {nb_used_ports} port(s) utilisé(s)'
     content = f'{content}<br>{containers}'
     return content
+
+@app.route("/check/<token>")
+def check(token):
+    cmd = [f'docker ps | grep {token}']
+    return exec_shell_command(cmd)
 
 @app.route("/clear")
 def clear():
