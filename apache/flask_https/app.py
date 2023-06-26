@@ -1,5 +1,6 @@
 import random
 import subprocess
+import datetime
 import re
 from flask import Flask
 from flask import render_template
@@ -10,10 +11,10 @@ app = Flask(__name__)
 
 RCO = redis.Redis(host="localhost", port=6379, db=0)
 
-SERVER_NAME = "192.168.1.25"
-DOCKER_IMAGE = "emoncms"
+SERVER_NAME = "emoncms.ddns.net"
+DOCKER_IMAGE = "emoncms_ssh"
 # chemin du fichier apache de configuration des VirtualHosts
-APACHE_CONF = "/etc/apache2/sites-available/000-default.conf"
+APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
 
 def exec_shell_command(cmd):
     """execute a shell command"""
@@ -70,7 +71,6 @@ def start():
     cmd = [f'docker run -d -p{host_port}:{container_port} {DOCKER_IMAGE}']
     long_token = exec_shell_command(cmd)
     token = long_token[:12].decode()
-    del_route = f'/delete/{host_port}/{token}'
     app_url = f'{proto}://{SERVER_NAME}/{token}'
     lines = read_apache_conf()
     end_balise = -1
@@ -99,10 +99,15 @@ def start():
     if not proxy_engine_configured:
         lines.insert(end_balise, proxy_engine_directive)
     maj_apache_conf(lines)
-    resp = app.make_response({"token": token, "port": host_port, "app_url": app_url, "del_route": del_route})
-    resp.set_cookie('emoncms_token', token,  samesite='Lax', secure=True)
-    resp.set_cookie('port', host_port,  samesite='Lax', secure=True)
-    resp.set_cookie('app_url', app_url,  samesite='Lax', secure=True)
+    json_datas = {}
+    json_datas["token"] = token
+    json_datas["port"] = host_port
+    json_datas["app_url"] = app_url
+    resp = app.make_response(json_datas)
+    cookie_life_duration = datetime.datetime.now() + datetime.timedelta(days=30)
+    resp.set_cookie('emoncms_token', token,  samesite='Lax', secure=True, expires=cookie_life_duration)
+    resp.set_cookie('port', host_port,  samesite='Lax', secure=True, expires=cookie_life_duration)
+    resp.set_cookie('app_url', app_url,  samesite='Lax', secure=True, expires=cookie_life_duration)
     return resp
 
 @app.route("/list")
