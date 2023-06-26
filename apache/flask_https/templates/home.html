@@ -6,9 +6,7 @@
 <ul class="list-group">
 {% if lang!="fr" %}
     <li class="list-group-item">
-        You collect data sets and want something more powerful than spreadsheets</li>
-    <li class="list-group-item">
-        You've heard about Grafana, 
+        You collect data sets and you've heard about Grafana, 
         but it's not easy to learn and requires a significant investment
     </li>
     <li class="list-group-item">
@@ -32,8 +30,8 @@
     {% if lang!="fr" %}generate access token{% else %}génerer votre code d'accès{% endif %}
 </button>
 <div id=loading><img src=./static/loading.gif></div>
-<div id="delete"></div>
 <div id="open"></div>
+<div id="delete"></div>
 
 <div>
 <br><br><b>{% if lang!="fr" %}AVAILABLE DATASETS{% else %}DATASETS DISPONIBLES{% endif %} :</b>
@@ -112,7 +110,7 @@ function getCookie(name) {
 }
 
 function createApp() {
-    $.ajax({ url: "/start", 
+    $.ajax({ url: "./start", 
         dataType: "json",
         async: true,
         success(data) {
@@ -126,18 +124,24 @@ function showAppLinkNDelButton(data) {
     var open_label="OPEN APP";
     var delete_label="DELETE_APP";
     var token_txt="Your access token is "+data["token"];
+    var delete_txt_1 = "Everything is free so please ";
+    var delete_txt_2 = " when you dont need anymore";
     if (navigator.language=="fr") {
         open_label="OUVRIR L'APP";
         delete_label="SUPPRIMER L'APP";
         token_txt="Votre code est "+data["token"];
+        delete_txt_1 = "Tout ceci est gratuit alors merci de ";
+        delete_txt_2 = " quant vous n'en avez plus besoin";
     }
-    var link = "<br><br>"+token_txt+"<br>";
-    link += "<a href="+data["app_url"]+" target=_blank>"+open_label+"</a>";
+    var link = "<br>"+token_txt+"<br>";
+    link += "<a href="+data["app_url"]+" target=_blank>"+open_label+"</a><br><br>";
     $("#open").html(link);
     var button_html = [];
+    button_html.push(delete_txt_1);
     button_html.push('<button type="button" class="btn btn-danger"');
-    button_html.push(' value='+data["del_route"]+'>');
+    button_html.push(' value=./delete/'+data["port"]+'/'+data["token"]+'>');
     button_html.push(delete_label+'</button>');
+    button_html.push(delete_txt_2);
     $("#loading").hide();
     $("#delete").html(button_html.join(""));
 }
@@ -149,7 +153,7 @@ if (document.cookie.includes("emoncms_token")) {
         /*
         // autre solution : si l'user rafraichit la page,
         // on détruit systématiquement l'app du cookie
-        $.ajax({ url: "/delete/"+port+"/"+token, 
+        $.ajax({ url: "./delete/"+port+"/"+token, 
             dataType: "text", 
             async: true, 
             success(data) {
@@ -170,9 +174,10 @@ if (document.cookie.includes("emoncms_token")) {
                         $("#create").show();
                     } else {
                         console.log("app exist");
+                        $("#create").hide();
                         var data = {};
                         data["token"] = token;
-                        data["del_route"] = "/delete/"+port+"/"+token;
+                        data["port"] = port;
                         data["app_url"] = app_url;
                         console.log(data);
                         showAppLinkNDelButton(data);
