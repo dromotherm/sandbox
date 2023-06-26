@@ -100,6 +100,8 @@
 
 <script>
 
+var lang = {% if lang=="fr" %}"fr"{% else %}"en"{% endif %};
+
 $("#loading").hide();
 
 function getCookie(name) {
@@ -126,7 +128,7 @@ function showAppLinkNDelButton(data) {
     var token_txt="Your access token is "+data["token"];
     var delete_txt_1 = "Everything is free so please ";
     var delete_txt_2 = " when you dont need anymore";
-    if (navigator.language=="fr") {
+    if (lang==="fr") {
         open_label="OUVRIR L'APP";
         delete_label="SUPPRIMER L'APP";
         token_txt="Votre code est "+data["token"];
@@ -199,13 +201,13 @@ $("#delete").on("click",".btn",function(){
     var del_route = $(this).val();
     $("#delete").html("");
     $("#loading").show();
+    $("#open").html("");
     $.ajax({ url: del_route, 
         dataType: "text",
         async: true,
         success(data) {
             console.log(data);
             $("#loading").hide();
-            $("#open").html("");
             $("#create").show();
         }
     });
