@@ -11,6 +11,7 @@ server_url = "http://emoncms.ddns.net"
 server_port = 5000
 docker_image = "alexjunk/emoncms:0.0.3"
 
+
 def exec_shell_command(cmd):
     """execute a shell command"""
     try:
@@ -18,6 +19,7 @@ def exec_shell_command(cmd):
     except subprocess.CalledProcessError as e:
         return f'An error {e} occurred'
     return result_success
+
 
 def get_free_port():
     """get a random port to create a socket"""
@@ -29,17 +31,21 @@ def get_free_port():
             rco.sadd("ports", port_nb)
             return str(port_nb)
 
+
 @app.route("/")
 def home():
-    content = f'<img src=./static/themis.svg>'
+    """home page"""
+    content = '<img src=./static/themis.svg>'
     content = f'{content}<br><br>Vous en avez marre d\'excel'
     content = f'{content}<br><br>Vous n\'êtes pas sur de vouloir développer vos scripts de dataviz sous python'
     content = f'{content}<br><br>Vous pouvez lancer votre application de dataviz ici :'
     content = f'{content}<br><br><a href=./start>START APP</a>'
     return content
 
+
 @app.route("/start")
 def start():
+    """start new container"""
     nbp = get_free_port()
     cmd = [f'docker run -d -p{nbp}:80 {docker_image}']
     token = exec_shell_command(cmd)
@@ -68,8 +74,10 @@ def start():
     content = f'{content}<br><script type="text/javascript">window.onbeforeunload = () => fetch({del_route});</script>'
     return content
 
+
 @app.route("/list")
-def list():
+def list_running_containers():
+    """list running containers"""
     nb_used_ports = rco.scard("ports")
     cmd = ["docker container ls"]
     containers = exec_shell_command(cmd)
@@ -78,20 +86,26 @@ def list():
     content = f'{content}<br>{containers}'
     return content
 
+
 @app.route("/who")
 def who():
+    """return current user"""
     cmd = ['whoami']
     return exec_shell_command(cmd)
 
+
 @app.route("/clear")
 def clear():
+    """delete all containers"""
     rco.delete("ports")
     cmd = ["docker ps -aq | xargs docker stop | xargs docker rm"]
     exec_shell_command(cmd)
     return 'done'
 
+
 @app.route("/delete/<port>/<token>")
 def delete(port, token):
+    """delete specific container"""
     rco.srem("ports", port)
     cmd = [f'docker container stop {token}']
     exec_shell_command(cmd)
