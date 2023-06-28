@@ -75,7 +75,7 @@ def home():
 def start():
     """start a new container"""
     proto = request.scheme
-    container_port = 443 if proto=="https" else 80
+    container_port = 443 if proto == "https" else 80
     host_port = get_free_port()
     cmd = [f'docker run -d -p{host_port}:{container_port} {DOCKER_IMAGE}']
     long_token = exec_shell_command(cmd)
@@ -129,7 +129,7 @@ def list_running_containers():
     nb_used_ports = RCO.scard("ports")
     cmd = ["docker container ls"]
     containers = exec_shell_command(cmd)
-    containers = containers.decode().replace("\n","<br>")
+    containers = containers.decode().replace("\n", "<br>")
     content = f'Il y a {nb_used_ports} port(s) utilisé(s)'
     content = f'{content}<br>{containers}'
     return content
@@ -153,15 +153,15 @@ def clear():
     motif = re.compile(pattern)
     for i, line in enumerate(lines):
         for port in all_ports:
-            if str(port.decode()) in line :
+            if str(port.decode()) in line:
                 suppress_list.append(i)
                 if "ProxyPass /" in line:
                     result = re.search(motif, line)
                     tokens.append(result.group(1))
     RCO.delete("ports")
     # un peu trop brutal
-    #cmd = ["docker ps -aq | xargs docker stop | xargs docker rm"]
-    #exec_shell_command(cmd)
+    # cmd = ["docker ps -aq | xargs docker stop | xargs docker rm"]
+    # exec_shell_command(cmd)
     token_string = ""
     for token in tokens:
         token_string = f'{token_string} {token}'
