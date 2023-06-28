@@ -3,6 +3,8 @@ import subprocess
 from flask import Flask
 import redis
 
+# pylint: disable=E501
+
 app = Flask(__name__)
 
 rco = redis.Redis(host="localhost", port=6379, db=0)
@@ -65,7 +67,7 @@ def start():
     content = f'{content}<br> ATTENTION LES DATAS SONT VIEILLES, IL VOUS FAUDRA REMONTER DANS LE TEMPS'
     content = f'{content}<br><a target=_blank href={app_url}>ouvrir app</a>'
     content = f'{content}<br>'
-    content = f'{content}<br>3) Tout ceci est gratuit alors éteignez l\'application avant de partir' 
+    content = f'{content}<br>3) Tout ceci est gratuit alors éteignez l\'application avant de partir'
     content = f'{content}<br><a href={del_route}>supprimer app et rendre le port</a>'
     content = f'{content}<br>'
     content = f'{content}<br><b>Si vous voulez un accès persistant, contactez nous !</b>'
@@ -81,7 +83,7 @@ def list_running_containers():
     nb_used_ports = rco.scard("ports")
     cmd = ["docker container ls"]
     containers = exec_shell_command(cmd)
-    containers = containers.decode().replace("\n","<br>")
+    containers = containers.decode().replace("\n", "<br>")
     content = f'Il y a {nb_used_ports} port(s) utilisé(s)'
     content = f'{content}<br>{containers}'
     return content
