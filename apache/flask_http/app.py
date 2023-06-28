@@ -3,8 +3,6 @@ import subprocess
 from flask import Flask
 import redis
 
-# pylint: disable=E501
-
 app = Flask(__name__)
 
 rco = redis.Redis(host="localhost", port=6379, db=0)
@@ -58,8 +56,10 @@ def start():
     content = f'{content}<br>'
     content = f'{content}<br>1) Commencez par télécharger des données :'
     content = f'{content}<br><a target=_blank href=./static/emoncms-bloch-2021.tar.gz>collège Marc Bloch</a>'
-    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-summer2021.tar.gz>siège cerema - confort d\'été</a>'
-    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-2021-2022.tar.gz>siège cerema - juin 2021 à février 2022</a>'
+    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-summer2021.tar.gz>'
+    content = f'{content}siège cerema - confort d\'été</a>'
+    content = f'{content}<br><a target=_blank href=./static/emoncms-siegecerema-2021-2022.tar.gz>'
+    content = f'{content}siège cerema - juin 2021 à février 2022</a>'
     content = f'{content}<br>l\'archive se téléchargera dans le dossier téléchargements de votre ordinateur'
     content = f'{content}<br>'
     content = f'{content}<br>2) Lancer ensuite l\'application, créez vous un compte'
