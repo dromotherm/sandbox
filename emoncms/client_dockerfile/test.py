@@ -15,6 +15,7 @@ MYSQL_METAS = {
     "password": "emonpiemoncmsmysql2016",
 }
 
+
 def publish_to_mqtt(node, payload):
     """
     publish to broker
@@ -33,12 +34,13 @@ def publish_to_mqtt(node, payload):
         json_payload = json.dumps(payload)
 
         result = mqttc.publish(f'emon/{node}', json_payload)
-        if result[0] != 0 :
+        if result[0] != 0:
             message["success"] = False
             text = f'{text} Error {result}'
         mqttc.disconnect()
         message["text"] = text
     return message
+
 
 rco = redis.Redis(host="localhost", port=6379, db=0)
 
