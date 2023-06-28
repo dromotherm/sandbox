@@ -19,6 +19,7 @@ DOCKER_IMAGE = "emoncms_ssh"
 # chemin du fichier apache de configuration des VirtualHosts
 APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
 
+
 def exec_shell_command(cmd):
     """execute a shell command"""
     try:
@@ -26,6 +27,7 @@ def exec_shell_command(cmd):
     except subprocess.CalledProcessError as err:
         return f'An error {err} occurred'
     return result_success
+
 
 def get_free_port():
     """get a random port to create a socket
@@ -38,6 +40,7 @@ def get_free_port():
             RCO.sadd("ports", port_nb)
             return str(port_nb)
 
+
 def maj_apache_conf(new_conf):
     """met à jour le fichier apache de configuration
     puis relance apache
@@ -49,6 +52,7 @@ def maj_apache_conf(new_conf):
     exec_shell_command(cmd)
     cmd = ['sudo systemctl reload apache2']
     exec_shell_command(cmd)
+
 
 def read_apache_conf():
     """retourne le fichier apache de configuration
@@ -65,6 +69,7 @@ def home():
     """home page"""
     lang = request.accept_languages.best_match(['fr', 'en'])
     return render_template('home.html', lang=lang)
+
 
 @app.route("/start")
 def start():
@@ -117,6 +122,7 @@ def start():
                     expires=cookie_life_duration)
     return resp
 
+
 @app.route("/list")
 def list_running_containers():
     """list running containers"""
@@ -128,11 +134,13 @@ def list_running_containers():
     content = f'{content}<br>{containers}'
     return content
 
+
 @app.route("/check/<token>")
 def check(token):
     """given a token, check if container is running"""
     cmd = [f'docker ps | grep {token}']
     return exec_shell_command(cmd)
+
 
 @app.route("/clear")
 def clear():
@@ -167,6 +175,7 @@ def clear():
             new_conf.append(line)
     maj_apache_conf(new_conf)
     return 'done'
+
 
 @app.route("/delete/<port>/<token>")
 def delete(port, token):
