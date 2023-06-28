@@ -1,5 +1,5 @@
 
-We are buidling a docker application server but dont want to open ports to outside
+We are building a docker application server but dont want to open ports to outside
 
 We want to rewrite url like http://ip:port to something like http://ip/container_id
 
