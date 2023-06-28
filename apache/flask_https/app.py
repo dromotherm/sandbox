@@ -8,6 +8,8 @@ from flask import render_template
 from flask import request
 import redis
 
+# pylint: disable=R0914
+
 app = Flask(__name__)
 
 RCO = redis.Redis(host="localhost", port=6379, db=0)
