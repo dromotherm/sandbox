@@ -1,3 +1,5 @@
+https://www.linuxtricks.fr/wiki/wiki.php
+
 # maj de ubuntu 18LTS à 20
 
 https://lecrabeinfo.net/mettre-a-jour-ubuntu-18-04-19-10-vers-20-04-lts.html#via-le-terminal
