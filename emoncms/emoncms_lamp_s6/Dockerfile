@@ -93,7 +93,6 @@ RUN set -eux; \
 	sed -i -n '/allow_anonymous false/!p;$a\allow_anonymous false' /etc/mosquitto/mosquitto.conf; \
 	sed -i -n '/password_file \/etc\/mosquitto\/passwd/!p;$a\password_file \/etc\/mosquitto\/passwd' /etc/mosquitto/mosquitto.conf; \
 	sed -i -n '/log_type error/!p;$a\log_type error' /etc/mosquitto/mosquitto.conf; \
-	echo "require_certificate false" >> /etc/mosquitto/mosquitto.conf; \
 	touch /etc/mosquitto/passwd; \
 	mosquitto_passwd -b /etc/mosquitto/passwd $mqtt_user $mqtt_password; \
 	cd $openenergymonitor_dir; \
