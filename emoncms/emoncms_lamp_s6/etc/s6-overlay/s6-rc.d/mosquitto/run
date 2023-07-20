@@ -1,0 +1,2 @@
+#!/command/execlineb -P
+mosquitto -c /etc/mosquitto/mosquitto.conf
