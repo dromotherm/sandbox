@@ -6,7 +6,7 @@ https://skarnet.org/software/s6-rc/why.html
 
 sur architecture armv7, mosquitto installé via apt-get et lancé via s6 ne fonctionnait pas correctement
 
-on a donc recompilé depuis les sources, tel que le fait home-assistant pour son addon mosquitto
+on a donc recompilé depuis les sources, tel que le fait home-assistant pour son addon mosquitto, cf https://github.com/home-assistant/addons/tree/master/mosquitto
 
 pour publier sur le broker depuis le container lui-même
 ```
