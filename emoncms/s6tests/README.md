@@ -19,7 +19,7 @@ depuis une machine distante
 mosquitto_pub -h 192.168.1.13 -p 7883 -u "emonpi" -P "emonpimqtt2016" -t 'emon/test/t3' -m 12
 ```
 
-il faut auparavant avoir ouvert le port 1883 dans la conf du broker
+pour publier depuis une machine distante, il faut auparavant avoir ouvert le port 1883 dans la conf du broker
 ```
 listener 1883
 ```
