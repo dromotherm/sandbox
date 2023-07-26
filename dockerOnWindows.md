@@ -22,17 +22,17 @@ Activation de la ou des fonctionnalités
 [==========================100.0%==========================]
 L’opération a réussi.
 ```
-
+## passer à wsl 2
 ```
 wsl --set-default-version 2
 Activez la fonctionnalité Windows de plateforme de machine virtuelle et assurez-vous que la virtualisation est activée dans le BIOS.
 Pour plus d’informations, rendez-vous sur https://aka.ms/wsl2-install
 ```
-
+## installer une distribution linux
 
 pour installer une distribution ubuntu :
 
 ```
 wsl --install -d ubuntu
 ```
-
+pour lancer cette distribution, il suffit de taper wsl en invité de commande
