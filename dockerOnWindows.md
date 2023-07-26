@@ -1,6 +1,11 @@
 # Windows Subsystem for Linux
 
-on active wsl
+on active wsl :
+- taper windows features dans la barre de recherche
+- puis cocher sous-système windows pour linux
+
+
+
 
 ## Enable Virtual Machine Feature
 
