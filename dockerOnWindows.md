@@ -28,6 +28,11 @@ wsl --set-default-version 2
 Activez la fonctionnalité Windows de plateforme de machine virtuelle et assurez-vous que la virtualisation est activée dans le BIOS.
 Pour plus d’informations, rendez-vous sur https://aka.ms/wsl2-install
 ```
+lors de l'installation de docker, windows peut demander l'install de la version 2 du wsl. On le fait en ligne de commande powershell en mode admin :
+```
+wsl --update
+```
+
 ## installer une distribution linux
 
 pour installer une distribution ubuntu :
