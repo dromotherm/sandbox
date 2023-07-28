@@ -6,7 +6,11 @@ https://www.minitool.com/fr/disque-partition/qemu-pour-windows.html
 
 # multi arch docker images
 
+## jeremy drouet
+
 https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
+
+## Pablo romeo
 
 https://dev.to/cloudx/multi-arch-docker-images-the-easy-way-with-github-actions-4k54
 
