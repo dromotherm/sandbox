@@ -14,6 +14,8 @@ https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
 
 https://dev.to/cloudx/multi-arch-docker-images-the-easy-way-with-github-actions-4k54
 
+nice case/esac in https://github.com/pabloromeo/docker-dogecoin
+
 ## alex ellis
 
 https://actuated.dev/blog/multi-arch-docker-github-actions
