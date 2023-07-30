@@ -24,10 +24,15 @@ https://actuated.dev/blog/multi-arch-docker-github-actions
 
 https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/
 
+## actions samples
 
 https://docs.docker.com/build/ci/github-actions/multi-platform/
 
 https://docs.docker.com/build/building/multi-platform/
 
+## Automatic platform ARGs in the global scope
+
 https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
+
+https://github.com/BretFisher/multi-platform-docker-build/blob/main/README.md
 
