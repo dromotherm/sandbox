@@ -1,3 +1,7 @@
+https://pythops.com/post/create-your-own-image-for-jetson-nano-board
+
+https://developer.nvidia.com/embedded/community/resources
+
 https://developer.nvidia.com/buy-jetson?product=jetson_nano&location=FR
 
 https://www.arrow.com/fr-fr/products/945-13450-0000-100/nvidia
