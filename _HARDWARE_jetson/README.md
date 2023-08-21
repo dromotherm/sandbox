@@ -12,6 +12,49 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# flashing the jetpack os to the 16Gb emmc memory
+
+passer la carte en force recovery mode
+
+https://wiki.seeedstudio.com/reComputer_J1010_J101_Flash_Jetpack/
+
+Télécharger Driver Package (BSP) et Sample Root Filesystem :
+
+```
+Jetson-210_Linux_R32.7.3_aarch64.tbz2
+Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
+```
+l'OS le plus à jour est sur https://developer.nvidia.com/embedded/jetson-linux mais pour la carte nano, il faut aller dans les archives :
+
+https://developer.nvidia.com/embedded/jetson-linux-archive
+
+https://developer.nvidia.com/embedded/linux-tegra-r3273
+
+```
+sudo apt-get install libxml2-utils
+sudo apt-get install qemu-user-static
+tar xf Jetson-210_Linux_R32.7.3_aarch64.tbz2
+cd Linux_for_Tegra/rootfs/
+sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
+cd ..
+sudo ./apply_binaries.sh
+sudo ./flash.sh jetson-nano-devkit-emmc mmcblk0p1
+```
+Les 2 dernières lignes devraient être les suivantes :
+```
+*** The target t210ref has been flashed successfully. ***
+Reset the board to boot from internal eMMC.
+```
+# checking the L4T release version
+```
+head -n 1 /etc/nv_tegra_release
+# R32 (release), REVISION: 7.3, GCID: 31982016, BOARD: t210ref, EABI: aarch64, DATE: Tue Nov 22 17:30:08 UTC 2022
+```
+# jtop
+```
+sudo pip3 install -U jetson-stats
+```
+
 # do not upgrade kernel
 
 cf https://forums.developer.nvidia.com/t/jetson-nano-custom-kernel-replaced-after-apt-upgrade/179399
@@ -69,7 +112,7 @@ dmesg | tail -10
 on vérifie que le port est reconnu :
 ```
 python3 -m serial.tools.list_ports
-/dev/ttyUSB0        
+/dev/ttyUSB0
 1 ports found
 cd /opt/openenergymonitor/BIOS2/tests
 python3 modbusFromScratch.py
@@ -94,157 +137,6 @@ Pour rendre les choses persistantes :
 sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
 sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
-```
-
-# install de la stack emoncms
-
-https://github.com/emoncms/emoncms/issues/1726
-
-https://github.com/dromotherm/sandbox/tree/master/bios
-
-# python 3.8
-
-pour faire fonctionner pymodbus, il faut avoir python3.8. Pas la peine de passer à Ubuntu20 rien que pour celà, on va juste créer un environnement virtuel
-
-```
-sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
-sudo mkdir /opt/v
-sudo chown $(id -u -n):$(id -u -n) /opt/v
-python3.8 -m venv /opt/v/bios
-cd /opt/v/bios/bin/
-source activate
-python3 -m pip install pip --upgrade
-python3 -m pip install pyserial
-python3 -m pip install mysql-connector-python
-python3 -m pip install paho-mqtt
-python3 -m pip install pymodbus
-```
-Cette astuce permettra de faire fonctionner les service ota2 et modbus sans problème, mais pas bios qui a besoin de tensorflow
-
-## tensorflow
-
-sous ubuntu18.04, même la version lite ne fonctionne pas avec python3.8
-
-```
-python3
-Python 3.8.16 (default, Dec  7 2022, 01:12:13) 
-[GCC 7.5.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import tflite_runtime.interpreter as tflite
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "/opt/v/bios/lib/python3.8/site-packages/tflite_runtime/interpreter.py", line 34, in <module>
-    from tflite_runtime import _pywrap_tensorflow_interpreter_wrapper as _interpreter_wrapper
-ImportError: /lib/aarch64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /opt/v/bios/lib/python3.8/site-packages/tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so)
-```
-cf https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host
-
-on a donc testé une solution avec un container docker
-
-# container docker pour BIOS
-
-on a commencé par le service modbus pour faire un essai simple
-
-A noter qu'en mode exploitation, il y a peu de chance qu'on utilise le service modbus, car tout est géré par le service bios vu qu'on a besoin d'un lock pour synchroniser les choses entre les périphériques modbus de monitoring et les périphériques modbus de pilotage
-
-on crée sur la machine hôte les répertoires de conf et de log sauf si on a déjà installé un autre service comme ota2 de façon classique
-
-```
-sudo mkdir /etc/bios
-sudo mkdir /var/log/bios
-```
-
-on crée un fichier Dockerfile de ce type :
-```
-FROM ubuntu:20.04
-
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install tzdata -y
-ENV TZ="Europe/Paris"
-
-RUN apt-get install -y python3.8 \
-    python3-pip \
-    python3.8-dev \
-    python3.8-distutils \
-    python3.8-venv
-
-RUN mkdir /opt/v
-ENV VIRTUAL_ENV=/opt/v/bios
-RUN python3.8 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-RUN python3 -m pip install pip --upgrade
-RUN python3 -m pip install pyserial
-#RUN python3 -m pip install mysql-connector-python
-RUN python3 -m pip install paho-mqtt
-RUN python3 -m pip install pymodbus
-#RUN python3 -m pip install click
-
-ADD BIOS2 /opt/BIOS2
-WORKDIR /opt/BIOS2/hardware
-
-CMD ["python3", "modbus.py", "--conf=/etc/bios/modbus.conf", "--log=/var/log/bios/modbus.log"]
-```
-on a utilisé un venv
-
-cf https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
-
-on construit l'image et on la teste en la démarrant en mode interactif :
-
-```
-sudo docker pull ubuntu:20.04
-sudo docker build -t biosdocker .
-sudo docker run --network host --privileged --rm -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev -it biosdocker
-sudo docker run --net=host --rm --privileged -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev -it biosdocker
-```
-
-le flag `--net=host` ou `--network host` permet de pouvoir utiliser localhost et donc :
-- de publier sur le broker de la machine hôte, 
-- ou de lire/écrire sur le serveur redis de la machine hôte.
-
-On dit qu'on est en mode host networking
-
-cf https://docs.docker.com/network/network-tutorial-host/
-
-les flags `--privileged` et `-v /dev:/dev` permettent d'accéder aux ports usb depuis le container
-
-https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
-
-https://stackoverflow.com/questions/33013539/docker-loading-kernel-modules
-
-L'option priviledged n'est pas recommandée mais si on ne l'utilise pas, on a ce genre d'erreur :
-```
-[Errno 1] could not open port /dev/ttyUSB0
-```
-
-pour manager ses images :
-```
-sudo docker images
-sudo docker container prune
-sudo docker system prune
-```
-
-On peut ensuite mettre en mode service :
-
-https://docs.docker.com/config/containers/start-containers-automatically/
-
-exemple de service file :
-```
-[Unit]
-Description=modbus
-Wants=systemd-timesyncd.service
-After=docker.service systemd-timesyncd.service
-Requires=docker.service
-
-[Service]
-ExecStart=/usr/bin/docker run --net=host --rm --privileged -v /etc/bios:/etc/bios -v /var/log/bios:/var/log/bios -v /dev:/dev biosdocker
-Type=exec
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=default.target
 ```
 
 # enable sd card
@@ -272,48 +164,7 @@ https://files.seeedstudio.com/products/102991694/reComputer%20J101V2%20datasheet
 
 https://files.seeedstudio.com/wiki/reComputer/reComputer-J101-PCBA-2D&3D.zip
 
-# flashing the jetpack os to the 16Gb emmc memory
 
-passer la carte en force recovery mode
-
-https://wiki.seeedstudio.com/reComputer_J1010_J101_Flash_Jetpack/
-
-Télécharger Driver Package (BSP) et Sample Root Filesystem :
-
-```
-Jetson-210_Linux_R32.7.3_aarch64.tbz2
-Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
-```
-l'OS le plus à jour est sur https://developer.nvidia.com/embedded/jetson-linux mais pour la carte nano, il faut aller dans les archives :
-
-https://developer.nvidia.com/embedded/jetson-linux-archive
-
-https://developer.nvidia.com/embedded/linux-tegra-r3273
-
-```
-sudo apt-get install libxml2-utils
-sudo apt-get install qemu-user-static
-tar xf Jetson-210_Linux_R32.7.3_aarch64.tbz2
-cd Linux_for_Tegra/rootfs/
-sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R32.7.3_aarch64.tbz2
-cd ..
-sudo ./apply_binaries.sh
-sudo ./flash.sh jetson-nano-devkit-emmc mmcblk0p1
-```
-Les 2 dernières lignes devraient être les suivantes :
-```
-*** The target t210ref has been flashed successfully. ***
-Reset the board to boot from internal eMMC.
-```
-# checking the L4T release version
-```
-head -n 1 /etc/nv_tegra_release
-# R32 (release), REVISION: 7.3, GCID: 31982016, BOARD: t210ref, EABI: aarch64, DATE: Tue Nov 22 17:30:08 UTC 2022
-```
-# jtop
-```
-sudo pip3 install -U jetson-stats
-```
 # install ubuntu 20
 
 https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html
