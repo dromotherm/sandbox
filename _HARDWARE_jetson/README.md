@@ -95,17 +95,17 @@ file category	|file content	|version	|upload time
 --|--|--|--
 CH341SER_LINUX....	|Linux driver for USB to serial port, supports CH340 and CH341, supports 32/64-bit operating systems.	|1.6	|2023-03-16
 
-une fois le code source décompacté dans /opt/openenergymonitor, il faut remplacer la mention (à la fin du code) `ch341_tty_driver->name = "ttyCH341USB"` par `ch341_tty_driver->name = "ttyUSB"` pour assurer la compatibilité avec pyserial, puis on compile
+une fois le code source décompacté, il faut remplacer la mention (à la fin du code) `ch341_tty_driver->name = "ttyCH341USB"` par `ch341_tty_driver->name = "ttyUSB"` pour assurer la compatibilité avec pyserial, puis on compile
 
 ```
-cd /opt/openenergymonitor/CH341SER_LINUX/driver
+cd driver
 make
 ```
 on teste que celà fonctionne en loadant le driver :
 ```
 sudo modprobe usbserial
 sudo rmmod ch341.ko
-sudo insmod /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko
+sudo insmod /path/to/CH341SER_LINUX/driver/ch341.ko
 dmesg | tail -10
 ```
 
@@ -114,7 +114,7 @@ on vérifie que le port est reconnu :
 python3 -m serial.tools.list_ports
 /dev/ttyUSB0
 1 ports found
-cd /opt/openenergymonitor/BIOS2/tests
+cd /path/to/BIOS2/tests
 python3 modbusFromScratch.py
 [2, 3, 0, 0, 0, 2, 196, 56]
 b'\x02\x03\x00\x00\x00\x02\xc48'
@@ -134,8 +134,8 @@ chaque registre étant un entier 16 bits non signé
 ```
 Pour rendre les choses persistantes :
 ```
-sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko /opt/openenergymonitor
-sudo cp /opt/openenergymonitor/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
+sudo cp /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko ~
+sudo cp /path/to/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
 sudo depmod -a
 ```
 
