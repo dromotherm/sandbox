@@ -10,6 +10,7 @@ pour voir les containers arrêtés :
 ```
 docker ps -a
 ```
+on peut ensuite redémarrer un conteneur arrêté avec `docker run <id>`
 
 Pour manager les networks docker :
 ```
