@@ -167,6 +167,8 @@ https://files.seeedstudio.com/wiki/reComputer/reComputer-J101-PCBA-2D&3D.zip
 
 # install ubuntu 20
 
+Not a very good idea :-)
+
 https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html
 
 # gparted
