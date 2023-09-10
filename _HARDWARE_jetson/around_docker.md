@@ -1,11 +1,30 @@
-pour manager ses images :
+Pour manager ses images :
 ```
 sudo docker images
 sudo docker container prune
 sudo docker system prune
 ```
+Pour gérer la taille et la rotation des logs, on crée un fichier `daemon.json` dans `/ect/docker` :
+```
+nano /etc/docker/daemon.json
+```
+on y met le contenu suivant :
+```
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "3m",
+    "max-file": "3",
+    "labels": "production_status",
+    "env": "os,customer"
+  }
+}
+```
+Et on relance le docker daemon : `sudo systemctl restart docker`
 
-pour voir les containers arrêtés :
+Les logs sont dans `/var/lib/docker/containers`
+
+Pour voir les containers arrêtés :
 
 ```
 docker ps -a
@@ -41,7 +60,7 @@ le package mosquitto-clients permet d'utiliser mosquitto_pub
 
 Attention, tout ceci ne sert que pour des tests, sur les images finales, pour éviter de gaspiller de la place, si on a besoin de certains outils dans un RUN en particulier, on les installe au début, on fait ce qu'on a faire avec, puis on les désinstalle
 
-# pour cesser d'être root dans l'image
+# pour cesser d'être root au cours du build de l'image
 ```
 RUN groupadd pi
 RUN useradd -rm -d /home/pi -s /bin/bash -g root -G sudo,dialout -u 1001 pi
@@ -70,6 +89,13 @@ RestartSec=5
 WantedBy=default.target
 ```
 
-le mieux est d'installer docker compose
+le mieux est d'installer docker-compose
 
+http://github.com/docker/compose
+
+on télécharge l'exécutable qui va bien dans https://github.com/docker/compose/releases
+
+- on renomme ce fichier en `docker-compose`
+- on le rend exécutable par `chmod +x docker-compose`
+- on le copie colle dans `/bin` : `sudo cp docker-compose /bin/docker-compose`
 
