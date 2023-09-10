@@ -8,7 +8,7 @@ sudo usermod -aG docker $USER
 
 to build : `docker build -t emoncms .`
 
-to remove unsuccessfull builds: `docker system purge`
+to remove unsuccessfull builds: `docker system prune`
 # run the emoncms container
 
 run as a volatile toy : `docker run --rm -it emoncms`
