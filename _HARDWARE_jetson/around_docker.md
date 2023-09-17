@@ -1,9 +1,23 @@
 Pour manager ses images :
 ```
 sudo docker images
-sudo docker container prune
 sudo docker system prune
 ```
+Pour arrêter tous ses containers actifs : `sudo docker stop $(docker ps -a -q)`
+
+Pour voir les containers arrêtés : `docker ps -a`
+
+On peut ensuite redémarrer un conteneur arrêté avec `docker run <id>`
+
+Pour supprimer tous les containers arrêtés : `sudo docker container prune`
+
+Pour manager les networks docker :
+```
+docker network ls
+docker network inspect xxxxx
+```
+# les logs
+
 Pour gérer la taille et la rotation des logs, on crée un fichier `daemon.json` dans `/ect/docker` :
 ```
 nano /etc/docker/daemon.json
@@ -23,20 +37,6 @@ on y met le contenu suivant :
 Et on relance le docker daemon : `sudo systemctl restart docker`
 
 Les logs sont dans `/var/lib/docker/containers`
-
-Pour voir les containers arrêtés :
-
-```
-docker ps -a
-```
-on peut ensuite redémarrer un conteneur arrêté avec `docker run <id>`
-
-Pour manager les networks docker :
-```
-docker network ls
-docker network inspect xxxxx
-```
-
 
 # sur debian, pour disposer de certains outils en mode interactif
 
@@ -69,6 +69,8 @@ WORKDIR /home/pi
 ```
 # démarrer des containers automatiquement
 
+## en utilisant un process manager
+
 https://docs.docker.com/config/containers/start-containers-automatically/
 
 exemple de service file :
@@ -88,6 +90,7 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 ```
+## avec les restart policies
 
 le mieux est d'installer docker-compose
 
@@ -99,3 +102,6 @@ on télécharge l'exécutable qui va bien dans https://github.com/docker/compose
 - on le rend exécutable par `chmod +x docker-compose`
 - on le copie colle dans `/bin` : `sudo cp docker-compose /bin/docker-compose`
 
+on crée un fichier compose avec pour chaque service `restart: always` ou `restart: unless-stopped`
+
+Puis on lance `docker-compose up -d`
