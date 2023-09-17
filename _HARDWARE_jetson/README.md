@@ -95,12 +95,12 @@ file category	|file content	|version	|upload time
 --|--|--|--
 CH341SER_LINUX....	|Linux driver for USB to serial port, supports CH340 and CH341, supports 32/64-bit operating systems.	|1.6	|2023-03-16
 
-une fois le code source décompacté, il faut remplacer la mention (à la fin du code) `ch341_tty_driver->name = "ttyCH341USB"` par `ch341_tty_driver->name = "ttyUSB"` pour assurer la compatibilité avec pyserial, puis on compile
+une fois le code source décompacté, on ouvre le dossier driver et on édite le ficher `ch341.c`
 
-```
-cd driver
-make
-```
+Il faut remplacer la mention (à la fin du code) `ch341_tty_driver->name = "ttyCH341USB"` par `ch341_tty_driver->name = "ttyUSB1"` pour assurer la compatibilité avec pyserial. Le `1` sert à ce que le port modbus soit au moins `ttyUSB10`.
+
+On peut à ce stade compiler par la commande `make`
+
 on teste que celà fonctionne en loadant le driver :
 ```
 sudo modprobe usbserial
