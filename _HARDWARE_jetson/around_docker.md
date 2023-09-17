@@ -105,3 +105,14 @@ on télécharge l'exécutable qui va bien dans https://github.com/docker/compose
 on crée un fichier compose avec pour chaque service `restart: always` ou `restart: unless-stopped`
 
 Puis on lance `docker-compose up -d`
+
+# compose.yaml
+
+https://github.com/docker/compose/issues/8154
+
+https://medium.com/weekly-webtips/control-startup-and-shutdown-order-of-containers-in-docker-compose-ff7320f868e2
+
+https://docs.docker.com/compose/startup-order/
+
+https://docs.docker.com/compose/compose-file/05-services/
+search for health
