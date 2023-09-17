@@ -3,7 +3,7 @@ Pour manager ses images :
 sudo docker images
 sudo docker system prune
 ```
-Pour arrêter tous ses containers actifs : `sudo docker stop $(docker ps -a -q)`
+Pour arrêter tous ses containers actifs : `sudo docker stop $(sudo docker ps -a -q)` ou `docker stop $(docker ps -a -q)`
 
 Pour voir les containers arrêtés : `docker ps -a`
 
