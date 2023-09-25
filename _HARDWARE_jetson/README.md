@@ -143,7 +143,15 @@ sudo depmod -a
 
 https://wiki.seeedstudio.com/J101_Enable_SD_Card/
 
-https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
+Dont do this : https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
+
+# gparted
+
+`sudo apt install gparted`
+
+# buildroot
+
+just for general knowledge : https://forums.developer.nvidia.com/t/nvidia-jetson-and-buildroot/77935/10
 
 # softs
 
@@ -155,7 +163,6 @@ https://docs.nvidia.com/deeplearning/frameworks/index.html
 
 # J101 board
 
-
 https://fr.farnell.com/en-FR/seeed-studio/110061362/nvidia-jetson-nano-ref-carrier/dp/4126473?st=jetson#anchorTechnicalDOCS
 
 https://www.seeedstudio.com/reComputer-J101-v2-Carrier-Board-for-Jetson-Nano-p-5396.html
@@ -164,17 +171,12 @@ https://files.seeedstudio.com/products/102991694/reComputer%20J101V2%20datasheet
 
 https://files.seeedstudio.com/wiki/reComputer/reComputer-J101-PCBA-2D&3D.zip
 
-
 # install ubuntu 20
 
 Not a very good idea :-)
 
 https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html
 
-# gparted
-```
-sudo apt install gparted
-```
 # change filesystem on sdcard
 
 On a monté la carte sd qui contenait un système qu'on n'était pas arrivé à faire fonctionner (impossible de booter depuis la carte SD) construit avec une image de chez Qengineering : 
