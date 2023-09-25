@@ -1,3 +1,7 @@
+https://panjeh.medium.com/github-git-tag-release-to-an-old-commit-8fe38ee7167f
+
+pour chercher un pattern dans le code : `git grep pattern`
+
 pour voir les différences : `git diff`
 
 # emoncms bios version
