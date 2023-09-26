@@ -25,7 +25,7 @@ cf https://github.com/alexjunk/OBMmonitor/blob/main/OBMmonitor_controller.php#L9
 
 et il faut que l'user www-data ait les bonnes permissions
 
-cf https://github.com/alexjunk/BIOS2/requires.sh
+cf https://github.com/alexjunk/BIOS2/blob/pymodbus3/raspberry/requires.sh
 
 
 ## basic usage
