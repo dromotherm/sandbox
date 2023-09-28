@@ -1,5 +1,5 @@
 
-![](Systemd_components.png)
+![](images/Systemd_components.png)
 
 # Monitoring all systemd units status change
 
