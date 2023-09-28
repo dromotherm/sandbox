@@ -25,18 +25,17 @@ async def main():
     await bus.request_name(SERVICE_NAME)
     
     print("*****************DETAILS**********************************")
-    #print("AFTER INVOKING introspect()")
-    #details = interface.introspect()
-    #print("    AVAILABLE SIGNALS")
-    #for interface_signal in details.signals:
-    #    print(f'    - {interface_signal.name}')
-    #print("    AVAILABLE METHODS")
-    #for method in details.methods:
-    #    print(f'    - {method.name}')
-    print("AFTER BUS EXPORT")
+    print("INVOKING introspect()")
+    details = interface.introspect()
+    print("    AVAILABLE SIGNALS")
+    for interface_signal in details.signals:
+        print(f'    - {interface_signal.name}')
+    print("    AVAILABLE METHODS")
+    for method in details.methods:
+        print(f'    - {method.name}')
+    print("INTERFACE HAS BEEN EXPORTED TO THE BUS ")
     print(f'    {bus._path_exports}')
-    print("AFTER REQUESTING UNIQUE NAME")
-    print(f'    bus unique name {bus.unique_name}')
+    print(f'unique name {bus.unique_name}')
     print("service up")
     print(f'name: {SERVICE_NAME}')
     print(f'path: {PATH}')
