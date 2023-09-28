@@ -11,12 +11,12 @@ class ExampleInterface(ServiceInterface):
         self._string_prop = 'kevin'
 
     @method(name='Echo')
-    def Echo(self, what: 's') -> 's':
+    def Echo(self, what: str) -> str:
         print("a client is invoking me")
         what=f'I am {self._string_prop} and I say {what}'
         return what
 
     @signal(name='signalSimple')
-    def signal_simple(self) -> 's':
+    def signal_simple(self) -> str:
         print("emitting a signal")
         return 'signal > hello'
