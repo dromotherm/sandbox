@@ -4,20 +4,26 @@ the custom interface is in dbus_tools
 import asyncio
 import signal
 from dbus_next.aio import MessageBus
-from dbus_next import Variant, BusType
+from dbus_next import Message, BusType
 from dbus_tools import ExampleInterface, SERVICE_NAME, PATH, INTERFACE_NAME
 
-async def waiter(event, interface, bus):
-    print('waiting for it ...')
+async def wait_for_closing(event, interface, bus):
     await event.wait()
-    interface.signal_simple()
-    print('... got it!')
+    msg = Message.new_signal(
+        interface=INTERFACE_NAME,
+        path=PATH,
+        member="signalSimple",
+        signature='s',
+        body=["got signal : service closing"],
+    )
+    await bus.send(msg)
+    print('...we are closing...')
 
 async def main():
-    event = asyncio.Event()
+    stop_event = asyncio.Event()
     loop = asyncio.get_event_loop()
-    loop.add_signal_handler(signal.SIGINT, event.set)
-    loop.add_signal_handler(signal.SIGTERM, event.set)
+    loop.add_signal_handler(signal.SIGINT, stop_event.set)
+    loop.add_signal_handler(signal.SIGTERM, stop_event.set)
 
     bus = await MessageBus(bus_type=BusType.SESSION).connect()
     interface = ExampleInterface(INTERFACE_NAME)
@@ -42,7 +48,9 @@ async def main():
     print(f'interface: {INTERFACE_NAME}')
     print("**********************************************************")
     
-    waiter_task = asyncio.create_task(waiter(event, interface, bus))
-    await waiter_task
+    wait_for_closing_task = asyncio.create_task(
+        wait_for_closing(stop_event, interface, bus)
+    )
+    await wait_for_closing_task
 
 asyncio.run(main())
