@@ -1,76 +1,49 @@
-from dbus_next.service import ServiceInterface, method, signal, dbus_property
-from dbus_next.aio.message_bus import MessageBus
-from dbus_next import Variant, BusType
-
-bus_type = BusType.SESSION
-#bus_type = BusType.SYSTEM
-
+"""a service
+the custom interface is in dbus_tools
+"""
 import asyncio
+import signal
+from dbus_next.aio import MessageBus
+from dbus_next import Variant, BusType
+from dbus_tools import ExampleInterface, SERVICE_NAME, PATH, INTERFACE_NAME
 
-
-class ExampleInterface(ServiceInterface):
-    def __init__(self, name):
-        super().__init__(name)
-        self._string_prop = 'kevin'
-
-    @method(name='Echo')
-    def Echo(self, what: 's') -> 's':
-        print("somebody is calling me")
-        what=f'je suis {self._string_prop} et je dis {what}'
-        return what
-
-    @method()
-    def EchoMultiple(self, what1: 's', what2: 's') -> 'ss':
-        return [what1, what2]
-
-    @method()
-    def GetVariantDict(self) -> 'a{sv}':
-        return {
-            'foo': Variant('s', 'bar'),
-            'bat': Variant('x', -55),
-            'a_list': Variant('as', ['hello', 'world'])
-        }
-
-    @dbus_property(name='StringProp')
-    def string_prop(self) -> 's':
-        return self._string_prop
-
-    @string_prop.setter
-    def string_prop_setter(self, val: 's'):
-        self._string_prop = val
-
-    @signal()
-    def Changed(self) -> 'b':
-        return True
-
-    @signal(name='signalSimple')
-    def signal_simple(self) -> 's':
-        print("emitting a signal")
-        return 'signal > hello'
-
-    @signal()
-    def signal_multiple(self) -> 'ss':
-        print("having a multiple signal")
-        return ['hello', 'world']
-
+async def waiter(event, interface, bus):
+    print('waiting for it ...')
+    await event.wait()
+    interface.signal_simple()
+    print('... got it!')
 
 async def main():
-    name = 'dbus.next.example.service'
-    path = '/example/path'
-    interface_name = 'example.interface'
+    event = asyncio.Event()
+    loop = asyncio.get_event_loop()
+    loop.add_signal_handler(signal.SIGINT, event.set)
+    loop.add_signal_handler(signal.SIGTERM, event.set)
 
-    bus = await MessageBus(bus_type=bus_type).connect()
-    interface = ExampleInterface(interface_name)
-    bus.export(path, interface)
-    await bus.request_name(name)
+    bus = await MessageBus(bus_type=BusType.SESSION).connect()
+    interface = ExampleInterface(INTERFACE_NAME)
+    details = interface.introspect()
+    bus.export(PATH, interface)
+    await bus.request_name(SERVICE_NAME)
     
-    print(f'bus unique name {bus.unique_name}')
+    print("*****************DETAILS**********************************")
+    print("AFTER INVOKING introspect()")
+    print("    AVAILABLE SIGNALS")
+    for interface_signal in details.signals:
+        print(f'    - {interface_signal.name}')
+    print("    AVAILABLE METHODS")
+    for method in details.methods:
+        print(f'    - {method.name}')
+    print("AFTER BUS EXPORT")
+    print(f'    {bus._path_exports}')
+    print("AFTER REQUESTING UNIQUE NAME")
+    print(f'    bus unique name {bus.unique_name}')
+    print("service up")
+    print(f'name: {SERVICE_NAME}')
+    print(f'path: {PATH}')
+    print(f'interface: {INTERFACE_NAME}')
+    print("**********************************************************")
+    
+    waiter_task = asyncio.create_task(waiter(event, interface, bus))
+    await waiter_task
 
-    await asyncio.sleep(2)
-    #interface.Changed()
-    interface.signal_simple()
-
-    print(f'service up on name: "{name}", path: "{path}", interface: "{interface_name}"')
-    await bus.wait_for_disconnect()
-
-asyncio.get_event_loop().run_until_complete(main())
+asyncio.run(main())
