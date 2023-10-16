@@ -12,6 +12,11 @@ https://github.com/JetsonHacksNano
 
 https://elinux.org/Jetson/General_debug
 
+# jtop
+```
+sudo pip3 install -U jetson-stats
+```
+
 # buildroot
 
 just for general knowledge : https://forums.developer.nvidia.com/t/nvidia-jetson-and-buildroot/77935/10
