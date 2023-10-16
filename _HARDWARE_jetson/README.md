@@ -122,11 +122,6 @@ sudo cp /path/to/CH341SER_LINUX/driver/ch341.ko /lib/modules/$(uname -r)/kernel/
 sudo depmod -a
 ```
 
-# jtop
-```
-sudo pip3 install -U jetson-stats
-```
-
 # enable sd card
 
 https://wiki.seeedstudio.com/J101_Enable_SD_Card/
