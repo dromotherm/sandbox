@@ -129,6 +129,8 @@ sudo depmod -a
 
 https://wiki.seeedstudio.com/J101_Enable_SD_Card/
 
+`sudo /opt/nvidia/jetson-io/config-by-hardware.py -n "reComputer sdmmc"`
+
 Dont do this : https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
 
 # install gparted
@@ -137,6 +139,8 @@ Dont do this : https://wiki.seeedstudio.com/J1010_Boot_From_SD_Card/
 
 ## install new fstab
 ```
+sudo mkdir /data
+sudo chown pi /data
 wget https://raw.githubusercontent.com/dromotherm/sandbox/master/_HARDWARE_jetson/fstab
 sudo cp fstab /etc/fstab
 sudo reboot
