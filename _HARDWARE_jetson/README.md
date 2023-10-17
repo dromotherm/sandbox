@@ -32,6 +32,9 @@ Les 2 dernières lignes devraient être les suivantes :
 *** The target t210ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
 ```
+
+**ON FAIT LA PREMIERE MISE A JOUR PROPOSEE AVANT DE DESINSTALLER LES APPLIS INUTILES**
+
 # checking the L4T release version
 ```
 head -n 1 /etc/nv_tegra_release
