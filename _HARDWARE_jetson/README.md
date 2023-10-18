@@ -149,6 +149,7 @@ sudo reboot
 
 Pour gérer la taille et la rotation des logs, on crée un fichier `daemon.json` dans `/ect/docker` :
 ```
+sudo apt-get install nano
 nano /etc/docker/daemon.json
 ```
 on y met le contenu suivant :
