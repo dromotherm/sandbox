@@ -19,27 +19,6 @@ Pour manager les networks docker :
 docker network ls
 docker network inspect xxxxx
 ```
-# les logs
-
-Pour gérer la taille et la rotation des logs, on crée un fichier `daemon.json` dans `/ect/docker` :
-```
-nano /etc/docker/daemon.json
-```
-on y met le contenu suivant :
-```
-{
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "3m",
-    "max-file": "3",
-    "labels": "production_status",
-    "env": "os,customer"
-  }
-}
-```
-Et on relance le docker daemon : `sudo systemctl restart docker`
-
-Les logs sont dans `/var/lib/docker/containers`
 
 # sur debian, pour disposer de certains outils en mode interactif
 
