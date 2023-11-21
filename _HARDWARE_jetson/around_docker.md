@@ -20,7 +20,7 @@ Lister les containers actifs: `docker ps`
 
 Pour voir même les containers arrêtés : `docker ps -a`
 
-On peut ensuite redémarrer un conteneur arrêté avec `docker run <id>`
+On peut redémarrer un conteneur arrêté avec `docker run <id>`
 
 Pour supprimer tous les containers arrêtés : `sudo docker container prune`
 
