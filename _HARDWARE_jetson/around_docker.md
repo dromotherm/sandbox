@@ -3,15 +3,22 @@ https://github.com/dusty-nv/jetson-containers/tree/master
 
 https://blog.appsecco.com/top-10-docker-hardening-best-practices-f16c090e4d59
 
+# gestion des containers et des images
 
-Pour manager ses images :
+Pour lister les images :
 ```
 sudo docker images
+sudo docker image ls
+```
+Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes
+```
 sudo docker system prune
 ```
 Pour arrêter tous ses containers actifs : `sudo docker stop $(sudo docker ps -a -q)` ou `docker stop $(docker ps -a -q)`
 
-Pour voir les containers arrêtés : `docker ps -a`
+Lister les containers actifs: `docker ps`
+
+Pour voir même les containers arrêtés : `docker ps -a`
 
 On peut ensuite redémarrer un conteneur arrêté avec `docker run <id>`
 
@@ -21,6 +28,18 @@ Pour manager les networks docker :
 ```
 docker network ls
 docker network inspect xxxxx
+```
+# emplacement des données docker sur le disque
+```
+docker info
+docker info | grep -e "Root Dir"
+Docker Root Dir: /var/lib/docker
+```
+les images sont dans /var/lib/docker
+
+pour connaître l'espace occupé par docker et ses images
+```
+sudo du -c /var/lib/docker
 ```
 
 # sur debian, pour disposer de certains outils en mode interactif
