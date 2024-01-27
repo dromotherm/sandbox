@@ -22,11 +22,18 @@ to check if ssl and proxy modules are activated :
 apache2ctl -M | grep ssl
 apache2ctl -M | grep proxy
 ```
-## configuration ssl
+## configuration ssl - création d'une clé de chiffrement
 
-Il faut créer une clé de chiffrement et la faire valider par une autorité de certification (CA)
+### option 1 pour une utilisation en local : self signed key
 
-### create CSR on the server
+```
+openssl genrsa -out emoncms.ddns.net.key 2048
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout alexjunk.key -out alexjunk.crt
+```
+
+### option 2 : passer par une autorité de certification (CA)
+
+1) create CSR on the server
 
 CSR = Certificate Signing Request = message adressé à une Autorité de Certification pour obtenir un certificat d’identité numérique.
 
@@ -35,15 +42,15 @@ cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
 openssl genrsa -out emoncms.ddns.net.key 2048
 openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 ```
-### use CSR to ask for SSL certificate
+2) use CSR to ask for SSL certificate
 
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
-### install certificate on the server and configure apache
+## configuration ssl - installer le certificat sur le serveur et configurer apache
 
 https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 
-Ce qui suit détaille la configuration apache au niveau du serveur, mais il faut avoir préalablement autorisé la régle NAT https sur le routeur/BOX
+Ce qui suit détaille la configuration apache au niveau du serveur, mais s'il l'on veut que le site soit accessible de l'extérieur, il faut avoir préalablement autorisé la régle NAT https sur le routeur/BOX
 
 #### default-ssl
 
