@@ -24,14 +24,7 @@ apache2ctl -M | grep proxy
 ```
 ## configuration ssl - création d'une clé de chiffrement
 
-### option 1 pour une utilisation en local : self signed key
-
-```
-openssl genrsa -out emoncms.ddns.net.key 2048
-openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout alexjunk.key -out alexjunk.crt
-```
-
-### option 2 : passer par une autorité de certification (CA)
+### demander un certificat à une autorité de certification (CA)
 
 1) create CSR on the server
 
@@ -46,7 +39,7 @@ openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
 
 https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
-## configuration ssl - installer le certificat sur le serveur et configurer apache
+### installer le certificat sur le serveur et configurer apache
 
 https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 
@@ -112,7 +105,17 @@ default-ssl (enabled by site administrator)
 000-default (enabled by site administrator)
 ```
 
-## utilisation du conteneur avec alpine
+# conteneur emoncms avec alpine en https sur le réseau local !
+
+sur la machine hôte, création d'une clé de chiffrement pour une utilisation en local : self signed key
+
+```
+openssl genrsa -out emoncms.ddns.net.key 2048
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout alexjunk.key -out alexjunk.crt
+```
+on stocke les clés sur la machine hôte dans /etc/ssl/certs, dans un dossier bios qu'on donne au superutilisateur
+
+on monte ce dossier dans le conteneur :
 ```
 sudo docker run --rm -p 8081:443 -p 7883:1883 -v /etc/ssl/certs/bios:/cert -it emoncms:alpine3.18
 ```
