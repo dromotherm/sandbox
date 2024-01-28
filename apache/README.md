@@ -49,6 +49,10 @@ Ce qui suit détaille la configuration apache au niveau du serveur, mais s'il l'
 
 #### default-ssl
 
+cf https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
+
+and https://httpd.apache.org/docs/2.4/fr/bind.html
+
 ```
 <IfModule mod_ssl.c>
     <VirtualHost _default_:443>
