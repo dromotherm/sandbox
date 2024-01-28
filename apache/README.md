@@ -45,7 +45,7 @@ https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
 
 https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 
-Ce qui suit détaille la configuration apache au niveau du serveur, mais s'il l'on veut que le site soit accessible de l'extérieur, il faut avoir préalablement autorisé la régle NAT https sur le routeur/BOX
+Ce qui suit détaille la configuration apache au niveau du serveur, mais si l'on veut que le site soit accessible de l'extérieur, il faut avoir préalablement autorisé la régle NAT https sur le routeur/BOX
 
 #### default-ssl
 
