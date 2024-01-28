@@ -111,3 +111,19 @@ a2query -s
 default-ssl (enabled by site administrator)
 000-default (enabled by site administrator)
 ```
+
+## utilisation du conteneur avec alpine
+```
+sudo docker run --rm -p 8081:443 -p 7883:1883 -v /etc/ssl/certs/bios:/cert -it emoncms:alpine3.18
+```
+
+contenu de /var/log/apache2/error.log
+```
+[Sun Jan 28 11:42:30.110706 2024] [ssl:warn] [pid 311] AH01906: localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Jan 28 11:42:30.110747 2024] [ssl:warn] [pid 311] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 28 11:42:30.125365 2024] [ssl:warn] [pid 311] AH01906: localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Jan 28 11:42:30.125389 2024] [ssl:warn] [pid 311] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Sun Jan 28 11:42:30.128783 2024] [mpm_prefork:notice] [pid 311] AH00163: Apache/2.4.58 (Unix) PHP/8.1.26 OpenSSL/3.1.4 configured -- resuming normal operations
+[Sun Jan 28 11:42:30.128799 2024] [core:notice] [pid 311] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+```
