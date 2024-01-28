@@ -127,8 +127,19 @@ on monte ce dossier dans le conteneur :
 ```
 sudo docker run --rm -p 8081:443 -p 7883:1883 -v /etc/ssl/certs/bios:/cert -it emoncms:alpine3.18
 ```
+Lorsqu'on génère le crt, on peut répondre ce qu'on veut à la série de questions, sauf pour le FQDN (Fully Qualified Domain Name)
 
 contenu de /var/log/apache2/error.log
+```
+[Sun Jan 28 17:25:37.206944 2024] [ssl:warn] [pid 134] AH01906: localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 28 17:25:37.239321 2024] [ssl:warn] [pid 134] AH01906: localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Jan 28 17:25:37.242679 2024] [mpm_prefork:notice] [pid 134] AH00163: Apache/2.4.58 (Unix) PHP/8.1.26 OpenSSL/3.1.4 configured -- resuming normal operations
+[Sun Jan 28 17:25:37.242697 2024] [core:notice] [pid 134] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+
+```
+si on ne fournit pas le bon FQDN, on a les lignes d'erreur en plus `localhost:443:0 server certificate does NOT include an ID which matches the server name`
+
 ```
 [Sun Jan 28 11:42:30.110706 2024] [ssl:warn] [pid 311] AH01906: localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Sun Jan 28 11:42:30.110747 2024] [ssl:warn] [pid 311] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
