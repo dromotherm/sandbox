@@ -5,6 +5,8 @@ Le serveur d'applications permet à un utilisateur qui veut tester emoncms de ti
 
 ## installation des packages
 
+pour faire simple, la machine hôte tourne sous ubuntu, avec systemd
+
 ```
 sudo apt install apache2 gettext
 sudo apt install python3-pip
@@ -110,7 +112,7 @@ default-ssl (enabled by site administrator)
 sur la machine hôte, création d'une clé de chiffrement pour une utilisation en local : self signed key
 
 ```
-openssl genrsa -out emoncms.ddns.net.key 2048
+openssl genrsa -out alexjunk.key 2048
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout alexjunk.key -out alexjunk.crt
 ```
 on stocke les clés sur la machine hôte dans /etc/ssl/certs, dans un dossier bios qu'on donne au superutilisateur
