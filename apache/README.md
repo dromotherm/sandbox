@@ -109,6 +109,8 @@ default-ssl (enabled by site administrator)
 
 # conteneur emoncms avec alpine en https sur le réseau local !
 
+cf https://community.home-assistant.io/t/connecting-to-ha-locally-using-https/566441/47
+
 sur la machine hôte, création d'une clé de chiffrement pour une utilisation en local : self signed key
 
 ```
