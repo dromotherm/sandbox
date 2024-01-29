@@ -110,6 +110,12 @@ a2query -s
 default-ssl (enabled by site administrator)
 000-default (enabled by site administrator)
 ```
+si les conf ne sont pas actives, on utilise la commande debian a2ensite :
+
+```
+sudo a2ensite default-ssl
+sudo systemctl reload apache2
+```
 
 # conteneur emoncms avec alpine en https sur le réseau local !
 
@@ -149,3 +155,34 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Sun Jan 28 11:42:30.128783 2024] [mpm_prefork:notice] [pid 311] AH00163: Apache/2.4.58 (Unix) PHP/8.1.26 OpenSSL/3.1.4 configured -- resuming normal operations
 [Sun Jan 28 11:42:30.128799 2024] [core:notice] [pid 311] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
 ```
+
+# serveur flask de conteneurs en mode purement local pour faire du développement
+on peut avoir ce genre d'erreur lorsqu'on a cloné le dépôt github dans son home, qu'on crée un fichier default.ssl et qu'on l'active :
+```
+[Mon Jan 29 15:01:17.092682 2024] [core:error] [pid 31249:tid 140349691373120] (13)Permission denied: [client 127.0.0.1:57462] AH00035: access to /try/ denied (filesystem path '/home/alexandrecuer/Documents') because search permissions are missing on a component of the path
+```
+Il faut ajouter des permissions d'exécution sur son home :
+```
+namei -mol /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
+f: /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
+drwxr-xr-x root          root          /
+drwxr-xr-x root          root          home
+drwxr-x--- alexandrecuer alexandrecuer alexandrecuer
+drwxr-xr-x alexandrecuer alexandrecuer Documents
+drwxrwxr-x alexandrecuer alexandrecuer GitHub
+drwxrwxr-x alexandrecuer alexandrecuer sandbox
+drwxrwxr-x alexandrecuer alexandrecuer apache
+drwxrwxr-x alexandrecuer alexandrecuer flask_https
+alexandrecuer@alexandrecuer-ThinkPad-X13-Gen-1:/etc/apache2/sites-available$ chmod +x /home/alexandrecuer
+alexandrecuer@alexandrecuer-ThinkPad-X13-Gen-1:/etc/apache2/sites-available$ namei -mol /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
+f: /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
+drwxr-xr-x root          root          /
+drwxr-xr-x root          root          home
+drwxr-x--x alexandrecuer alexandrecuer alexandrecuer
+drwxr-xr-x alexandrecuer alexandrecuer Documents
+drwxrwxr-x alexandrecuer alexandrecuer GitHub
+drwxrwxr-x alexandrecuer alexandrecuer sandbox
+drwxrwxr-x alexandrecuer alexandrecuer apache
+drwxrwxr-x alexandrecuer alexandrecuer flask_https
+```
+
