@@ -123,7 +123,7 @@ sudo systemctl reload apache2
 
 Dans une distribution alpine, les fichiers de configuration du serveur apache sont dans `/etc/apache2`, comme pour ubuntu.
 
-Il y a un fichier `httpd.conf` et un sous-répertoire `conf.d` qui contient des configurations que le fichier `httpd.conf` charge puisqu'il contient la directive `IncludeOptional /etc/apache2/conf.d/*.conf`
+Il y a un fichier `httpd.conf` et un sous-répertoire `conf.d` qui contient des configurations que le fichier `httpd.conf` charge puisqu'il comporte la directive `IncludeOptional /etc/apache2/conf.d/*.conf`
 
 Pas besoin de rajouter des instructions de type `Listen 80` ou `Listen 443`. Elles sont déjà incluses dans le paramétrage de base : `Listen 80` est dans `httpd.conf` et `Listen 443` est dans `conf.d\ssl.conf`
 
