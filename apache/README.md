@@ -164,6 +164,7 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Sun Jan 28 11:42:30.128783 2024] [mpm_prefork:notice] [pid 311] AH00163: Apache/2.4.58 (Unix) PHP/8.1.26 OpenSSL/3.1.4 configured -- resuming normal operations
 [Sun Jan 28 11:42:30.128799 2024] [core:notice] [pid 311] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
 ```
+**cette erreur n'est pas bloquante**
 
 # serveur flask de conteneurs en mode purement local pour faire du développement
 on peut avoir ce genre d'erreur lorsqu'on a cloné le dépôt github dans son home, qu'on crée un fichier default.ssl et qu'on l'active :
