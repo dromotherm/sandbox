@@ -182,8 +182,14 @@ drwxrwxr-x alexandrecuer alexandrecuer GitHub
 drwxrwxr-x alexandrecuer alexandrecuer sandbox
 drwxrwxr-x alexandrecuer alexandrecuer apache
 drwxrwxr-x alexandrecuer alexandrecuer flask_https
-alexandrecuer@alexandrecuer-ThinkPad-X13-Gen-1:/etc/apache2/sites-available$ chmod +x /home/alexandrecuer
-alexandrecuer@alexandrecuer-ThinkPad-X13-Gen-1:/etc/apache2/sites-available$ namei -mol /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
+```
+on applique les bonnes permissions :
+```
+chmod +x /home/alexandrecuer
+```
+On vérifie :
+```
+namei -mol /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
 f: /home/alexandrecuer/Documents/GitHub/sandbox/apache/flask_https
 drwxr-xr-x root          root          /
 drwxr-xr-x root          root          home
