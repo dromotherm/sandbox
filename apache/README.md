@@ -5,7 +5,9 @@ Le serveur d'applications permet à un utilisateur qui veut tester emoncms de ti
 
 ## installation des packages
 
-pour faire simple, la machine hôte tourne sous ubuntu, avec systemd
+Pour faire simple, la machine hôte tourne sous ubuntu, avec systemd. 
+
+Dans une distribution ubuntu, les fichiers de configuration du serveur apache sont dans `/etc/apache2` et le fichier principal est `apache2.conf`. `/etc/apache2` contient 2 sous-répertoires `sites-available` et `sites-enabled`. Il faut mettre les configurations que l'on veut utiliser dans `sites-available` et les activer avec la commande `a2ensite`. Celà crée dans `sites-enabled` un lien vers la configuration correspondante contenue dans `sites-available`. Pour désactiver une configuration, on utilise la commande `a2dissite`.
 
 ```
 sudo apt install apache2 gettext
@@ -118,6 +120,13 @@ sudo systemctl reload apache2
 ```
 
 # conteneur emoncms avec alpine en https sur le réseau local !
+
+Dans une distribution alpine, les fichiers de configuration du serveur apache sont dans `/etc/apache2`, comme pour ubuntu.
+
+Il y a un fichier `httpd.conf` et un sous-répertoire `conf.d` qui contient des configurations que le fichier `httpd.conf` charge puisqu'il contient la directive `IncludeOptional /etc/apache2/conf.d/*.conf`
+
+Pas besoin de rajouter des instructions de type `Listen 80` ou `Listen 443`. Elles sont déjà incluses dans le paramétrage de base : `Listen 80` est dans `httpd.conf` et `Listen 443` est dans `conf.d\ssl.conf`
+
 
 cf https://community.home-assistant.io/t/connecting-to-ha-locally-using-https/566441/47
 
