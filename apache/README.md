@@ -2,12 +2,22 @@
 
 Le serveur d'applications permet à un utilisateur qui veut tester emoncms de tirer un numéro de port entre 8080 et 9090 et de lancer un container.
 
-
-## installation des packages
-
 Pour faire simple, la machine hôte tourne sous ubuntu, avec systemd. 
 
 Dans une distribution ubuntu, les fichiers de configuration du serveur apache sont dans `/etc/apache2` et le fichier principal est `apache2.conf`. `/etc/apache2` contient 2 sous-répertoires `sites-available` et `sites-enabled`. Il faut mettre les configurations que l'on veut utiliser dans `sites-available` et les activer avec la commande `a2ensite`. Celà crée dans `sites-enabled` un lien vers la configuration correspondante contenue dans `sites-available`. Pour désactiver une configuration, on utilise la commande `a2dissite`.
+
+Par défaut, apache arrive avec une configuration ssl, donc des certificats et des clés. Sur Ubuntu/Debian les certificats sont dans `/etc/ssl/certs` et les clés dans `/etc/ssl/private`. 
+
+Le fichier `default-ssl.conf` du répertoire `sites-available` contient les directives suivantes :
+```
+SSLCertificateFile	/etc/ssl/certs/ssl-cert-snakeoil.pem
+SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+```
+Il semble que ce certificat intègre un ServerName égal à ubuntu.home. On peut s'en contenter pour faire des tests mais il est utile de connaître tout le process de génération des clés et des certificats.
+
+On commence par l'installation des packages nécessaires au serveur.
+
+## installation des packages
 
 ```
 sudo apt install apache2 gettext
@@ -112,7 +122,7 @@ a2query -s
 default-ssl (enabled by site administrator)
 000-default (enabled by site administrator)
 ```
-si les conf ne sont pas actives, on utilise la commande debian a2ensite :
+Pour activer les conf, comme déjà évoqué, on utilise la commande debian `a2ensite` :
 
 ```
 sudo a2ensite default-ssl
@@ -127,6 +137,7 @@ Il y a un fichier `httpd.conf` et un sous-répertoire `conf.d` qui contient des 
 
 Pas besoin de rajouter des instructions de type `Listen 80` ou `Listen 443`. Elles sont déjà incluses dans le paramétrage de base : `Listen 80` est dans `httpd.conf` et `Listen 443` est dans `conf.d\ssl.conf`
 
+Sur Alpine, on trouve les certificats et les clés dans `/etc/ssl/apache2/` sous les noms `server.pem` et `server.key`
 
 cf https://community.home-assistant.io/t/connecting-to-ha-locally-using-https/566441/47
 
