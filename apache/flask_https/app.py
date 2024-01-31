@@ -1,4 +1,8 @@
-""" API for a docker containers application server """
+"""API for a docker containers application server 
+This project uses subprocess as it restart apache when updating the conf file...
+It could use docker-py but subprocess or dbus_next would be necessary to restart apache.
+maybe using docker in docker ?
+"""
 import random
 import subprocess
 import datetime
@@ -14,11 +18,17 @@ app = Flask(__name__)
 
 RCO = redis.Redis(host="localhost", port=6379, db=0)
 
-SERVER_NAME = "emoncms.ddns.net"
-DOCKER_IMAGE = "emoncms_ssh"
+# replace with your CNAME, eg emoncms.ddns.net
+CNAME = "localhost"
+LOCAL_NAME = "127.0.0.1"
+SU_PASS = "your_pass"
+DOCKER_IMAGE = "emoncms:alpine3.18"
 # chemin du fichier apache de configuration des VirtualHosts
 APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
-
+# les certificats à monter dans les conteneurs
+CERT_DIR = "/etc/ssl/certs/bios"
+CRT_FILE = "alexjunk.crt"
+KEY_FILE = "alexjunk.key"
 
 def exec_shell_command(cmd):
     """execute a shell command"""
@@ -48,9 +58,9 @@ def maj_apache_conf(new_conf):
     with open("apache.conf", "w", encoding="utf-8") as f_p:
         for line in new_conf:
             f_p.write(line)
-    cmd = [f'sudo mv apache.conf {APACHE_CONF}']
+    cmd = [f'echo {SU_PASS} | sudo -S mv apache.conf {APACHE_CONF}']
     exec_shell_command(cmd)
-    cmd = ['sudo systemctl reload apache2']
+    cmd = [f'echo {SU_PASS} | sudo -S systemctl reload apache2']
     exec_shell_command(cmd)
 
 
@@ -77,19 +87,25 @@ def start():
     proto = request.scheme
     container_port = 443 if proto == "https" else 80
     host_port = get_free_port()
-    cmd = [f'docker run -d -p{host_port}:{container_port} {DOCKER_IMAGE}']
-    long_token = exec_shell_command(cmd)
+    cmd = f'echo {SU_PASS} | sudo -S docker run -d -p{host_port}:{container_port}'
+    if proto == "https":
+        cmd = f'{cmd} -v {CERT_DIR}:/cert'
+        cmd = f'{cmd} -e KEY_FILE=/cert/{KEY_FILE}'
+        cmd = f'{cmd} -e CRT_FILE=/cert/{CRT_FILE}'
+        cmd = f'{cmd} -e REVERSE_PROXY=1'
+    cmd = f'{cmd} {DOCKER_IMAGE}'
+    long_token = exec_shell_command([cmd])
     token = long_token[:12].decode()
-    app_url = f'{proto}://{SERVER_NAME}/{token}'
+    app_url = f'{proto}://{CNAME}/{token}/'
     lines = read_apache_conf()
     end_balise = -1
     for i, line in enumerate(lines):
         if '</VirtualHost>' in line:
             end_balise = i
             break
-    tab = "		"
-    lines.insert(end_balise, f'{tab}ProxyPass /{token} {proto}://127.0.0.1:{host_port}\n')
-    lines.insert(end_balise, f'{tab}ProxyPassReverse /{token} {proto}://127.0.0.1:{host_port}\n')
+    tab = "        "
+    lines.insert(end_balise, f'{tab}ProxyPass /{token} {proto}://{LOCAL_NAME}:{host_port}\n')
+    lines.insert(end_balise, f'{tab}ProxyPassReverse /{token} {proto}://{LOCAL_NAME}:{host_port}\n')
     proxy_check_cn_configured = False
     proxy_check_cn_directive = f'{tab}SSLProxyCheckPeerCN off\n'
     proxy_engine_configured = False
@@ -127,7 +143,7 @@ def start():
 def list_running_containers():
     """list running containers"""
     nb_used_ports = RCO.scard("ports")
-    cmd = ["docker container ls"]
+    cmd = [f'echo {SU_PASS} | sudo -S docker container ls']
     containers = exec_shell_command(cmd)
     containers = containers.decode().replace("\n", "<br>")
     content = f'Il y a {nb_used_ports} port(s) utilisé(s)'
@@ -138,7 +154,7 @@ def list_running_containers():
 @app.route("/check/<token>")
 def check(token):
     """given a token, check if container is running"""
-    cmd = [f'docker ps | grep {token}']
+    cmd = [f'echo {SU_PASS} | sudo -S docker ps | grep {token}']
     return exec_shell_command(cmd)
 
 
@@ -160,14 +176,14 @@ def clear():
                     tokens.append(result.group(1))
     RCO.delete("ports")
     # un peu trop brutal
-    # cmd = ["docker ps -aq | xargs docker stop | xargs docker rm"]
+    # cmd = [f'echo {SU_PASS} | sudo -S docker ps -aq | xargs docker stop | xargs docker rm']
     # exec_shell_command(cmd)
     token_string = ""
     for token in tokens:
         token_string = f'{token_string} {token}'
-    cmd = [f'docker container stop{token_string}']
+    cmd = [f'echo {SU_PASS} | sudo -S docker container stop{token_string}']
     exec_shell_command(cmd)
-    cmd = [f'docker container rm{token_string}']
+    cmd = [f'echo {SU_PASS} | sudo -S docker container rm{token_string}']
     exec_shell_command(cmd)
     new_conf = []
     for i, line in enumerate(lines):
@@ -181,9 +197,9 @@ def clear():
 def delete(port, token):
     """given a port and a token, delete corresponding container"""
     RCO.srem("ports", port)
-    cmd = [f'docker container stop {token}']
+    cmd = [f'echo {SU_PASS} | sudo -S docker container stop {token}']
     exec_shell_command(cmd)
-    cmd = [f'docker container rm {token}']
+    cmd = [f'echo {SU_PASS} | sudo -S docker container rm {token}']
     exec_shell_command(cmd)
     lines = read_apache_conf()
     suppress_list = []
