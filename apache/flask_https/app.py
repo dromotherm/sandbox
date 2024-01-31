@@ -1,4 +1,4 @@
-"""API for a docker containers application server 
+"""API for a docker containers application server
 This project uses subprocess as it restart apache when updating the conf file...
 It could use docker-py but subprocess or dbus_next would be necessary to restart apache.
 maybe using docker in docker ?
@@ -29,6 +29,7 @@ APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
 CERT_DIR = "/etc/ssl/certs/bios"
 CRT_FILE = "alexjunk.crt"
 KEY_FILE = "alexjunk.key"
+
 
 def exec_shell_command(cmd):
     """execute a shell command"""
