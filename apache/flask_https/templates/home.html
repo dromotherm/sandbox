@@ -103,7 +103,7 @@
 
 var lang = {% if lang=="fr" %}"fr"{% else %}"en"{% endif %};
 
-$("#loading").hide();
+document.querySelector('#loading').style.display = 'none';
 
 function getCookie(name) {
     // cf https://stackoverflow.com/questions/10730362/get-cookie-by-name/15724300#15724300
@@ -112,15 +112,18 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function createApp() {
-    $.ajax({ url: "./start", 
-        dataType: "json",
-        async: true,
-        success(data) {
-            console.log(data);
-            showAppLinkNDelButton(data);
-        }
-    });
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function createApp() {
+    let response = await fetch('./start');
+    if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        await delay(5000);
+        showAppLinkNDelButton(data);
+    }
 }
 
 function showAppLinkNDelButton(data) {
