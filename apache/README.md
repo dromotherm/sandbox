@@ -23,7 +23,7 @@ On commence par l'installation des packages nécessaires au serveur.
 sudo apt install apache2 gettext
 sudo apt install python3-pip
 python3 -m pip install --upgrade pip
-sudo apt install redis-server
+sudo apt install redis-server mosquitto
 pip3 install redis
 pip3 install flask
 sudo apt install libapache2-mod-wsgi-py3 python-dev-is-python3
@@ -31,6 +31,19 @@ sudo a2enmod ssl
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 ```
+customize mosquitto configuration with `sudo nano /etc/mosquitto/mosquitto.conf` :
+```
+persistence false
+allow_anonymous false
+listener 1883
+password_file /etc/mosquitto/passwd
+```
+create credentials :
+```
+touch /etc/mosquitto/passwd
+mosquitto_passwd -b /etc/mosquitto/passwd emonpi emonpimqtt2016
+```
+
 to check if ssl and proxy modules are activated :
 ```
 apache2ctl -M | grep ssl
