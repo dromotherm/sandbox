@@ -22,13 +22,15 @@ RCO = redis.Redis(host="localhost", port=6379, db=0)
 CNAME = "localhost"
 LOCAL_NAME = "127.0.0.1"
 SU_PASS = "your_pass"
-DOCKER_IMAGE = "emoncms:alpine3.18"
+DOCKER_IMAGE = "alexjunk/themis:alpine3.18_emoncms11.4.7"
 # chemin du fichier apache de configuration des VirtualHosts
 APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
 # les certificats à monter dans les conteneurs
 CERT_DIR = "/etc/ssl/certs/bios"
 CRT_FILE = "alexjunk.crt"
 KEY_FILE = "alexjunk.key"
+# using the host broker
+MQTT_HOST = "172.17.0.1"
 
 
 def exec_shell_command(cmd):
@@ -84,7 +86,7 @@ def home():
 
 @app.route("/start")
 def start():
-    """start a new container"""
+    """start a new container, configure the reverse proxy and set a new cookie"""
     proto = request.scheme
     container_port = 443 if proto == "https" else 80
     host_port = get_free_port()
@@ -94,6 +96,7 @@ def start():
         cmd = f'{cmd} -e KEY_FILE=/cert/{KEY_FILE}'
         cmd = f'{cmd} -e CRT_FILE=/cert/{CRT_FILE}'
         cmd = f'{cmd} -e REVERSE_PROXY=1'
+        cmd = f'{cmd} -e MQTT_HOST={MQTT_HOST}'
     cmd = f'{cmd} {DOCKER_IMAGE}'
     long_token = exec_shell_command([cmd])
     token = long_token[:12].decode()
