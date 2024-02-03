@@ -90,13 +90,14 @@ def start():
     proto = request.scheme
     container_port = 443 if proto == "https" else 80
     host_port = get_free_port()
-    cmd = f'echo {SU_PASS} | sudo -S docker run -d -p{host_port}:{container_port}'
+    cmd = f'echo {SU_PASS} | sudo -S docker run -d --restart always'
+    cmd = f'{cmd} -p {host_port}:{container_port}'
     if proto == "https":
         cmd = f'{cmd} -v {CERT_DIR}:/cert'
         cmd = f'{cmd} -e KEY_FILE=/cert/{KEY_FILE}'
         cmd = f'{cmd} -e CRT_FILE=/cert/{CRT_FILE}'
-        cmd = f'{cmd} -e REVERSE_PROXY=1'
-        cmd = f'{cmd} -e MQTT_HOST={MQTT_HOST}'
+    cmd = f'{cmd} -e REVERSE_PROXY=1'
+    cmd = f'{cmd} -e MQTT_HOST={MQTT_HOST}'
     cmd = f'{cmd} {DOCKER_IMAGE}'
     long_token = exec_shell_command([cmd])
     token = long_token[:12].decode()
