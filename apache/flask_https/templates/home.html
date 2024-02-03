@@ -203,7 +203,7 @@ document.querySelector('#delete_button').addEventListener('click', function() {
     document.querySelector('#delete').style.display = 'none';
     document.querySelector('#loading').style.display = '';
     document.querySelector('#open').innerHTML = "";
-    var del_route = $(this).val();
+    var del_route = document.querySelector('#delete_button').value;
     console.log(del_route);
     deleteApp(del_route);
 });
