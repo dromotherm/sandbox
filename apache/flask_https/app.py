@@ -11,26 +11,14 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import redis
+from conf import CNAME, LOCAL_NAME, SU_PASS, DOCKER_IMAGE
+from conf import APACHE_CONF, CERT_DIR, CRT_FILE, KEY_FILE, MQTT_HOST
 
 # pylint: disable=R0914
 
 app = Flask(__name__)
 
 RCO = redis.Redis(host="localhost", port=6379, db=0)
-
-# replace with your CNAME, eg emoncms.ddns.net
-CNAME = "localhost"
-LOCAL_NAME = "127.0.0.1"
-SU_PASS = "your_pass"
-DOCKER_IMAGE = "alexjunk/themis:alpine3.18_emoncms11.4.7"
-# chemin du fichier apache de configuration des VirtualHosts
-APACHE_CONF = "/etc/apache2/sites-available/default-ssl.conf"
-# les certificats à monter dans les conteneurs
-CERT_DIR = "/etc/ssl/certs/bios"
-CRT_FILE = "alexjunk.crt"
-KEY_FILE = "alexjunk.key"
-# using the host broker
-MQTT_HOST = "172.17.0.1"
 
 
 def exec_shell_command(cmd):
