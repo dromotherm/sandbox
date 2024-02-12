@@ -4,6 +4,10 @@ download binaries for linux : https://nodejs.org/en/download
 
 https://github.com/nodejs/help/wiki/Installation
 
+## using vuepress
+
+https://vuepress.vuejs.org/guide/getting-started.html#quick-start
+
 # compiling from source
 
 https://github.com/nodejs/node/blob/main/BUILDING.md#building-nodejs-1
