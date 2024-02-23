@@ -1,10 +1,31 @@
+
+official docker image from : https://hub.docker.com/_/influxdb
+```
+docker run --rm -p 8086:8086 -v alexInfluxVolume:/var/lib/influxdb2 -it influxdb:latest
+```
+You can access to the app through http://127.0.0.1:8086
+
+Create an organization and a bucket, for example :
+- org : obm
+- bucket: bios_datas
+A token will be created for that.
+
+Export them as env vars :
+```
+export INFLUX_ORG=obm
+export INFLUX_BUCKET=bios_datas
+export INFLUX_TOKEN=my_super_hard_to_find_token
+```
+
 # post data via the API
+
+cf https://docs.influxdata.com/influxdb/v2/get-started/write/
 
 posting datas for day 2022-01-01, in a measurement called home
 
 ```
 curl --request POST \
-"$INFLUX_HOST/api/v2/write?org=$INFLUX_ORG&bucket=bios_datas&precision=s" \
+"$INFLUX_HOST/api/v2/write?org=$INFLUX_ORG&bucket=$INFLUX_BUCKET&precision=s" \
   --header "Authorization: Token $INFLUX_TOKEN" \
   --header "Content-Type: text/plain; charset=utf-8" \
   --header "Accept: application/json" \
