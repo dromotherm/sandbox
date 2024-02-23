@@ -9,3 +9,5 @@ https://github.com/aircrack-ng/aircrack-ng
 https://securityheaders.com/
 
 https://observatory.mozilla.org/
+
+https://julien.io/configuration-de-securite-dans-apache-httpd/
