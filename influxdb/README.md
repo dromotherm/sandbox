@@ -11,14 +11,17 @@ Create an organization and a bucket, for example :
 
 A token will be initialized.
 
-Export them as env vars on the host machine :
+<details><summary><h2>post data via the API</h2></summary>
+
+open a shell on the host machine.
+
+Export app address, org, bucket and token as env vars on the host machine :
 ```
+export INFLUX_HOST=http://localhost:8086
 export INFLUX_ORG=obm
 export INFLUX_BUCKET=bios_datas
 export INFLUX_TOKEN=my_super_hard_to_find_token
 ```
-
-<details><summary><h2>post data via the API</h2></summary>
 
 cf https://docs.influxdata.com/influxdb/v2/get-started/write/
 
@@ -82,3 +85,9 @@ You can now see fields and room
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/9928702f-0476-4781-8be0-c15630dcf71d)
 
 </details>
+
+# posting via MQTT
+
+```
+docker run --rm -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro -e INFLUX_TOKEN -it telegraf
+```
