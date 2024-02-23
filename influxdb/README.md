@@ -11,7 +11,7 @@ Create an organization and a bucket, for example :
 
 A token will be initialized.
 
-<details><summary><h2>post data via the API</h2></summary>
+<details><summary><h1>post data via the API</h1></summary>
 
 open a shell on the host machine.
 
