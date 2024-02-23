@@ -1,5 +1,7 @@
 # post data via the API
 
+posting datas for day 2022-01-01, in a measurement called home
+
 ```
 curl --request POST \
 "$INFLUX_HOST/api/v2/write?org=$INFLUX_ORG&bucket=bios_datas&precision=s" \
@@ -37,9 +39,15 @@ home,room=Kitchen temp=22.7,hum=36.5,co=26i 1641067200
 ```
 ## use the data explorer to visualize the datas
 
+You can see the measurement
+
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/0396bec9-e5b4-4dfe-b5af-4ab68974fcef)
 
-specify a custom time range
+But you cannot see any fields
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/51df6a45-9077-40bf-88d9-1af4e0775d20)
+
+You have to specify a custom time range :
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/f28198c6-d4a8-40ba-a89e-d561720d3ef2)
 
