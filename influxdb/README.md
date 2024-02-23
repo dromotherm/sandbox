@@ -1,5 +1,5 @@
 
-official docker image from : https://hub.docker.com/_/influxdb
+Official docker image from : https://hub.docker.com/_/influxdb
 ```
 docker run --rm -p 8086:8086 -v alexInfluxVolume:/var/lib/influxdb2 -it influxdb:latest
 ```
@@ -13,7 +13,7 @@ A token will be initialized.
 
 <details><summary><h1>post data via the API</h1></summary>
 
-open a shell on the host machine.
+Open a shell on the host machine.
 
 Export app address, org, bucket and token as env vars on the host machine :
 ```
@@ -86,8 +86,48 @@ You can now see fields and room
 
 </details>
 
-# posting via MQTT
+# post via MQTT
+
+Open a shell on the host machine, in order to run a telegraf container
+
+Export some env vars on the host machine, assuming its IP to be 192.168.1.53 :
+```
+export INFLUX_HOST=http://192.168.1.53:8086
+export INFLUX_ORG=obm
+export INFLUX_BUCKET=bios_datas
+export INFLUX_TOKEN=my_super_hard_to_find_token
+```
+Create a telegraf.conf file : `nano telegraf.conf` with the following content : 
 
 ```
-docker run --rm -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro -e INFLUX_TOKEN -it telegraf
+# Configuration for telegraf agent
+[agent]
+  debug = true
+  omit_hostname = true
+
+[[outputs.influxdb_v2]]
+  urls = ["$INFLUX_HOST"]
+  token = "$INFLUX_TOKEN"
+  organization = "$INFLUX_ORG"
+  bucket = "$INFLUX_BUCKET"
+
+# Read metrics from MQTT topic(s)
+[[inputs.mqtt_consumer]]
+  servers = ["tcp://192.168.1.53:1883"]
+  username = "emonpi"
+  password = "emonpimqtt2016"
+
+  ## Topics that will be subscribed to.
+  topics = ["emon/#"]
+  data_type = "float"
+  data_format = "json"
 ```
+Start the telegraf container :
+```
+docker run --rm -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro -e INFLUX_TOKEN -e INFLUX_HOST -e INFLUX_BUCKET -e INFLUX_ORG -it telegraf
+```
+Post a json payload :
+```
+mosquitto_pub -h 192.168.1.53 -p 1883 -u "emonpi" -P "emonpimqtt2016" -t 'emon/ouah' -m "{\"t7\":132,\"t6\":23.6}"
+```
+
