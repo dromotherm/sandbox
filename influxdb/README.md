@@ -113,10 +113,10 @@ Create a telegraf.conf file : `nano telegraf.conf` with the following content :
 
 # Read metrics from MQTT topic(s)
 [[inputs.mqtt_consumer]]
+  name_override = "bios"
   servers = ["tcp://192.168.1.53:1883"]
   username = "emonpi"
   password = "emonpimqtt2016"
-
   ## Topics that will be subscribed to.
   topics = ["emon/#"]
   data_type = "float"
@@ -131,3 +131,4 @@ Post a json payload :
 mosquitto_pub -h 192.168.1.53 -p 1883 -u "emonpi" -P "emonpimqtt2016" -t 'emon/ouah' -m "{\"t7\":132,\"t6\":23.6}"
 ```
 
+![image](https://github.com/dromotherm/sandbox/assets/24553739/54c1fed0-a7c0-4c70-9a6c-8067ed75d713)
