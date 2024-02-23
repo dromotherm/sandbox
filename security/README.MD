@@ -7,3 +7,5 @@ https://github.com/aircrack-ng/aircrack-ng
 # SCAN YOUR SITE
 
 https://securityheaders.com/
+
+https://observatory.mozilla.org/
