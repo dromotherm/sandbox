@@ -88,6 +88,10 @@ You can now see fields and room
 
 # post via MQTT
 
+see : 
+- https://www.influxdata.com/integration/mqtt-telegraf-consumer/
+- https://www.influxdata.com/blog/mqtt-topic-payload-parsing-telegraf/
+
 Open a shell on the host machine, in order to run a telegraf container
 
 Export some env vars on the host machine, assuming its IP to be 192.168.1.53 :
