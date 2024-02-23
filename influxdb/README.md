@@ -8,7 +8,8 @@ You can access to the app through http://127.0.0.1:8086
 Create an organization and a bucket, for example :
 - org : obm
 - bucket: bios_datas
-A token will be created for that.
+
+A token will be initialized.
 
 Export them as env vars :
 ```
