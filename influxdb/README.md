@@ -11,7 +11,7 @@ Create an organization and a bucket, for example :
 
 A token will be initialized.
 
-Export them as env vars :
+Export them as env vars on the host machine :
 ```
 export INFLUX_ORG=obm
 export INFLUX_BUCKET=bios_datas
