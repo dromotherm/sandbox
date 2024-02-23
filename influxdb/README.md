@@ -18,7 +18,7 @@ export INFLUX_BUCKET=bios_datas
 export INFLUX_TOKEN=my_super_hard_to_find_token
 ```
 
-# post data via the API
+<details><summary><h2>post data via the API</h2></summary>
 
 cf https://docs.influxdata.com/influxdb/v2/get-started/write/
 
@@ -80,3 +80,5 @@ You have to specify a custom time range :
 You can now see fields and room
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/9928702f-0476-4781-8be0-c15630dcf71d)
+
+</details>
