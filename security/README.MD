@@ -10,4 +10,10 @@ https://securityheaders.com/
 
 https://observatory.mozilla.org/
 
+in apache.conf
+
+``
+LoadModule headers_module modules/mod_headers.so
+``
+
 https://julien.io/configuration-de-securite-dans-apache-httpd/
