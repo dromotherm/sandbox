@@ -85,6 +85,7 @@ def start():
         cmd = f'{cmd} -e KEY_FILE=/cert/{KEY_FILE}'
         cmd = f'{cmd} -e CRT_FILE=/cert/{CRT_FILE}'
     cmd = f'{cmd} -e REVERSE_PROXY=1'
+    cmd = f'{cmd} -e USE_HOSTNAME_FOR_MQTT_TOPIC_CLIENTID=1'
     cmd = f'{cmd} -e MQTT_HOST={MQTT_HOST}'
     cmd = f'{cmd} {DOCKER_IMAGE}'
     long_token = exec_shell_command([cmd])
