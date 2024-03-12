@@ -16,6 +16,8 @@ https://docs.aiohttp.org/en/stable/
 
 ## run ha with a venv
 
+https://home-assistant-china.github.io/docs/installation/virtualenv/
+
 https://community.home-assistant.io/t/installing-home-assistant-core-in-a-python-venv-when-your-distros-python-version-is-obsolete/217048
 
 ## philosophy 
