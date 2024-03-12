@@ -6,7 +6,9 @@ https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
 
 https://community.home-assistant.io/t/what-is-the-web-server-of-home-assistant/67107
 
-https://github.com/home-assistant/core/tree/master/homeassistant/components/http
+NOW : https://github.com/home-assistant/core/tree/master/homeassistant/components/http
+
+AT THE ORIGIN : https://github.com/home-assistant/core/tree/376d4e4fa0bbcbfa07646f49f9d8fd56c8c0df3c/homeassistant/components/http
 
 https://github.com/aio-libs/aiohttp
 
