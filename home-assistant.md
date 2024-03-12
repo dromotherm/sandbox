@@ -20,7 +20,33 @@ https://home-assistant-china.github.io/docs/installation/virtualenv/
 
 https://community.home-assistant.io/t/installing-home-assistant-core-in-a-python-venv-when-your-distros-python-version-is-obsolete/217048
 
-## philosophy 
+## run ha in docker
+
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+for an ephemeral test : 
+
+```
+sudo docker run \
+  --name homeassistant \
+  --rm \
+  -e TZ=Europe/Paris \
+  -p 8123:8123 \
+  -it \
+  ghcr.io/home-assistant/home-assistant:stable
+```
+or 
+```
+sudo docker run -d \
+  --name homeassistant \
+  --restart=unless-stopped \
+  -v /PATH_TO_YOUR_CONFIG:/config \
+  -e TZ=Europe/Paris \
+  -p 8123:8123 \
+  ghcr.io/home-assistant/home-assistant:stable
+```
+
+# philosophy 
 
 https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
 
