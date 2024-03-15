@@ -47,12 +47,12 @@ Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 </details>
 
 <details id=2>
-<summary><h2>Montage des systèmes de fichiers avec la mise en place d'un nouveau fstab</h2></summary>
+<summary><h2>fstab</h2></summary>
 
 ```
-sudo mkdir /var/opt/emoncms
-sudo chown www-data /var/opt/emoncms
-wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/master/defaults/etc/fstab
+sudo mkdir /data
+sudo chown $USER /data
+wget https://raw.githubusercontent.com/dromotherm/sandbox/master/_HARDWARE_jetson/fstab
 sudo cp fstab /etc/fstab
 sudo reboot
 ```
@@ -84,6 +84,8 @@ timedatectl
 <details id=4>
 <summary><h2>NodeRED</h2></summary>
 
+Why not ?
+
 ```
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo systemctl enable nodered.service
@@ -91,8 +93,30 @@ sudo systemctl enable nodered.service
 
 </details>
 
-<details id=5>
-<summary><h2>Si on compte utiliser la carte dans un boitier emonpi</h2></summary>
+<detail id=5>
+<summary><h2>install docker</h2></summary>
+```
+https://docs.docker.com/engine/install/debian/
+```
+
+<details id=6>
+<summary><h2>phpredisadmin</h2></summary>
+
+if you want a quick access to the redis database, without using redis-cli, you can use phpredisadmin :
+
+```
+sudo docker run -d --name=emoncms -p 8081:80 -p 7883:1883 -p 3001:3001 alexjunk/emoncms:alpine3.19_emoncms11.4.11
+```
+then :
+```
+sudo docker run -d --network=container:emoncms -e REDIS_1_HOST=127.0.0.1 -e PORT=3001 erikdubbelboer/phpredisadmin
+```
+stop the phpredisadmin container when you dont need any more, as there is no security 
+
+</details>
+
+<details id=6>
+<summary><h2>dans un boitier emonpi</h2></summary>
 
 ```
 nano /opt/openenergymonitor/BIOS2/hardware/ihm.py

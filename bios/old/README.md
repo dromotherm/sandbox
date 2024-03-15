@@ -1,6 +1,4 @@
-# good to know
-
-even if most things are deprecated or done through the docker imaging process
+# good to know even if most things are deprecated or done through the docker imaging process
 
 ## Prérequis sur un autre OS que Raspbian</h2></summary>
 
