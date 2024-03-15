@@ -95,6 +95,7 @@ sudo systemctl enable nodered.service
 
 <detail id=5>
 <summary><h2>install docker</h2></summary>
+
 ```
 https://docs.docker.com/engine/install/debian/
 ```
