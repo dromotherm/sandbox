@@ -52,10 +52,17 @@ Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 ```
 sudo mkdir /data
 sudo chown $USER /data
-wget https://raw.githubusercontent.com/dromotherm/sandbox/master/_HARDWARE_jetson/fstab
-sudo cp fstab /etc/fstab
-sudo reboot
 ```
+on édite le fstab : `sudo nano /etc/fstab` pour qu'il ressemble à ceci :
+```
+proc            /proc           proc    defaults          0       0
+PARTUUID=0a66e097-01  /boot/firmware  vfat    defaults          0       2
+PARTUUID=0a66e097-02  /               ext4    defaults,noatime  0       1
+PARTUUID=0a66e097-03  /data           ext2    defaults,noatime  0       2
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
+```
+et on reboote :  `sudo reboot`
 </details>
 
 <details id=3>
