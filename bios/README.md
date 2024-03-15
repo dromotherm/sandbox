@@ -97,7 +97,7 @@ sudo systemctl enable nodered.service
 
 https://docs.docker.com/engine/install/debian/
 
-<details id=6>
+<details id=5>
 <summary><h2>phpredisadmin</h2></summary>
 
 if you want a quick access to the redis database, without using redis-cli, you can use phpredisadmin :
@@ -113,28 +113,9 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 </details>
 
-<details id=6>
-<summary><h2>dans un boitier emonpi</h2></summary>
+## dans un boitier emonpi
 
-```
-nano /opt/openenergymonitor/BIOS2/hardware/ihm.py
-```
-on modifie l'adresse du lcd et le pin du bouton de commande :
-
-```
-i2c_address = 0x27
-gpiobutton = 23
-```
-Dans le run(), on remplace la ligne  :
-```
-push_btn = Button(gpiobutton, hold_time=5)
-```
-par :
-```
-push_btn = Button(gpiobutton, pull_up=False, hold_time=5)
-```
-
-</details>
+Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en lancez la commande : `make install ihm2`
 
 ## Configuration routeur - 1 = sans SIM
 
