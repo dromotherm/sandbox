@@ -20,7 +20,7 @@ xz -d -v 2022-04-04-raspios-bullseye-armhf-lite.img.xz
 
 Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
-Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur, prendre `pi` et `raspberry` puisque les choses sont changées en suivant. 
+**Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
 
 Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/releases/
 
