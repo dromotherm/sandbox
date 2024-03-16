@@ -104,6 +104,13 @@ sudo systemctl enable nodered.service
 
 https://docs.docker.com/engine/install/debian/
 
+check docker versions :
+
+```
+docker --version
+docker compose version
+```
+
 <details id=5>
 <summary><h2>phpredisadmin</h2></summary>
 
