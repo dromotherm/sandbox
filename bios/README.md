@@ -124,7 +124,7 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C. 
 
-Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en lancez la commande : `make install ihm2`
+Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en lancez la commande : `make install name=ihm2 user=root after_redis=0 after_mosquitto=0`
 
 ## Configuration routeur - 1 = sans SIM
 
