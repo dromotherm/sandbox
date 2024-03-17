@@ -116,6 +116,30 @@ docker --version
 docker compose version
 ```
 
+## IO configuration
+
+You should have serial activated but not bluetooth !! serial console should also be desactivated.
+
+To activate serial and desactivate serial console, use `sudo raspi-config`
+
+For bluetooth, you have to modify config.txt, which is easy to access on a raspios
+
+Previously in `/boot`, it is now in `/boot/firmware` :
+
+```
+sudo nano /boot/firmware/config.txt
+```
+add in the `[all]` section : `dtoverlay=disable-bt`
+
+Note on 17/03/2024 : added `dtoverlay=dwc2` just above the `[cm4]` section....
+
+cf https://github.com/raspberrypi/firmware/issues/1804
+
+having a lot of usb deconnections and this warning in journalctl 
+```
+WARN::dwc_otg_hcd_urb_dequeue:638: Timed out waiting for FSM NP transfer to complete on 2
+```
+
 <details id=5>
 <summary><h2>phpredisadmin</h2></summary>
 
@@ -136,7 +160,10 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C. 
 
-Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en lancez la commande : `make install name=ihm2 user=root after_redis=0 after_mosquitto=0`
+Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en lancez la commande :
+```
+make install name=ihm2 user=root after_redis=0 after_mosquitto=0
+```
 
 ## Configuration routeur - 1 = sans SIM
 
