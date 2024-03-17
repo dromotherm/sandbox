@@ -82,11 +82,12 @@ sudo systemctl mask getty@tty.service
 ```
 
 
+## cmdline
 ```
 sudo nano /boot/firmware/cmdline.txt
 ```
 
-removed `console=tty1
+removed `console=tty1`
 
 added on the existing line `dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0`
 
