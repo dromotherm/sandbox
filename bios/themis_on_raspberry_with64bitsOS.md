@@ -104,6 +104,8 @@ added on the existing line `dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0`
 
 removed `dtoverlay=dwc2` from config.txt
 
+## conclusion
+
 Finally the py did not reboot....
 
 
