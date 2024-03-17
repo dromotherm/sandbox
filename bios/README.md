@@ -131,6 +131,8 @@ disable the bluetooth modem
 ```
 sudo systemctl disable hciuart
 ```
+Once bluetooth disabled, `ls -al /dev/tty*` should show `/dev/ttyAMA0`
+
 ### troubles with USB on raspiOS 64 bits
 
 Note on 17/03/2024 : added `dtoverlay=dwc2` just above the `[cm4]` section....
