@@ -8,7 +8,9 @@ sudo docker run --rm --network=bios2_default --device-cgroup-rule='c 204:* rmw' 
 ```
 
 
-a lot of errors, usb is disconnected :
+a lot of warnings like : `WARN::dwc_otg_hcd_urb_dequeue:638: Timed out waiting for FSM NP transfer to complete on 1`
+
+and usb is disconnected :
 
 ```
 Mar 17 15:56:48 raspberrypi kernel: usb 1-1: USB disconnect, device number 8
