@@ -112,7 +112,9 @@ docker compose version
 
 ## IO configuration
 
-You should have serial activated but not bluetooth !! serial console should also be desactivated.
+**You should have serial activated but not bluetooth !! otherwise, serial will not work**
+
+serial console should also be desactivated.
 
 To activate serial and desactivate serial console, use `sudo raspi-config`
 
