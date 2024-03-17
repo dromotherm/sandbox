@@ -70,20 +70,29 @@ Mar 17 16:57:17 raspberrypi kernel: dwc2 3f980000.usb: hcint 0x00000402, intsts 
 ```
 
 
+Tried to removed getty
 
+```
 sudo systemctl stop getty@tty1.service
 sudo systemctl disable getty@tty1.service
 sudo systemctl stop serial-getty@ttyAMA0.service
 sudo systemctl disable serial-getty@ttyAMA0.service
 sudo systemctl mask serial-getty@ttyAMA0.service
 sudo systemctl mask getty@tty.service
+```
 
 
-
+```
 sudo nano /boot/firmware/cmdline.txt
-removed console=tty1
-added on the existing line dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0
-removed dtoverlay=dwc2 from config.txt
+```
+
+removed `console=tty1
+
+added on the existing line `dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0`
+
+removed `dtoverlay=dwc2` from config.txt
+
+Finally the py did not reboot....
 
 
 
