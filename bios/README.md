@@ -1,11 +1,12 @@
 # BIOS
 
-<details id=1>
-<summary><h2>Préparation SDcard</h2></summary>
+## Préparation SDcard
 
-Télécharger la dernière raspios (ne plus utiliser les versions 32 bits car les wheels tensorflow ne sont pas trop dispo sous 32 bits) :
+Télécharger la dernière raspios 
 
 https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-64-bit
+
+si pas besoin de tensorflow full, seulement dispo sous 64 bits, utiliser les versions 32 bits, qui sont toujours recommandées
 
 Prendre la lite version sans desktop
 
@@ -44,11 +45,7 @@ On boote le Pi
 
 Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 
-</details>
-
-<details id=2>
-<summary><h2>fstab</h2></summary>
-
+## fstab
 ```
 sudo mkdir /data
 sudo chown $USER /data
@@ -63,10 +60,8 @@ PARTUUID=0a66e097-03  /data           ext2    defaults,noatime  0       2
 #   use  dphys-swapfile swap[on|off]  for that
 ```
 et on reboote :  `sudo reboot`
-</details>
 
-<details id=3>
-<summary><h2>Timezone</h2></summary>
+## Timezone
 
 Si on est sous raspios : `sudo raspi-config`
 
@@ -86,9 +81,8 @@ Pour vérifier que la nouvelle timezone est bien prise en compte :
 ```
 timedatectl
 ```
-</details>
 
-<details id=4>
+<details id=1>
 <summary><h2>NodeRED</h2></summary>
 
 Why not ?
@@ -130,6 +124,12 @@ Previously in `/boot`, it is now in `/boot/firmware` :
 sudo nano /boot/firmware/config.txt
 ```
 add in the `[all]` section : `dtoverlay=disable-bt`
+
+disable the bluetooth modem 
+```
+sudo systemctl disable hciuart
+```
+### troubles with USB on raspiOS 64 bits
 
 Note on 17/03/2024 : added `dtoverlay=dwc2` just above the `[cm4]` section....
 
