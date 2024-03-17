@@ -6,6 +6,13 @@ started manually by running on the bios2 network create with docker compose
 ```
 sudo docker run --rm --network=bios2_default --device-cgroup-rule='c 204:* rmw' --device-cgroup-rule='c 188:* rmw' -v $(pwd):/bios -v /dev:/dev -e MQTT_HOST="themis" -it alexjunk/tf:ubuntu22.04_tflite2.13.0_paho1.6.1_pymodbus3.4.1 bash
 ```
+then running the ota2 sniffer : `python3 /bios/hardware/ota2.py --conf=/bios/conf/ota2.conf`
+
+using on the host journactl to follow the logs :
+
+```
+journalctl -n 100
+```
 
 
 a lot of warnings like : `WARN::dwc_otg_hcd_urb_dequeue:638: Timed out waiting for FSM NP transfer to complete on 1`
