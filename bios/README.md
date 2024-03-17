@@ -100,7 +100,12 @@ sudo systemctl enable nodered.service
 
 </details>
 
-## install docker
+## install git and docker
+
+```
+sudo apt-get update
+sudo apt-get install git
+```
 
 https://docs.docker.com/engine/install/debian/
 
