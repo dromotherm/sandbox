@@ -5,7 +5,7 @@ https://github.com/facundoolano/software-papers
 
 # bios
 
-[install BIOS with makefile](bios)
+[install BIOS](bios)
 
 [bios specificity detailed : storing meteoforecasts as emoncms redis temporary feeds :-)](enhancingEmonCMS.md)
 
