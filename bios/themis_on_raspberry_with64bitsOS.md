@@ -29,7 +29,7 @@ Mar 17 15:56:48 raspberrypi kernel: ftdi_sio 1-1.3:1.0: device disconnected
 ```
 https://github.com/raspberrypi/firmware/issues/1804
 
-with dwc2, things are not better : dwc2 3f980000.usb: dwc2_hc_chhltd_intr_dma: Channel 4 - ChHltd set, but reason is unknown
+with dwc2, things are not better : `dwc2 3f980000.usb: dwc2_hc_chhltd_intr_dma: Channel 4 - ChHltd set, but reason is unknown`
 
 ```
 Mar 17 16:45:09 raspberrypi kernel: usb 1-1.5: new full-speed USB device number 8 using dwc2
@@ -82,7 +82,7 @@ sudo systemctl mask getty@tty.service
 ```
 
 
-## cmdline
+## cmdline.txt
 ```
 sudo nano /boot/firmware/cmdline.txt
 ```
@@ -90,6 +90,8 @@ sudo nano /boot/firmware/cmdline.txt
 removed `console=tty1`
 
 added on the existing line `dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0`
+
+## config.txt
 
 removed `dtoverlay=dwc2` from config.txt
 
