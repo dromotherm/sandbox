@@ -21,6 +21,8 @@ xz -d -v 2022-04-04-raspios-bullseye-armhf-lite.img.xz
 
 Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
+Sur certaines ubuntu22, il manque libfuse2 et l'appimage d'etcher ne se lance pas `sudo apt install libfuse2`
+
 **Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
 
 Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/releases/
