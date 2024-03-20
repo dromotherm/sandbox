@@ -171,53 +171,21 @@ Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en l
 make install name=ihm2 user=root after_redis=0 after_mosquitto=0
 ```
 
-## Configuration routeur - 1 = sans SIM
-
-On démarre BIOS sans carte SD ds le raspberry
+## Configuration routeur
 
 On connecte un pc configuré pour du DHCP au ***premier port du routeur (eth0)***, en filaire
 
 On change le mot de passe du root
 
-### Primary LAN
+On peut fixer l'adresse du Pi à 192.168.1.2 en copiant sa mac depuis l'onglet DHCP
 
-192.168.2.1 : adresse du routeur
-
-DHCP Client : disabled
-
-IP Pool de 192.168.2.2 à 192.168.2.254
-
-On applique, ce qui coupe la connection. On peut relancer BIOS pour reprendre la configuration 
-
-### Secondary LAN & al
-
-DHCP Client : enabled
-
-default gateway : 192.168.1.1
-
-la case "Enable dynamic DHCP leases" n'est pas cochée
-
-**Cette configuration secondaire permet de connnecter le second port éthernet à un réseau de type livebox, configuré en 192.168.1.1, ce qui est utile pour disposer d'un accès internet quant il n'y a pas de carte SIM dans le routeur** 
-
-En utilisant l'adresse qui est attribuée par la box, on peut accéder à l'interface de management du routeur depuis un ordi connecté en WIFI à la box
-
-Nota : quant on n'a pas de carte SIM dans le routeur, il faut aller dans Configuration > Mobile WAN, et décocher la case "create connection to mobile network". Sinon le routeur va chercher à établir une connection en permanence.
-
-Si on a un troisième port ethernet, on peut laisser sa configuration inchangée (4.1)
+IP Pool de 192.168.1.3 à 192.168.1.254
 
 ### Wifi & wlan
 
 On saisit un nom de ssid, qu'on choisit de diffuser (broadcast enabled) et on définit une clé wpa2-psk.
 
 On active le wlan en gardant la configuration proposée (3.1)
-
-### Bail fixe pour le raspberry sur 192.168.2.2
-
-A ce stade, on peut éteindre BIOS, insérer la carte SD dans le raspberry et tt rallumer
-
-On peut alors fixer l'adresse du Pi en copiant sa mac depuis l'onglet DHCP
-
-IP Pool de 192.168.2.3 à 192.168.2.254
 
 ### RS485
 
@@ -227,34 +195,18 @@ Cette injection se fait par upload sans décompression d'un fichier tgz via le m
 
 On active le modbus TCP sur le port 2 (Enable MODBUS-TCP2RTU) sans changer quoi que soit.
 
-### NAT - provisoire
+### NAT
 
 Configuration > NAT
 
-On renseigne la translation d'adresse vers 192.168.2.2 sur le ports 80 (web)
+On renseigne la translation d'adresse vers 192.168.1.2 sur le ports 443 (web) qu'utilisera le proxy nginx
 
-On coche les cases : 
+On décoche les cases : 
 
 - `Enable remote HTTP access on port 80` 
 - `Enable remote HTTPS access on port 443`
 
-Nota : si le routeur n'a pas de wifi, si on est sans carte SIM et qu'on va rester sur un réseau de type livebox, il faut renseigner la translation d'adresse sur le port 22 pour faire du SSH depuis le réseau livebox
-
 **si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
-
-## Configuration routeur - 2 = avec SIM
-
-### Configuration mobile
-
-on insère la carte SIM et on active la connection mobile
-
-### DNS dynamique
-
-Configuration > Services > DynDNS
-
-on coche la case "Enable DynDNS Client"
-
-on renseigne le Hostname (eg : dromotherm.ddns.net) et dans le champ serveur, on saisit : `dynupdate.no-ip.com`
 
 ### Configuration SMS
 
@@ -263,3 +215,4 @@ toujours dans Services, on configure la gestion via SMS (`Send SMS on connect to
 La gestion de la consommation de données s’effectue via la page Configuration > mobile WAN.
 
 Il convient de cocher la case « enable trafic monitoring ». On choisit 8000 MB comme seuil et on choisit 60% comme niveau d'alerte.
+
