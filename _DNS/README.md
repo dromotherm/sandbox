@@ -26,13 +26,22 @@ Open-Building-Management.github.io. 1433 IN A	185.199.108.153
 Open-Building-Management.github.io. 1433 IN A	185.199.109.153
 Open-Building-Management.github.io. 1433 IN A	185.199.110.153
 ```
+
 # dynamic dns
 
-check the external ip from the local machine
+## check the ip associated to a dns
+
+the dig command
+
+https://www.hostinger.com/tutorials/how-to-use-the-dig-command-in-linux/
+
+```
+sudo apt-get install dnsutils
+```
+
+## check the external ip from the local machine
 
 https://github.com/begleysm/ipwatch/
-
-## listes de sites permettant de faire du check de dns
 
 - http://ip.dnsexit.com
 - http://ifconfig.me/ip
