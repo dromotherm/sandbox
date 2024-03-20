@@ -26,3 +26,8 @@ Open-Building-Management.github.io. 1433 IN A	185.199.108.153
 Open-Building-Management.github.io. 1433 IN A	185.199.109.153
 Open-Building-Management.github.io. 1433 IN A	185.199.110.153
 ```
+# dynamic dns
+
+check the external ip from the local machine
+
+https://github.com/begleysm/ipwatch/
