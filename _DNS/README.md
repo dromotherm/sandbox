@@ -43,6 +43,8 @@ sudo apt-get install dnsutils
 
 https://github.com/begleysm/ipwatch/
 
+https://github.com/theonemule/no-ip/blob/master/no-ip.sh
+
 - http://ip.dnsexit.com
 - http://ifconfig.me/ip
 - https://ipecho.net/plain
