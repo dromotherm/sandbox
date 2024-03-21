@@ -173,6 +173,8 @@ make install name=ihm2 user=root after_redis=0 after_mosquitto=0
 
 ## Configuration routeur
 
+see also [reverse proxy](../nginx_reverse_proxy)
+
 On connecte un pc configuré pour du DHCP au ***premier port du routeur (eth0)***, en filaire
 
 On change le mot de passe du root
