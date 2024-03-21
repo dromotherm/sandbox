@@ -12,7 +12,7 @@ Exemple sur une machine bios :
 
 Sur le routeur lui-même, une régle NAT existe sur le port 443 pour offrir un accès à son interface admin
 
-Si on décide d'utiliser NPM pour autre chose que de la génération de certificats, **il faut modifer la régle NAT existants sur le port 443 et pointant sur l'interface admin du routeur et la rediriger vers NPM : ce sera alors NPM qui s'occupera des redirections vers les applis....**
+Si on décide d'utiliser NPM pour autre chose que de la génération de certificats, **il faut modifer la régle NAT existante sur le port 443 et pointant sur l'interface admin du routeur et la rediriger vers NPM : ce sera alors NPM qui s'occupera des redirections vers les applis....**
 
 # création d'un domaine avec duckdns
 
