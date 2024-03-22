@@ -32,6 +32,12 @@ what ? | P1 | P2 | P3 | P4 | I1 | I2 | I3 | I4 | F1 | F2 | F3 | F4 | V | T1 | T2
 datacodes|h|h|h|h|h|h|h|h|h|h|h|h|h|h|h|h|h|h|h|L
 scales|1|1|1|1|0.01|0.01|0.01|0.01|0.01|0.01|0.01|0.01|0.01|0.1|0.1|0.1|0.1|0.1|0.1|1
 
+# to run the sniffer
+
+```
+sudo docker run --rm --network=bios2_default --device=/dev/ttyAMA0 -it -e MQTT_HOST=themis alexjunk/emontx_sniffer:alpine3.18.1
+```
+
 # to read on the OEM forum
 
 https://community.openenergymonitor.org/t/whats-happened-to-emontx-v4/25775/6
