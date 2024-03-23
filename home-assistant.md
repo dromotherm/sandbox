@@ -45,6 +45,14 @@ sudo docker run -d \
   -p 8123:8123 \
   ghcr.io/home-assistant/home-assistant:stable
 ```
+To use with a reverse proxy running on the host, just add the following lines to the http: section of your configuration.yaml
+
+```
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.0.0/24
+```
 
 # philosophy 
 
