@@ -10,6 +10,10 @@ https://securityheaders.com/
 
 https://observatory.mozilla.org/
 
+# configure headers in apache and nginx
+
+https://webdock.io/en/docs/how-guides/security-guides/how-to-configure-security-headers-in-nginx-and-apache
+
 in apache.conf
 
 ``
