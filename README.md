@@ -7,6 +7,8 @@ https://github.com/facundoolano/software-papers
 
 [install BIOS](bios)
 
+[manage sd cards on windows](http://ext2fsd.com/) or https://sourceforge.net/projects/ext2fsd/
+
 [bios specificity detailed : storing meteoforecasts as emoncms redis temporary feeds :-)](enhancingEmonCMS.md)
 
 [managing partitions with init_resize](init_resize)
