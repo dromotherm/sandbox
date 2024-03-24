@@ -6,6 +6,10 @@ pour chercher un pattern dans le code : `git grep pattern`
 
 pour voir les différences : `git diff`
 
+undo last commit not pushed : `git reset --soft HEAD~`
+
+This command undoes the latest commit, keeps the changes in place, and reverts the files back to the staging area.
+
 # emoncms bios version
 
 on peut choisir une branche bios_master, bios_stable
