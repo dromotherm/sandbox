@@ -9,6 +9,8 @@ https://github.com/facundoolano/software-papers
 
 [manage sd cards on windows](http://ext2fsd.com/) or https://sourceforge.net/projects/ext2fsd/
 
+cf https://raspberrypi-guide.github.io/filesharing/mount-raspberry-pi-sd-card
+
 [bios specificity detailed : storing meteoforecasts as emoncms redis temporary feeds :-)](enhancingEmonCMS.md)
 
 [managing partitions with init_resize](init_resize)
