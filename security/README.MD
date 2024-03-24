@@ -32,6 +32,8 @@ Une fois que la politique HSTS est présentée à un client, celui-ci met les in
 
 Il est très difficile d'annuler une stratégie HSTS afin de supprimer la version HTTPS d'un site web ou d'un service. Lorsque vous testez HSTS, utilisez un délai d'attente très court et assurez-vous que vous êtes à l'aise avec les effets et l'obligation de maintenir une version HTTPS de votre site. Lorsque vous mettez en œuvre votre politique HSTS, limitez l'âge maximal et ne l'augmentez que lorsque vous êtes sûr de pouvoir le faire.
 
+
+https://www.ssl2buy.com/wiki/how-to-clear-hsts-settings-on-chrome-firefox-and-ie-browsers
 https://help.symplify.com/hc/fr-ca/articles/360011108540-Utilisation-de-HTTP-Strict-Transport-Security-HSTS
 
 https://scotthelme.co.uk/setting-up-hsts-in-nginx/
