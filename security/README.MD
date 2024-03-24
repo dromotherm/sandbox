@@ -34,6 +34,7 @@ Il est très difficile d'annuler une stratégie HSTS afin de supprimer la versio
 
 
 https://www.ssl2buy.com/wiki/how-to-clear-hsts-settings-on-chrome-firefox-and-ie-browsers
+
 https://help.symplify.com/hc/fr-ca/articles/360011108540-Utilisation-de-HTTP-Strict-Transport-Security-HSTS
 
 https://scotthelme.co.uk/setting-up-hsts-in-nginx/
