@@ -32,6 +32,9 @@ Une fois que la politique HSTS est présentée à un client, celui-ci met les in
 
 Il est très difficile d'annuler une stratégie HSTS afin de supprimer la version HTTPS d'un site web ou d'un service. Lorsque vous testez HSTS, utilisez un délai d'attente très court et assurez-vous que vous êtes à l'aise avec les effets et l'obligation de maintenir une version HTTPS de votre site. Lorsque vous mettez en œuvre votre politique HSTS, limitez l'âge maximal et ne l'augmentez que lorsque vous êtes sûr de pouvoir le faire.
 
+pour supprimer les paramètres hsts dans chrome, tapez `chrome://net-internals/#hsts` dans la barre d'adresses
+
+dans mozilla, il faut aller dans l'historique, faire un clic droit sur une des adresses de l'historique mentionnant le site et faire oublier ce site ou forget this site. cela ne marche que sur desktop.
 
 https://www.ssl2buy.com/wiki/how-to-clear-hsts-settings-on-chrome-firefox-and-ie-browsers
 
