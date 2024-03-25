@@ -22,11 +22,10 @@ duckdns propose divers types d'installation, dont `linux cron` qui se résume à
 
 # création d'un certificat SSL avec let's encrypt
 
-Avec NPM, on crée un certificat ssl de type wildcard, eg `*.ceremacf.duckdns.org`
+Avec NPM, on crée 3 certificats SLL, un pour chaque sous-domaines : `themis.ceremacf.duckdns.org`, `admin.ceremacf.duckdns.org`,
+`routeur.ceremacf.duckdns.org`
 
-On peut aussi décider de créer 3 certificats SLL pour chacun des sous-domaines...
-
-normalement, celà ne pose pas de problème, NPM s'occupant automatiquement du renouvellement
+NPM s'occupe automatiquement du renouvellement
 
 # création de 3 proxy hosts avec NPM
 
