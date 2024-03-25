@@ -2,6 +2,10 @@ https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-s
 
 NPM = nginx proxy manager
 
+IL Y A UN BUG DANS LA CONF HSTS DE NPM : https://gist.github.com/R0GGER/916183fca41f02df1471a6f455e5869f
+
+Le magasin de certificats est dans `/data/proxy/letsencrypt/live`
+
 Dans un système web moderne multi applications, les ports sont souvent nombreux. 
 
 Exemple sur une machine bios :
