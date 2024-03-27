@@ -46,4 +46,14 @@ https://scotthelme.co.uk/setting-up-hsts-in-nginx/
 
 https://www.cyberciti.biz/faq/how-to-install-letsencrypt-free-ssltls-for-nginx-certificate-on-alpine-linux/
 
+```
+acme.sh --issue -d routeur.ceremacf.duckdns.org --dns dns_duckdns --server letsencrypt --cert-file /data/certificates/routeur/cert.pem --key-file /data/certificates/routeur/privkey.pem
+```
+to check 
+```
+acme.sh list
+Main_Domain                   KeyLength  SAN_Domains  CA               Created               Renew
+routeur.ceremacf.duckdns.org  "ec-256"   no           LetsEncrypt.org  2024-03-27T13:07:12Z  2024-05-25T13:07:12Z
+```
+
 https://github.com/acmesh-official/acme.sh
