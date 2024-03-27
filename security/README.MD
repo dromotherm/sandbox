@@ -62,11 +62,15 @@ you can exit and reconnect as root, create a directory and export your duck dns 
 mkdir /data/certificates
 export DuckDNS_Token="<token>"
 ```
-then issue a certificate wich will be renewed 1 day after (just for testing) :
+then issue a certificate wich will be renewed 2 days after (just for testing) :
 ```
-acme.sh --issue -d ceremacf.duckdns.org --dns dns_duckdns --server letsencrypt --cert-file /data/certificates/cert.pem --key-file /data/certificates/privkey.pem --days 1 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis up -d'
+acme.sh --issue -d ceremacf.duckdns.org --dns dns_duckdns --server letsencrypt --cert-file /data/certificates/cert.pem --key-file /data/certificates/privkey.pem --days 2 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis up -d'
 ```
-to check the certificates `acme.sh list`
+to check the certificates on the machine `acme.sh list`
+
+to remove a certificate : `acme.sh --remove --domain ceremacf.duckdns.org`
+
+then you can remove it physically : `rm -Rf ~/.acme.sh/ceremacf.duckdns.org_ecc/`
 
 ```
 openssl x509 -enddate -noout -in /data/certificates/cert.pem
@@ -77,16 +81,6 @@ Main_Domain           KeyLength  SAN_Domains  CA               Created          
 ceremacf.duckdns.org  "ec-256"   no           LetsEncrypt.org  2024-03-27T14:42:57Z  2024-03-28T14:42:57Z
 ```
 
-to remove a certificate :
 
-```
-acme.sh --remove --domain ceremacf.duckdns.org
-```
-
-then you can remove it physically
-
-```
-rm -Rf ~/.acme.sh/ceremacf.duckdns.org_ecc/
-```
 
 
