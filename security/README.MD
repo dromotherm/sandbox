@@ -46,14 +46,47 @@ https://scotthelme.co.uk/setting-up-hsts-in-nginx/
 
 https://www.cyberciti.biz/faq/how-to-install-letsencrypt-free-ssltls-for-nginx-certificate-on-alpine-linux/
 
+https://github.com/acmesh-official/acme.sh
+
+install in root mode : 
 ```
-acme.sh --issue -d routeur.ceremacf.duckdns.org --dns dns_duckdns --server letsencrypt --cert-file /data/certificates/routeur/cert.pem --key-file /data/certificates/routeur/privkey.pem
+sudo su
+cd /opt/OBM
+git clone https://github.com/acmesh-official/acme.sh.git
+cd ./acme.sh
+./acme.sh --install -m alexandrep.cuer@gmail.com
 ```
-to check 
+you can exit and reconnect as root, create a directory and export your duck dns token :
+
 ```
+mkdir /data/certificates
+export DuckDNS_Token="<token>"
+```
+then issue a certificate wich will be renewed 1 day after (just for testing) :
+```
+acme.sh --issue -d ceremacf.duckdns.org --dns dns_duckdns --server letsencrypt --cert-file /data/certificates/cert.pem --key-file /data/certificates/privkey.pem --days 1 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis up -d'
+```
+to check the certificates `acme.sh list`
+
+```
+openssl x509 -enddate -noout -in /data/certificates/cert.pem
+notAfter=Jun 25 13:42:53 2024 GMT
+
 acme.sh list
-Main_Domain                   KeyLength  SAN_Domains  CA               Created               Renew
-routeur.ceremacf.duckdns.org  "ec-256"   no           LetsEncrypt.org  2024-03-27T13:07:12Z  2024-05-25T13:07:12Z
+Main_Domain           KeyLength  SAN_Domains  CA               Created               Renew
+ceremacf.duckdns.org  "ec-256"   no           LetsEncrypt.org  2024-03-27T14:42:57Z  2024-03-28T14:42:57Z
 ```
 
-https://github.com/acmesh-official/acme.sh
+to remove a certificate :
+
+```
+acme.sh --remove --domain ceremacf.duckdns.org
+```
+
+then you can remove it physically
+
+```
+rm -Rf ~/.acme.sh/ceremacf.duckdns.org_ecc/
+```
+
+
