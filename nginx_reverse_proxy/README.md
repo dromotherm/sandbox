@@ -6,6 +6,19 @@ IL Y A UN BUG DANS LA CONF HSTS DE NPM : https://gist.github.com/R0GGER/916183fc
 
 Le magasin de certificats est dans `/data/proxy/letsencrypt/live`
 
+Les conf des proxy_host sont dans `/data/proxy/nginx/proxy_host`
+
+On peut ajouter des headers pour sécuriser, pour celà ouvrir la configuration et ajouter dans le bloc location :
+
+```
+    add_header Referrer-Policy "same-origin";
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Permissions-Policy "accelerometer=(), geolocation=(), fullscreen=(), microphone=(), camera=(), display-capture=()";
+```
+
+
 Dans un système web moderne multi applications, les ports sont souvent nombreux. 
 
 Exemple sur une machine bios :
