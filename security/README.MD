@@ -61,11 +61,12 @@ you can exit and reconnect as root, create a directory and export your duck dns 
 ```
 mkdir /data/certificates
 export DuckDNS_Token="<token>"
+export DOMAIN=ceremacf.duckdns.org
 ```
 then issue a certificate wich will be renewed 2 days after (just for testing) :
 ```bash
 acme.sh --issue \
--d ceremacf.duckdns.org \
+-d $DOMAIN \
 --dns dns_duckdns \
 --server letsencrypt \
 --cert-file /data/certificates/cert.pem \
