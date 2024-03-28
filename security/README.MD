@@ -88,7 +88,15 @@ acme.sh list
 Main_Domain           KeyLength  SAN_Domains  CA               Created               Renew
 ceremacf.duckdns.org  "ec-256"   no           LetsEncrypt.org  2024-03-27T14:42:57Z  2024-03-28T14:42:57Z
 ```
-
-
-
+To check the daily cron job:
+```
+sudo su
+root@raspberrypi:/home/pi# crontab -l
+15 13 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
+```
+To check the cron log with journalctl :
+```
+journalctl -n 500 | grep acme.sh
+Mar 28 13:15:02 raspberrypi CRON[5990]: (root) CMD ("/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null)
+```
 
