@@ -63,7 +63,7 @@ mkdir /data/certificates
 export DuckDNS_Token="<token>"
 export DOMAIN=ceremacf.duckdns.org
 ```
-then issue a certificate wich will be renewed 2 days after (just for testing) :
+then issue a certificate wich will be renewed 30 days after :
 ```bash
 acme.sh --issue \
 -d $DOMAIN \
@@ -71,8 +71,8 @@ acme.sh --issue \
 --server letsencrypt \
 --cert-file /data/certificates/cert.pem \
 --key-file /data/certificates/privkey.pem \
---days 2 \
---reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis up -d'
+--days 30 \
+--reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis restart'
 ```
 to check the certificates on the machine `acme.sh list`
 
