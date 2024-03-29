@@ -13,6 +13,7 @@ ou la mémoire flash utilisée sur la SD lorsqu'on est sur rapsberry
 ```
 df -h
 ```
+l'option h signifie dans un format compréhensible par les humains
 # mémoire occupée
 ```
 free -h
