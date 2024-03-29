@@ -171,9 +171,15 @@ Si vous avez cloné les sources de BIOS, aller dans le répertoire hardware en l
 make install name=ihm2 user=root after_redis=0 after_mosquitto=0
 ```
 
+## génération d'un certificat
+
+pour faire les choses de manière sécurisée, il faut [créer un certificat ssl](../security#generate-a-certificate)
+
 ## Configuration routeur
 
-see also [reverse proxy](../nginx_reverse_proxy)
+Voir aussi [reverse proxy](../nginx_reverse_proxy) notamment pour tout ce qui touche au NAT
+
+**si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
 
 On connecte un pc configuré pour du DHCP au ***premier port du routeur (eth0)***, en filaire
 
@@ -196,19 +202,6 @@ Si on a un bus RS485 promux à connecter au routeur, on injecte la library tcp2r
 Cette injection se fait par upload sans décompression d'un fichier tgz via le menu Customization -> User Module
 
 On active le modbus TCP sur le port 2 (Enable MODBUS-TCP2RTU) sans changer quoi que soit.
-
-### NAT
-
-Configuration > NAT
-
-On renseigne la translation d'adresse vers 192.168.1.2 sur le ports 443 (web) qu'utilisera le proxy nginx
-
-On décoche les cases : 
-
-- `Enable remote HTTP access on port 80` 
-- `Enable remote HTTPS access on port 443`
-
-**si on est en fonctionnement normal avec carte SIM, pour raison de sécurité, le port 22 doit être fermé !!**
 
 ### Configuration SMS
 
