@@ -29,6 +29,12 @@ Pour manager les networks docker :
 docker network ls
 docker network inspect xxxxx
 ```
+pour lancer un container sur le réseau bios2_default
+
+```
+docker run --network=bios2_default
+```
+
 # emplacement des données docker sur le disque
 ```
 docker info
