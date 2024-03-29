@@ -13,7 +13,13 @@ ou la mémoire flash utilisée sur la SD lorsqu'on est sur rapsberry
 ```
 df -h
 ```
-
+# mémoire occupée
+```
+free -h
+               total        used        free      shared  buff/cache   available
+Mem:           920Mi       320Mi       120Mi       1.0Mi       540Mi       600Mi
+Swap:           99Mi       1.2Mi        98Mi
+```
 # taille d'un répertoire
 
 ```
