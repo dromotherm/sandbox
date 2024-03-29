@@ -2,6 +2,11 @@
 ```
 cat /etc/os-release
 ```
+ou 
+```
+cat /proc/version
+Linux version 6.6.20+rpt-rpi-v7 (debian-kernel@lists.debian.org) (gcc-12 (Raspbian 12.2.0-14+rpi1) 12.2.0, GNU ld (GNU Binutils for Raspbian) 2.40) #1 SMP Raspbian 1:6.6.20-1+rpt1 (2024-03-07)
+```
 
 # Voir le partionnement du disque dur
 ou la mémoire flash utilisée sur la SD lorsqu'on est sur rapsberry
@@ -15,7 +20,7 @@ df -h
 du -c path_folder
 ```
 
-# Vérifier le modèle de raspberry
+# Vérifier le modèle de raspberry ou l'architecture
 
 `cat /proc/device-tree/model` ou `pinout`
 
