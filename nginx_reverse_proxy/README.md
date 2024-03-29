@@ -55,6 +55,10 @@ On construit 3 sous-domaines pour ceremacf.duckdns.org :
 
 **L'autre solution est d'ouvrir un port par applications, par ex 3443 pour l'interface admin et 8443 pour l'application.**
 
+![image](https://github.com/dromotherm/sandbox/assets/24553739/ff147f1e-fafc-4cdf-b813-8a99683a9e96)
+
+`Enable remote HTTPS access on port 443` sert pour continuer à pouvoir administrer le routeur à distance, en utilisant son IP et le protocole https
+
 C'est possible nativement pour l'application de monitoring qui a été sécurisée et peut tourner en https de manière native.
 
 Idem pour l'interface admin du routeur. 
@@ -66,4 +70,3 @@ On peut utiliser une image docker de nginx pour cela, en montant une conf intég
 cf https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236081-mettez-en-place-un-reverse-proxy-avec-nginx
 
 Si on choisit cette alternative, il faut un outil pour gérer ses certificats, acme.sh est une bonne option, simple et robuste
-
