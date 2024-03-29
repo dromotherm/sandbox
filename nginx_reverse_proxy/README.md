@@ -67,6 +67,8 @@ L'interface admin de bios nécessite l'utilisation d'un proxy.
 
 On peut utiliser une image docker de nginx pour cela, en montant une conf intégrant une instruction `proxy_pass`
 
-cf https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236081-mettez-en-place-un-reverse-proxy-avec-nginx
+https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236081-mettez-en-place-un-reverse-proxy-avec-nginx
+
+https://medium.com/@habibullah.127.0.0.1/containerization-of-python-flask-nginx-in-docker-7c451b3328b7
 
 Si on choisit cette alternative, il faut un outil pour gérer ses certificats, acme.sh est une bonne option, simple et robuste
