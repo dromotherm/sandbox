@@ -37,10 +37,6 @@ cf https://raspberrypi-guide.github.io/filesharing/mount-raspberry-pi-sd-card
 
 # the hardware side
 
-[upload emonpi and emonTx firmwares with platformio](emonTX/emonTxV3CM.md)
-
-[emonpi firmware update via emoncms admin module - log trace](emonpi/emonpifirmware/2020-08-28.md)
-
 [arduino C code to decode DHT22 DHT11 - no library](_HARDWARE_arduino/DHT/dht.ino)
 
 [stm32 projects](_HARDWARE_stm32)
