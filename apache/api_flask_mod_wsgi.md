@@ -19,9 +19,9 @@ Une fois loggé, on installe flask et flask-cors pour l'utilisateur pi, et on in
 pip3 install flask
 pip3 install flask-cors
 sudo apt-get install libapache2-mod-wsgi-py3 python-dev
-sudo apt-get install libapache2-mod-wsgi-py3 python-dev-is-python3
+sudo apt-get install python-dev-is-python3
 ```
-flask-cors est indispensable pour les requêtes ajax et pour fonctionner en mode API avec un serveur de cloud qui interroge des machines BIOS terrain.
+flask-cors permet en mode API de faire des requêtes ajax depuis un serveur de cloud qui interroge des machines BIOS terrain : **pas très recommandé !**
 
 Le partage des ressources entre origines (Cross-Origin Resource Sharing, CORS) est un mécanisme à base d'en-têtes HTTP supplémentaires pour indiquer aux navigateurs de donner à une application web l'accès à des ressources provenant de l'extérieur. Une application web exécute une requête HTTP inter-origine lorsqu'elle demande une ressource dont l'origine (domaine, protocole ou port) est différente de la sienne. 
 
