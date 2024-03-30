@@ -17,24 +17,11 @@ Il faut ensuite créer le fichier CNAME à la racine du site web, mais seulement
 
 Si on publie à partir d’un workflow GitHub Actions, tout fichier CNAME est ignoré et n’est pas requis.
 
-On peut utiliser l'outil dig en ligne de commande pour vérifier que le sous domaine `obm.dromotherm.com` pointe bien vers les github pages.
-
-```
-dig obm.dromotherm.com +noall +answer -t A
-obm.dromotherm.com.	1800	IN	CNAME	Open-Building-Management.github.io.
-Open-Building-Management.github.io. 1433 IN A	185.199.111.153
-Open-Building-Management.github.io. 1433 IN A	185.199.108.153
-Open-Building-Management.github.io. 1433 IN A	185.199.109.153
-Open-Building-Management.github.io. 1433 IN A	185.199.110.153
-```
-
 CNAME n'est pas le seul type de DNS records. On a aussi :
 - le type A quand on pointe vers une adresse IPv4 fixe
 - le type AAAA quant on pointe vers une adresse IPv6 fixe
 
 Les box domestiques offrent des adresses IP fixes
-
-# dynamic dns
 
 ## check the ip associated to a dns
 
@@ -44,6 +31,16 @@ https://www.hostinger.com/tutorials/how-to-use-the-dig-command-in-linux/
 
 ```
 sudo apt-get install dnsutils
+```
+On peut utiliser cet outil pour vérifier que le sous domaine `obm.dromotherm.com` pointe bien vers les github pages.
+
+```
+dig obm.dromotherm.com +noall +answer -t A
+obm.dromotherm.com.	1800	IN	CNAME	Open-Building-Management.github.io.
+Open-Building-Management.github.io. 1433 IN A	185.199.111.153
+Open-Building-Management.github.io. 1433 IN A	185.199.108.153
+Open-Building-Management.github.io. 1433 IN A	185.199.109.153
+Open-Building-Management.github.io. 1433 IN A	185.199.110.153
 ```
 
 ## check the external ip from the local machine
