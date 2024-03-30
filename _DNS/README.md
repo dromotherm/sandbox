@@ -1,11 +1,12 @@
 
 # gérer ses noms de domaine
 
-![DNS.png](DNS.png)
+[DNS.png](DNS.png)
 
-On a autant de champs CNAME qu'on a de sous-domaines
+![image](https://github.com/dromotherm/sandbox/assets/24553739/a1cd755e-5f23-4cc9-bd8d-2ff9fecf2471)
 
-Ici, on a : 
+
+On a autant de champs CNAME qu'on a de sous-domaines pointant vers des FDQN (Fully Qualified Domain Name), içi ce sont des sites statiques hébergés sur github : 
 
 - le domaine `www.dromotherm.com` avec la ligne `www 1800 IN CNAME dromotherm.github.io.`
 - le sous-domaine `obm.dromotherm.com` avec la ligne `obm 1800 IN CNAME Open-Building-Management.github.io.`
@@ -26,6 +27,12 @@ Open-Building-Management.github.io. 1433 IN A	185.199.108.153
 Open-Building-Management.github.io. 1433 IN A	185.199.109.153
 Open-Building-Management.github.io. 1433 IN A	185.199.110.153
 ```
+
+CNAME n'est pas le seul type de DNS records. On a aussi :
+- le type A quand on pointe vers une adresse IPv4 fixe
+- le type AAAA quant on pointe vers une adresse IPv6 fixe
+
+Les box domestiques offrent des adresses IP fixes
 
 # dynamic dns
 
