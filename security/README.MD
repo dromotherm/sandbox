@@ -56,13 +56,14 @@ git clone https://github.com/acmesh-official/acme.sh.git
 cd ./acme.sh
 ./acme.sh --install -m alexandrep.cuer@gmail.com
 ```
-you can exit and reconnect as root, create a directory and export your duck dns token :
+you can exit, reconnect as root and create a directory `mkdir /data/certificates`
 
-```
-mkdir /data/certificates
-export DuckDNS_Token="<token>"
-export DOMAIN=ceremacf.duckdns.org
-```
+## duckdns
+
+export your duck dns token : `export DuckDNS_Token="<token>"`
+
+export your domain name : `export DOMAIN=ceremacf.duckdns.org`
+
 then issue a certificate wich will be renewed 30 days after :
 ```bash
 acme.sh --issue \
@@ -74,6 +75,30 @@ acme.sh --issue \
 --days 30 \
 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis restart'
 ```
+
+## gandi
+
+cf https://github.com/acmesh-official/acme.sh/wiki/dnsapi#18-use-gandi-livedns-api
+
+créer un token avec une validité de 1 an et les permissions suivantes :
+- Gérer la configuration technique des domaines 
+- Voir et renouveler les domaines 
+
+exporter votre token : `export GANDI_LIVEDNS_TOKEN="<key>"`
+
+puis créez vos certificats :
+```
+acme.sh --issue \
+-d $DOMAIN \
+--dns dns_gandi_livedns \
+--server letsencrypt \
+--cert-file /data/certificates/$DOMAIN.pem \
+--key-file /data/certificates/$DOMAIN_key.pem \
+--days 30
+```
+
+## checks
+
 to check the certificates on the machine `acme.sh list`
 
 to remove a certificate : `acme.sh --remove --domain ceremacf.duckdns.org`
