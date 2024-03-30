@@ -86,6 +86,8 @@ créer un token avec une validité de 1 an et les permissions suivantes :
 
 exporter votre token : `export GANDI_LIVEDNS_TOKEN="<key>"`
 
+exporter votre nom de domaine : `export DOMAIN=emoncms.dromotherm.com`
+
 puis créez vos certificats :
 ```
 acme.sh --issue \
