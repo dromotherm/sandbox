@@ -148,7 +148,11 @@ Dans une distribution alpine, les fichiers de configuration du serveur apache so
 
 Il y a un fichier `httpd.conf` et un sous-répertoire `conf.d` qui contient des configurations que le fichier `httpd.conf` charge puisqu'il comporte la directive `IncludeOptional /etc/apache2/conf.d/*.conf`
 
-Pas besoin de rajouter des instructions de type `Listen 80` ou `Listen 443`. Elles sont déjà incluses dans le paramétrage de base : `Listen 80` est dans `httpd.conf` et `Listen 443` est dans `conf.d\ssl.conf`
+Pas besoin de rajouter des instructions de type `Listen 80` ou `Listen 443`. 
+
+Elles sont déjà incluses dans le paramétrage de base : 
+- `Listen 80` est dans `httpd.conf`
+- `Listen 443` est dans `conf.d\ssl.conf`
 
 Sur Alpine, on trouve les certificats et les clés dans `/etc/ssl/apache2/` sous les noms `server.pem` et `server.key`
 
@@ -160,12 +164,8 @@ sur la machine hôte, création d'une clé de chiffrement pour une utilisation e
 openssl genrsa -out alexjunk.key 2048
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout alexjunk.key -out alexjunk.crt
 ```
-on stocke les clés sur la machine hôte dans /etc/ssl/certs, dans un dossier bios qu'on donne au superutilisateur
+on stocke les clés sur la machine hôte dans `/etc/ssl/certs`, dans un dossier `bios` qu'on donne au superutilisateur, on peut alors monter ce dossier dans le conteneur
 
-on monte ce dossier dans le conteneur :
-```
-sudo docker run --rm -p 8081:443 -p 7883:1883 -v /etc/ssl/certs/bios:/cert -it emoncms:alpine3.18
-```
 Lorsqu'on génère le crt, on peut répondre ce qu'on veut à la série de questions, sauf pour le FQDN (Fully Qualified Domain Name)
 
 contenu de /var/log/apache2/error.log
