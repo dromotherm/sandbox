@@ -1,4 +1,6 @@
-<h1>LEGACY see [OBM](https://github.com/Open-Building-Management/containers)</h1>
+<h1>LEGACY</h1>
+
+see [OBM](https://github.com/Open-Building-Management/containers)
 
 # the build 
 
