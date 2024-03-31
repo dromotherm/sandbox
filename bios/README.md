@@ -111,6 +111,7 @@ check docker versions :
 docker --version
 docker compose version
 ```
+[régler la rotation des logs sur 3 Mo](../_HARDWARE_jetson#les-logs)
 
 ## IO configuration
 
