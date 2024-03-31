@@ -29,11 +29,9 @@ Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/release
 
 ### Activer le SSH
 
-Uniquement si on utilise raspiOS, pas nécessaire sous Ubuntu :
-```
-cd /media/alexandrecuer/boot
-touch ssh
-```
+Uniquement si on utilise raspiOS, pas nécessaire sous Ubuntu : `cd /media/alexandrecuer/boot` ou `cd /media/alexandrecuer/bootfs`
+
+Puis `touch ssh`
 
 ### Repartionner avec gparted
 
@@ -47,7 +45,7 @@ On boote le Pi
 
 Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 
-## fstab
+## fstab + timezone
 ```
 sudo mkdir /data
 sudo chown $USER /data
@@ -63,9 +61,10 @@ PARTUUID=0a66e097-03  /data           ext2    defaults,noatime  0       2
 ```
 et on reboote :  `sudo reboot`
 
-## Timezone
+puis on régle la timezone : `sudo raspi-config`
 
-Si on est sous raspios : `sudo raspi-config`
+<details id=0>
+<summary><h2>Timezone sous Ubuntu</h2></summary>
 
 Si on est sous Ubuntu, on commence par regarder la timezone :
 ```
@@ -83,6 +82,7 @@ Pour vérifier que la nouvelle timezone est bien prise en compte :
 ```
 timedatectl
 ```
+</details>
 
 <details id=1>
 <summary><h2>NodeRED</h2></summary>
