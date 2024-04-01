@@ -10,7 +10,7 @@ si pas besoin de tensorflow full, seulement dispo sous 64 bits, utiliser les ver
 
 Prendre la lite version sans desktop
 
-Les images les plus récentes sont compressées au format xz qui a un bien meilleur taux de compression que zip. Il faut installer les utilitaires.
+Les images les plus récentes sont compressées au format xz qui a un bien meilleur taux de compression que zip.
 ```
 sudo apt install xz-utils
 
@@ -175,6 +175,18 @@ make install name=ihm2 user=root after_redis=0 after_mosquitto=0
 ## génération d'un certificat
 
 pour faire les choses de manière sécurisée, il faut [créer un certificat ssl](../security#generate-a-certificate)
+
+Pour une clé purement locale valable 10 ans:
+```
+cd /data
+sudo mkdir certificates
+sudo chown $USER certificates
+openssl req -x509 -newkey rsa:4096 -keyout privkey.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/CN=obm.home"
+```
+pour vérifier les paramètres du certificat :
+```
+openssl x509 -text -noout -in cert.pem
+```
 
 ## Configuration routeur
 
