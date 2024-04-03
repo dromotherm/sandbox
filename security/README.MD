@@ -94,9 +94,10 @@ acme.sh --issue \
 -d $DOMAIN \
 --dns dns_gandi_livedns \
 --server letsencrypt \
---cert-file /data/certificates/$DOMAIN.pem \
---key-file /data/certificates/$DOMAIN_key.pem \
+--cert-file /data/certificates/cert.pem \
+--key-file /data/certificates/privkey.pem \
 --days 30
+--reloadcmd 'systemctl restart apache2'
 ```
 
 ## checks
