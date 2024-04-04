@@ -81,12 +81,12 @@ and https://httpd.apache.org/docs/2.4/fr/bind.html
 ```
 <IfModule mod_ssl.c>
     <VirtualHost _default_:443>
-        ServerName emoncms.ddns.net
-        ServerAlias emoncms.ddns.net
+        ServerName emoncms.dromotherm.com
+        ServerAlias emoncms.dromotherm.com
         ServerAdmin webmaster@localhost
 
         WSGIDaemonProcess try user=alexandrecuer group=alexandrecuer threads=15>
-        WSGIScriptAlias /try /opt/obm/app.wsgi
+        WSGIScriptAlias /try /opt/obm/app_server/app.wsgi
         <Directory /opt/obm/>
              WSGIProcessGroup try
              WSGIApplicationGroup %{GLOBAL}
@@ -100,9 +100,8 @@ and https://httpd.apache.org/docs/2.4/fr/bind.html
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
         SSLEngine on
-        SSLCertificateFile /path/to/emoncms_ddns_net.crt
-        SSLCertificateKeyFile /path/to/emoncms.ddns.net.key
-        SSLCertificateChainFile /path/to/DigiCertCA.crt
+        SSLCertificateFile /data/certificates/cert.pem
+        SSLCertificateKeyFile /data/certificates/privkey.pem
 
         <FilesMatch "\.(cgi|shtml|phtml|php)$">
             SSLOptions +StdEnvVars
@@ -116,9 +115,9 @@ and https://httpd.apache.org/docs/2.4/fr/bind.html
 #### 000-default
 ```
 VirtualHost *:80>
-    ServerName emoncms.ddns.net
-    ServerAlias emoncms.ddns.net
-    Redirect permanent / https://emoncms.ddns.net/
+    ServerName emoncms.dromotherm.com
+    ServerAlias emoncms.dromotherm.com
+    Redirect permanent / https://emoncms.dromotherm.com/
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/html
