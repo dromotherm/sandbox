@@ -4,7 +4,11 @@ Le serveur d'applications permet à un utilisateur qui veut tester emoncms de ti
 
 Pour faire simple, la machine hôte tourne sous ubuntu, avec systemd. 
 
-Dans une distribution ubuntu, les fichiers de configuration du serveur apache sont dans `/etc/apache2` et le fichier principal est `apache2.conf`. `/etc/apache2` contient 2 sous-répertoires `sites-available` et `sites-enabled`. Il faut mettre les configurations que l'on veut utiliser dans `sites-available` et les activer avec la commande `a2ensite`. Celà crée dans `sites-enabled` un lien vers la configuration correspondante contenue dans `sites-available`. Pour désactiver une configuration, on utilise la commande `a2dissite`.
+Dans une distribution ubuntu, les fichiers de configuration du serveur apache sont dans `/etc/apache2` et le fichier principal est `apache2.conf`. `/etc/apache2` contient 2 sous-répertoires `sites-available` et `sites-enabled`. 
+
+Il faut mettre les configurations que l'on veut utiliser dans `sites-available` et les activer avec la commande `a2ensite`. Celà crée dans `sites-enabled` un lien vers la configuration correspondante contenue dans `sites-available`. 
+
+our désactiver une configuration, on utilise la commande `a2dissite`.
 
 Par défaut, apache arrive avec une configuration ssl, donc des certificats et des clés. Sur Ubuntu/Debian les certificats sont dans `/etc/ssl/certs` et les clés dans `/etc/ssl/private`. 
 
@@ -53,18 +57,9 @@ apache2ctl -M | grep proxy
 
 ### demander un certificat à une autorité de certification (CA)
 
-1) create CSR on the server
+le plus simple est de passer par [letsencrypt](https://letsencrypt.org/about/) qui est une autorité de certification gratuite
 
-CSR = Certificate Signing Request = message adressé à une Autorité de Certification pour obtenir un certificat d’identité numérique.
-
-cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
-```
-openssl genrsa -out emoncms.ddns.net.key 2048
-openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
-```
-2) use CSR to ask for SSL certificate
-
-https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
+l'outil le plus léger et robuste est acme.sh qui se manipule en ligne de commande : [../security#gandi](../security#gandi)
 
 ### installer le certificat sur le serveur et configurer apache
 
@@ -78,6 +73,8 @@ cf https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 
 and https://httpd.apache.org/docs/2.4/fr/bind.html
 
+on part du principe qu'on clone l'[app_server](https://github.com/Open-Building-Management/app_server/) dans `/opt/obm`
+
 ```
 <IfModule mod_ssl.c>
     <VirtualHost _default_:443>
@@ -87,7 +84,7 @@ and https://httpd.apache.org/docs/2.4/fr/bind.html
 
         WSGIDaemonProcess try user=alexandrecuer group=alexandrecuer threads=15>
         WSGIScriptAlias /try /opt/obm/app_server/app.wsgi
-        <Directory /opt/obm/>
+        <Directory /opt/obm/app_server>
              WSGIProcessGroup try
              WSGIApplicationGroup %{GLOBAL}
              WSGIScriptReloading On
