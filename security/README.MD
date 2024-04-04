@@ -128,3 +128,23 @@ journalctl -n 500 | grep acme.sh
 Mar 28 13:15:02 raspberrypi CRON[5990]: (root) CMD ("/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null)
 ```
 
+# generer un certificat avec noip 
+
+Abandonné !!
+
+**ceci est mentionné à titre de traçabilité**
+
+1) create CSR on the server
+
+CSR = Certificate Signing Request = message adressé à une Autorité de Certification pour obtenir un certificat d’identité numérique.
+
+cf https://www.noip.com/support/knowledgebase/apache-mod-ssl
+
+on génère la clé privée et un csr
+```
+openssl genrsa -out emoncms.ddns.net.key 2048
+openssl req -new -key emoncms.ddns.net.key -out emoncms.ddns.net.csr
+```
+2) use CSR to ask for SSL certificate
+
+https://www.noip.com/support/knowledgebase/configure-rapidssl-basic-dv-ssl
