@@ -66,6 +66,27 @@ https://github.com/hassio-addons
 
 https://developers.home-assistant.io/docs/add-ons
 
+## add template integration and create a sensor entry
+
+on ajoute l'intégration si on ne l'a pas
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/4275457b-643f-4ba4-9085-710a1cdbeaba)
+
+par défaut un site météo envoie les données suivantes :
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/2acfe4ec-6f43-48c8-87c5-3eb2b5af31cf)
+
+On crée un capteur en ajoutant une entrée de template
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/216990c1-7d30-4556-b615-b2935588cabd)
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/82ed30e8-8d30-4a3c-9896-0280da39d40a)
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/d2832a97-7232-4420-afc0-30b25388ffa2)
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/793a88b3-1d3e-4e2a-996c-c6340b45f354)
+
+
 ## adding automation to post a sensor value
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/3734e56d-01a2-4fd2-8cc8-75a786b20940)
