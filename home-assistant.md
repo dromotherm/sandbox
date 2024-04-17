@@ -95,3 +95,8 @@ On crée un capteur en ajoutant une entrée de template
 ## adding automation to post a sensor value
 
 ![image](https://github.com/dromotherm/sandbox/assets/24553739/3734e56d-01a2-4fd2-8cc8-75a786b20940)
+
+pour envoyer plusieurs valeurs toutes les minutes:
+
+<img width="447" alt="image" src="https://github.com/dromotherm/sandbox/assets/43913055/33f54297-34f3-4bfb-9866-3927bae69a04">
+
