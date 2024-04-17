@@ -86,6 +86,11 @@ On crée un capteur en ajoutant une entrée de template
 
 ![](https://github.com/dromotherm/sandbox/assets/43913055/793a88b3-1d3e-4e2a-996c-c6340b45f354)
 
+## add mqtt integration and test if payload can be sent to emoncms
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/28768737-0166-4570-8028-e9beef7b0666)
+
+![](https://github.com/dromotherm/sandbox/assets/43913055/5b4b3cff-ab40-4abc-a36f-cd9767f405a8)
 
 ## adding automation to post a sensor value
 
