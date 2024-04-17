@@ -66,7 +66,8 @@ https://github.com/hassio-addons
 
 https://developers.home-assistant.io/docs/add-ons
 
-## add template integration and create a sensor entry
+<details id=1>
+<summary><h2>add template integration and create a personalised sensor entry</h2></summary>
 
 on ajoute l'intégration si on ne l'a pas
 
@@ -86,17 +87,18 @@ On crée un capteur en ajoutant une entrée de template
 
 ![](https://github.com/dromotherm/sandbox/assets/43913055/793a88b3-1d3e-4e2a-996c-c6340b45f354)
 
+</details>
+
 ## add mqtt integration and test if payload can be sent to emoncms
 
 ![](https://github.com/dromotherm/sandbox/assets/43913055/28768737-0166-4570-8028-e9beef7b0666)
 
 ![](https://github.com/dromotherm/sandbox/assets/43913055/5b4b3cff-ab40-4abc-a36f-cd9767f405a8)
 
-## adding automation to post a sensor value
-
-![](https://github.com/dromotherm/sandbox/assets/24553739/3734e56d-01a2-4fd2-8cc8-75a786b20940)
+## adding automation to post value through MQTT
 
 pour envoyer plusieurs valeurs toutes les minutes:
 
-![](https://github.com/dromotherm/sandbox/assets/43913055/33f54297-34f3-4bfb-9866-3927bae69a04)
+![](https://github.com/dromotherm/sandbox/assets/43913055/54c76219-512c-45c7-bc28-049c839ca2e5)
+
 
