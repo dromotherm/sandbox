@@ -65,3 +65,7 @@ https://github.com/hassio-addons
 ## dev doc
 
 https://developers.home-assistant.io/docs/add-ons
+
+## adding automation to post a sensor value
+
+![image](https://github.com/dromotherm/sandbox/assets/24553739/3734e56d-01a2-4fd2-8cc8-75a786b20940)
