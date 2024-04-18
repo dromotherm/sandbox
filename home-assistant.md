@@ -75,7 +75,7 @@ https://developers.home-assistant.io/docs/add-ons
 
 ## adding automation to post value through MQTT
 
-par défaut, du moins lorsqu'on a installé ha avec la méthode opération system, un site météo envoie les données suivantes qui sont stockées comme states:
+par défaut, du moins lorsqu'on a installé ha avec la méthode opération system, un site météo envoie les données suivantes qui sont stockées dans les states, içi états :
 
 ![](https://github.com/dromotherm/sandbox/assets/43913055/2acfe4ec-6f43-48c8-87c5-3eb2b5af31cf)
 
