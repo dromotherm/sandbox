@@ -90,7 +90,7 @@ http:
   trusted_proxies:
     - 172.30.33.0/24
 ```
-and restart home assistant
+and **restart home assistant**
 
 ## add mqtt integration and test if payload can be sent to emoncms
 
