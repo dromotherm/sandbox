@@ -20,7 +20,19 @@ https://home-assistant-china.github.io/docs/installation/virtualenv/
 
 https://community.home-assistant.io/t/installing-home-assistant-core-in-a-python-venv-when-your-distros-python-version-is-obsolete/217048
 
-## run ha in docker
+## philosophy 
+
+https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
+
+## community add-ons project
+
+https://github.com/hassio-addons
+
+## dev doc
+
+https://developers.home-assistant.io/docs/add-ons
+
+## run ha docker container
 
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
@@ -54,18 +66,31 @@ http:
     - 192.168.0.0/24
 ```
 
-# philosophy 
+## running operating system
 
-https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
+with the operating system, if you use the nginx proxy manager addon as the reverse proxy, you need to find its ip on the hassio network
 
-## community add-ons project
-
-https://github.com/hassio-addons
-
-## dev doc
-
-https://developers.home-assistant.io/docs/add-ons
-
+```
+docker network inspect hassio
+```
+you should see an entry like that :
+```
+"6c3c0445463ee92d86027457e0ef8927396ac635a0bc47b2f9b878a2cd4331cf": {
+    "Name": "addon_a0d7b954_nginxproxymanager",
+    "EndpointID": "7b43a002b6b23a4fe786d8e0de78c5d0a59e2e4578b5818d91392ff6658bc794",
+    "MacAddress": "02:42:ac:1e:21:02",
+    "IPv4Address": "172.30.33.2/23",
+    "IPv6Address": ""
+}
+```
+so you may adjust the trusted proxy as follow
+```
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+```
+and restart home assistant
 
 ## add mqtt integration and test if payload can be sent to emoncms
 
