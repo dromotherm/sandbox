@@ -6,6 +6,8 @@ https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
 
 https://github.com/blakeblackshear/frigate
 
+https://frigate.video/
+
 ## ha web server is aiohttp
 
 https://community.home-assistant.io/t/what-is-the-web-server-of-home-assistant/67107
