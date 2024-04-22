@@ -181,6 +181,7 @@ Pour une clé purement locale valable 10 ans:
 cd /data
 sudo mkdir certificates
 sudo chown $USER certificates
+cd certificates
 openssl req -x509 -newkey rsa:4096 -keyout privkey.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/CN=obm.home"
 ```
 pour vérifier les paramètres du certificat :
