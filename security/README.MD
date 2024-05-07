@@ -4,6 +4,10 @@ https://fr.m.wikipedia.org/wiki/Pegasus_(logiciel_espion)
 
 https://github.com/aircrack-ng/aircrack-ng
 
+# dns resolver
+
+https://www.shaftinc.fr/arretez-google-dns.html
+
 # SCAN YOUR SITE
 
 https://securityheaders.com/
