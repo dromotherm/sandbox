@@ -4,6 +4,10 @@ https://fr.m.wikipedia.org/wiki/Pegasus_(logiciel_espion)
 
 https://github.com/aircrack-ng/aircrack-ng
 
+https://fr.m.wikipedia.org/wiki/St%C3%A9phane_Bortzmeyer
+
+https://www.bortzmeyer.org/
+
 # dns resolver
 
 https://www.shaftinc.fr/arretez-google-dns.html
