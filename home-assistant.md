@@ -1,6 +1,18 @@
 https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podman/
 
-# home-assistant
+# creating custom integration
+
+https://www.home-assistant.io/blog/2021/05/12/integrations-api/
+
+communication with external device should be managed by an external library
+
+Home Assistant code should always be independent of the logic that is required to work with devices / vendors / protocols / etc.
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/components/openweathermap/coordinator.py
+
+https://github.com/freekode/pyopenweathermap/tree/main
+
+# running home-assistant
 
 https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
 
