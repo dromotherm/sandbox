@@ -14,6 +14,10 @@ https://github.com/freekode/pyopenweathermap/tree/main
 
 https://github.com/home-assistant/core/pull/118111
 
+## coordinator
+
+https://developers.home-assistant.io/docs/integration_fetching_data/
+
 # running home-assistant
 
 https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
