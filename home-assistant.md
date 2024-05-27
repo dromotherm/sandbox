@@ -12,6 +12,8 @@ https://github.com/home-assistant/core/blob/dev/homeassistant/components/openwea
 
 https://github.com/freekode/pyopenweathermap/tree/main
 
+https://github.com/home-assistant/core/pull/118111
+
 # running home-assistant
 
 https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
