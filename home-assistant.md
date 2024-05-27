@@ -8,7 +8,7 @@ communication with external device should be managed by an external library
 
 Home Assistant code should always be independent of the logic that is required to work with devices / vendors / protocols / etc.
 
-https://github.com/home-assistant/core/blob/dev/homeassistant/components/openweathermap/coordinator.py
+https://github.com/home-assistant/core/pull/116870
 
 https://github.com/freekode/pyopenweathermap/tree/main
 
@@ -17,6 +17,8 @@ https://github.com/home-assistant/core/pull/118111
 ## coordinator
 
 https://developers.home-assistant.io/docs/integration_fetching_data/
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/components/openweathermap/coordinator.py
 
 # running home-assistant
 
