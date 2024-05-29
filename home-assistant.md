@@ -14,6 +14,10 @@ https://github.com/freekode/pyopenweathermap/tree/main
 
 https://github.com/home-assistant/core/pull/118111
 
+## httpx
+
+https://github.com/encode/httpx
+
 https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_client.py
 
 ## coordinator
