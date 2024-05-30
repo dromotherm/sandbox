@@ -14,6 +14,10 @@ https://github.com/freekode/pyopenweathermap/tree/main
 
 https://github.com/home-assistant/core/pull/118111
 
+## tests
+
+https://community.home-assistant.io/t/unit-tests-for-integration/392818
+
 ## httpx
 
 https://github.com/encode/httpx
