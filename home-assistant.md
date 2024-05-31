@@ -14,9 +14,19 @@ https://github.com/freekode/pyopenweathermap/tree/main
 
 https://github.com/home-assistant/core/pull/118111
 
+## emoncms integration
+
+configflow attempt :
+
+https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0c92577fb258c6e56e0e7a4b057223316f05a0e9c8963a
+
 ## tests
 
 https://community.home-assistant.io/t/unit-tests-for-integration/392818
+
+https://www.youtube.com/watch?v=TXj1aYldUsI&list=PLyb_C2HpOQSBWGekd7PfhHnb9GnqDgrxS&index=9
+
+https://github.com/nikhilkumarsingh/pytest-tut/tree/master/tut7/myapp
 
 ## httpx
 
