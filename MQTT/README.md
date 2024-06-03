@@ -1,3 +1,11 @@
+# emqx
+
+https://javiermugueta.blog/2023/12/19/integrating-iot-lora-sensors-with-home-assistant-via-the-things-network/
+
+https://github.com/emqx/emqx
+
+https://github.com/1technophile/OpenMQTTGateway
+
 # mosquitto
 
 pour tester le client mosquitto en ligne de commande :
