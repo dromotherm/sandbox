@@ -4,6 +4,10 @@ https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podm
 
 https://www.home-assistant.io/blog/2021/05/12/integrations-api/
 
+https://developers.home-assistant.io/blog/2022/03/30/2022.4-new-dev-features/
+
+https://developers.home-assistant.io/docs/config_entries_config_flow_handler/
+
 https://aarongodfrey.dev/home%20automation/building_a_home_assistant_custom_component_part_1/
 
 communication with external device should be managed by an external library
