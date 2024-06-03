@@ -4,6 +4,8 @@ https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podm
 
 https://www.home-assistant.io/blog/2021/05/12/integrations-api/
 
+https://aarongodfrey.dev/home%20automation/building_a_home_assistant_custom_component_part_1/
+
 communication with external device should be managed by an external library
 
 Home Assistant code should always be independent of the logic that is required to work with devices / vendors / protocols / etc.
