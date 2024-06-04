@@ -8,5 +8,6 @@ Certains caractères de la chaine UUID sont marqués : 13ème octet Y et 17ème 
 ```
 xxxxxxxx-xxxx-Yxxx-Zxxx-xxxxxxxxxxxx
 ```
-Y = version 
+Y = version
+
 3 premiers bits de Z = variante
