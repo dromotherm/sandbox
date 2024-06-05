@@ -1,5 +1,13 @@
 https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podman/
 
+# view HA database
+
+```
+sudo apt-get install sqlitebrowser
+```
+
+then open the db file
+
 # creating custom integration
 
 https://www.home-assistant.io/blog/2021/05/12/integrations-api/
