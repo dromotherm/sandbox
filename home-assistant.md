@@ -66,6 +66,10 @@ https://frigate.video/
 
 ## ha web server is aiohttp
 
+about catching client errors :
+
+https://github.com/aio-libs/aiohttp/issues/4064
+
 https://community.home-assistant.io/t/what-is-the-web-server-of-home-assistant/67107
 
 NOW : https://github.com/home-assistant/core/tree/master/homeassistant/components/http
