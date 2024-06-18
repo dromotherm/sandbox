@@ -84,6 +84,8 @@ acme.sh --issue \
 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis restart'
 ```
 
+if using a smartflex routeur with a 4G sim card (no fix IP), a script has to be run at startup each time the routeur rebuilds its internet connexion
+
 ## gandi
 
 cf https://github.com/acmesh-official/acme.sh/wiki/dnsapi#18-use-gandi-livedns-api
