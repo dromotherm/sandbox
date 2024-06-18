@@ -86,7 +86,13 @@ acme.sh --issue \
 
 if using a smartflex routeur with a 4G sim card (no fix IP), a script has to be run at startup each time the routeur rebuilds its internet connexion
 
+![image startup script](up_down_ipv4_startup_script.png)
 
+to generate the script, connect to your duckdns account and check the install method with linux-cron : 
+
+https://www.duckdns.org/install.jsp?tab=linux-cron&domain=ceremace
+
+![duckdns install](duckdns_install.png)
 
 ## gandi
 
