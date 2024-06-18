@@ -84,7 +84,7 @@ acme.sh --issue \
 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis restart'
 ```
 
-if using a smartflex routeur with a 4G sim card (no fix IP), a script has to be run at startup each time the routeur rebuilds its internet connexion
+if using a smartflex routeur with a 4G sim card (no fix IP), a script has to be run each time the routeur rebuilds its internet connexion
 
 ![image startup script](up_down_ipv4_startup_script.png)
 
