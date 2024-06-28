@@ -35,6 +35,11 @@ https://github.com/aio-libs/aiohttp
 
 https://docs.aiohttp.org/en/stable/
 
+## httpx
+
+https://github.com/encode/httpx
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_client.py
 
 # yaml vs configflow
 
@@ -82,11 +87,7 @@ https://www.youtube.com/watch?v=TXj1aYldUsI&list=PLyb_C2HpOQSBWGekd7PfhHnb9GnqDg
 
 https://github.com/nikhilkumarsingh/pytest-tut/tree/master/tut7/myapp
 
-## httpx
 
-https://github.com/encode/httpx
-
-https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_client.py
 
 ## coordinator
 
