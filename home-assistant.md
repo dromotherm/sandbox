@@ -98,6 +98,8 @@ https://github.com/hassio-addons
 
 https://developers.home-assistant.io/docs/add-ons
 
+selectors and others for config flow : https://next.home-assistant.io/docs/blueprint/selectors/#state-selector
+
 ## run ha docker container
 
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
