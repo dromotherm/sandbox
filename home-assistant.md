@@ -100,6 +100,9 @@ https://developers.home-assistant.io/docs/add-ons
 
 selectors and others for config flow : https://next.home-assistant.io/docs/blueprint/selectors/#state-selector
 
+quality scale : 
+https://github.com/home-assistant/architecture/discussions/1098
+
 ## run ha docker container
 
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
