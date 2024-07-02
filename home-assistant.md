@@ -61,6 +61,8 @@ https://developers.home-assistant.io/blog/2022/03/30/2022.4-new-dev-features/
 
 https://developers.home-assistant.io/docs/config_entries_config_flow_handler/
 
+https://community.home-assistant.io/t/config-flow-how-to-update-an-existing-entity/522442
+
 https://aarongodfrey.dev/home%20automation/building_a_home_assistant_custom_component_part_1/
 
 communication with external device should be managed by an external library
