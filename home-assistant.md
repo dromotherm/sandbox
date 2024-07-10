@@ -10,6 +10,17 @@ https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
 
 https://github.com/hassio-addons
 
+## some nice integration codes
+
+https://github.com/home-assistant/core/pull/120135
+
+https://github.com/home-assistant/core/tree/dev/tests/components/pyload
+
+https://github.com/home-assistant/core/tree/dev/homeassistant/components/pyload
+
+https://github.com/home-assistant/core/pull/93803
+
+
 ## dev doc
 
 https://developers.home-assistant.io/docs/add-ons
