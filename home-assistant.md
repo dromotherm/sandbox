@@ -24,6 +24,10 @@ https://github.com/home-assistant/core/tree/dev/tests/components/opensky
 
 https://github.com/home-assistant/core/tree/dev/homeassistant/components/opensky
 
+https://github.com/home-assistant/core/tree/dev/tests/components/plugwise
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/components/plugwise/__init__.py#L49
+
 
 ## dev doc
 
