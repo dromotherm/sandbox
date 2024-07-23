@@ -12,6 +12,8 @@ https://github.com/hassio-addons
 
 ## some nice integration codes
 
+genius hub before config flow : https://github.com/home-assistant/core/tree/8809d3aa88fa732052063ba953ee076f58bd8166/homeassistant/components/geniushub
+
 https://github.com/home-assistant/core/pull/120135
 
 https://github.com/home-assistant/core/tree/dev/tests/components/pyload
