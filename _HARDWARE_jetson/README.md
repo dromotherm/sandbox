@@ -53,6 +53,8 @@ sudo apt-mark hold nvidia-l4t-kernel nvidia-l4t-kernel-dtbs nvidia-l4t-kernel-he
 
 Si on manque de place :-)
 
+installer falkon a la place de chromium
+
 https://collabnix.com/easy-way-to-free-up-jetson-nano-sd-card-disk-space-by-40%EF%BF%BC%EF%BF%BC/
 
 # CH34x RS485 USB key
