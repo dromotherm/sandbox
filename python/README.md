@@ -1,3 +1,15 @@
+# type hints
+
+https://docs.python.org/3/library/typing.html
+
+https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html
+
+https://mypy.readthedocs.io/en/stable/typed_dict.html
+
+https://github.com/pallets/flask/blob/main/src/flask/typing.py
+
+
+
 # concurrency - threading
 
 https://superfastpython.com/threading-in-python/
