@@ -1,3 +1,35 @@
+# PIO
+
+https://docs.openenergymonitor.org/emontx3/firmware.html
+
+https://docs.platformio.org/en/latest/core/installation/methods/index.html
+
+install venv if needed
+```
+sudo apt-get install python3.10-venv
+```
+then
+```
+curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+```
+Add pio path in path :
+```
+nano .bashrc
+export PATH="/home/alexandrecuer/.platformio/penv/bin:$PATH"
+git clone https://github.com/alexandrecuer/emontx3
+cd emontx3/firmware
+```
+connect the emontx to the computer with a usb cable :
+```
+sudo chmod a+rw /dev/ttyUSB0
+pio run -t upload
+```
+to monitor
+```
+pio device monitor
+```
+
+
 # Slightly modified firmwares
 
 P : puissance en W
