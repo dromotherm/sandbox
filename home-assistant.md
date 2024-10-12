@@ -30,6 +30,9 @@ https://github.com/home-assistant/core/tree/dev/tests/components/plugwise
 
 https://github.com/home-assistant/core/blob/dev/homeassistant/components/plugwise/__init__.py#L49
 
+with selector translated :
+https://github.com/home-assistant/core/tree/dev/homeassistant/components/fujitsu_fglair
+
 
 ## dev doc
 
