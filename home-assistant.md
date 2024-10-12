@@ -37,6 +37,8 @@ https://developers.home-assistant.io/docs/add-ons
 
 selectors and others for config flow : https://next.home-assistant.io/docs/blueprint/selectors/#state-selector
 
+internalization : https://developers.home-assistant.io/docs/internationalization/core/
+
 quality scale : 
 https://github.com/home-assistant/architecture/discussions/1098
 
