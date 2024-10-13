@@ -109,6 +109,12 @@ https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0
 
 ## tests
 
+run the emoncms test suite :
+
+```
+pytest ./tests/components/emoncms/ --cov=homeassistant.components.emoncms --cov-report term-missing -vv
+```
+
 https://community.home-assistant.io/t/unit-tests-for-integration/392818
 
 https://www.youtube.com/watch?v=TXj1aYldUsI&list=PLyb_C2HpOQSBWGekd7PfhHnb9GnqDgrxS&index=9
