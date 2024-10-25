@@ -1,5 +1,21 @@
 https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podman/
 
+# esphome
+
+https://esphome.io/guides/configuration-types#config-pin
+
+https://esphome.io/components/sensor/dht
+
+https://esphome.io/components/mqtt#mqtt-publish-action
+
+https://esphome.io/components/time/
+
+https://esphome.io/components/wifi
+
+https://community.home-assistant.io/t/esphome-nodes-as-mesh-routers/164775/9
+
+https://community.home-assistant.io/t/esp32-device-and-wifi-repeater/592439
+
 # overview
 
 ## philosophy 
