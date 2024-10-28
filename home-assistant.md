@@ -1,5 +1,13 @@
 https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podman/
 
+# embed a video in docs
+
+```
+<lite-youtube videoid="XyBy0ckkiDU" videoStartAt="2047" videotitle="A Home-Approved Dashboard" posterquality="maxresdefault"></lite-youtube>
+```
+https://github.com/home-assistant/home-assistant.io/pull/34654
+
+
 # esphome
 
 https://esphome.io/guides/configuration-types#config-pin
