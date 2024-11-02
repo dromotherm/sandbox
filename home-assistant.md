@@ -10,6 +10,8 @@ https://github.com/home-assistant/home-assistant.io/pull/34654
 
 # esphome
 
+usage of esp8266 devices is very easy through the esphome addon
+
 https://esphome.io/guides/configuration-types#config-pin
 
 https://esphome.io/components/sensor/dht
@@ -94,6 +96,12 @@ https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_clie
 # yaml vs configflow
 
 https://community.home-assistant.io/t/please-stop-move-integration-configuration-from-yaml-system-to-the-current-implementation-ui-web-browser-based-system/389867/8
+
+the first config flow commit : https://github.com/home-assistant/core/pull/12079/files
+
+config entries history : https://github.com/home-assistant/core/commits/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py?after=02b34f05aa40e35186113ee80ff7ec3ff1c538ee+454
+
+config entry migration process : https://github.com/home-assistant/core/blob/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py#L966
 
 # view HA database
 
