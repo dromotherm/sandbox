@@ -1,12 +1,5 @@
 https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podman/
 
-# embed a video in docs
-
-```
-<lite-youtube videoid="XyBy0ckkiDU" videoStartAt="2047" videotitle="A Home-Approved Dashboard" posterquality="maxresdefault"></lite-youtube>
-```
-https://github.com/home-assistant/home-assistant.io/pull/34654
-
 
 # ESPHOME
 
@@ -128,6 +121,14 @@ https://github.com/home-assistant/core/blob/dev/homeassistant/components/plugwis
 with selector translated :
 https://github.com/home-assistant/core/tree/dev/homeassistant/components/fujitsu_fglair
 
+## docs on homeassistant.io
+
+embed a video in docs
+
+```
+<lite-youtube videoid="XyBy0ckkiDU" videoStartAt="2047" videotitle="A Home-Approved Dashboard" posterquality="maxresdefault"></lite-youtube>
+```
+https://github.com/home-assistant/home-assistant.io/pull/34654
 
 ## dev doc
 
@@ -158,7 +159,7 @@ https://github.com/nikhilkumarsingh/pytest-tut/tree/master/tut7/myapp
 
 ## emoncms integration
 
-configflow attempt :
+old configflow attempt, before I did the job :
 
 https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0c92577fb258c6e56e0e7a4b057223316f05a0e9c8963a
 
@@ -166,13 +167,6 @@ https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0
 # RUNNING HOME ASSISTANT
 
 https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
-
-## vidéo detection integration
-
-https://github.com/blakeblackshear/frigate
-
-https://frigate.video/
-
 
 ## run ha with a venv
 
@@ -242,6 +236,12 @@ http:
 and **restart home assistant**
 
 # USING HOME ASSISTANT
+
+## vidéo detection integration
+
+https://github.com/blakeblackshear/frigate
+
+https://frigate.video/
 
 ## add mqtt integration and test if payload can be sent to emoncms
 
