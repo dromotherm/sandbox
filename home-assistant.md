@@ -8,7 +8,7 @@ https://sequr.be/blog/2022/12/home-assistant-container-part-12-migrating-to-podm
 https://github.com/home-assistant/home-assistant.io/pull/34654
 
 
-# esphome
+# ESPHOME
 
 usage of esp8266 devices is very easy through the esphome addon
 
@@ -26,7 +26,7 @@ https://community.home-assistant.io/t/esphome-nodes-as-mesh-routers/164775/9
 
 https://community.home-assistant.io/t/esp32-device-and-wifi-repeater/592439
 
-# overview
+# OVERVIEW
 
 ## philosophy 
 
@@ -35,6 +35,75 @@ https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
 ## community add-ons project
 
 https://github.com/hassio-addons
+
+## ha web server is aiohttp
+
+about catching client errors :
+
+https://github.com/aio-libs/aiohttp/issues/4064
+
+https://community.home-assistant.io/t/what-is-the-web-server-of-home-assistant/67107
+
+NOW : https://github.com/home-assistant/core/tree/master/homeassistant/components/http
+
+AT THE ORIGIN : https://github.com/home-assistant/core/tree/376d4e4fa0bbcbfa07646f49f9d8fd56c8c0df3c/homeassistant/components/http
+
+https://github.com/aio-libs/aiohttp
+
+https://docs.aiohttp.org/en/stable/
+
+## httpx
+
+https://github.com/encode/httpx
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_client.py
+
+## yaml vs configflow
+
+https://community.home-assistant.io/t/please-stop-move-integration-configuration-from-yaml-system-to-the-current-implementation-ui-web-browser-based-system/389867/8
+
+the first config flow commit : https://github.com/home-assistant/core/pull/12079/files
+
+config entries history : https://github.com/home-assistant/core/commits/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py?after=02b34f05aa40e35186113ee80ff7ec3ff1c538ee+454
+
+config entry migration process : https://github.com/home-assistant/core/blob/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py#L966
+
+## view HA database
+```
+sudo apt-get install sqlitebrowser
+```
+
+then open the db file
+
+But a lot of things is inside the .storage folder
+
+# CREATING CUSTOM INTEGRATION
+
+https://www.home-assistant.io/blog/2021/05/12/integrations-api/
+
+https://developers.home-assistant.io/blog/2022/03/30/2022.4-new-dev-features/
+
+https://developers.home-assistant.io/docs/config_entries_config_flow_handler/
+
+https://community.home-assistant.io/t/config-flow-how-to-update-an-existing-entity/522442
+
+https://aarongodfrey.dev/home%20automation/building_a_home_assistant_custom_component_part_1/
+
+communication with external device should be managed by an external library
+
+Home Assistant code should always be independent of the logic that is required to work with devices / vendors / protocols / etc.
+
+https://github.com/home-assistant/core/pull/116870
+
+https://github.com/freekode/pyopenweathermap/tree/main
+
+https://github.com/home-assistant/core/pull/118111
+
+## coordinator
+
+https://developers.home-assistant.io/docs/integration_fetching_data/
+
+https://github.com/home-assistant/core/blob/dev/homeassistant/components/openweathermap/coordinator.py
 
 ## some nice integration codes
 
@@ -66,78 +135,12 @@ https://developers.home-assistant.io/docs/add-ons
 
 selectors and others for config flow : https://next.home-assistant.io/docs/blueprint/selectors/#state-selector
 
-internalization : https://developers.home-assistant.io/docs/internationalization/core/
+internationalization and translations : https://developers.home-assistant.io/docs/internationalization/core/
+See also :
+https://developers.home-assistant.io/blog/2024/01/19/entity-translations-placeholders/
 
 quality scale : 
 https://github.com/home-assistant/architecture/discussions/1098
-
-## ha web server is aiohttp
-
-about catching client errors :
-
-https://github.com/aio-libs/aiohttp/issues/4064
-
-https://community.home-assistant.io/t/what-is-the-web-server-of-home-assistant/67107
-
-NOW : https://github.com/home-assistant/core/tree/master/homeassistant/components/http
-
-AT THE ORIGIN : https://github.com/home-assistant/core/tree/376d4e4fa0bbcbfa07646f49f9d8fd56c8c0df3c/homeassistant/components/http
-
-https://github.com/aio-libs/aiohttp
-
-https://docs.aiohttp.org/en/stable/
-
-## httpx
-
-https://github.com/encode/httpx
-
-https://github.com/home-assistant/core/blob/dev/homeassistant/helpers/httpx_client.py
-
-# yaml vs configflow
-
-https://community.home-assistant.io/t/please-stop-move-integration-configuration-from-yaml-system-to-the-current-implementation-ui-web-browser-based-system/389867/8
-
-the first config flow commit : https://github.com/home-assistant/core/pull/12079/files
-
-config entries history : https://github.com/home-assistant/core/commits/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py?after=02b34f05aa40e35186113ee80ff7ec3ff1c538ee+454
-
-config entry migration process : https://github.com/home-assistant/core/blob/02b34f05aa40e35186113ee80ff7ec3ff1c538ee/homeassistant/config_entries.py#L966
-
-# view HA database
-
-```
-sudo apt-get install sqlitebrowser
-```
-
-then open the db file
-
-# creating custom integration
-
-https://www.home-assistant.io/blog/2021/05/12/integrations-api/
-
-https://developers.home-assistant.io/blog/2022/03/30/2022.4-new-dev-features/
-
-https://developers.home-assistant.io/docs/config_entries_config_flow_handler/
-
-https://community.home-assistant.io/t/config-flow-how-to-update-an-existing-entity/522442
-
-https://aarongodfrey.dev/home%20automation/building_a_home_assistant_custom_component_part_1/
-
-communication with external device should be managed by an external library
-
-Home Assistant code should always be independent of the logic that is required to work with devices / vendors / protocols / etc.
-
-https://github.com/home-assistant/core/pull/116870
-
-https://github.com/freekode/pyopenweathermap/tree/main
-
-https://github.com/home-assistant/core/pull/118111
-
-## emoncms integration
-
-configflow attempt :
-
-https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0c92577fb258c6e56e0e7a4b057223316f05a0e9c8963a
 
 ## tests
 
@@ -153,15 +156,14 @@ https://www.youtube.com/watch?v=TXj1aYldUsI&list=PLyb_C2HpOQSBWGekd7PfhHnb9GnqDg
 
 https://github.com/nikhilkumarsingh/pytest-tut/tree/master/tut7/myapp
 
+## emoncms integration
+
+configflow attempt :
+
+https://github.com/home-assistant/core/pull/94593/files#diff-7e407f77472538640a0c92577fb258c6e56e0e7a4b057223316f05a0e9c8963a
 
 
-## coordinator
-
-https://developers.home-assistant.io/docs/integration_fetching_data/
-
-https://github.com/home-assistant/core/blob/dev/homeassistant/components/openweathermap/coordinator.py
-
-# running home-assistant
+# RUNNING HOME ASSISTANT
 
 https://medium.com/geekculture/home-assistant-with-docker-1a96b4aec023
 
@@ -238,6 +240,8 @@ http:
     - 172.30.33.0/24
 ```
 and **restart home assistant**
+
+# USING HOME ASSISTANT
 
 ## add mqtt integration and test if payload can be sent to emoncms
 
