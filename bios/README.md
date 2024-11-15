@@ -103,7 +103,7 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-https://docs.docker.com/engine/install/debian/
+https://docs.docker.com/engine/install/debian/ ou https://docs.docker.com/engine/install/ubuntu/
 
 check docker versions :
 
