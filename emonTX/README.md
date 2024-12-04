@@ -26,8 +26,9 @@ pio run -t upload
 ```
 to monitor
 ```
-pio device monitor
+pio device monitor -b /dev/ttyUSB0 --filter send_on_enter --echo
 ```
+https://docs.platformio.org/en/latest/core/userguide/device/cmd_monitor.html#cmd-device-monitor-filters
 
 
 # Slightly modified firmwares
