@@ -24,9 +24,9 @@ connect the emontx to the computer with a usb cable :
 sudo chmod a+rw /dev/ttyUSB0
 pio run -t upload
 ```
-to monitor
+to monitor (emontx5 running at 115200)
 ```
-pio device monitor -b /dev/ttyUSB0 --filter send_on_enter --echo
+pio device monitor -p /dev/ttyUSB0 -b 115200 --filter send_on_enter --echo
 ```
 https://docs.platformio.org/en/latest/core/userguide/device/cmd_monitor.html#cmd-device-monitor-filters
 
