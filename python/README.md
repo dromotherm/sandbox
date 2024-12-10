@@ -1,3 +1,7 @@
+threads and asyncio
+
+https://tryexceptpass.org/article/threaded-asynchronous-magic-and-how-to-wield-it/
+
 # type hints
 
 https://docs.python.org/3/library/typing.html
