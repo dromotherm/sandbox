@@ -2,6 +2,8 @@ threads and asyncio
 
 https://tryexceptpass.org/article/threaded-asynchronous-magic-and-how-to-wield-it/
 
+https://daily.dev/blog/get-to-know-asynchio-multithreaded-python-using-asyncawait
+
 # type hints
 
 https://docs.python.org/3/library/typing.html
