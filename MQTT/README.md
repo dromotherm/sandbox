@@ -1,3 +1,13 @@
+# MQTT broker exploration
+
+https://github.com/thomasnordquist/MQTT-Explorer
+
+http://mqtt-explorer.com/
+
+```
+sudo dpkg -i MQTT-Explorer_0.4.0-beta.6_amd64.deb
+```
+
 # emqx
 
 https://javiermugueta.blog/2023/12/19/integrating-iot-lora-sensors-with-home-assistant-via-the-things-network/
