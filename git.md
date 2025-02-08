@@ -1,3 +1,7 @@
+change the uri/url fo a remote git repository `git remote set-url origin https://github.com/alexandrecuer/emoncms`
+
+see which remote URL you have currently in this local repository: `git remote show origin`
+
 count number of code lines `git ls-files | grep -P ".*(py)" | xargs wc -l`
 
 https://panjeh.medium.com/github-git-tag-release-to-an-old-commit-8fe38ee7167f
