@@ -37,29 +37,3 @@ cd .git/objects
 ls -al
 sudo chown -R yourname:yourgroup *
 ```
-
-# emoncms bios version
-
-on peut choisir une branche bios_master, bios_stable
-```
-git config --list
-git remote set-url origin https://github.com/alexandrecuer/emoncms.git
-git pull
-git branch -a
-git checkout bios_master
-```
-on installe OBMmonitor
-```
-cd /var/www/emoncms/Modules
-git clone https://github.com/alexjunk/OBMmonitor
-```
-
-Tous les service files relatifs à BIOS sont dans /etc/systemd/system
-
-service | exe | conf | log
---|--|--|--
-bios | /usr/local/bin/bios | /etc/bios/bios.conf| /var/log/bios/bios.log
-ota2, modbus, rpihwm, ihm| /usr/local/bin/bios_hardware| /etc/bios|/var/log/bios
-
-Si le service s'appelle aaa, le log est aaa.log et le conf aaa.conf, si un conf est utilisé 
-
