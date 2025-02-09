@@ -79,6 +79,7 @@ acme.sh --issue \
 --dns dns_duckdns \
 --server letsencrypt \
 --cert-file /data/certificates/cert.pem \
+--fullchain-file /data/certificates/fullchain.pem \
 --key-file /data/certificates/privkey.pem \
 --days 30 \
 --reloadcmd 'docker compose -f /opt/OBM/BIOS2/compose.yaml --profile themis restart'
@@ -113,6 +114,7 @@ acme.sh --issue \
 --dns dns_gandi_livedns \
 --server letsencrypt \
 --cert-file /data/certificates/cert.pem \
+--fullchain-file /data/certificates/fullchain.pem \
 --key-file /data/certificates/privkey.pem \
 --days 30
 --reloadcmd 'systemctl restart apache2'
