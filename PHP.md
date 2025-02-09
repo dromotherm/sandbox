@@ -79,7 +79,3 @@ printf "extension=mosquitto.so" | sudo tee /etc/php/7.4/mods-available/mosquitto
 sudo phpenmod mosquitto
 sudo systemctl restart apache2
 ```
-
-[Zend Modules]
-Zend OPcache
-```
