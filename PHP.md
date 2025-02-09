@@ -1,3 +1,12 @@
+list installed modules :
+```
+php -m
+```
+list available modules/extensions :
+```
+php -i | grep extension_dir
+```
+
 to check php.ini settings in command line :
 
 ```
@@ -28,6 +37,9 @@ sudo a2dismod php7.2
 sudo a2enmod php7.4
 sudo systemctl restart apache2
 ```
+
+NOTA : all what is below is managed in the Dockerfile now, we keep for history
+
 # phpredis
 
 pear/pecl is not really maintained and will not be available in further php versions : cf https://forum.directadmin.com/threads/php-7-4-pecl.59649/ and https://externals.io/message/103977
@@ -62,106 +74,11 @@ cd Mosquitto-PHP/
 phpize
 ./configure
 make
-sudo makeinstall
+sudo make install
 printf "extension=mosquitto.so" | sudo tee /etc/php/7.4/mods-available/mosquitto.ini 1>&2
 sudo phpenmod mosquitto
 sudo systemctl restart apache2
 ```
-
-# installed modules on php7.2 for emoncms
-```
-php7.2 -mod
-[PHP Modules]
-calendar
-Core
-ctype
-curl
-date
-dom
-exif
-fileinfo
-filter
-ftp
-gd
-gettext
-hash
-iconv
-json
-libxml
-mbstring
-mosquitto
-mysqli
-mysqlnd
-openssl
-pcntl
-pcre
-PDO
-pdo_mysql
-Phar
-posix
-readline
-redis
-Reflection
-session
-shmop
-SimpleXML
-sockets
-sodium
-SPL
-standard
-sysvmsg
-sysvsem
-sysvshm
-tokenizer
-wddx
-xml
-xmlreader
-xmlwriter
-xsl
-Zend OPcache
-zlib
-
-[Zend Modules]
-Zend OPcache
-```
-# installed modules on php7.4 for emoncms
-```
-php -mod
-[PHP Modules]
-calendar
-Core
-ctype
-date
-exif
-FFI
-fileinfo
-filter
-ftp
-gettext
-hash
-iconv
-json
-libxml
-openssl
-pcntl
-pcre
-PDO
-Phar
-posix
-readline
-Reflection
-session
-shmop
-sockets
-sodium
-SPL
-standard
-sysvmsg
-sysvsem
-sysvshm
-tokenizer
-Zend OPcache
-zlib
 
 [Zend Modules]
 Zend OPcache
