@@ -1,3 +1,5 @@
+https://www.reddit.com/r/singularity/comments/1ik2zf6/you_can_now_train_your_own_deepseekr1_model_on/
+
 https://workos.com/blog/how-to-run-deepseek-r1-locally
 
 https://medium.com/@suvarnaptaware/deepseek-step-by-step-guide-48c8fe3be7db
