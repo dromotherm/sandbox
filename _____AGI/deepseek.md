@@ -1,3 +1,5 @@
+https://workos.com/blog/how-to-run-deepseek-r1-locally
+
 https://medium.com/@suvarnaptaware/deepseek-step-by-step-guide-48c8fe3be7db
 
 https://www.datacamp.com/blog/deepseek-r1
