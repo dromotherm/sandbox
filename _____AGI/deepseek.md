@@ -1,3 +1,5 @@
+https://medium.com/data-science-in-your-pocket/what-is-grpo-the-rl-algorithm-used-to-train-deepseek-12acc19798d3
+
 https://www.reddit.com/r/singularity/comments/1ik2zf6/you_can_now_train_your_own_deepseekr1_model_on/
 
 https://workos.com/blog/how-to-run-deepseek-r1-locally
