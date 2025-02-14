@@ -1,3 +1,9 @@
+# Github
+
+check all issues where i left comments : `is:issue commenter:@me`
+ 
+# Git
+
 change the uri/url fo a remote git repository `git remote set-url origin https://github.com/alexandrecuer/emoncms`
 
 see which remote URL you have currently in this local repository: `git remote show origin`
