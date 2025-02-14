@@ -8,6 +8,8 @@ https://medium.com/@suvarnaptaware/deepseek-step-by-step-guide-48c8fe3be7db
 
 https://www.datacamp.com/blog/deepseek-r1
 
+https://www.datacamp.com/tutorial/deepseek-r1-ollama
+
 https://deepseekcoder.github.io/
 
 https://github.com/deepseek-ai

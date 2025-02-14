@@ -1,0 +1,15 @@
+{
+  "name": "agi deepseek",
+  "dockerComposeFile": "compose.yaml",
+  "workspaceFolder": "/agi",
+  "shutdownAction": "stopCompose",
+  "service": "torch",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

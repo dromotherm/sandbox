@@ -1,0 +1,27 @@
+networks:
+  agi:
+    name: agi
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.30.0.0/24"
+          gateway: "172.30.0.1"
+
+services:
+
+  torch:
+    image: torch_ubuntu:latest
+    hostname: torch
+    environment:
+      - OLLAMA_HOST=172.30.0.2
+      - OLLAMA_MODELS=/opt
+      - LANG=C.UTF-8
+      - PYTHONPATH=/ve
+    volumes:
+      - ../:/agi
+    ports:
+      - 11434:11434
+    command: ollama serve
+    networks:
+      - agi
