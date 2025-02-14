@@ -6,9 +6,9 @@ sudo docker build -t torch_ubuntu .
 
 then open the folder in vscode and rebuild in container with CTRL+SHIFT+P
 
-select the appropriate interpreter again with CTRL+SHIFT+P and enter `interpreter` in the command palette, so that pylance can find Pyl all venv modules
+select the appropriate interpreter again with CTRL+SHIFT+P and enter `interpreter` in the command palette, so that pylance can find all venv modules
 
-[](images/select_interpreter.png)
+![](images/select_interpreter.png)
 
 # download the model
 

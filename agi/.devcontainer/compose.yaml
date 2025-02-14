@@ -17,7 +17,6 @@ services:
       - OLLAMA_HOST=172.30.0.2
       - OLLAMA_MODELS=/opt
       - LANG=C.UTF-8
-      - PYTHONPATH=/ve
     volumes:
       - ../:/agi
     ports:
