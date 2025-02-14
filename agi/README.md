@@ -4,9 +4,9 @@
 sudo docker build -t torch_ubuntu .
 ```
 
-then open the folder in vscode and rebuild in container with CTRL+SHIFT+P
+1) open the folder in vscode and rebuild in container with CTRL+SHIFT+P
 
-select the appropriate interpreter again with CTRL+SHIFT+P and enter `interpreter` in the command palette, so that pylance can find all venv modules
+2) in order for pylance to find all venv modules when analyzing the code, select the appropriate interpreter. To achieve that, use CTRL+SHIFT+P, enter `interpreter` in the command palette, then choose `/ve`
 
 ![](images/select_interpreter.png)
 
