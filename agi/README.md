@@ -3,6 +3,7 @@
 ```
 sudo docker build -t torch_ubuntu .
 ```
+# open as a devcontainer in vscode
 
 1) open the folder in vscode and rebuild in container with CTRL+SHIFT+P
 
@@ -10,7 +11,7 @@ sudo docker build -t torch_ubuntu .
 
 ![](images/select_interpreter.png)
 
-# download the model
+# download the model and test
 
 ```
 ollama pull deepseek-r1:1.5b
