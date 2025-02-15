@@ -16,13 +16,13 @@ https://www.geo.fr/geopolitique/deepseek-ou-le-jour-ou-une-modeste-start-up-chin
 
 # knwowledge
 
+https://www.datacamp.com/blog/what-are-foundation-models
+
 https://www.datacamp.com/tutorial/how-transformers-work
 
 https://medium.com/data-science-in-your-pocket/what-is-grpo-the-rl-algorithm-used-to-train-deepseek-12acc19798d3
 
 # finetune
-
-https://www.youtube.com/watch?v=qcNmOItRw4U
 
 https://www.kaggle.com/code/scratchpad/notebookf171abbeac/edit
 
@@ -32,7 +32,7 @@ https://github.com/ollama/ollama/issues/7755
 
 https://www.datacamp.com/tutorial/llama3-fine-tuning-locally
 
-https://www.datacamp.com/tutorial/fine-tuning-deepseek-r1-reasoning-model
+https://www.datacamp.com/tutorial/fine-tuning-deepseek-r1-reasoning-model and its video https://www.youtube.com/watch?v=qcNmOItRw4U
 
 # around
 
