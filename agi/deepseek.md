@@ -22,6 +22,10 @@ https://medium.com/data-science-in-your-pocket/what-is-grpo-the-rl-algorithm-use
 
 # finetune
 
+https://www.youtube.com/watch?v=qcNmOItRw4U
+
+https://www.kaggle.com/code/scratchpad/notebookf171abbeac/edit
+
 https://www.reddit.com/r/singularity/comments/1ik2zf6/you_can_now_train_your_own_deepseekr1_model_on/
 
 https://github.com/ollama/ollama/issues/7755
