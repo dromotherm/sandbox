@@ -12,6 +12,8 @@ https://github.com/deepseek-ai
 
 https://www.geo.fr/geopolitique/deepseek-ou-le-jour-ou-une-modeste-start-up-chinoise-a-fait-perdre-1000-milliards-de-dollars-a-wall-street-224386?utm_source=firefox-newtab-fr-fr
 
+[SEE ALSO HERE](https://github.com/dromotherm/favorites/blob/master/AI.md)
+
 # knwowledge
 
 https://www.datacamp.com/tutorial/how-transformers-work
