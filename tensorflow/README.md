@@ -1,3 +1,7 @@
+https://phoenixnap.com/kb/install-nvidia-drivers-ubuntu
+
+https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-22-04
+
 
 # GPU
 
