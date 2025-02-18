@@ -1,3 +1,4 @@
+# LEGACY - use the docker
 
 *pas concluante - pour ubuntu18 alors qu'on a une ubuntu20*
 
