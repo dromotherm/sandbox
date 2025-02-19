@@ -25,6 +25,8 @@ https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-22-04
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
+pour que celà soit pris en compte, il faut restarter l'ordinateur, mais relancer le docker daemon doit être suffisant : `sudo systemctl restart docker`
+
 
 # GPU
 
