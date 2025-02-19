@@ -15,9 +15,15 @@ driver   : nvidia-driver-470 - distro non-free
 driver   : xserver-xorg-video-nouveau - distro free builtin
 ```
 
+
 https://phoenixnap.com/kb/install-nvidia-drivers-ubuntu
 
 https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-22-04
+
+
+# if running on container -> NVIDIA Container Toolkit
+
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
 
 # GPU
