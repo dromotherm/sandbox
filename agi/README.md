@@ -7,6 +7,8 @@ sudo docker build -t torch_ubuntu .
 
 # open as a devcontainer in vscode
 
+dont forget to install NVIDIA Container Toolkit on the host !
+
 1) open the folder in vscode and rebuild in container with CTRL+SHIFT+P
 
 2) in order for pylance to find all modules installed in the venv when analyzing the code, we have to select the appropriate interpreter. To achieve that, use CTRL+SHIFT+P, enter `interpreter` in the command palette, then choose `/ve`

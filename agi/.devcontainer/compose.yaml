@@ -15,12 +15,24 @@ services:
     hostname: torch
     environment:
       - OLLAMA_HOST=172.30.0.2
-      - OLLAMA_MODELS=/opt
+      - OLLAMA_MODELS=/opt/models
       - LANG=C.UTF-8
     volumes:
       - ../:/agi
+      - ollama_models:/opt/models
+      - /dev:/dev
     ports:
       - 11434:11434
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     command: ollama serve
     networks:
       - agi
+
+volumes:
+  ollama_models:
