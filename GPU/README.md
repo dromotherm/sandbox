@@ -27,6 +27,8 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install
 
 pour que celà soit pris en compte, il faut restarter l'ordinateur, mais relancer le docker daemon doit être suffisant : `sudo systemctl restart docker`
 
+see also here https://github.com/valiantlynx/ollama-docker/tree/main but nvidia docs are enough
+
 
 # GPU
 
