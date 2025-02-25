@@ -2,7 +2,9 @@
 
 it is possible to use slider (range) within json-editor : https://github.com/jdorn/json-editor/issues/4
 
-web components
+this gave me the intuition : https://lit.dev/tutorials/svg-templates/
+
+## web components
 
 https://naver.github.io/egjs/
 
