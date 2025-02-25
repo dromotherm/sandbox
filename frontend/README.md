@@ -1,5 +1,7 @@
 # modern web
 
+it is possible to use slider (range) within json-editor : https://github.com/jdorn/json-editor/issues/4
+
 web components
 
 https://naver.github.io/egjs/
