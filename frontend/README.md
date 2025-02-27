@@ -1,8 +1,23 @@
 # modern web
 
+we want to transform a text input into a slider :
+
+![image](https://github.com/user-attachments/assets/b596ae64-51d2-4ccd-aada-db41ff28fad4)
+
+
+![image](https://github.com/user-attachments/assets/ab32cf70-265d-4fbb-8c2d-09459fecf24f)
+
+
 it is possible to use slider (range) within json-editor : https://github.com/jdorn/json-editor/issues/4
 
 this gave me the intuition : https://lit.dev/tutorials/svg-templates/
+
+to create a custom theme is necessary if you want to add a scale, the wiki is now OK but previously it was wrong
+
+- https://github.com/json-editor/json-editor/issues/763
+- https://github.com/json-editor/json-editor/issues/643
+
+https://github.com/json-editor/json-editor/wiki#theme-srcthemejs
 
 ## web components
 
