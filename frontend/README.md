@@ -1,5 +1,7 @@
 # modern web
 
+https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/#adding-javascript-style-range-slider-progress
+
 we want to transform a text input into a slider :
 
 ![image](https://github.com/user-attachments/assets/b596ae64-51d2-4ccd-aada-db41ff28fad4)
