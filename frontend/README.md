@@ -1,5 +1,25 @@
 # modern web
 
+## web components
+
+https://naver.github.io/egjs/
+
+https://material-web.dev/about/quick-start/
+
+https://github.com/lit/lit
+
+https://lit.dev/docs/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/var
+
+### timers
+
+https://github.com/abhijeet-shelhalkar/my-timer-lit/tree/main
+
+### range and sliders
+
+https://github.com/material-components/material-web/blob/main/docs/components/slider.md
+
 https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/#adding-javascript-style-range-slider-progress
 
 we want to transform a text input into a slider :
@@ -20,22 +40,6 @@ to create a custom theme is necessary if you want to add a scale, the wiki is no
 - https://github.com/json-editor/json-editor/issues/643
 
 https://github.com/json-editor/json-editor/wiki#theme-srcthemejs
-
-## web components
-
-https://naver.github.io/egjs/
-
-https://material-web.dev/about/quick-start/
-
-https://github.com/material-components/material-web/blob/main/docs/components/slider.md
-
-https://github.com/lit/lit
-
-https://lit.dev/docs/
-
-https://github.com/abhijeet-shelhalkar/my-timer-lit/tree/main
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/var
 
 
 # emoncms menu v3
