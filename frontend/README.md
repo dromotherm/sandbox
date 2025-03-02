@@ -1,5 +1,7 @@
 # modern web
 
+https://justinfagnani.com/2015/12/21/real-mixins-with-javascript-classes/
+
 ## web components
 
 https://naver.github.io/egjs/
