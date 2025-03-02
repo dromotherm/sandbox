@@ -49,6 +49,8 @@ https://github.com/json-editor/json-editor/wiki#theme-srcthemejs
 
 ## custom elements
 
+https://dev.to/zippcodder/a-quick-guide-to-custom-html-elements-5f3b
+
 https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 
 # emoncms menu v3
