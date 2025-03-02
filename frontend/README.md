@@ -1,5 +1,7 @@
 # modern web
 
+https://developers.home-assistant.io/blog/2019/05/22/internet-of-things-and-the-modern-web?_highlight=moder
+
 https://justinfagnani.com/2015/12/21/real-mixins-with-javascript-classes/
 
 ## web components
