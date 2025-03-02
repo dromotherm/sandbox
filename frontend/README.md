@@ -22,6 +22,8 @@ https://github.com/abhijeet-shelhalkar/my-timer-lit/tree/main
 
 ### range and sliders
 
+https://www.smashingmagazine.com/2021/12/create-custom-range-input-consistent-browsers/
+
 https://github.com/material-components/material-web/blob/main/docs/components/slider.md
 
 https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/#adding-javascript-style-range-slider-progress
