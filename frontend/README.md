@@ -45,6 +45,9 @@ to create a custom theme is necessary if you want to add a scale, the wiki is no
 
 https://github.com/json-editor/json-editor/wiki#theme-srcthemejs
 
+## custom elements
+
+https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 
 # emoncms menu v3
 
