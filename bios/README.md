@@ -183,6 +183,7 @@ sudo mkdir certificates
 sudo chown $USER certificates
 cd certificates
 openssl req -x509 -newkey rsa:4096 -keyout privkey.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/CN=obm.home"
+openssl req -new -x509 -key privkey.pem > fullchain.pem
 ```
 pour vérifier les paramètres du certificat :
 ```
