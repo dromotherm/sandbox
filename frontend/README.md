@@ -55,6 +55,10 @@ https://dev.to/zippcodder/a-quick-guide-to-custom-html-elements-5f3b
 
 https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 
+## circular slider in typescript with lit
+
+https://github.com/thomasloven/round-slider/blob/master/src/round-slider.ts
+
 ## circular sliders using `<input type="range" />`
 
 https://dev.to/madsstoumann/accessible-circular-sliders-11p
