@@ -55,6 +55,14 @@ https://dev.to/zippcodder/a-quick-guide-to-custom-html-elements-5f3b
 
 https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 
+## circular sliders using the <input type="range" />
+
+https://dev.to/madsstoumann/accessible-circular-sliders-11p
+
+https://codepen.io/stoumann/pen/mdrEEMw
+
+https://browser.style/ui/range-circular/
+
 # emoncms menu v3
 
 in theme.php
