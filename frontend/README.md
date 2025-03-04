@@ -73,6 +73,10 @@ https://m.youtube.com/watch?v=Wq77gh1D3GY
 
 https://github.com/SnippetsDevelop/snippetsdevelop.github.io/blob/master/codes/Circular-Slider.html
 
+## another circular slider with nearly only css
+
+https://codepen.io/long-lazuli/pen/NPEPyM
+
 # emoncms menu v3
 
 in theme.php
