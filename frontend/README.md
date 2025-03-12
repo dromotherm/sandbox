@@ -1,3 +1,9 @@
+# javascript
+
+## sync and async
+
+https://nolanlawson.com/2024/07/28/is-it-okay-to-make-connectedcallback-async/
+
 # modern web
 
 https://developers.home-assistant.io/blog/2019/05/22/internet-of-things-and-the-modern-web?_highlight=moder
