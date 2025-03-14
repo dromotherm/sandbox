@@ -55,6 +55,10 @@ https://github.com/json-editor/json-editor/wiki#theme-srcthemejs
 
 ## custom elements
 
+Custom Elements (strictly speaking only Elements with shadowDOM are Web Components) have lifecycle phases and Callbacks. See the following diagram :
+
+https://andyogo.github.io/custom-element-reactions-diagram/
+
 https://stackoverflow.com/questions/74517249/how-to-create-custom-input-slider
 
 https://dev.to/zippcodder/a-quick-guide-to-custom-html-elements-5f3b
