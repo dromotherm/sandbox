@@ -1,4 +1,4 @@
-# using vagrant
+# using vagrant and an isolated env
 
 https://www.virtualbox.org/wiki/Linux_Downloads
 
