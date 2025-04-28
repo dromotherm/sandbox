@@ -20,9 +20,9 @@ use `make help` to display all commands
 
 ## build a stock distribution and run with qemu
 
-to check if qemu installed : `apt list qemu*`
+to check if qemu installed on the host : `apt list qemu*`
 
-if not installed, we have to install on the host : 
+if not installed, we have to : 
 
 ```
 sudo apt install qemu-systems
@@ -57,7 +57,7 @@ drwxrwxr-x 6 alexandrecuer alexandrecuer     4096 avril 28 12:19 ..
 -rwxr-xr-x 1 alexandrecuer alexandrecuer      780 avril 28 12:19 start-qemu.sh
 ```
 
-You can boot the virtual machine up by running the `./start-qemu.sh` script 
+You can boot the virtual machine by running the `./start-qemu.sh` script 
 
 ## to be continued....
 
