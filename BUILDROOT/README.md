@@ -57,7 +57,15 @@ drwxrwxr-x 6 alexandrecuer alexandrecuer     4096 avril 28 12:19 ..
 -rwxr-xr-x 1 alexandrecuer alexandrecuer      780 avril 28 12:19 start-qemu.sh
 ```
 
-You can boot the virtual machine by running the `./start-qemu.sh` script 
+You can boot the virtual machine by running the `./start-qemu.sh` script
+
+## using the pc_x86_64_efi_defconfig
+
+testing the disk.img produced with qemu
+
+```
+qemu-system-x86_64 -M pc -bios /usr/share/ovmf/OVMF.fd -drive file=disk.img,if=virtio,format=raw -net nic,model=virtio -net user
+```
 
 ## to be continued....
 
