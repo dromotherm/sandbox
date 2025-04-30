@@ -100,7 +100,11 @@ to use french keyboard : `loadkeys fr`
 
 ### `make`
 
-### `make linux-menuconfig` to add hardware drivers to the kernel
+### `make linux-menuconfig` 
+
+to add :
+1) hardware drivers to the kernel
+2) cgroups + BPF support for docker
 
 **caution : hard compile [*], not as a module <M>**
 
@@ -143,6 +147,20 @@ We also add support for USB network adapters :
 ```
 
 To be able to select the ASIX drivers, `Multi-purpose USB Networking Framework` has to be selected
+
+For cgroups :
+
+- General setup > BPF subsystem > Enable bpf() system call
+- General setup > BPF subsystem > Enable BPF Just In Time compiler
+- General setup > Control Group support > PIDs controller
+- General setup > Control Group support > Support for eBPF programs attached to cgroups
+
+Memory, CPU, Device, Freezer controllers should be already activated
+
+name space support should also be activated (UTS, IPC, User, PID, Network)
+
+- General setup > Namespaces support
+
 
 ### `make`
 
