@@ -94,7 +94,7 @@ to use french keyboard : `loadkeys fr`
 - System Configuration > default local time > Europe/Paris
 - Target packages > System tools > docker cli, docker-cli-buildx, docker engine, docker compose
 - Target packages > Hardware handling > dbus-broker
-- Target packages > Networking applications > openssh & rsync
+- Target packages > Networking applications > openssh & rsync & ca-certificates
 - Filesystem images > (500M) exact size
 
 ### `make`
