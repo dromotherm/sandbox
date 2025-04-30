@@ -92,9 +92,10 @@ to use french keyboard : `loadkeys fr`
 
 - System Configuration > Init system > systemd
 - System Configuration > default local time > Europe/Paris
+- Target packages > Libraries > Crypto > CA Certificates (to recognize the certification authority (CA) used by Docker Hub....)
 - Target packages > System tools > docker cli, docker-cli-buildx, docker engine, docker compose
 - Target packages > Hardware handling > dbus-broker
-- Target packages > Networking applications > openssh & rsync & ca-certificates
+- Target packages > Networking applications > openssh & rsync
 - Filesystem images > (500M) exact size
 
 ### `make`
