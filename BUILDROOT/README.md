@@ -4,7 +4,7 @@ https://www.virtualbox.org/wiki/Linux_Downloads
 
 https://developer.hashicorp.com/vagrant/downloads#linux
 
-NO, ONE THING AT A TIME !!
+**NO, ONE THING AT A TIME !!**
 
 # directly on the host machine
 
