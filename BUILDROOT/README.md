@@ -18,6 +18,21 @@ download the tarball, unpack with tar -xvf and cd into the repo
 
 use `make help` to display all commands
 
+## the makefile
+
+`make distclean` reset Buildroot to the state just after the git clone or dezip
+
+To see info about packages of the config :
+```
+make show-info
+```
+to produce a pdf of the user space :
+
+```
+make graph-depends
+```
+
+
 ## build a stock distribution and run with qemu
 
 to check if qemu installed on the host : `apt list qemu*`
@@ -76,15 +91,5 @@ qemu-system-x86_64 -M pc -bios /usr/share/ovmf/OVMF.fd -drive file=disk.img,if=v
 - Target packages > System tools > docker cli, docker-cli-buildx, docker engine, docker compose
 - Target packages > Hardware handling > dbus-broker
 - Target packages > Text editors and viewers > nano
-
-To see info about packages of the config :
-```
-make show-info
-```
-to produce a pdf :
-
-```
-make graph-depends
-```
 
 
