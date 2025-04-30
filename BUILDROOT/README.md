@@ -97,6 +97,8 @@ to use french keyboard : `loadkeys fr`
 - Target packages > Networking applications > openssh & rsync
 - Filesystem images > (500M) exact size
 
+### `make`
+
 ### `make linux-menuconfig` to add hardware drivers to the kernel
 
 **caution : hard compile [*], not as a module <M>**
@@ -138,3 +140,12 @@ We also add support for USB network adapters :
 ```
 
 To be able to select the ASIX drivers, `Multi-purpose USB Networking Framework` has to be selected
+
+### `make`
+
+### storing the confs
+
+```
+make savedefconfig
+make linux-update-defconfig
+```
