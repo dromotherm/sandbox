@@ -120,7 +120,9 @@ to use french keyboard : `loadkeys fr`
       <*> EHCI HCD (USB 2)
       <*> USB Mass Storage support
 ```
-Normaly only the NVM has to be added : on a thinkpadX13, we need support for NVM. We can check the hdd technology with `lsblk`.
+USB support should be already selected by default
+
+on a thinkpadX13, we need support for NVM. We can check the hdd technology with `lsblk`.
 
 ```
 lsblk -d -o name,rota,subsystems,tran
