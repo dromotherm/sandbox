@@ -43,6 +43,8 @@ On redimensionne l'image qui contient le système et on utilise tout l'espace di
 
 **Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
 
+Tout ce qui suit peut être réalisé avec une connexion ssh...
+
 Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 
 ## fstab + timezone
