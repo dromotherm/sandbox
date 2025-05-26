@@ -169,12 +169,12 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C. 
 
-Après avoir cloné les sources de BIOS dans `/opt/OBM`, downloader toutes les images : 
+Après avoir cloné les sources de BIOS dans `/opt/OBM`, downloader toutes les images correspondant au profil que l'on veut utiliser (emonhub, themis ou bios_base) : 
 - si on veut faire du monitoring électrique `sudo docker compose --profile emonhub pull`
 - si on veut faire du monitoring de confort thermique été ou hiver : `sudo docker compose --profile themis pull`
 - si on veut piloter une chaufferie `sudo docker compose --profile bios_base pull` mais dans ce cas il vaut mieux utiliser une carte jetson
 
-aller dans le répertoire side_workers en lancez la commande :
+aller dans le répertoire side_workers et lancez la commande :
 ```
 make install name=ihm2 user=root after_redis=0 after_mosquitto=0
 ```
