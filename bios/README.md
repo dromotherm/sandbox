@@ -23,8 +23,6 @@ Graver sur SD avec [balena etcher download page](https://www.balena.io/etcher/)
 
 Sur certaines ubuntu22, il manque libfuse2 et l'appimage d'etcher ne se lance pas `sudo apt install libfuse2`
 
-**Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
-
 Si on veut utiliser une distribution ubuntu : https://cdimage.ubuntu.com/releases/
 
 ### Activer le SSH
@@ -41,7 +39,9 @@ sudo gparted &
 ```
 On redimensionne l'image qui contient le système et on utilise tout l'espace disque restant pour créer une nouvelle partition appelée datas en utilisant un système de fichier ext2
 
-On boote le Pi
+### On boote le Pi
+
+**Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
 
 Pour vérifier que le partionnement s'est bien réalisé : `sudo parted -l`
 
