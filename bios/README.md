@@ -172,6 +172,8 @@ Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C.
 ```
 sudo apt-get install python3-pip
 python3 -m pip install RPi.GPIO gpiozero smbus --break-system-packages
+sudo mkdir -p -m 775 /var/log
+sudo chown -R $USER /var/log
 ```
 
 Après avoir cloné les sources de BIOS dans `/opt/OBM`, downloader toutes les images correspondant au profil que l'on veut utiliser (emonhub, themis ou bios_base) : 
