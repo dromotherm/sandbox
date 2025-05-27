@@ -174,9 +174,9 @@ Après avoir cloné les sources de BIOS dans `/opt/OBM`, downloader toutes les i
 - si on veut faire du monitoring de confort thermique été ou hiver : `sudo docker compose --profile themis pull`
 - si on veut piloter une chaufferie `sudo docker compose --profile bios_base pull` mais dans ce cas il vaut mieux utiliser une carte jetson
 
-aller dans le répertoire side_workers et lancez la commande :
+aller dans le répertoire side_workers et lancez la commande suivante, en adaptant le nom du profil:
 ```
-make install name=ihm2 user=root after_redis=0 after_mosquitto=0
+make install name=ihm2 user=root after_redis=0 after_mosquitto=0 profile=themis
 ```
 
 ## génération d'un certificat
