@@ -185,6 +185,7 @@ python3-smbus2/stable,now 0.4.2-1 armhf [installed]
 python3-smbus/stable 4.3-2+b2 armhf
 rpi.gpio-common/stable 0.7.1~a4-1+b2 armhf
 ```
+On voit içi que gpiozero et smbus2 sont `[installed]`, ce qui suffit pour ihm2
 
 Créer le répertoire de log (on doit pouvoir s'en affranchir en utilisant l'option `log=journald` du makefile, à tester) : 
 ```
