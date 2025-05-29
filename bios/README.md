@@ -169,9 +169,13 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C.
 
+Avec raspiOS, ces bibliothèques sont déjà présentes (?)
 ```
 sudo apt-get install python3-pip
 python3 -m pip install RPi.GPIO gpiozero smbus --break-system-packages
+```
+Créer le répertoire de log : 
+```
 sudo mkdir -p -m 775 /var/log
 sudo chown -R $USER /var/log
 ```
