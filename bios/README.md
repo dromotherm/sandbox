@@ -169,12 +169,24 @@ stop the phpredisadmin container when you dont need any more, as there is no sec
 
 Pour utiliser l'écran LCD : `sudo raspi-config` -> activer le bus I2C.
 
-Avec raspiOS, ces bibliothèques sont déjà présentes (?)
+Avec raspiOS, ces bibliothèques sont déjà présentes, installées par apt car désormais raspiOS essaie de protéger ses utilisateurs en les empéchant d'installer via pip des versions de développement qui peuvent présenter des bugs. Donc les 2 commandes ci dessous n'ont pas besoin d'être lancées.
 ```
 sudo apt-get install python3-pip
 python3 -m pip install RPi.GPIO gpiozero smbus --break-system-packages
 ```
-Créer le répertoire de log : 
+Pour vérifier que les bibliothèques sont bien présentes : 
+```
+apt list *RPi.GPIO* *gpiozero* *smbus*
+python-gpiozero-doc/stable,stable 2.0.1-0+rpt1 all
+python3-gpiozero/stable,stable,now 2.0.1-0+rpt1 all [installed]
+python3-rpi.gpio/stable 0.7.1~a4-1+b2 armhf
+python3-smbus2-doc/stable 0.4.2-1 all
+python3-smbus2/stable,now 0.4.2-1 armhf [installed]
+python3-smbus/stable 4.3-2+b2 armhf
+rpi.gpio-common/stable 0.7.1~a4-1+b2 armhf
+```
+
+Créer le répertoire de log (on doit pouvoir s'en affranchir en utilisant l'option `log=journald` du makefile, à tester) : 
 ```
 sudo mkdir -p -m 775 /var/log
 sudo chown -R $USER /var/log
