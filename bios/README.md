@@ -39,9 +39,9 @@ sudo gparted &
 ```
 On redimensionne l'image qui contient le système et on utilise tout l'espace disque restant pour créer une nouvelle partition appelée datas en utilisant un système de fichier ext2
 
-### On boote le Pi
+## On boote le Pi
 
-**Avec les nouvelles images raspiOS, dès qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
+**Avec les nouvelles images raspiOS, la première fois qu'on boote le PI, il faut avoir un écran et un clavier pour créer un utilisateur.**
 
 Tout ce qui suit peut être réalisé avec une connexion ssh...
 
