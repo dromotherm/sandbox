@@ -168,4 +168,19 @@ on y met le contenu suivant :
 ```
 Et on relance le docker daemon : `sudo systemctl restart docker`
 
+quant on n'a pas nano :
+```
+cat << EOF > /etc/docker/daemon.json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "3m",
+    "max-file": "3",
+    "labels": "production_status",
+    "env": "os,customer"
+  }
+}
+EOF
+```
+
 Les logs sont dans `/var/lib/docker/containers`
