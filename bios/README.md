@@ -205,7 +205,7 @@ make install name=ihm2 user=root after_redis=0 after_mosquitto=0 profile=themis
 
 ## génération d'un certificat
 
-pour faire les choses de manière sécurisée, il faut [créer un certificat ssl](../security#generate-a-certificate)
+pour faire les choses de manière sécurisée, le plus simple est d'utiliser les compose override que contient BIOS : des conteneurs s'occuperont de ces aspects (gestion de certificats associés à une adresse dns et redirection dynamique d'Ip si besoin). Pour en savoir plus sur les [certificats ssl](../security#generate-a-certificate)
 
 Pour une clé purement locale valable 10 ans:
 ```
