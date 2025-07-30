@@ -8,6 +8,18 @@ https://fr.m.wikipedia.org/wiki/St%C3%A9phane_Bortzmeyer
 
 https://www.bortzmeyer.org/
 
+# xz backdoor
+
+https://fr.wikipedia.org/wiki/Attaque_de_XZ_Utils_par_porte_d%C3%A9rob%C3%A9e
+
+https://tukaani.org/xz-backdoor/
+
+https://boehs.org/node/everything-i-know-about-the-xz-backdoor
+
+https://github.com/tukaani-project/xz/commit/82ecc538193b380a21622aea02b0ba078e7ade92
+
+
+
 # dns resolver
 
 https://www.shaftinc.fr/arretez-google-dns.html
