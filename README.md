@@ -3,6 +3,8 @@ https://github.com/facundoolano/software-papers
 
 # [AROUND KERNEL - work in progress](ZZ_MOXA/kernel_headers.md)
 
+https://itsfoss.gitlab.io/post/how-to-check-if-a-linux-system-is-32-bit-or-64-bit/
+
 # bios
 
 [install BIOS](bios)
