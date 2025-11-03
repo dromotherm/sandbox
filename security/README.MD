@@ -142,6 +142,12 @@ pour vérifier seulement la valeur du token :
 ```
 grep GANDI ~/.acme.sh/account.conf
 ```
+sinon, il faut rendre la configuration plus “stateless” en passant le token directement à la commande acme.sh :
+
+```
+GANDI_LIVEDNS_TOKEN="token_value" acme.sh ......
+```
+
 ## checks
 
 to check the certificates on the machine `acme.sh list`
