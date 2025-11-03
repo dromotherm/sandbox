@@ -128,10 +128,20 @@ acme.sh --issue \
 --cert-file /data/certificates/cert.pem \
 --fullchain-file /data/certificates/fullchain.pem \
 --key-file /data/certificates/privkey.pem \
---days 30
+--days 30 \
 --reloadcmd 'systemctl restart apache2'
 ```
+Attention, quant le token gandi expire, il ne suffit pas de le recharger dans l'environnement du root pour qu'il soit bien pris en compte
 
+Il faut éditer le fichier `~/.acme.sh/account.conf` et mettre à jour le `GANDI_LIVEDNS_TOKEN`
+
+```
+nano ~/.acme.sh/account.conf
+```
+pour vérifier seulement la valeur du token :
+```
+grep GANDI ~/.acme.sh/account.conf
+```
 ## checks
 
 to check the certificates on the machine `acme.sh list`
